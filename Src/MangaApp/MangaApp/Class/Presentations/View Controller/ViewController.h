@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ChapterListService.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
 
-
+@property (strong, nonatomic) ChapterListService *chapterService;
+@property (weak, nonatomic) IBOutlet UITableView *contentTableView;
 @end
 
