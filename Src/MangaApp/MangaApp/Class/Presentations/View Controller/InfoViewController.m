@@ -34,4 +34,38 @@
 }
 */
 
+#pragma mark - Button Function
+- (IBAction)onSubInfoButton:(id)sender {
+    UIButton *subButton = (UIButton *)sender;
+    SubInfoType subType = kNoneScreen;
+    switch (subButton.tag) {
+        case 1: {
+            // About view controller
+            subType = kAboutScreen;
+            break;
+        }
+        case 2: {
+            // Q & A view controller
+            subType = kQAScreen;
+            break;
+        }
+        case 3: {
+            // Term vc
+            subType = kTermScreen;
+            break;
+        }
+        case 4: {
+            // Contact vc
+            subType = kContactScreen;
+            break;
+        }
+            
+        default:
+            break;
+    }
+    
+    if (self.gotoSubInfoScreen) {
+        self.gotoSubInfoScreen(subType);
+    }
+}
 @end

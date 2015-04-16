@@ -8,6 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+typedef enum {
+    kAboutScreen = 1,
+    kQAScreen,
+    kTermScreen,
+    kContactScreen,
+    kNoneScreen
+}SubInfoType;
+
 @interface InfoViewController : UIViewController
 
+@property (nonatomic, copy) void(^gotoSubInfoScreen)(SubInfoType subType);
+
+- (IBAction)onSubInfoButton:(id)sender;
 @end

@@ -10,11 +10,14 @@
 #import <WYPopoverController.h>
 #import "InfoViewController.h"
 #import "ChapterCustomCell.h"
+#import "SubInfoViewController.h"
 
 @interface ViewController ()<WYPopoverControllerDelegate>
 {
-    WYPopoverController *infoPopoverController;
+    
 }
+@property (nonatomic, strong) WYPopoverController *infoPopoverController;
+@property (nonatomic, strong) InfoViewController *infoViewController ;
 @end
 
 @implementation ViewController
@@ -45,27 +48,49 @@
 
 #pragma mark - Buttons Function
 - (void)onMenuButton:(id)sender {
-    if (infoPopoverController == nil) {
+    if (_infoPopoverController == nil) {
         UIView* btn = (UIView*)sender;
         
-        InfoViewController *infoViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"InfoViewController"];
+        _infoViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"InfoViewController"];
         
-        if ([infoViewController respondsToSelector:@selector(setPreferredContentSize:)]) {
-            infoViewController.preferredContentSize = CGSizeMake(280, 200);             // iOS 7
+        if ([_infoViewController respondsToSelector:@selector(setPreferredContentSize:)]) {
+            _infoViewController.preferredContentSize = CGSizeMake(280, 200);             // iOS 7
         }
         
-        infoViewController.title = @"Info Screen";
-        infoViewController.modalInPopover = NO;
+        _infoViewController.title = @"Info Screen";
+        _infoViewController.modalInPopover = NO;
         
-        UINavigationController* contentViewController = [[UINavigationController alloc] initWithRootViewController:infoViewController];
+        // Call back function
+        __weak typeof(self) weakSelf = self;
+        _infoViewController.gotoSubInfoScreen = ^(SubInfoType subType){
+            [weakSelf.infoPopoverController dismissPopoverAnimated:YES completion:^{
+                UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                SubInfoViewController *subInfoVC = (SubInfoViewController *)[story instantiateViewControllerWithIdentifier:NSStringFromClass([SubInfoViewController class])];
+                subInfoVC.title = @"Sub Info View";
+                subInfoVC.didClickCloseButton = ^() {
+                    [weakSelf dismissViewControllerAnimated:YES completion:^{
+                        
+                    }];
+                };
+                
+                UINavigationController *subNavi = [[UINavigationController alloc] initWithRootViewController:subInfoVC];
+                [weakSelf presentViewController:subNavi animated:YES completion:^{
+                    
+                }];
+                
+                [weakSelf releasePopoverController];
+            }];
+        };
         
-        infoPopoverController = [[WYPopoverController alloc] initWithContentViewController:contentViewController];
-        infoPopoverController.delegate = self;
-        infoPopoverController.passthroughViews = @[btn];
-        infoPopoverController.popoverLayoutMargins = UIEdgeInsetsMake(10, 10, 10, 10);
-        infoPopoverController.wantsDefaultContentAppearance = NO;
+        UINavigationController* contentViewController = [[UINavigationController alloc] initWithRootViewController:_infoViewController];
         
-        [infoPopoverController presentPopoverFromRect:btn.bounds
+        _infoPopoverController = [[WYPopoverController alloc] initWithContentViewController:contentViewController];
+        _infoPopoverController.delegate = self;
+        _infoPopoverController.passthroughViews = @[btn];
+        _infoPopoverController.popoverLayoutMargins = UIEdgeInsetsMake(10, 10, 10, 10);
+        _infoPopoverController.wantsDefaultContentAppearance = NO;
+        
+        [_infoPopoverController presentPopoverFromRect:btn.bounds
                                                    inView:btn
                                  permittedArrowDirections:WYPopoverArrowDirectionAny
                                                  animated:YES
@@ -73,20 +98,24 @@
     }
 }
 
-#pragma mark - WYPopoverControllerDelegate
+- (void)goToReadingScreenWithIndexChapter:(NSInteger )indexChap {
+    
+}
 
-- (BOOL)popoverControllerShouldDismissPopover:(WYPopoverController *)controller
-{
+#pragma mark - WYPopoverControllerDelegate
+- (BOOL)popoverControllerShouldDismissPopover:(WYPopoverController *)controller {
     return YES;
 }
 
-- (void)popoverControllerDidDismissPopover:(WYPopoverController *)controller
-{
-    if (controller == infoPopoverController)
-    {
-        infoPopoverController.delegate = nil;
-        infoPopoverController = nil;
+- (void)popoverControllerDidDismissPopover:(WYPopoverController *)controller {
+    if (controller == _infoPopoverController) {
+        [self releasePopoverController];
     }
+}
+
+- (void)releasePopoverController {
+    _infoPopoverController.delegate = nil;
+    _infoPopoverController = nil;
 }
 
 #pragma mark - UITableView delegate and data source
@@ -101,6 +130,12 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ChapterCustomCell *cell = (ChapterCustomCell *)[tableView dequeueReusableCellWithIdentifier:[ChapterCustomCell getIdentifier]];
     
+    cell.onStartReadingButton = ^(){
+        [self goToReadingScreenWithIndexChapter:(indexPath.row + 1)];
+    };
+    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     return cell;
 }
 @end

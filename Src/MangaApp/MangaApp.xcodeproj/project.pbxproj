@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2DBD636E1ADF785000D001C5 /* SubInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBD636D1ADF785000D001C5 /* SubInfoViewController.m */; };
 		417FA6F62ACFEA96D5995F43 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 14DFCA9028ED14D9EE20FF9D /* libPods.a */; };
 		D384C64B1AD95B6A00C9883A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D384C64A1AD95B6A00C9883A /* main.m */; };
 		D384C6541AD95B6A00C9883A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D384C6521AD95B6A00C9883A /* Main.storyboard */; };
@@ -35,6 +36,8 @@
 
 /* Begin PBXFileReference section */
 		14DFCA9028ED14D9EE20FF9D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		2DBD636C1ADF785000D001C5 /* SubInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubInfoViewController.h; sourceTree = "<group>"; };
+		2DBD636D1ADF785000D001C5 /* SubInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubInfoViewController.m; sourceTree = "<group>"; };
 		4BBC6B096FAF682A19022BEF /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		D384C6451AD95B6A00C9883A /* MangaApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MangaApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D384C6491AD95B6A00C9883A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -242,6 +245,8 @@
 				D3CD35D11AD9889A0057265B /* ViewController.m */,
 				D3CD35D71AD998F90057265B /* InfoViewController.h */,
 				D3CD35D81AD998F90057265B /* InfoViewController.m */,
+				2DBD636C1ADF785000D001C5 /* SubInfoViewController.h */,
+				2DBD636D1ADF785000D001C5 /* SubInfoViewController.m */,
 			);
 			path = "View Controller";
 			sourceTree = "<group>";
@@ -407,6 +412,7 @@
 				D3CD35E21AD99FAA0057265B /* ChapterListService.m in Sources */,
 				D3CD35D91AD998F90057265B /* InfoViewController.m in Sources */,
 				D384C64B1AD95B6A00C9883A /* main.m in Sources */,
+				2DBD636E1ADF785000D001C5 /* SubInfoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -465,7 +471,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iOS Development: thanh le (MNF8D3MF92)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iOS Development: thanh le (MNF8D3MF92)";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -485,6 +492,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "ba91295f-d7f3-42df-9ad1-afe6cf51da0f";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -520,6 +528,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "ba91295f-d7f3-42df-9ad1-afe6cf51da0f";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -532,9 +541,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iOS Development: thanh le (MNF8D3MF92)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iOS Development: thanh le (MNF8D3MF92)";
 				INFOPLIST_FILE = MangaApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "ba91295f-d7f3-42df-9ad1-afe6cf51da0f";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -547,6 +560,8 @@
 				INFOPLIST_FILE = MangaApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "ba91295f-d7f3-42df-9ad1-afe6cf51da0f";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

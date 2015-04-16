@@ -10,6 +10,9 @@
 
 @interface ChapterCustomCell : UITableViewCell
 
+@property (nonatomic, copy) void (^onStartReadingButton)();
+
 + (NSString *)getIdentifier;
 + (CGFloat )getHeightOfCell;
+- (IBAction)onReadingButton:(id)sender;
 @end

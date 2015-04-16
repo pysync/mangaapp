@@ -27,4 +27,10 @@
 + (CGFloat)getHeightOfCell {
     return 60.0f;
 }
+
+- (IBAction)onReadingButton:(id)sender {
+    if (self.onStartReadingButton) {
+        self.onStartReadingButton();
+    }
+}
 @end
