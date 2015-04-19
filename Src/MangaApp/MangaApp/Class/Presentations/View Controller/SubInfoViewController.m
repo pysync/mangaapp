@@ -7,6 +7,7 @@
 //
 
 #import "SubInfoViewController.h"
+#import <MBProgressHUD/MBProgressHUD.h>
 
 @interface SubInfoViewController ()
 
@@ -18,6 +19,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self createUI];
+    [self loadDataFromHTMLFile];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -46,4 +48,21 @@
 }
 */
 
+- (void)loadDataFromHTMLFile {
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"about" ofType:@"html" inDirectory:nil];
+    NSLog(@"%@", path);
+    NSURL *url = [NSURL fileURLWithPath:path];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    [_webView loadRequest:request];
+}
+
+#pragma mark - UIWebView delegate
+- (void)webViewDidFinishLoad:(UIWebView *)webView {
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+}
+
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+}
 @end

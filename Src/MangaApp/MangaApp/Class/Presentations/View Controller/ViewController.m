@@ -11,6 +11,7 @@
 #import "InfoViewController.h"
 #import "ChapterCustomCell.h"
 #import "SubInfoViewController.h"
+#import "ChapterViewController.h"
 
 @interface ViewController ()<WYPopoverControllerDelegate>
 {
@@ -19,7 +20,7 @@
 @property (nonatomic, strong) WYPopoverController *infoPopoverController;
 @property (nonatomic, strong) InfoViewController *infoViewController ;
 @end
-
+ 
 @implementation ViewController
 
 - (void)viewDidLoad {
@@ -28,6 +29,12 @@
     // Do any additional setup after loading the view, typically from a nib.
     [self createBarButton];
     [_contentTableView registerNib:[UINib nibWithNibName:NSStringFromClass([ChapterCustomCell class]) bundle:nil] forCellReuseIdentifier:[ChapterCustomCell getIdentifier]];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    if (self.navigationController.navigationBarHidden) {
+        [[self navigationController] setNavigationBarHidden:NO animated:NO];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -99,7 +106,9 @@
 }
 
 - (void)goToReadingScreenWithIndexChapter:(NSInteger )indexChap {
-    
+    UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    ChapterViewController *chapterVC = (ChapterViewController *)[story instantiateViewControllerWithIdentifier:NSStringFromClass([ChapterViewController class])];
+    [self.navigationController pushViewController:chapterVC animated:YES];
 }
 
 #pragma mark - WYPopoverControllerDelegate

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SubInfoViewController : UIViewController
+@interface SubInfoViewController : UIViewController<UIWebViewDelegate>
 @property (nonatomic, copy) void (^didClickCloseButton)();
+@property (weak, nonatomic) IBOutlet UIWebView *webView;
 @end
