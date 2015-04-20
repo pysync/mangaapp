@@ -1,0 +1,77 @@
+{
+    "status": 1,
+    "data":[
+            {
+            "titleChap":"Chap 1 ~ 10",
+            "images": [
+                       "chap1_1.png",
+                       "chap1_2.png",
+                       "chap1_3.png"
+                       ]
+            },
+            {
+            "titleChap":"Chap 11 ~ 20",
+            "images": [
+                       "chap2_1.png",
+                       "chap2_2.png",
+                       "chap2_3.png"
+                       ]
+            },
+            {
+            "titleChap":"Chap 21 ~ 30",
+            "images": [
+                       "chap3_1.png",
+                       "chap3_2.png",
+                       "chap3_3.png"
+                       ]
+            },
+            {
+            "titleChap":"Chap 31 ~ 40",
+            "images": [
+                       "chap4_1.png",
+                       "chap4_2.png",
+                       "chap4_3.png"
+                       ]
+            },
+            {
+            "titleChap":"Chap 41 ~ 50",
+            "images": [
+                       "chap5_1.png",
+                       "chap5_2.png",
+                       "chap5_3.png"
+                       ]
+            },
+            {
+            "titleChap":"Chap 51 ~ 60",
+            "images": [
+                       "chap6_1.png",
+                       "chap6_2.png",
+                       "chap6_3.png"
+                       ]
+            },
+            {
+            "titleChap":"Chap 61 ~ 70",
+            "images": [
+                       "chap7_1.png",
+                       "chap7_2.png",
+                       "chap7_3.png"
+                       ]
+            },
+            {
+            "titleChap":"Chap 71 ~ 80",
+            "images": [
+                       "chap8_1.png",
+                       "chap8_2.png",
+                       "chap8_3.png"
+                       ]
+            },
+            {
+            "titleChap":"Chap 81 ~ 90",
+            "images": [
+                       "chap9_1.png",
+                       "chap9_2.png",
+                       "chap9_3.png"
+                       ]
+            }
+            ]
+}
