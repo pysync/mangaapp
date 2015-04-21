@@ -12,6 +12,7 @@
 #import "ChapterCustomCell.h"
 #import "SubInfoViewController.h"
 #import "ChapterViewController.h"
+#import <Parse/Parse.h>
 
 @interface ViewController ()<WYPopoverControllerDelegate>
 {
@@ -29,6 +30,11 @@
     // Do any additional setup after loading the view, typically from a nib.
     [self createBarButton];
     [_contentTableView registerNib:[UINib nibWithNibName:NSStringFromClass([ChapterCustomCell class]) bundle:nil] forCellReuseIdentifier:[ChapterCustomCell getIdentifier]];
+    
+    // Test Parse.com
+    PFObject *testObject = [PFObject objectWithClassName:@"TestObject"];
+    testObject[@"foo"] = @"bar";
+    [testObject saveInBackground];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
