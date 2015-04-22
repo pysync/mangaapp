@@ -23,6 +23,9 @@
 		2D1339311AE604B300F1DAF7 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D1339301AE604B300F1DAF7 /* Accounts.framework */; };
 		2D1339331AE604BC00F1DAF7 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D1339321AE604BC00F1DAF7 /* Social.framework */; };
 		2D242DA11AE510EE00F13E0D /* define.json in Resources */ = {isa = PBXBuildFile; fileRef = 2D242DA01AE510EE00F13E0D /* define.json */; };
+		2D7CD97B1AE789C800C25B9A /* PageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7CD97A1AE789C800C25B9A /* PageViewController.m */; };
+		2D7CD9821AE790B400C25B9A /* ResponseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7CD9811AE790B400C25B9A /* ResponseModel.m */; };
+		2D7CD9851AE7910700C25B9A /* ChapterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7CD9841AE7910700C25B9A /* ChapterModel.m */; };
 		2DBD636E1ADF785000D001C5 /* SubInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBD636D1ADF785000D001C5 /* SubInfoViewController.m */; };
 		417FA6F62ACFEA96D5995F43 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 14DFCA9028ED14D9EE20FF9D /* libPods.a */; };
 		D32E762D1AE34AC8006EF17A /* about.html in Resources */ = {isa = PBXBuildFile; fileRef = D32E762B1AE34AC8006EF17A /* about.html */; };
@@ -72,6 +75,12 @@
 		2D1339301AE604B300F1DAF7 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		2D1339321AE604BC00F1DAF7 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		2D242DA01AE510EE00F13E0D /* define.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = define.json; sourceTree = "<group>"; };
+		2D7CD9791AE789C800C25B9A /* PageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageViewController.h; sourceTree = "<group>"; };
+		2D7CD97A1AE789C800C25B9A /* PageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageViewController.m; sourceTree = "<group>"; };
+		2D7CD9801AE790B400C25B9A /* ResponseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResponseModel.h; sourceTree = "<group>"; };
+		2D7CD9811AE790B400C25B9A /* ResponseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResponseModel.m; sourceTree = "<group>"; };
+		2D7CD9831AE7910700C25B9A /* ChapterModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChapterModel.h; sourceTree = "<group>"; };
+		2D7CD9841AE7910700C25B9A /* ChapterModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChapterModel.m; sourceTree = "<group>"; };
 		2DBD636C1ADF785000D001C5 /* SubInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubInfoViewController.h; sourceTree = "<group>"; };
 		2DBD636D1ADF785000D001C5 /* SubInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubInfoViewController.m; sourceTree = "<group>"; };
 		4BBC6B096FAF682A19022BEF /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -145,6 +154,17 @@
 				2D242DA01AE510EE00F13E0D /* define.json */,
 			);
 			path = JSON;
+			sourceTree = "<group>";
+		};
+		2D7CD97F1AE790B400C25B9A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2D7CD9801AE790B400C25B9A /* ResponseModel.h */,
+				2D7CD9811AE790B400C25B9A /* ResponseModel.m */,
+				2D7CD9831AE7910700C25B9A /* ChapterModel.h */,
+				2D7CD9841AE7910700C25B9A /* ChapterModel.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		A31C43B7A018DB32687E73F1 /* Frameworks */ = {
@@ -298,17 +318,10 @@
 		D3CD35CA1AD9889A0057265B /* Bussiness */ = {
 			isa = PBXGroup;
 			children = (
-				D3CD35CB1AD9889A0057265B /* Model */,
+				2D7CD97F1AE790B400C25B9A /* Model */,
 				D3CD35CC1AD9889A0057265B /* Service */,
 			);
 			path = Bussiness;
-			sourceTree = "<group>";
-		};
-		D3CD35CB1AD9889A0057265B /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		D3CD35CC1AD9889A0057265B /* Service */ = {
@@ -348,6 +361,8 @@
 				2DBD636D1ADF785000D001C5 /* SubInfoViewController.m */,
 				D32E762F1AE34D4A006EF17A /* ChapterViewController.h */,
 				D32E76301AE34D4A006EF17A /* ChapterViewController.m */,
+				2D7CD9791AE789C800C25B9A /* PageViewController.h */,
+				2D7CD97A1AE789C800C25B9A /* PageViewController.m */,
 			);
 			path = "View Controller";
 			sourceTree = "<group>";
@@ -513,6 +528,9 @@
 			files = (
 				D32E76311AE34D4A006EF17A /* ChapterViewController.m in Sources */,
 				D3CD35D41AD9889A0057265B /* ViewController.m in Sources */,
+				2D7CD9821AE790B400C25B9A /* ResponseModel.m in Sources */,
+				2D7CD97B1AE789C800C25B9A /* PageViewController.m in Sources */,
+				2D7CD9851AE7910700C25B9A /* ChapterModel.m in Sources */,
 				D3CD35D31AD9889A0057265B /* AppDelegate.m in Sources */,
 				D3CD35DE1AD99D670057265B /* ChapterCustomCell.m in Sources */,
 				D3CD35E21AD99FAA0057265B /* ChapterListService.m in Sources */,

@@ -117,6 +117,13 @@
     [self.navigationController pushViewController:chapterVC animated:YES];
 }
 
+#pragma mark - Service Function
+- (void)loadDataFromJSON {
+    NSString *pathFile = [[NSBundle mainBundle] pathForResource:@"define" ofType:@"json"];
+    NSString *jsonString = [NSString stringWithContentsOfFile:pathFile encoding:NSUTF8StringEncoding error:nil];
+    
+}
+
 #pragma mark - WYPopoverControllerDelegate
 - (BOOL)popoverControllerShouldDismissPopover:(WYPopoverController *)controller {
     return YES;

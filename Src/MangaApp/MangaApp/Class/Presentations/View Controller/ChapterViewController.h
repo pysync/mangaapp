@@ -17,6 +17,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *chapterLabel;
 @property (weak, nonatomic) IBOutlet UILabel *pageLabel;
+@property (nonatomic, strong) NSArray *imageList;
 
 - (IBAction)onBackButton:(id)sender;
 @end

@@ -300,6 +300,38 @@
             </objects>
             <point key="canvasLocation" x="910" y="-104"/>
         </scene>
+        <!--Page View Controller-->
+        <scene sceneID="XrC-T6-sCB">
+            <objects>
+                <viewController id="zvt-8Z-AwC" customClass="PageViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="697-WA-4nF"/>
+                        <viewControllerLayoutGuide type="bottom" id="VpW-9j-SBa"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="i49-Am-CbF">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iOk-5k-rYJ">
+                                <rect key="frame" x="10" y="10" width="580" height="580"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="iOk-5k-rYJ" firstAttribute="leading" secondItem="i49-Am-CbF" secondAttribute="leadingMargin" constant="-6" id="KRI-yZ-YTq"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="iOk-5k-rYJ" secondAttribute="trailing" constant="-6" id="osA-b2-qRv"/>
+                            <constraint firstItem="VpW-9j-SBa" firstAttribute="top" secondItem="iOk-5k-rYJ" secondAttribute="bottom" constant="10" id="v5P-yz-tXG"/>
+                            <constraint firstItem="iOk-5k-rYJ" firstAttribute="top" secondItem="697-WA-4nF" secondAttribute="bottom" constant="-10" id="wiP-25-ioz"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="iOk-5k-rYJ" id="CCx-G9-PDM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Gew-yt-KXR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="910" y="560"/>
+        </scene>
     </scenes>
     <resources>
         <image name="back.png" width="64" height="64"/>
