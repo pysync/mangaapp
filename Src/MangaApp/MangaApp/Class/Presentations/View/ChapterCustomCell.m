@@ -28,6 +28,11 @@
     return 60.0f;
 }
 
+- (void)updateCellWithModel:(ChapterModel *)unitModel {
+    
+}
+
+#pragma mark - Button Function
 - (IBAction)onReadingButton:(id)sender {
     if (self.onStartReadingButton) {
         self.onStartReadingButton();

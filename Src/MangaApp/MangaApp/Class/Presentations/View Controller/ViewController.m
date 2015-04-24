@@ -35,6 +35,9 @@
     PFObject *testObject = [PFObject objectWithClassName:@"TestObject"];
     testObject[@"foo"] = @"bar";
     [testObject saveInBackground];
+    
+    // Load data from json
+    [self loadDataFromJSON];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -119,9 +122,11 @@
 
 #pragma mark - Service Function
 - (void)loadDataFromJSON {
-    NSString *pathFile = [[NSBundle mainBundle] pathForResource:@"define" ofType:@"json"];
-    NSString *jsonString = [NSString stringWithContentsOfFile:pathFile encoding:NSUTF8StringEncoding error:nil];
-    
+    [_chapterService getDataFromJSONSuccess:^{
+        [_contentTableView reloadData];
+    } failure:^{
+        [_contentTableView reloadData];
+    }];
 }
 
 #pragma mark - WYPopoverControllerDelegate
@@ -142,7 +147,7 @@
 
 #pragma mark - UITableView delegate and data source
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 5;
+    return _chapterService.listChapters.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

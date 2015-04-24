@@ -10,4 +10,7 @@
 
 @interface ChapterListService : NSObject
 
+@property (strong, nonatomic) NSMutableArray *listChapters;
+
+- (void)getDataFromJSONSuccess:(void(^)())successBlock failure:(void(^)())failBlock;
 @end

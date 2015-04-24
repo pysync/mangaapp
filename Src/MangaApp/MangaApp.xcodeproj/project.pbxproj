@@ -23,6 +23,7 @@
 		2D1339311AE604B300F1DAF7 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D1339301AE604B300F1DAF7 /* Accounts.framework */; };
 		2D1339331AE604BC00F1DAF7 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D1339321AE604BC00F1DAF7 /* Social.framework */; };
 		2D242DA11AE510EE00F13E0D /* define.json in Resources */ = {isa = PBXBuildFile; fileRef = 2D242DA01AE510EE00F13E0D /* define.json */; };
+		2D5558D61AEA435800736160 /* CustomBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D5558D51AEA435800736160 /* CustomBaseCell.m */; };
 		2D7CD97B1AE789C800C25B9A /* PageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7CD97A1AE789C800C25B9A /* PageViewController.m */; };
 		2D7CD9821AE790B400C25B9A /* ResponseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7CD9811AE790B400C25B9A /* ResponseModel.m */; };
 		2D7CD9851AE7910700C25B9A /* ChapterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7CD9841AE7910700C25B9A /* ChapterModel.m */; };
@@ -75,6 +76,8 @@
 		2D1339301AE604B300F1DAF7 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		2D1339321AE604BC00F1DAF7 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		2D242DA01AE510EE00F13E0D /* define.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = define.json; sourceTree = "<group>"; };
+		2D5558D41AEA435800736160 /* CustomBaseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomBaseCell.h; sourceTree = "<group>"; };
+		2D5558D51AEA435800736160 /* CustomBaseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomBaseCell.m; sourceTree = "<group>"; };
 		2D7CD9791AE789C800C25B9A /* PageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageViewController.h; sourceTree = "<group>"; };
 		2D7CD97A1AE789C800C25B9A /* PageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageViewController.m; sourceTree = "<group>"; };
 		2D7CD9801AE790B400C25B9A /* ResponseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResponseModel.h; sourceTree = "<group>"; };
@@ -380,6 +383,8 @@
 				D3CD35DB1AD99D670057265B /* ChapterCustomCell.h */,
 				D3CD35DC1AD99D670057265B /* ChapterCustomCell.m */,
 				D3CD35DD1AD99D670057265B /* ChapterCustomCell.xib */,
+				2D5558D41AEA435800736160 /* CustomBaseCell.h */,
+				2D5558D51AEA435800736160 /* CustomBaseCell.m */,
 			);
 			name = Cell;
 			sourceTree = "<group>";
@@ -535,6 +540,7 @@
 				D3CD35DE1AD99D670057265B /* ChapterCustomCell.m in Sources */,
 				D3CD35E21AD99FAA0057265B /* ChapterListService.m in Sources */,
 				D3CD35D91AD998F90057265B /* InfoViewController.m in Sources */,
+				2D5558D61AEA435800736160 /* CustomBaseCell.m in Sources */,
 				D384C64B1AD95B6A00C9883A /* main.m in Sources */,
 				2DBD636E1ADF785000D001C5 /* SubInfoViewController.m in Sources */,
 			);

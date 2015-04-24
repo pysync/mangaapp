@@ -7,12 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CustomBaseCell.h"
 
-@interface ChapterCustomCell : UITableViewCell
+@interface ChapterCustomCell : CustomBaseCell
 
 @property (nonatomic, copy) void (^onStartReadingButton)();
 
-+ (NSString *)getIdentifier;
-+ (CGFloat )getHeightOfCell;
 - (IBAction)onReadingButton:(id)sender;
 @end
