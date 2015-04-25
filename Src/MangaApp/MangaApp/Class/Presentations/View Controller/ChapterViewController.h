@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ChapterService.h"
 
-@interface ChapterViewController : UIViewController
+@interface ChapterViewController : UIViewController<UIScrollViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIScrollView *contentScollView;
 @property (weak, nonatomic) IBOutlet UIView *headerView;
@@ -17,7 +18,9 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *chapterLabel;
 @property (weak, nonatomic) IBOutlet UILabel *pageLabel;
-@property (nonatomic, strong) NSArray *imageList;
+
+@property (strong, nonatomic) ChapterService *chapterService;
+@property (strong, nonatomic) ChapterModel *chapModel;
 
 - (IBAction)onBackButton:(id)sender;
 @end

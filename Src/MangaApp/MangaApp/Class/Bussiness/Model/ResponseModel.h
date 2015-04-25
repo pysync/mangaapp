@@ -7,9 +7,10 @@
 //
 
 #import "JSONModel.h"
+#import "ChapterModel.h"
 
 @interface ResponseModel : JSONModel
 
 @property (nonatomic, assign) int status;
-@property (nonatomic, strong) NSArray<Optional> *data;
+@property (nonatomic, strong) NSArray<Optional, ChapterModel> *data;
 @end

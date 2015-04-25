@@ -20,16 +20,21 @@
     // Configure the view for the selected state
 }
 
-+ (NSString *)getIdentifier {
++ (NSString *)getIdentifierCell {
     return @"ChapterCustomCell";
 }
 
-+ (CGFloat)getHeightOfCell {
++ (CGFloat)getHeightCell {
     return 60.0f;
 }
 
 - (void)updateCellWithModel:(ChapterModel *)unitModel {
-    
+    _chapTitleLabel.text = @"ありがとう";
+    if (unitModel.titleChap && unitModel.titleChap.length) {
+        _chapNumberLabel.text = unitModel.titleChap;
+    }else {
+        _chapNumberLabel.text = @"";
+    }
 }
 
 #pragma mark - Button Function

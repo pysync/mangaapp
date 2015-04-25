@@ -10,6 +10,8 @@
 
 @interface PageViewController ()
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *widthContraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightContraint;
 @end
 
 @implementation PageViewController
@@ -26,6 +28,22 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    CGRect viewFrame = self.view.frame;
+    UIImage *currentImage = [UIImage imageNamed:@"splash.png"];
+    CGSize imageSize = currentImage.size;
+    
+    float ratio = [self getRatioFromViewSize:viewFrame.size andImageSize:imageSize];
+    _widthContraint.constant = currentImage.size.width * ratio - 4;
+    _heightContraint.constant = currentImage.size.height * ratio - 4;
+
+    [_contentView updateConstraintsIfNeeded];
+    [_imageScrollView setMaximumZoomScale:4.0f];
+    _imageView.image = currentImage;
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    CGRect imageFrame = _contentView.frame;
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -33,6 +51,12 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (float )getRatioFromViewSize:(CGSize )viewSize andImageSize:(CGSize )imageSize {
+    float widthRatio = viewSize.width/imageSize.width;
+    float heightRatio = viewSize.height/imageSize.height;
+    
+    return widthRatio > heightRatio ? heightRatio:widthRatio;
+}
 /*
 #pragma mark - Navigation
 
@@ -43,4 +67,8 @@
 }
 */
 
+#pragma mark - UIScrollView delegate
+- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
+    return _contentView;
+}
 @end

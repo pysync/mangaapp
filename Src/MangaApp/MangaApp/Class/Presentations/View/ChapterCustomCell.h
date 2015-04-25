@@ -12,6 +12,8 @@
 @interface ChapterCustomCell : CustomBaseCell
 
 @property (nonatomic, copy) void (^onStartReadingButton)();
+@property (weak, nonatomic) IBOutlet UILabel *chapNumberLabel;
+@property (weak, nonatomic) IBOutlet UILabel *chapTitleLabel;
 
 - (IBAction)onReadingButton:(id)sender;
 @end

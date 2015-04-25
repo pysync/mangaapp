@@ -8,11 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PageViewController : UIViewController
+@interface PageViewController : UIViewController<UIScrollViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UIView *contentView;
 @property (strong, nonatomic) NSString *imageName;
 @property (assign, nonatomic) NSInteger pageNumber;
+@property (weak, nonatomic) IBOutlet UIScrollView *imageScrollView;
 
 - (instancetype)initWithImageName:(NSString *)imageName;
 @end

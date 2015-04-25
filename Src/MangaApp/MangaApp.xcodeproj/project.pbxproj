@@ -38,6 +38,7 @@
 		D384C6561AD95B6A00C9883A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D384C6551AD95B6A00C9883A /* Images.xcassets */; };
 		D384C6591AD95B6A00C9883A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D384C6571AD95B6A00C9883A /* LaunchScreen.xib */; };
 		D384C6651AD95B6A00C9883A /* MangaAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D384C6641AD95B6A00C9883A /* MangaAppTests.m */; };
+		D386E83A1AEB7BCF00FFB149 /* ChapterService.m in Sources */ = {isa = PBXBuildFile; fileRef = D386E8391AEB7BCF00FFB149 /* ChapterService.m */; };
 		D3CD35C51AD987360057265B /* splash.png in Resources */ = {isa = PBXBuildFile; fileRef = D3CD35C41AD987360057265B /* splash.png */; };
 		D3CD35D31AD9889A0057265B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D3CD35C81AD9889A0057265B /* AppDelegate.m */; };
 		D3CD35D41AD9889A0057265B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3CD35D11AD9889A0057265B /* ViewController.m */; };
@@ -101,6 +102,8 @@
 		D384C65E1AD95B6A00C9883A /* MangaAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MangaAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D384C6631AD95B6A00C9883A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D384C6641AD95B6A00C9883A /* MangaAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MangaAppTests.m; sourceTree = "<group>"; };
+		D386E8381AEB7BCF00FFB149 /* ChapterService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChapterService.h; sourceTree = "<group>"; };
+		D386E8391AEB7BCF00FFB149 /* ChapterService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChapterService.m; sourceTree = "<group>"; };
 		D3CD35C41AD987360057265B /* splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash.png; sourceTree = "<group>"; };
 		D3CD35C71AD9889A0057265B /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D3CD35C81AD9889A0057265B /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -332,6 +335,8 @@
 			children = (
 				D3CD35E01AD99FAA0057265B /* ChapterListService.h */,
 				D3CD35E11AD99FAA0057265B /* ChapterListService.m */,
+				D386E8381AEB7BCF00FFB149 /* ChapterService.h */,
+				D386E8391AEB7BCF00FFB149 /* ChapterService.m */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -534,6 +539,7 @@
 				D32E76311AE34D4A006EF17A /* ChapterViewController.m in Sources */,
 				D3CD35D41AD9889A0057265B /* ViewController.m in Sources */,
 				2D7CD9821AE790B400C25B9A /* ResponseModel.m in Sources */,
+				D386E83A1AEB7BCF00FFB149 /* ChapterService.m in Sources */,
 				2D7CD97B1AE789C800C25B9A /* PageViewController.m in Sources */,
 				2D7CD9851AE7910700C25B9A /* ChapterModel.m in Sources */,
 				D3CD35D31AD9889A0057265B /* AppDelegate.m in Sources */,

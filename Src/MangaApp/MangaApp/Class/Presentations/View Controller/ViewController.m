@@ -29,7 +29,7 @@
     _chapterService = [[ChapterListService alloc] init];
     // Do any additional setup after loading the view, typically from a nib.
     [self createBarButton];
-    [_contentTableView registerNib:[UINib nibWithNibName:NSStringFromClass([ChapterCustomCell class]) bundle:nil] forCellReuseIdentifier:[ChapterCustomCell getIdentifier]];
+    [_contentTableView registerNib:[UINib nibWithNibName:NSStringFromClass([ChapterCustomCell class]) bundle:nil] forCellReuseIdentifier:[ChapterCustomCell getIdentifierCell]];
     
     // Test Parse.com
     PFObject *testObject = [PFObject objectWithClassName:@"TestObject"];
@@ -117,6 +117,9 @@
 - (void)goToReadingScreenWithIndexChapter:(NSInteger )indexChap {
     UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     ChapterViewController *chapterVC = (ChapterViewController *)[story instantiateViewControllerWithIdentifier:NSStringFromClass([ChapterViewController class])];
+    
+    ChapterModel *chapModel = (ChapterModel *)_chapterService.listChapters[indexChap];
+    chapterVC.chapModel = chapModel;
     [self.navigationController pushViewController:chapterVC animated:YES];
 }
 
@@ -151,15 +154,18 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return [ChapterCustomCell getHeightOfCell];
+    return [ChapterCustomCell getHeightCell];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    ChapterCustomCell *cell = (ChapterCustomCell *)[tableView dequeueReusableCellWithIdentifier:[ChapterCustomCell getIdentifier]];
+    ChapterCustomCell *cell = (ChapterCustomCell *)[tableView dequeueReusableCellWithIdentifier:[ChapterCustomCell getIdentifierCell]];
     
     cell.onStartReadingButton = ^(){
-        [self goToReadingScreenWithIndexChapter:(indexPath.row + 1)];
+        [self goToReadingScreenWithIndexChapter:indexPath.row];
     };
+    
+    ChapterModel *chapModel = (ChapterModel *)_chapterService.listChapters[indexPath.row];
+    [cell updateCellWithModel:chapModel];
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
