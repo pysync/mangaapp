@@ -45,7 +45,6 @@
     [self.view addGestureRecognizer:gesture];
     
     // Create Page view controller
-    //PhotoViewController *pageZero = [PhotoViewController photoViewControllerForPageIndex:0];
     PhotoViewController *pageZero = [PhotoViewController photoViewControllerForPageIndex:0];
     if (pageZero != nil)
     {
@@ -64,6 +63,9 @@
         [self addChildViewController:pageViewController];
         [self.view addSubview:pageViewController.view];
         [pageViewController didMoveToParentViewController:self];
+        
+        [self.view bringSubviewToFront:_headerView];
+        [self.view bringSubviewToFront:_bottomView];
     }
 }
 
