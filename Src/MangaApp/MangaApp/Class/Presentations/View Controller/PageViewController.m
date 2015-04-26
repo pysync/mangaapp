@@ -12,6 +12,7 @@
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *widthContraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightContraint;
+@property (strong, nonatomic) UIImageView *zoomImage;
 @end
 
 @implementation PageViewController
@@ -29,21 +30,38 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     CGRect viewFrame = self.view.frame;
+    _imageScrollView.frame = viewFrame;
+    _imageScrollView.contentSize = viewFrame.size;
+    
     UIImage *currentImage = [UIImage imageNamed:@"splash.png"];
     CGSize imageSize = currentImage.size;
+    _imageView.image = currentImage;
+    
     
     float ratio = [self getRatioFromViewSize:viewFrame.size andImageSize:imageSize];
-    _widthContraint.constant = currentImage.size.width * ratio - 4;
-    _heightContraint.constant = currentImage.size.height * ratio - 4;
-
-    [_contentView updateConstraintsIfNeeded];
-    [_imageScrollView setMaximumZoomScale:4.0f];
-    _imageView.image = currentImage;
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-    CGRect imageFrame = _contentView.frame;
+    float imageWidth = currentImage.size.width * ratio;
+    float imageHeight = currentImage.size.height * ratio;
+    float originX = (viewFrame.size.width - imageWidth)/2;
+    float originY = (viewFrame.size.height - imageHeight)/2;
+    _imageView.frame = CGRectMake(originX, originY, imageWidth, imageHeight);
     
+    _zoomImage = [[UIImageView alloc] initWithFrame:CGRectMake(originX, originY, imageWidth, imageHeight)];
+    _zoomImage.image = currentImage;
+    
+    UIScrollView *scrollView = [[UIScrollView alloc] init];
+    scrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    scrollView.showsVerticalScrollIndicator = NO;
+    scrollView.showsHorizontalScrollIndicator = NO;
+    scrollView.bouncesZoom = YES;
+    scrollView.maximumZoomScale = 4.0f;
+    scrollView.decelerationRate = UIScrollViewDecelerationRateFast;
+    scrollView.delegate = self;
+    [scrollView addSubview:_zoomImage];
+    
+    self.view = scrollView;
+    //_widthContraint.constant = imageWidth;
+    //_heightContraint.constant = imageHeight;
+    //[_imageView updateConstraintsIfNeeded];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -69,6 +87,6 @@
 
 #pragma mark - UIScrollView delegate
 - (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
-    return _contentView;
+    return _zoomImage;
 }
 @end

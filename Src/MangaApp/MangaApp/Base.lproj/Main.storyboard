@@ -188,13 +188,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HGb-0P-DVt">
-                                <rect key="frame" x="0.0" y="20" width="600" height="560"/>
-                                <color key="backgroundColor" red="0.5" green="0.0" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
-                                <connections>
-                                    <outlet property="delegate" destination="JvE-0B-H2D" id="BwS-fE-Vlr"/>
-                                </connections>
-                            </scrollView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KOf-EV-gqD" userLabel="Header View">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="64"/>
                                 <subviews>
@@ -278,22 +271,17 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="1Sh-HE-VqP" firstAttribute="top" secondItem="be2-Kq-CGE" secondAttribute="bottom" id="0Bi-b5-XJW"/>
-                            <constraint firstItem="1Sh-HE-VqP" firstAttribute="top" secondItem="HGb-0P-DVt" secondAttribute="bottom" constant="20" id="1Ng-Ad-uQ4"/>
                             <constraint firstItem="be2-Kq-CGE" firstAttribute="leading" secondItem="T7v-E1-Eqh" secondAttribute="leadingMargin" constant="-16" id="1Py-yL-g0S"/>
-                            <constraint firstItem="HGb-0P-DVt" firstAttribute="top" secondItem="Hsw-4Y-EHb" secondAttribute="bottom" constant="20" id="Ql0-CL-Quw"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="HGb-0P-DVt" secondAttribute="trailing" constant="-16" id="TRj-w8-GDz"/>
                             <constraint firstItem="KOf-EV-gqD" firstAttribute="leading" secondItem="T7v-E1-Eqh" secondAttribute="leadingMargin" constant="-16" id="YBz-T4-0sO"/>
                             <constraint firstItem="KOf-EV-gqD" firstAttribute="top" secondItem="Hsw-4Y-EHb" secondAttribute="bottom" id="ZeF-IR-5KO"/>
                             <constraint firstAttribute="trailingMargin" secondItem="be2-Kq-CGE" secondAttribute="trailing" constant="-16" id="m5R-GA-1Wi"/>
                             <constraint firstAttribute="trailingMargin" secondItem="KOf-EV-gqD" secondAttribute="trailing" constant="-16" id="uaT-Jx-YdM"/>
-                            <constraint firstItem="HGb-0P-DVt" firstAttribute="leading" secondItem="T7v-E1-Eqh" secondAttribute="leadingMargin" constant="-16" id="w39-x3-1aT"/>
                         </constraints>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="bottomView" destination="be2-Kq-CGE" id="oef-7F-SMw"/>
                         <outlet property="chapterLabel" destination="y9i-Sc-JLb" id="Fng-xy-m3x"/>
-                        <outlet property="contentScollView" destination="HGb-0P-DVt" id="S4K-xI-LCS"/>
                         <outlet property="headerView" destination="KOf-EV-gqD" id="WRr-xt-058"/>
                         <outlet property="pageLabel" destination="z98-iV-lhw" id="5oj-fF-4GC"/>
                         <outlet property="titleLabel" destination="9Yj-6a-Zlz" id="Ia4-0D-fdS"/>
@@ -315,61 +303,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fyh-D6-oKs">
-                                <rect key="frame" x="1" y="-20" width="598" height="620"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" maximumZoomScale="4" translatesAutoresizingMaskIntoConstraints="NO" id="fyh-D6-oKs">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ivB-EG-iw0">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="620"/>
-                                        <subviews>
-                                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iOk-5k-rYJ">
-                                                <rect key="frame" x="0.0" y="12" width="600" height="600"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="600" id="VcW-tm-NCw"/>
-                                                    <constraint firstAttribute="height" constant="600" id="zjI-Fi-w2G"/>
-                                                </constraints>
-                                            </imageView>
-                                        </subviews>
-                                        <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="centerX" secondItem="iOk-5k-rYJ" secondAttribute="centerX" id="pbM-8h-eMS"/>
-                                            <constraint firstAttribute="centerY" secondItem="iOk-5k-rYJ" secondAttribute="centerY" constant="-2" id="sKr-D5-60V"/>
-                                        </constraints>
-                                    </view>
+                                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iOk-5k-rYJ">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="ivB-EG-iw0" secondAttribute="bottom" id="8Dp-af-k8I"/>
-                                    <constraint firstItem="ivB-EG-iw0" firstAttribute="leading" secondItem="fyh-D6-oKs" secondAttribute="leading" id="Ddh-Ru-xnh"/>
-                                    <constraint firstItem="ivB-EG-iw0" firstAttribute="width" secondItem="fyh-D6-oKs" secondAttribute="width" constant="2" id="UOA-sV-kDs"/>
-                                    <constraint firstItem="ivB-EG-iw0" firstAttribute="top" secondItem="fyh-D6-oKs" secondAttribute="top" id="fnH-UI-tM2"/>
-                                    <constraint firstItem="ivB-EG-iw0" firstAttribute="height" secondItem="fyh-D6-oKs" secondAttribute="height" id="h9I-Lc-DC0"/>
-                                    <constraint firstAttribute="trailing" secondItem="ivB-EG-iw0" secondAttribute="trailing" constant="-2" id="hat-ad-rxv"/>
-                                </constraints>
-                                <connections>
-                                    <outlet property="delegate" destination="zvt-8Z-AwC" id="L7z-Yd-qoQ"/>
-                                </connections>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="fyh-D6-oKs" secondAttribute="trailing" constant="-15" id="BNG-cp-XkO"/>
-                            <constraint firstItem="fyh-D6-oKs" firstAttribute="leading" secondItem="i49-Am-CbF" secondAttribute="leadingMargin" constant="-15" id="UUK-Vx-KUK"/>
-                            <constraint firstItem="fyh-D6-oKs" firstAttribute="top" secondItem="697-WA-4nF" secondAttribute="bottom" constant="-20" id="gFe-F5-uY9"/>
-                            <constraint firstItem="VpW-9j-SBa" firstAttribute="top" secondItem="fyh-D6-oKs" secondAttribute="bottom" id="o7R-sF-Fbs"/>
-                        </constraints>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
-                    <connections>
-                        <outlet property="contentView" destination="ivB-EG-iw0" id="7M2-2q-5pU"/>
-                        <outlet property="heightContraint" destination="zjI-Fi-w2G" id="5LI-bO-5Nw"/>
-                        <outlet property="imageScrollView" destination="fyh-D6-oKs" id="ZH6-0A-SVq"/>
-                        <outlet property="imageView" destination="iOk-5k-rYJ" id="CCx-G9-PDM"/>
-                        <outlet property="widthContraint" destination="VcW-tm-NCw" id="QKD-bR-8zE"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gew-yt-KXR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="910" y="560"/>
+        </scene>
+        <!--Page View Controller-->
+        <scene sceneID="lV5-92-uSe">
+            <objects>
+                <pageViewController storyboardIdentifier="PageSubViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" pageSpacing="10" navigationOrientation="horizontal" spineLocation="none" id="x0c-ID-xqJ" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JPL-vE-xSC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1556" y="560"/>
         </scene>
     </scenes>
     <resources>

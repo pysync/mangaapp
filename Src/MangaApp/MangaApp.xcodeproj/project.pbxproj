@@ -29,6 +29,12 @@
 		2D7CD9851AE7910700C25B9A /* ChapterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7CD9841AE7910700C25B9A /* ChapterModel.m */; };
 		2DBD636E1ADF785000D001C5 /* SubInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBD636D1ADF785000D001C5 /* SubInfoViewController.m */; };
 		417FA6F62ACFEA96D5995F43 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 14DFCA9028ED14D9EE20FF9D /* libPods.a */; };
+		D321308A1AECBB50005C20CD /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D32130851AECBB50005C20CD /* PhotoViewController.m */; };
+		D321308B1AECBB50005C20CD /* ImageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = D32130871AECBB50005C20CD /* ImageScrollView.m */; };
+		D32130901AECBD9D005C20CD /* CuriousFrog.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D321308D1AECBD9D005C20CD /* CuriousFrog.jpg */; };
+		D32130911AECBD9D005C20CD /* LeggyFrog.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D321308E1AECBD9D005C20CD /* LeggyFrog.jpg */; };
+		D32130921AECBD9D005C20CD /* PeeringFrog.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D321308F1AECBD9D005C20CD /* PeeringFrog.jpg */; };
+		D32130941AECBE15005C20CD /* ImageData.plist in Resources */ = {isa = PBXBuildFile; fileRef = D32130931AECBE15005C20CD /* ImageData.plist */; };
 		D32E762D1AE34AC8006EF17A /* about.html in Resources */ = {isa = PBXBuildFile; fileRef = D32E762B1AE34AC8006EF17A /* about.html */; };
 		D32E762E1AE34AC8006EF17A /* logo3.png in Resources */ = {isa = PBXBuildFile; fileRef = D32E762C1AE34AC8006EF17A /* logo3.png */; };
 		D32E76311AE34D4A006EF17A /* ChapterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D32E76301AE34D4A006EF17A /* ChapterViewController.m */; };
@@ -39,6 +45,7 @@
 		D384C6591AD95B6A00C9883A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D384C6571AD95B6A00C9883A /* LaunchScreen.xib */; };
 		D384C6651AD95B6A00C9883A /* MangaAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D384C6641AD95B6A00C9883A /* MangaAppTests.m */; };
 		D386E83A1AEB7BCF00FFB149 /* ChapterService.m in Sources */ = {isa = PBXBuildFile; fileRef = D386E8391AEB7BCF00FFB149 /* ChapterService.m */; };
+		D393F5E71AEC8C9B0043C026 /* link.text in Sources */ = {isa = PBXBuildFile; fileRef = D393F5E61AEC8C9B0043C026 /* link.text */; };
 		D3CD35C51AD987360057265B /* splash.png in Resources */ = {isa = PBXBuildFile; fileRef = D3CD35C41AD987360057265B /* splash.png */; };
 		D3CD35D31AD9889A0057265B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D3CD35C81AD9889A0057265B /* AppDelegate.m */; };
 		D3CD35D41AD9889A0057265B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3CD35D11AD9889A0057265B /* ViewController.m */; };
@@ -88,6 +95,14 @@
 		2DBD636C1ADF785000D001C5 /* SubInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubInfoViewController.h; sourceTree = "<group>"; };
 		2DBD636D1ADF785000D001C5 /* SubInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubInfoViewController.m; sourceTree = "<group>"; };
 		4BBC6B096FAF682A19022BEF /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		D32130841AECBB50005C20CD /* PhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoViewController.h; sourceTree = "<group>"; };
+		D32130851AECBB50005C20CD /* PhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoViewController.m; sourceTree = "<group>"; };
+		D32130861AECBB50005C20CD /* ImageScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageScrollView.h; sourceTree = "<group>"; };
+		D32130871AECBB50005C20CD /* ImageScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageScrollView.m; sourceTree = "<group>"; };
+		D321308D1AECBD9D005C20CD /* CuriousFrog.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = CuriousFrog.jpg; sourceTree = "<group>"; };
+		D321308E1AECBD9D005C20CD /* LeggyFrog.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = LeggyFrog.jpg; sourceTree = "<group>"; };
+		D321308F1AECBD9D005C20CD /* PeeringFrog.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = PeeringFrog.jpg; sourceTree = "<group>"; };
+		D32130931AECBE15005C20CD /* ImageData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ImageData.plist; sourceTree = "<group>"; };
 		D32E762B1AE34AC8006EF17A /* about.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = about.html; sourceTree = "<group>"; };
 		D32E762C1AE34AC8006EF17A /* logo3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo3.png; sourceTree = "<group>"; };
 		D32E762F1AE34D4A006EF17A /* ChapterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChapterViewController.h; sourceTree = "<group>"; };
@@ -104,6 +119,7 @@
 		D384C6641AD95B6A00C9883A /* MangaAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MangaAppTests.m; sourceTree = "<group>"; };
 		D386E8381AEB7BCF00FFB149 /* ChapterService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChapterService.h; sourceTree = "<group>"; };
 		D386E8391AEB7BCF00FFB149 /* ChapterService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChapterService.m; sourceTree = "<group>"; };
+		D393F5E61AEC8C9B0043C026 /* link.text */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = link.text; sourceTree = "<group>"; };
 		D3CD35C41AD987360057265B /* splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash.png; sourceTree = "<group>"; };
 		D3CD35C71AD9889A0057265B /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D3CD35C81AD9889A0057265B /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -158,6 +174,7 @@
 			isa = PBXGroup;
 			children = (
 				2D242DA01AE510EE00F13E0D /* define.json */,
+				D393F5E61AEC8C9B0043C026 /* link.text */,
 			);
 			path = JSON;
 			sourceTree = "<group>";
@@ -286,6 +303,7 @@
 		D3CD35C21AD987360057265B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D32130931AECBE15005C20CD /* ImageData.plist */,
 				2D242D9F1AE510EE00F13E0D /* JSON */,
 				D32E762A1AE34AC8006EF17A /* HTML */,
 				D3CD35C31AD987360057265B /* Images */,
@@ -296,6 +314,9 @@
 		D3CD35C31AD987360057265B /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				D321308D1AECBD9D005C20CD /* CuriousFrog.jpg */,
+				D321308E1AECBD9D005C20CD /* LeggyFrog.jpg */,
+				D321308F1AECBD9D005C20CD /* PeeringFrog.jpg */,
 				D32E763A1AE38F9A006EF17A /* back.png */,
 				D3CD35D51AD98FC30057265B /* menu.png */,
 				D3CD35C41AD987360057265B /* splash.png */,
@@ -361,6 +382,10 @@
 		D3CD35CF1AD9889A0057265B /* View Controller */ = {
 			isa = PBXGroup;
 			children = (
+				D32130841AECBB50005C20CD /* PhotoViewController.h */,
+				D32130851AECBB50005C20CD /* PhotoViewController.m */,
+				D32130861AECBB50005C20CD /* ImageScrollView.h */,
+				D32130871AECBB50005C20CD /* ImageScrollView.m */,
 				D3CD35D01AD9889A0057265B /* ViewController.h */,
 				D3CD35D11AD9889A0057265B /* ViewController.m */,
 				D3CD35D71AD998F90057265B /* InfoViewController.h */,
@@ -476,14 +501,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D32130901AECBD9D005C20CD /* CuriousFrog.jpg in Resources */,
 				D32E762E1AE34AC8006EF17A /* logo3.png in Resources */,
 				D3CD35DF1AD99D670057265B /* ChapterCustomCell.xib in Resources */,
 				D32E763B1AE38F9A006EF17A /* back.png in Resources */,
 				D3CD35C51AD987360057265B /* splash.png in Resources */,
 				2D242DA11AE510EE00F13E0D /* define.json in Resources */,
+				D32130941AECBE15005C20CD /* ImageData.plist in Resources */,
+				D32130911AECBD9D005C20CD /* LeggyFrog.jpg in Resources */,
 				D3CD35D61AD98FC30057265B /* menu.png in Resources */,
 				D384C6541AD95B6A00C9883A /* Main.storyboard in Resources */,
 				D32E762D1AE34AC8006EF17A /* about.html in Resources */,
+				D32130921AECBD9D005C20CD /* PeeringFrog.jpg in Resources */,
 				D384C6591AD95B6A00C9883A /* LaunchScreen.xib in Resources */,
 				D384C6561AD95B6A00C9883A /* Images.xcassets in Resources */,
 			);
@@ -542,8 +571,11 @@
 				D386E83A1AEB7BCF00FFB149 /* ChapterService.m in Sources */,
 				2D7CD97B1AE789C800C25B9A /* PageViewController.m in Sources */,
 				2D7CD9851AE7910700C25B9A /* ChapterModel.m in Sources */,
+				D393F5E71AEC8C9B0043C026 /* link.text in Sources */,
 				D3CD35D31AD9889A0057265B /* AppDelegate.m in Sources */,
 				D3CD35DE1AD99D670057265B /* ChapterCustomCell.m in Sources */,
+				D321308B1AECBB50005C20CD /* ImageScrollView.m in Sources */,
+				D321308A1AECBB50005C20CD /* PhotoViewController.m in Sources */,
 				D3CD35E21AD99FAA0057265B /* ChapterListService.m in Sources */,
 				D3CD35D91AD998F90057265B /* InfoViewController.m in Sources */,
 				2D5558D61AEA435800736160 /* CustomBaseCell.m in Sources */,

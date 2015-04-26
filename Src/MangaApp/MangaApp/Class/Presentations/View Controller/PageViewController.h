@@ -13,7 +13,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIView *contentView;
 @property (strong, nonatomic) NSString *imageName;
-@property (assign, nonatomic) NSInteger pageNumber;
+@property (assign, nonatomic) NSInteger pageIndex;
 @property (weak, nonatomic) IBOutlet UIScrollView *imageScrollView;
 
 - (instancetype)initWithImageName:(NSString *)imageName;
