@@ -26,6 +26,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
+        self.edgesForExtendedLayout = UIRectEdgeNone;
     _chapterService = [[ChapterListService alloc] init];
     // Do any additional setup after loading the view, typically from a nib.
     [self createBarButton];

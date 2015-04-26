@@ -25,11 +25,11 @@
 }
 
 + (CGFloat)getHeightCell {
-    return 60.0f;
+    return 100.0f;
 }
 
 - (void)updateCellWithModel:(ChapterModel *)unitModel {
-    _chapTitleLabel.text = @"ありがとう";
+    _chapTitleLabel.text = @"Thumbnail chapter";
     if (unitModel.titleChap && unitModel.titleChap.length) {
         _chapNumberLabel.text = unitModel.titleChap;
     }else {

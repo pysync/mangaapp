@@ -2,7 +2,7 @@
     "status": 1,
     "data":[
             {
-            "titleChap":"Chap 1 ~ 10",
+            "titleChap":"１話〜10話\nきょうちゃんの逆襲",
             "images": [
                        "chap1_1.png",
                        "chap1_2.png",
@@ -10,7 +10,7 @@
                        ]
             },
             {
-            "titleChap":"Chap 11 ~ 20",
+            "titleChap":"１1話〜20話\nきょうちゃんのお昼寝",
             "images": [
                        "chap2_1.png",
                        "chap2_2.png",
@@ -18,7 +18,7 @@
                        ]
             },
             {
-            "titleChap":"Chap 21 ~ 30",
+            "titleChap":"2１話〜30話\nきょうちゃんの食欲",
             "images": [
                        "chap3_1.png",
                        "chap3_2.png",
@@ -26,7 +26,7 @@
                        ]
             },
             {
-            "titleChap":"Chap 31 ~ 40",
+            "titleChap":"3１話〜40話\nきょうちゃんのメール",
             "images": [
                        "chap4_1.png",
                        "chap4_2.png",
@@ -34,43 +34,11 @@
                        ]
             },
             {
-            "titleChap":"Chap 41 ~ 50",
+            "titleChap":"4１話〜50話\nきょうちゃんの自転車",
             "images": [
                        "chap5_1.png",
                        "chap5_2.png",
                        "chap5_3.png"
-                       ]
-            },
-            {
-            "titleChap":"Chap 51 ~ 60",
-            "images": [
-                       "chap6_1.png",
-                       "chap6_2.png",
-                       "chap6_3.png"
-                       ]
-            },
-            {
-            "titleChap":"Chap 61 ~ 70",
-            "images": [
-                       "chap7_1.png",
-                       "chap7_2.png",
-                       "chap7_3.png"
-                       ]
-            },
-            {
-            "titleChap":"Chap 71 ~ 80",
-            "images": [
-                       "chap8_1.png",
-                       "chap8_2.png",
-                       "chap8_3.png"
-                       ]
-            },
-            {
-            "titleChap":"Chap 81 ~ 90",
-            "images": [
-                       "chap9_1.png",
-                       "chap9_2.png",
-                       "chap9_3.png"
                        ]
             }
             ]

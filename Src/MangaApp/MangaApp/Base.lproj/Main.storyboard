@@ -13,6 +13,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="qRy-mU-tPt">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.74901960784313726" green="0.74901960784313726" blue="0.74901960784313726" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="26Q-47-G9N"/>
@@ -31,11 +32,17 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="44" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="top_banner.png" translatesAutoresizingMaskIntoConstraints="NO" id="8kb-cJ-jbO">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="7qH-H5-ca7"/>
+                                </constraints>
+                            </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="hLI-q6-iSH">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="70" width="600" height="574"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <sections/>
                                 <connections>
@@ -46,14 +53,18 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="hLI-q6-iSH" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-44" id="5WF-Vr-aJC"/>
-                            <constraint firstItem="hLI-q6-iSH" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="ePb-24-tLs"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="hLI-q6-iSH" secondAttribute="bottom" id="ew0-vH-ovO"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="hLI-q6-iSH" secondAttribute="trailing" constant="-16" id="jlX-qi-2F2"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="hLI-q6-iSH" secondAttribute="trailing" constant="-16" id="Azr-h4-oxd"/>
+                            <constraint firstItem="8kb-cJ-jbO" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="NSD-Mn-VAW"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="hLI-q6-iSH" secondAttribute="bottom" constant="-44" id="Q76-W4-EOj"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="8kb-cJ-jbO" secondAttribute="trailing" constant="-16" id="RXu-u2-zQK"/>
+                            <constraint firstItem="hLI-q6-iSH" firstAttribute="top" secondItem="8kb-cJ-jbO" secondAttribute="bottom" id="U43-Pf-BSr"/>
+                            <constraint firstItem="y3c-jy-aDJ" firstAttribute="top" secondItem="8kb-cJ-jbO" secondAttribute="bottom" constant="-70" id="XoI-mx-biI"/>
+                            <constraint firstItem="hLI-q6-iSH" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="bjB-aO-Ovw"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="G3P-iN-TDf"/>
                     <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="contentTableView" destination="hLI-q6-iSH" id="8de-7X-5hd"/>
                     </connections>
@@ -332,5 +343,6 @@
     </scenes>
     <resources>
         <image name="back.png" width="64" height="64"/>
+        <image name="top_banner.png" width="750" height="141"/>
     </resources>
 </document>
