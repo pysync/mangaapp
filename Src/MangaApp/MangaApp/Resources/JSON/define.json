@@ -4,41 +4,71 @@
             {
             "titleChap":"１話〜10話\nきょうちゃんの逆襲",
             "images": [
-                       "chap1_1.png",
-                       "chap1_2.png",
-                       "chap1_3.png"
+                       "chap1_1.jpg",
+                       "chap1_2.jpg",
+                       "chap1_3.jpg",
+                       "chap1_4.jpg",
+                       "chap1_5.jpg",
+                       "chap1_6.jpg",
+                       "chap1_7.jpg",
+                       "chap1_8.jpg",
+                       "chap1_9.jpg"
                        ]
             },
             {
             "titleChap":"１1話〜20話\nきょうちゃんのお昼寝",
             "images": [
-                       "chap2_1.png",
-                       "chap2_2.png",
-                       "chap2_3.png"
+                       "chap1_1.jpg",
+                       "chap1_2.jpg",
+                       "chap1_3.jpg",
+                       "chap1_4.jpg",
+                       "chap1_5.jpg",
+                       "chap1_6.jpg",
+                       "chap1_7.jpg",
+                       "chap1_8.jpg",
+                       "chap1_9.jpg"
                        ]
             },
             {
             "titleChap":"2１話〜30話\nきょうちゃんの食欲",
             "images": [
-                       "chap3_1.png",
-                       "chap3_2.png",
-                       "chap3_3.png"
+                       "chap1_1.jpg",
+                       "chap1_2.jpg",
+                       "chap1_3.jpg",
+                       "chap1_4.jpg",
+                       "chap1_5.jpg",
+                       "chap1_6.jpg",
+                       "chap1_7.jpg",
+                       "chap1_8.jpg",
+                       "chap1_9.jpg"
                        ]
             },
             {
             "titleChap":"3１話〜40話\nきょうちゃんのメール",
             "images": [
-                       "chap4_1.png",
-                       "chap4_2.png",
-                       "chap4_3.png"
+                       "chap1_1.jpg",
+                       "chap1_2.jpg",
+                       "chap1_3.jpg",
+                       "chap1_4.jpg",
+                       "chap1_5.jpg",
+                       "chap1_6.jpg",
+                       "chap1_7.jpg",
+                       "chap1_8.jpg",
+                       "chap1_9.jpg"
                        ]
             },
             {
             "titleChap":"4１話〜50話\nきょうちゃんの自転車",
             "images": [
-                       "chap5_1.png",
-                       "chap5_2.png",
-                       "chap5_3.png"
+                       "chap1_1.jpg",
+                       "chap1_2.jpg",
+                       "chap1_3.jpg",
+                       "chap1_4.jpg",
+                       "chap1_5.jpg",
+                       "chap1_6.jpg",
+                       "chap1_7.jpg",
+                       "chap1_8.jpg",
+                       "chap1_9.jpg"
                        ]
             }
             ]

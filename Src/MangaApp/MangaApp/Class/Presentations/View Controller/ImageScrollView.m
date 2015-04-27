@@ -77,10 +77,9 @@
     return self;
 }
 
-- (void)setIndex:(NSUInteger)index
-{
-    _index = index;
-    UIImage *currentImage = [UIImage imageNamed:@"CuriousFrog.jpg"];
+- (void)setImageName:(NSString *)imageName {
+    _imageName = imageName;
+    UIImage *currentImage = [UIImage imageNamed:imageName];
     [self displayImage:currentImage];
 }
 

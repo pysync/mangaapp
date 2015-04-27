@@ -47,26 +47,28 @@
 
 #import "PhotoViewController.h"
 #import "ImageScrollView.h"
+#import "Definition.h"
 
 @interface PhotoViewController ()
 {
-    NSUInteger _pageIndex;
+    
 }
 @end
 
 @implementation PhotoViewController
 
-+ (PhotoViewController *)photoViewControllerForPageIndex:(NSUInteger)pageIndex
++ (PhotoViewController *)photoViewControllerForPageIndex:(NSUInteger)pageIndex andImageName:(NSString *)imageName
 {
-    return [[self alloc] initWithPageIndex:pageIndex];
+    return [[self alloc] initWithPageIndex:pageIndex andImageName:imageName];
 }
 
-- (id)initWithPageIndex:(NSInteger)pageIndex
+- (id)initWithPageIndex:(NSInteger)pageIndex andImageName:(NSString *)imageName
 {
     self = [super initWithNibName:nil bundle:nil];
     if (self)
     {
         _pageIndex = pageIndex;
+        _imageName = imageName;
     }
     return self;
 }
@@ -74,17 +76,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor blackColor];
-}
-
-- (NSInteger)pageIndex
-{
-    return _pageIndex;
+    
+    UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showBarViews:)];
+    gesture.numberOfTapsRequired = 1;
+    [self.view addGestureRecognizer:gesture];
 }
 
 - (void)loadView
 {
     ImageScrollView *scrollView = [[ImageScrollView alloc] init];
     scrollView.index = _pageIndex;
+    scrollView.imageName = _imageName;
     scrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     self.view = scrollView;
 }
@@ -95,4 +97,7 @@
     return UIInterfaceOrientationMaskAllButUpsideDown;
 }
 
+- (void)showBarViews:(UITapGestureRecognizer *)gesture {
+    [[NSNotificationCenter defaultCenter] postNotificationName:kShowBarView object:nil];
+}
 @end

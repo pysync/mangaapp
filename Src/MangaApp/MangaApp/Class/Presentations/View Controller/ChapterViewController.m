@@ -9,11 +9,13 @@
 #import "ChapterViewController.h"
 #import "PageViewController.h"
 #import "PhotoViewController.h"
+#import "Definition.h"
 
 @interface ChapterViewController ()<UIPageViewControllerDataSource, UIPageViewControllerDelegate>
 @property (nonatomic, strong) NSMutableArray *viewControllers;
 @property (nonatomic, assign) NSInteger currentPage;
 @property (nonatomic, strong) UIPageViewController *pageViewController;
+@property (nonatomic, assign) BOOL isShowingBarView;
 @end
 
 @implementation ChapterViewController
@@ -24,9 +26,11 @@
     
     _currentPage = 0;
     _chapterService = [[ChapterService alloc] init];
+    _isShowingBarView = YES;
     [self createUI];
     [self loadDataToView];
-    [self performSelector:@selector(hiddenBarViews) withObject:nil afterDelay:1];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showBarViews:) name:kShowBarView object:nil];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -43,12 +47,9 @@
     _processSlider.minimumValue = 1.0;
     _processSlider.maximumValue = _chapModel.images.count;
     
-    UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showBarViews:)];
-    gesture.numberOfTapsRequired = 1;
-    [self.view addGestureRecognizer:gesture];
-    
     // Create Page view controller
-    PhotoViewController *pageZero = [PhotoViewController photoViewControllerForPageIndex:0];
+    NSString *zeroImage = _chapModel.images.firstObject;
+    PhotoViewController *pageZero = [PhotoViewController photoViewControllerForPageIndex:0 andImageName:zeroImage];
     if (pageZero != nil)
     {
         // assign the first page to the pageViewController (our rootViewController)
@@ -75,7 +76,7 @@
 
 - (void)loadDataToView {
     _titleLabel.text = _chapModel.titleChap;
-    _pageLabel.text = [NSString stringWithFormat:@"1/%d", _chapModel.images.count];
+    _pageLabel.text = [NSString stringWithFormat:@"1/%lu", (unsigned long)_chapModel.images.count];
 }
 
 #pragma mark - PageViewController data sources
@@ -85,7 +86,7 @@
     _currentPage = index;
     [self reloadBottomViewDataWithPageIndex:(index + 1)];
     if (index) {
-        return [PhotoViewController photoViewControllerForPageIndex:(index - 1)];
+        return [PhotoViewController photoViewControllerForPageIndex:(index - 1) andImageName:_chapModel.images[index - 1]];
     }else {
         return nil;
     }
@@ -97,9 +98,15 @@
     _currentPage = index;
     [self reloadBottomViewDataWithPageIndex:(index + 1)];
     if (index < _chapModel.images.count - 1) {
-        return [PhotoViewController photoViewControllerForPageIndex:(index + 1)];
+        return [PhotoViewController photoViewControllerForPageIndex:(index + 1) andImageName:_chapModel.images[index + 1]];
     }
     return nil;
+}
+
+- (void)pageViewController:(UIPageViewController *)pageViewController willTransitionToViewControllers:(NSArray *)pendingViewControllers {
+    if (_isShowingBarView) {
+        [self hiddenBarViews];
+    }
 }
 
 - (void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray *)previousViewControllers transitionCompleted:(BOOL)completed {
@@ -107,19 +114,29 @@
 }
 #pragma mark - Others
 - (void)hiddenBarViews {
+    _isShowingBarView = NO;
     _headerView.hidden = YES;
     _bottomView.hidden = YES;
 }
 
-- (void)showBarViews:(UITapGestureRecognizer *)gesture {
+- (void)showBarViews {
+    _isShowingBarView = YES;
     _headerView.hidden = NO;
     _bottomView.hidden = NO;
+}
+
+- (void)showBarViews:(NSNotification *)notification {
+    if (_isShowingBarView) {
+        [self hiddenBarViews];
+    }else {
+        [self showBarViews];
+    }
 }
 
 - (void)reloadBottomViewDataWithPageIndex:(NSInteger )pageIndex {
     dispatch_async(dispatch_get_main_queue(), ^{
         [_processSlider setValue:pageIndex animated:NO];
-        _pageLabel.text = [NSString stringWithFormat:@"%d/%d", pageIndex, _chapModel.images.count];
+        _pageLabel.text = [NSString stringWithFormat:@"%ld/%lu", (long)pageIndex, (unsigned long)_chapModel.images.count];
     });
 }
 
@@ -128,13 +145,13 @@
     NSUInteger index = (NSUInteger)(_processSlider.value + 0.5);
     
     if (index > _currentPage + 1) {
-        PhotoViewController *nextPage = [PhotoViewController photoViewControllerForPageIndex:(index - 1)];
+        PhotoViewController *nextPage = [PhotoViewController photoViewControllerForPageIndex:(index - 1) andImageName:_chapModel.images[index - 1]];
         [_pageViewController setViewControllers:@[nextPage]
                                       direction:UIPageViewControllerNavigationDirectionForward
                                        animated:YES
                                      completion:nil];
     }else if (index < _currentPage + 1) {
-        PhotoViewController *previousPage = [PhotoViewController photoViewControllerForPageIndex:(index - 1)];
+        PhotoViewController *previousPage = [PhotoViewController photoViewControllerForPageIndex:(index - 1) andImageName:_chapModel.images[index - 1]];
         [_pageViewController setViewControllers:@[previousPage]
                                       direction:UIPageViewControllerNavigationDirectionReverse
                                        animated:YES

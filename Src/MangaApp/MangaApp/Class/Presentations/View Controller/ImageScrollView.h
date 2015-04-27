@@ -49,6 +49,7 @@
 
 @interface ImageScrollView : UIScrollView
 
-@property (nonatomic) NSUInteger index;
+@property (nonatomic, assign) NSUInteger index;
+@property(nonatomic, strong) NSString *imageName;
 
 @end
