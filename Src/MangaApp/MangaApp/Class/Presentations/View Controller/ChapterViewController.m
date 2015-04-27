@@ -10,9 +10,10 @@
 #import "PageViewController.h"
 #import "PhotoViewController.h"
 
-@interface ChapterViewController ()<UIPageViewControllerDataSource>
+@interface ChapterViewController ()<UIPageViewControllerDataSource, UIPageViewControllerDelegate>
 @property (nonatomic, strong) NSMutableArray *viewControllers;
 @property (nonatomic, assign) NSInteger currentPage;
+@property (nonatomic, strong) UIPageViewController *pageViewController;
 @end
 
 @implementation ChapterViewController
@@ -24,6 +25,7 @@
     _currentPage = 0;
     _chapterService = [[ChapterService alloc] init];
     [self createUI];
+    [self loadDataToView];
     [self performSelector:@selector(hiddenBarViews) withObject:nil afterDelay:1];
 }
 
@@ -37,8 +39,9 @@
 }
 
 - (void)createUI {
-    self.title = @"Reading";
     [[self navigationController] setNavigationBarHidden:YES animated:NO];
+    _processSlider.minimumValue = 1.0;
+    _processSlider.maximumValue = _chapModel.images.count;
     
     UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showBarViews:)];
     gesture.numberOfTapsRequired = 1;
@@ -49,30 +52,38 @@
     if (pageZero != nil)
     {
         // assign the first page to the pageViewController (our rootViewController)
-        UIPageViewController *pageViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PageSubViewController"];
-        pageViewController.dataSource = self;
+        _pageViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PageSubViewController"];
+        _pageViewController.dataSource = self;
+        _pageViewController.delegate = self;
         
-        [pageViewController setViewControllers:@[pageZero]
+        [_pageViewController setViewControllers:@[pageZero]
                                      direction:UIPageViewControllerNavigationDirectionForward
                                       animated:NO
                                     completion:NULL];
         
         // Change the size of page view controller
-        pageViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+        _pageViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
         
-        [self addChildViewController:pageViewController];
-        [self.view addSubview:pageViewController.view];
-        [pageViewController didMoveToParentViewController:self];
+        [self addChildViewController:_pageViewController];
+        [self.view addSubview:_pageViewController.view];
+        [_pageViewController didMoveToParentViewController:self];
         
         [self.view bringSubviewToFront:_headerView];
         [self.view bringSubviewToFront:_bottomView];
     }
 }
 
+- (void)loadDataToView {
+    _titleLabel.text = _chapModel.titleChap;
+    _pageLabel.text = [NSString stringWithFormat:@"1/%d", _chapModel.images.count];
+}
+
 #pragma mark - PageViewController data sources
 - (UIViewController *)pageViewController:(UIPageViewController *)pvc viewControllerBeforeViewController:(PhotoViewController *)vc
 {
     NSUInteger index = vc.pageIndex;
+    _currentPage = index;
+    [self reloadBottomViewDataWithPageIndex:(index + 1)];
     if (index) {
         return [PhotoViewController photoViewControllerForPageIndex:(index - 1)];
     }else {
@@ -83,9 +94,17 @@
 - (UIViewController *)pageViewController:(UIPageViewController *)pvc viewControllerAfterViewController:(PhotoViewController *)vc
 {
     NSUInteger index = vc.pageIndex;
-    return [PhotoViewController photoViewControllerForPageIndex:(index + 1)];
+    _currentPage = index;
+    [self reloadBottomViewDataWithPageIndex:(index + 1)];
+    if (index < _chapModel.images.count - 1) {
+        return [PhotoViewController photoViewControllerForPageIndex:(index + 1)];
+    }
+    return nil;
 }
 
+- (void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray *)previousViewControllers transitionCompleted:(BOOL)completed {
+    
+}
 #pragma mark - Others
 - (void)hiddenBarViews {
     _headerView.hidden = YES;
@@ -97,7 +116,34 @@
     _bottomView.hidden = NO;
 }
 
+- (void)reloadBottomViewDataWithPageIndex:(NSInteger )pageIndex {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [_processSlider setValue:pageIndex animated:NO];
+        _pageLabel.text = [NSString stringWithFormat:@"%d/%d", pageIndex, _chapModel.images.count];
+    });
+}
+
 #pragma mark - Button Function
+- (IBAction)changePage:(id)sender {
+    NSUInteger index = (NSUInteger)(_processSlider.value + 0.5);
+    
+    if (index > _currentPage + 1) {
+        PhotoViewController *nextPage = [PhotoViewController photoViewControllerForPageIndex:(index - 1)];
+        [_pageViewController setViewControllers:@[nextPage]
+                                      direction:UIPageViewControllerNavigationDirectionForward
+                                       animated:YES
+                                     completion:nil];
+    }else if (index < _currentPage + 1) {
+        PhotoViewController *previousPage = [PhotoViewController photoViewControllerForPageIndex:(index - 1)];
+        [_pageViewController setViewControllers:@[previousPage]
+                                      direction:UIPageViewControllerNavigationDirectionReverse
+                                       animated:YES
+                                     completion:nil];
+    }
+    _currentPage = index - 1;
+    [self reloadBottomViewDataWithPageIndex:index];
+}
+
 - (IBAction)onBackButton:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }

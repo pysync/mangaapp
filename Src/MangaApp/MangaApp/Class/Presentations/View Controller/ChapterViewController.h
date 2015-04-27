@@ -21,6 +21,8 @@
 
 @property (strong, nonatomic) ChapterService *chapterService;
 @property (strong, nonatomic) ChapterModel *chapModel;
+@property (weak, nonatomic) IBOutlet UISlider *processSlider;
 
+- (IBAction)changePage:(id)sender;
 - (IBAction)onBackButton:(id)sender;
 @end
