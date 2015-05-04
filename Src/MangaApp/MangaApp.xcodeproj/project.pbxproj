@@ -6,6 +6,20 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		2D1FBC791AF77F970025ABE3 /* Mogenerator */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 2D1FBC7C1AF77F970025ABE3 /* Build configuration list for PBXAggregateTarget "Mogenerator" */;
+			buildPhases = (
+				2D1FBC7D1AF77F9E0025ABE3 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = Mogenerator;
+			productName = Mogenerator;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		2D1339181AE601DA00F1DAF7 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D1339161AE601DA00F1DAF7 /* Bolts.framework */; };
 		2D1339191AE601DA00F1DAF7 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D1339171AE601DA00F1DAF7 /* Parse.framework */; };
@@ -22,6 +36,9 @@
 		2D13392F1AE6037500F1DAF7 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D13392E1AE6037500F1DAF7 /* libsqlite3.dylib */; };
 		2D1339311AE604B300F1DAF7 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D1339301AE604B300F1DAF7 /* Accounts.framework */; };
 		2D1339331AE604BC00F1DAF7 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D1339321AE604BC00F1DAF7 /* Social.framework */; };
+		2D1FBC731AF7763E0025ABE3 /* MangaApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2D1FBC711AF7763E0025ABE3 /* MangaApp.xcdatamodeld */; };
+		2D1FBC861AF783030025ABE3 /* Chapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D1FBC821AF783030025ABE3 /* Chapter.m */; };
+		2D1FBC871AF783030025ABE3 /* _Chapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D1FBC851AF783030025ABE3 /* _Chapter.m */; };
 		2D242DA11AE510EE00F13E0D /* define.json in Resources */ = {isa = PBXBuildFile; fileRef = 2D242DA01AE510EE00F13E0D /* define.json */; };
 		2D5558D61AEA435800736160 /* CustomBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D5558D51AEA435800736160 /* CustomBaseCell.m */; };
 		2D7CD97B1AE789C800C25B9A /* PageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7CD97A1AE789C800C25B9A /* PageViewController.m */; };
@@ -32,7 +49,6 @@
 		D31F9B071AEECB0F00831A09 /* icon120x120.png in Resources */ = {isa = PBXBuildFile; fileRef = D31F9B061AEECB0F00831A09 /* icon120x120.png */; };
 		D31F9B091AEECC9200831A09 /* icon58x58.png in Resources */ = {isa = PBXBuildFile; fileRef = D31F9B081AEECC9200831A09 /* icon58x58.png */; };
 		D31F9B0B1AEECCCC00831A09 /* icon80x80.png in Resources */ = {isa = PBXBuildFile; fileRef = D31F9B0A1AEECCCC00831A09 /* icon80x80.png */; };
-		D31F9B0D1AEECD3700831A09 /* Images-2.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D31F9B0C1AEECD3700831A09 /* Images-2.xcassets */; };
 		D321308A1AECBB50005C20CD /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D32130851AECBB50005C20CD /* PhotoViewController.m */; };
 		D321308B1AECBB50005C20CD /* ImageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = D32130871AECBB50005C20CD /* ImageScrollView.m */; };
 		D32130941AECBE15005C20CD /* ImageData.plist in Resources */ = {isa = PBXBuildFile; fileRef = D32130931AECBE15005C20CD /* ImageData.plist */; };
@@ -93,6 +109,11 @@
 		2D13392E1AE6037500F1DAF7 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		2D1339301AE604B300F1DAF7 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		2D1339321AE604BC00F1DAF7 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		2D1FBC721AF7763E0025ABE3 /* MangaApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MangaApp.xcdatamodel; sourceTree = "<group>"; };
+		2D1FBC811AF783030025ABE3 /* Chapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Chapter.h; sourceTree = "<group>"; };
+		2D1FBC821AF783030025ABE3 /* Chapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Chapter.m; sourceTree = "<group>"; };
+		2D1FBC841AF783030025ABE3 /* _Chapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Chapter.h; sourceTree = "<group>"; };
+		2D1FBC851AF783030025ABE3 /* _Chapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _Chapter.m; sourceTree = "<group>"; };
 		2D242DA01AE510EE00F13E0D /* define.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = define.json; sourceTree = "<group>"; };
 		2D5558D41AEA435800736160 /* CustomBaseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomBaseCell.h; sourceTree = "<group>"; };
 		2D5558D51AEA435800736160 /* CustomBaseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomBaseCell.m; sourceTree = "<group>"; };
@@ -108,7 +129,6 @@
 		D31F9B061AEECB0F00831A09 /* icon120x120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon120x120.png; sourceTree = "<group>"; };
 		D31F9B081AEECC9200831A09 /* icon58x58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon58x58.png; sourceTree = "<group>"; };
 		D31F9B0A1AEECCCC00831A09 /* icon80x80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon80x80.png; sourceTree = "<group>"; };
-		D31F9B0C1AEECD3700831A09 /* Images-2.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Images-2.xcassets"; sourceTree = "<group>"; };
 		D32130841AECBB50005C20CD /* PhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoViewController.h; sourceTree = "<group>"; };
 		D32130851AECBB50005C20CD /* PhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoViewController.m; sourceTree = "<group>"; };
 		D32130861AECBB50005C20CD /* ImageScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageScrollView.h; sourceTree = "<group>"; };
@@ -191,6 +211,49 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2D1FBC701AF7750E0025ABE3 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				2D1FBC711AF7763E0025ABE3 /* MangaApp.xcdatamodeld */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		2D1FBC7E1AF780110025ABE3 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				2D1FBC7F1AF780110025ABE3 /* Model */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		2D1FBC7F1AF780110025ABE3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2D1FBC801AF783030025ABE3 /* Human */,
+				2D1FBC831AF783030025ABE3 /* Machine */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2D1FBC801AF783030025ABE3 /* Human */ = {
+			isa = PBXGroup;
+			children = (
+				2D1FBC811AF783030025ABE3 /* Chapter.h */,
+				2D1FBC821AF783030025ABE3 /* Chapter.m */,
+			);
+			path = Human;
+			sourceTree = "<group>";
+		};
+		2D1FBC831AF783030025ABE3 /* Machine */ = {
+			isa = PBXGroup;
+			children = (
+				2D1FBC841AF783030025ABE3 /* _Chapter.h */,
+				2D1FBC851AF783030025ABE3 /* _Chapter.m */,
+			);
+			path = Machine;
+			sourceTree = "<group>";
+		};
 		2D242D9F1AE510EE00F13E0D /* JSON */ = {
 			isa = PBXGroup;
 			children = (
@@ -274,6 +337,7 @@
 		D384C6471AD95B6A00C9883A /* MangaApp */ = {
 			isa = PBXGroup;
 			children = (
+				2D1FBC701AF7750E0025ABE3 /* CoreData */,
 				D389604D1AEE8FD4007FF59B /* Global */,
 				D3CD35C61AD9889A0057265B /* AppDelegate */,
 				D3CD35C91AD9889A0057265B /* Class */,
@@ -281,7 +345,6 @@
 				D384C6521AD95B6A00C9883A /* Main.storyboard */,
 				D384C6551AD95B6A00C9883A /* Images.xcassets */,
 				D384C6571AD95B6A00C9883A /* LaunchScreen.xib */,
-				D31F9B0C1AEECD3700831A09 /* Images-2.xcassets */,
 				D384C6481AD95B6A00C9883A /* Supporting Files */,
 			);
 			path = MangaApp;
@@ -376,6 +439,7 @@
 		D3CD35C91AD9889A0057265B /* Class */ = {
 			isa = PBXGroup;
 			children = (
+				2D1FBC7E1AF780110025ABE3 /* Data */,
 				D3CD35CA1AD9889A0057265B /* Bussiness */,
 				D3CD35CD1AD9889A0057265B /* Presentations */,
 			);
@@ -508,6 +572,9 @@
 				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = ThanhLD;
 				TargetAttributes = {
+					2D1FBC791AF77F970025ABE3 = {
+						CreatedOnToolsVersion = 6.3;
+					};
 					D384C6441AD95B6A00C9883A = {
 						CreatedOnToolsVersion = 6.1.1;
 					};
@@ -532,6 +599,7 @@
 			targets = (
 				D384C6441AD95B6A00C9883A /* MangaApp */,
 				D384C65D1AD95B6A00C9883A /* MangaAppTests */,
+				2D1FBC791AF77F970025ABE3 /* Mogenerator */,
 			);
 		};
 /* End PBXProject section */
@@ -544,7 +612,6 @@
 				D32E762E1AE34AC8006EF17A /* logo3.png in Resources */,
 				D38960471AEE838D007FF59B /* chap1_4.jpg in Resources */,
 				D389604A1AEE838D007FF59B /* chap1_7.jpg in Resources */,
-				D31F9B0D1AEECD3700831A09 /* Images-2.xcassets in Resources */,
 				D3CD35DF1AD99D670057265B /* ChapterCustomCell.xib in Resources */,
 				D32E763B1AE38F9A006EF17A /* back.png in Resources */,
 				D3CD35C51AD987360057265B /* splash.png in Resources */,
@@ -594,6 +661,19 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		2D1FBC7D1AF77F9E0025ABE3 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "mogenerator -m MangaApp/CoreData/MangaApp.xcdatamodeld -M MangaApp/Class/Data/Model/Machine/ -H MangaApp/Class/Data/Model/Human/ --template-var arc=true";
+		};
 		D0F071F0AA76F94A43DEAB13 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -617,10 +697,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				D32E76311AE34D4A006EF17A /* ChapterViewController.m in Sources */,
+				2D1FBC861AF783030025ABE3 /* Chapter.m in Sources */,
 				D3CD35D41AD9889A0057265B /* ViewController.m in Sources */,
+				2D1FBC731AF7763E0025ABE3 /* MangaApp.xcdatamodeld in Sources */,
 				2D7CD9821AE790B400C25B9A /* ResponseModel.m in Sources */,
 				D386E83A1AEB7BCF00FFB149 /* ChapterService.m in Sources */,
 				2D7CD97B1AE789C800C25B9A /* PageViewController.m in Sources */,
+				2D1FBC871AF783030025ABE3 /* _Chapter.m in Sources */,
 				2D7CD9851AE7910700C25B9A /* ChapterModel.m in Sources */,
 				D3CD35D31AD9889A0057265B /* AppDelegate.m in Sources */,
 				D3CD35DE1AD99D670057265B /* ChapterCustomCell.m in Sources */,
@@ -672,6 +755,20 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		2D1FBC7A1AF77F970025ABE3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		2D1FBC7B1AF77F970025ABE3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		D384C6661AD95B6A00C9883A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -833,6 +930,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		2D1FBC7C1AF77F970025ABE3 /* Build configuration list for PBXAggregateTarget "Mogenerator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2D1FBC7A1AF77F970025ABE3 /* Debug */,
+				2D1FBC7B1AF77F970025ABE3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		D384C6401AD95B6A00C9883A /* Build configuration list for PBXProject "MangaApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -861,6 +966,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		2D1FBC711AF7763E0025ABE3 /* MangaApp.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				2D1FBC721AF7763E0025ABE3 /* MangaApp.xcdatamodel */,
+			);
+			currentVersion = 2D1FBC721AF7763E0025ABE3 /* MangaApp.xcdatamodel */;
+			path = MangaApp.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = D384C63D1AD95B6A00C9883A /* Project object */;
 }

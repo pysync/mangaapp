@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import <Parse/Parse.h>
+#import <MagicalRecord/CoreData+MagicalRecord.h>
 
 @interface AppDelegate ()
 
@@ -18,6 +19,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    // Setup Core Data
+    [MagicalRecord setupCoreDataStackWithAutoMigratingSqliteStoreNamed:@"MangaApp.sqlite3"];
+    
+    
     // [Optional] Power your app with Local Datastore. For more info, go to
     // https://parse.com/docs/ios_guide#localdatastore/iOS
     [Parse enableLocalDatastore];

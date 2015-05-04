@@ -60,6 +60,18 @@
 #define COCOAPODS_VERSION_MINOR_MBProgressHUD 9
 #define COCOAPODS_VERSION_PATCH_MBProgressHUD 1
 
+// MagicalRecord
+#define COCOAPODS_POD_AVAILABLE_MagicalRecord
+#define COCOAPODS_VERSION_MAJOR_MagicalRecord 2
+#define COCOAPODS_VERSION_MINOR_MagicalRecord 2
+#define COCOAPODS_VERSION_PATCH_MagicalRecord 0
+
+// MagicalRecord/Core
+#define COCOAPODS_POD_AVAILABLE_MagicalRecord_Core
+#define COCOAPODS_VERSION_MAJOR_MagicalRecord_Core 2
+#define COCOAPODS_VERSION_MINOR_MagicalRecord_Core 2
+#define COCOAPODS_VERSION_PATCH_MagicalRecord_Core 0
+
 // WYPopoverController
 #define COCOAPODS_POD_AVAILABLE_WYPopoverController
 #define COCOAPODS_VERSION_MAJOR_WYPopoverController 0

@@ -9,6 +9,10 @@
 #ifndef MangaApp_Definition_h
 #define MangaApp_Definition_h
 
+// Base URL remote
+#define kBaseUrl @"http://res.cloudinary.com/duvy0qusz/image/upload/v1430730758/MangaApp"
+
+// Define UI components
 #define kShowBarView @"showBarView"
 
 #endif
