@@ -66,7 +66,7 @@
             NSURL *documentsDirectoryURL = [[NSFileManager defaultManager] URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:NO error:nil];
             return [documentsDirectoryURL URLByAppendingPathComponent:[response suggestedFilename]];
         } completionHandler:^(NSURLResponse *response, NSURL *filePath, NSError *error) {
-            //NSLog(@"File downloaded to: %@", filePath);
+            NSLog(@"File downloaded to: %@", filePath);
             _numberImageDownloaded++;
             
             if (_numberImageDownloaded == chapterModel.images.count) {

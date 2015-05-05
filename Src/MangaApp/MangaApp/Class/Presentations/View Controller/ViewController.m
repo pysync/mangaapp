@@ -127,7 +127,12 @@
     if (cell.downloadState == kBeforeDownloadState) {
         cell.downloadState = kDownloadingState;
         
-        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        MBProgressHUD *hub = [[MBProgressHUD alloc] initWithView:self.view];
+        hub.labelText = @"Downloading...";
+        [self.view addSubview:hub];
+        [hub show:YES];
+        
+        //[MBProgressHUD showHUDAddedTo:self.view animated:YES];
         ChapterModel *chapModel = (ChapterModel *)_chapterService.listChapters[indexChap];
         [_chapterService downloadChapterWithModel:chapModel success:^{
             cell.downloadState = kDownloadedState;
@@ -148,9 +153,15 @@
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (alertView.tag == kTagRemoveChapter) {
         if (buttonIndex == 1) {
+            MBProgressHUD *hub = [[MBProgressHUD alloc] initWithView:self.view];
+            hub.labelText = @"Removing...";
+            [self.view addSubview:hub];
+            [hub show:YES];
+            
             [_chapterService removeChapterWithIndexChap:_indexRemoveChapter finish:^{
                 ChapterCustomCell *cell = (ChapterCustomCell *)[_contentTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:_indexRemoveChapter inSection:0]];
                 cell.downloadState = kBeforeDownloadState;
+                [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
             }];
         }
     }
