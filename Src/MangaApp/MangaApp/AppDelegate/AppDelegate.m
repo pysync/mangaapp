@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import <Parse/Parse.h>
 #import <MagicalRecord/CoreData+MagicalRecord.h>
+#import <MagicalRecord/NSPersistentStore+MagicalRecord.h>
 
 @interface AppDelegate ()
 
@@ -21,7 +22,8 @@
     // Override point for customization after application launch.
     // Setup Core Data
     [MagicalRecord setupCoreDataStackWithAutoMigratingSqliteStoreNamed:@"MangaApp.sqlite3"];
-    
+    NSURL *storeURL = [NSPersistentStore MR_urlForStoreName:@"MangaApp.sqlite3"];
+    NSLog(@"db path: %@", storeURL.absoluteString);
     
     // [Optional] Power your app with Local Datastore. For more info, go to
     // https://parse.com/docs/ios_guide#localdatastore/iOS

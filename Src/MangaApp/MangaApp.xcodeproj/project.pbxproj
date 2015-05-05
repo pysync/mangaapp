@@ -41,6 +41,7 @@
 		2D1FBC871AF783030025ABE3 /* _Chapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D1FBC851AF783030025ABE3 /* _Chapter.m */; };
 		2D242DA11AE510EE00F13E0D /* define.json in Resources */ = {isa = PBXBuildFile; fileRef = 2D242DA01AE510EE00F13E0D /* define.json */; };
 		2D5558D61AEA435800736160 /* CustomBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D5558D51AEA435800736160 /* CustomBaseCell.m */; };
+		2D5FE9941AF8D4D9003AB6A9 /* Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D5FE9931AF8D4D9003AB6A9 /* Common.m */; };
 		2D7CD97B1AE789C800C25B9A /* PageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7CD97A1AE789C800C25B9A /* PageViewController.m */; };
 		2D7CD9821AE790B400C25B9A /* ResponseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7CD9811AE790B400C25B9A /* ResponseModel.m */; };
 		2D7CD9851AE7910700C25B9A /* ChapterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7CD9841AE7910700C25B9A /* ChapterModel.m */; };
@@ -117,6 +118,8 @@
 		2D242DA01AE510EE00F13E0D /* define.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = define.json; sourceTree = "<group>"; };
 		2D5558D41AEA435800736160 /* CustomBaseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomBaseCell.h; sourceTree = "<group>"; };
 		2D5558D51AEA435800736160 /* CustomBaseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomBaseCell.m; sourceTree = "<group>"; };
+		2D5FE9921AF8D4D9003AB6A9 /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
+		2D5FE9931AF8D4D9003AB6A9 /* Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Common.m; sourceTree = "<group>"; };
 		2D7CD9791AE789C800C25B9A /* PageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageViewController.h; sourceTree = "<group>"; };
 		2D7CD97A1AE789C800C25B9A /* PageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageViewController.m; sourceTree = "<group>"; };
 		2D7CD9801AE790B400C25B9A /* ResponseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResponseModel.h; sourceTree = "<group>"; };
@@ -507,6 +510,8 @@
 		D3CD35D21AD9889A0057265B /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				2D5FE9921AF8D4D9003AB6A9 /* Common.h */,
+				2D5FE9931AF8D4D9003AB6A9 /* Common.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -698,6 +703,7 @@
 			files = (
 				D32E76311AE34D4A006EF17A /* ChapterViewController.m in Sources */,
 				2D1FBC861AF783030025ABE3 /* Chapter.m in Sources */,
+				2D5FE9941AF8D4D9003AB6A9 /* Common.m in Sources */,
 				D3CD35D41AD9889A0057265B /* ViewController.m in Sources */,
 				2D1FBC731AF7763E0025ABE3 /* MangaApp.xcdatamodeld in Sources */,
 				2D7CD9821AE790B400C25B9A /* ResponseModel.m in Sources */,
@@ -937,6 +943,7 @@
 				2D1FBC7B1AF77F970025ABE3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D384C6401AD95B6A00C9883A /* Build configuration list for PBXProject "MangaApp" */ = {
 			isa = XCConfigurationList;

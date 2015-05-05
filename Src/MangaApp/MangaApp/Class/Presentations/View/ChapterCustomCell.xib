@@ -81,6 +81,8 @@
             <connections>
                 <outlet property="chapNumberLabel" destination="2Ay-Ag-qoL" id="H5G-BA-6HU"/>
                 <outlet property="chapTitleLabel" destination="4NU-DR-kwN" id="r0L-5Y-Oz9"/>
+                <outlet property="readingButton" destination="sSN-45-biP" id="0m0-dZ-Mwo"/>
+                <outlet property="subContentView" destination="30N-7p-sLm" id="6xh-TW-8rm"/>
             </connections>
             <point key="canvasLocation" x="139.5" y="154"/>
         </tableViewCell>

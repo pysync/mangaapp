@@ -15,4 +15,9 @@
 // Define UI components
 #define kShowBarView @"showBarView"
 
+// Define string
+#define kBeforeDownload @"ドウンロド"
+#define kDownloading    @"ドウンロド中"
+#define kDeleteChapter  @"削除"
+
 #endif
