@@ -49,7 +49,7 @@
     
     // Create Page view controller
     NSString *zeroImage = _chapModel.images.firstObject;
-    PhotoViewController *pageZero = [PhotoViewController photoViewControllerForPageIndex:0 andImageName:zeroImage];
+    PhotoViewController *pageZero = [PhotoViewController photoViewControllerForPageIndex:0 imageName:zeroImage andService:_chapterService];
     if (pageZero != nil)
     {
         // assign the first page to the pageViewController (our rootViewController)
@@ -86,7 +86,7 @@
     _currentPage = index;
     [self reloadBottomViewDataWithPageIndex:(index + 1)];
     if (index) {
-        return [PhotoViewController photoViewControllerForPageIndex:(index - 1) andImageName:_chapModel.images[index - 1]];
+        return [PhotoViewController photoViewControllerForPageIndex:(index - 1) imageName:_chapModel.images[index - 1] andService:_chapterService];
     }else {
         return nil;
     }
@@ -98,7 +98,7 @@
     _currentPage = index;
     [self reloadBottomViewDataWithPageIndex:(index + 1)];
     if (index < _chapModel.images.count - 1) {
-        return [PhotoViewController photoViewControllerForPageIndex:(index + 1) andImageName:_chapModel.images[index + 1]];
+        return [PhotoViewController photoViewControllerForPageIndex:(index + 1) imageName:_chapModel.images[index + 1] andService:_chapterService];
     }
     return nil;
 }
@@ -145,13 +145,13 @@
     NSUInteger index = (NSUInteger)(_processSlider.value + 0.5);
     
     if (index > _currentPage + 1) {
-        PhotoViewController *nextPage = [PhotoViewController photoViewControllerForPageIndex:(index - 1) andImageName:_chapModel.images[index - 1]];
+        PhotoViewController *nextPage = [PhotoViewController photoViewControllerForPageIndex:(index - 1) imageName:_chapModel.images[index - 1] andService:_chapterService];;
         [_pageViewController setViewControllers:@[nextPage]
                                       direction:UIPageViewControllerNavigationDirectionForward
                                        animated:YES
                                      completion:nil];
     }else if (index < _currentPage + 1) {
-        PhotoViewController *previousPage = [PhotoViewController photoViewControllerForPageIndex:(index - 1) andImageName:_chapModel.images[index - 1]];
+        PhotoViewController *previousPage = [PhotoViewController photoViewControllerForPageIndex:(index - 1) imageName:_chapModel.images[index - 1] andService:_chapterService];;
         [_pageViewController setViewControllers:@[previousPage]
                                       direction:UIPageViewControllerNavigationDirectionReverse
                                        animated:YES

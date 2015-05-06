@@ -12,4 +12,5 @@
 @interface ChapterService : NSObject
 
 @property (strong, nonatomic) ChapterModel *chapterModel;
+- (void)downloadImageWithName:(NSString *)imageName success:(void(^)())successBlock failure:(void(^)())failBlock;
 @end

@@ -20,4 +20,7 @@
 #define kDownloading    @"ドウンロド中"
 #define kDeleteChapter  @"削除"
 
+// Notification
+#define kShowProcessHUB @"ShowProcessHUB"
+#define kHiddenProcessHUB @"HiddenProcessHUB"
 #endif

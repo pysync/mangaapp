@@ -77,10 +77,9 @@
     return self;
 }
 
-- (void)setImageName:(NSString *)imageName {
-    _imageName = imageName;
-    UIImage *currentImage = [UIImage imageNamed:imageName];
-    [self displayImage:currentImage];
+- (void)setDisplayImage:(UIImage *)displayImage {
+    _displayImage = displayImage;
+    [self displayImage:displayImage];
 }
 
 - (void)layoutSubviews 

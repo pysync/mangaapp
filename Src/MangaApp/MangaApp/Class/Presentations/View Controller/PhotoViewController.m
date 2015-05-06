@@ -48,27 +48,34 @@
 #import "PhotoViewController.h"
 #import "ImageScrollView.h"
 #import "Definition.h"
+#import "Common.h"
+#import "ChapterService.h"
+#import <MBProgressHUD/MBProgressHUD.h>
 
 @interface PhotoViewController ()
 {
     
 }
+
+@property (nonatomic, strong)ImageScrollView *scrollView;
+@property (nonatomic, strong)ChapterService *photoService;
+@property (nonatomic, assign) BOOL imageLoaded;
 @end
 
 @implementation PhotoViewController
 
-+ (PhotoViewController *)photoViewControllerForPageIndex:(NSUInteger)pageIndex andImageName:(NSString *)imageName
-{
-    return [[self alloc] initWithPageIndex:pageIndex andImageName:imageName];
++ (PhotoViewController *)photoViewControllerForPageIndex:(NSUInteger)pageIndex imageName:(NSString *)imageName andService:(ChapterService *)chapterService {
+    return [[self alloc] initWithPageIndex:pageIndex imageName:imageName andService:chapterService];
 }
 
-- (id)initWithPageIndex:(NSInteger)pageIndex andImageName:(NSString *)imageName
-{
+- (id)initWithPageIndex:(NSInteger)pageIndex imageName:(NSString *)imageName andService:(ChapterService *)chapterService {
     self = [super initWithNibName:nil bundle:nil];
     if (self)
     {
         _pageIndex = pageIndex;
         _imageName = imageName;
+        _imageLoaded = NO;
+        _photoService = chapterService;
     }
     return self;
 }
@@ -82,13 +89,55 @@
     [self.view addGestureRecognizer:gesture];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    if (!_imageLoaded) {
+        MBProgressHUD *hub = [[MBProgressHUD alloc] initWithView:self.view];
+        hub.color = [UIColor clearColor];
+        [self.view addSubview:hub];
+        [hub show:YES];
+    }
+}
+
 - (void)loadView
 {
-    ImageScrollView *scrollView = [[ImageScrollView alloc] init];
-    scrollView.index = _pageIndex;
-    scrollView.imageName = _imageName;
-    scrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    self.view = scrollView;
+    _scrollView = [[ImageScrollView alloc] init];
+    _scrollView.index = _pageIndex;
+    _scrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    self.view = _scrollView;
+    _scrollView.displayImage = [self imageWillDisplay];
+}
+
+- (UIImage *)imageWillDisplay {
+    UIImage *displayImage = [UIImage imageNamed:@"placeholder"];
+    NSString *docsPath = [Common getDocumentDirectory];
+    NSString *localImagePath = [docsPath stringByAppendingPathComponent:_imageName];
+    if ([[NSFileManager defaultManager] fileExistsAtPath:localImagePath]) {
+        _imageLoaded = YES;
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        displayImage = [UIImage imageWithContentsOfFile:localImagePath];
+    }else {
+        [self downloadImageFromServer];
+    }
+    
+    return displayImage;
+}
+
+- (void)downloadImageFromServer {
+    [_photoService downloadImageWithName:_imageName success:^{
+        _imageLoaded = YES;
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        
+        UIImage *displayImage = [UIImage imageNamed:@"placeholder"];
+        NSString *docsPath = [Common getDocumentDirectory];
+        NSString *localImagePath = [docsPath stringByAppendingPathComponent:_imageName];
+        if ([[NSFileManager defaultManager] fileExistsAtPath:localImagePath]) {
+            displayImage = [UIImage imageWithContentsOfFile:localImagePath];
+        }
+        _scrollView.displayImage = displayImage;
+    } failure:^{
+        _imageLoaded = YES;
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    }];
 }
 
 // (this can also be defined in Info.plist via UISupportedInterfaceOrientations)

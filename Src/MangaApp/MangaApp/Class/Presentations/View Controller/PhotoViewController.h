@@ -46,10 +46,11 @@
  */
 
 #import <UIKit/UIKit.h>
+@class ChapterService;
 
 @interface PhotoViewController : UIViewController
 
-+ (PhotoViewController *)photoViewControllerForPageIndex:(NSUInteger)pageIndex andImageName:(NSString *)imageName;
++ (PhotoViewController *)photoViewControllerForPageIndex:(NSUInteger)pageIndex imageName:(NSString *)imageName andService:(ChapterService *)chapterService;
 
 @property(nonatomic, assign) NSInteger pageIndex;
 @property(nonatomic, strong) NSString *imageName;

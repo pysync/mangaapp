@@ -58,15 +58,26 @@
     _numberImageDownloaded = 0;
     NSString *baseURL = kBaseUrl;
     for (int i=0; i<chapterModel.images.count; i++) {
-        NSString *fullURL = [baseURL stringByAppendingPathComponent:chapterModel.images[i]];
-        NSURL *URL = [NSURL URLWithString:fullURL];
-        NSURLRequest *request = [NSURLRequest requestWithURL:URL];
-        
-        NSURLSessionDownloadTask *downloadTask = [manager downloadTaskWithRequest:request progress:nil destination:^NSURL *(NSURL *targetPath, NSURLResponse *response) {
-            NSURL *documentsDirectoryURL = [[NSFileManager defaultManager] URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:NO error:nil];
-            return [documentsDirectoryURL URLByAppendingPathComponent:[response suggestedFilename]];
-        } completionHandler:^(NSURLResponse *response, NSURL *filePath, NSError *error) {
-            NSLog(@"File downloaded to: %@", filePath);
+        if (![self imageDownloadedWithImageName:chapterModel.images[i]]) {
+            NSString *fullURL = [baseURL stringByAppendingPathComponent:chapterModel.images[i]];
+            NSURL *URL = [NSURL URLWithString:fullURL];
+            NSURLRequest *request = [NSURLRequest requestWithURL:URL];
+            
+            NSURLSessionDownloadTask *downloadTask = [manager downloadTaskWithRequest:request progress:nil destination:^NSURL *(NSURL *targetPath, NSURLResponse *response) {
+                NSURL *documentsDirectoryURL = [[NSFileManager defaultManager] URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:NO error:nil];
+                return [documentsDirectoryURL URLByAppendingPathComponent:[response suggestedFilename]];
+            } completionHandler:^(NSURLResponse *response, NSURL *filePath, NSError *error) {
+                NSLog(@"File downloaded to: %@", filePath);
+                _numberImageDownloaded++;
+                
+                if (_numberImageDownloaded == chapterModel.images.count) {
+                    if (successBlock) {
+                        successBlock();
+                    }
+                }
+            }];
+            [downloadTask resume];
+        }else {
             _numberImageDownloaded++;
             
             if (_numberImageDownloaded == chapterModel.images.count) {
@@ -74,9 +85,14 @@
                     successBlock();
                 }
             }
-        }];
-        [downloadTask resume];
+        }
     }
+}
+
+- (BOOL )imageDownloadedWithImageName:(NSString *)imageName {
+    NSString *documentPath = [Common getDocumentDirectory];
+    NSString *imagePath = [documentPath stringByAppendingPathComponent:imageName];
+    return [[NSFileManager defaultManager] fileExistsAtPath:imagePath];
 }
 
 - (void)createAndSaveDataIfNeed {

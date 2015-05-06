@@ -50,6 +50,6 @@
 @interface ImageScrollView : UIScrollView
 
 @property (nonatomic, assign) NSUInteger index;
-@property(nonatomic, strong) NSString *imageName;
+@property(nonatomic, strong) UIImage *displayImage;
 
 @end
