@@ -6,8 +6,8 @@
 //  Copyright (c) 2015 ThanhLD. All rights reserved.
 //
 
-#import "ChapterModel.h"
+#import "ChapterJSONModel.h"
 
-@implementation ChapterModel
+@implementation ChapterJSONModel
 
 @end

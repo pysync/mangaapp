@@ -133,8 +133,8 @@
         [hub show:YES];
         
         //[MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        ChapterModel *chapModel = (ChapterModel *)_chapterService.listChapters[indexChap];
-        [_chapterService downloadChapterWithModel:chapModel success:^{
+        ChapterModel *chapModel = _chapterService.listChapters[indexChap];
+        [_chapterService downloadChapterWithModel:chapModel.chapterJSONModel success:^{
             cell.downloadState = kDownloadedState;
             [_chapterService updateChapterWithIndexChap:indexChap andState:YES];
             [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
@@ -208,12 +208,10 @@
         [self downloadMangaWithIndexChapter:indexPath.row];
     };
     
-    Chapter *chapEntity = (Chapter *)_chapterService.listEntityChapters[indexPath.row];
-    cell.downloadState = chapEntity.isDownloaded.integerValue == 1 ? kDownloadedState:kBeforeDownloadState;
+    ChapterModel *chapModel = _chapterService.listChapters[indexPath.row];
+    cell.downloadState = chapModel.chapterEntity.isDownloaded.integerValue == 1 ? kDownloadedState:kBeforeDownloadState;
     
-    ChapterModel *chapModel = (ChapterModel *)_chapterService.listChapters[indexPath.row];
-    [cell updateCellWithModel:chapModel];
-    
+    [cell updateCellWithModel:chapModel.chapterJSONModel];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     return cell;

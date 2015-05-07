@@ -28,7 +28,7 @@
     return [self getHeightCell];
 }
 
-- (void)updateCellWithModel:(ChapterModel *)unitModel{
+- (void)updateCellWithModel:(ChapterJSONModel *)unitModel{
     
 }
 @end

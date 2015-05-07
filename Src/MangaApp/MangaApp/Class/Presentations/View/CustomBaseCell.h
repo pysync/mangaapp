@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ChapterModel.h"
+#import "ChapterJSONModel.h"
 
 @interface CustomBaseCell : UITableViewCell
 + (NSString *)getIdentifierCell;
 + (CGFloat)getHeightCell;
-- (void)updateCellWithModel:(ChapterModel *)unitModel;
+- (void)updateCellWithModel:(ChapterJSONModel *)unitModel;
 @end

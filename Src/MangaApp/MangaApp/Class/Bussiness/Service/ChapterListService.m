@@ -12,8 +12,9 @@
 #import "Definition.h"
 #import <MagicalRecord/CoreData+MagicalRecord.h>
 #import "Chapter.h"
-#import "ChapterModel.h"
+#import "ChapterJSONModel.h"
 #import "Common.h"
+#import "ChapterModel.h"
 
 @interface ChapterListService()
 
@@ -27,7 +28,6 @@
     self = [super init];
     if (self) {
         _listChapters = [[NSMutableArray alloc] initWithCapacity:0];
-        _listEntityChapters = [[NSMutableArray alloc] initWithCapacity:0];
     }
     return self;
 }
@@ -39,7 +39,7 @@
     NSError* err = nil;
     ResponseModel *responseModel = [[ResponseModel alloc] initWithString:jsonString error:&err];
     if (!err) {
-        _listChapters = [responseModel.data mutableCopy];
+        _listChapters = [self createChapterModelWithData:responseModel.data];
         [self createAndSaveDataIfNeed];
         if (successBlock) {
             successBlock();
@@ -51,7 +51,19 @@
     }
 }
 
-- (void)downloadChapterWithModel:(ChapterModel *)chapterModel success:(void (^)())successBlock failure:(void (^)())failBlock {
+- (NSMutableArray *)createChapterModelWithData:(NSArray *)dataArray {
+    NSMutableArray *resultArray = [[NSMutableArray alloc] initWithCapacity:0];
+    for (int i=0; i<dataArray.count; i++) {
+        ChapterJSONModel *jsonModel = (ChapterJSONModel *)dataArray[i];
+        ChapterModel *chapModel = [[ChapterModel alloc] init];
+        chapModel.chapterJSONModel = jsonModel;
+        [resultArray addObject:chapModel];
+    }
+    
+    return resultArray;
+}
+
+- (void)downloadChapterWithModel:(ChapterJSONModel *)chapterModel success:(void (^)())successBlock failure:(void (^)())failBlock {
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
     
@@ -98,15 +110,20 @@
 - (void)createAndSaveDataIfNeed {
     NSArray *listChapter = [Chapter MR_findAllSortedBy:@"chapterNumber" ascending:YES];
     if (listChapter.count) {
-        _listEntityChapters = [listChapter mutableCopy];
+        for (int i=0; i<listChapter.count; i++) {
+            Chapter *chapEntity = listChapter[i];
+            ChapterModel *chapModel = (ChapterModel *)_listChapters[i];
+            chapModel.chapterEntity = chapEntity;
+        }
     }else {
         for (int i=0; i<_listChapters.count; i++) {
-            ChapterModel *chap = _listChapters[i];
+            ChapterModel *chapModel = _listChapters[i];
+            ChapterJSONModel *chap = chapModel.chapterJSONModel;
             Chapter *chapEntity = [Chapter MR_createEntity];
             chapEntity.chapterTitle = chap.titleChap;
             chapEntity.isDownloaded = @(0);
             chapEntity.chapterNumber = @(i+1);
-            [_listEntityChapters addObject:chapEntity];
+            chapModel.chapterEntity = chapEntity;
             
             [chapEntity.managedObjectContext MR_saveToPersistentStoreAndWait];
         }
@@ -114,7 +131,8 @@
 }
 
 - (void)updateChapterWithIndexChap:(NSInteger)indexChap andState:(BOOL)isDownloaded {
-    Chapter *chapEntity = _listEntityChapters[indexChap];
+    ChapterModel *chapModel = _listChapters[indexChap];
+    Chapter *chapEntity = chapModel.chapterEntity;
     chapEntity.isDownloaded = @(isDownloaded);
     [chapEntity.managedObjectContext MR_saveToPersistentStoreAndWait];
 }
@@ -123,8 +141,8 @@
     ChapterModel *chapModel = _listChapters[indexChap];
     NSFileManager *fileManager = [NSFileManager defaultManager];
     
-    for (int i=0; i<chapModel.images.count; i++) {
-        NSString *imageName = chapModel.images[i];
+    for (int i=0; i<chapModel.chapterJSONModel.images.count; i++) {
+        NSString *imageName = chapModel.chapterJSONModel.images[i];
         NSString *documentPath = [Common getDocumentDirectory];
         NSString *imagePath = [documentPath stringByAppendingPathComponent:imageName];
         

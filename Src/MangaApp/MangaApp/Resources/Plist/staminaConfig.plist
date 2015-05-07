@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>stamina</key>
+	<integer>100</integer>
+	<key>chap_1</key>
+	<integer>1</integer>
+	<key>chap_2</key>
+	<integer>2</integer>
+	<key>chap_3</key>
+	<integer>3</integer>
+	<key>chap_4</key>
+	<integer>4</integer>
+	<key>chap_5</key>
+	<integer>5</integer>
+</dict>
+</plist>

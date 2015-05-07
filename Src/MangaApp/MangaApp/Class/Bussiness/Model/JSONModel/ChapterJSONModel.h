@@ -8,11 +8,11 @@
 
 #import "JSONModel.h"
 
-@protocol ChapterModel
+@protocol ChapterJSONModel
 
 @end
 
-@interface ChapterModel : JSONModel
+@interface ChapterJSONModel : JSONModel
 @property (nonatomic, strong) NSString<Optional> *titleChap;
 @property (nonatomic, strong) NSArray<Optional> *images;
 @end

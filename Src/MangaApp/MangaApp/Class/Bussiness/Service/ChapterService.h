@@ -7,10 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ChapterJSONModel.h"
 #import "ChapterModel.h"
 
 @interface ChapterService : NSObject
 
-@property (strong, nonatomic) ChapterModel *chapterModel;
+@property (strong, nonatomic) ChapterJSONModel *chapterModel;
 - (void)downloadImageWithName:(NSString *)imageName success:(void(^)())successBlock failure:(void(^)())failBlock;
 @end
