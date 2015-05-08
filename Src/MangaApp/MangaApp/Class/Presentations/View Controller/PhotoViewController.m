@@ -51,6 +51,7 @@
 #import "Common.h"
 #import "ChapterService.h"
 #import <MBProgressHUD/MBProgressHUD.h>
+#import "StaminaConfig.h"
 
 @interface PhotoViewController ()
 {
@@ -99,7 +100,16 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    
+    StaminaConfig *staminaConfig = [StaminaConfig sharedConfig];
+    if (![staminaConfig.chapTrackList containsObject:_imageName]) {
+        if (staminaConfig.stamina >= _photoService.chapterModel.staminaCost) {
+            staminaConfig.stamina -= _photoService.chapterModel.staminaCost;
+            [staminaConfig.chapTrackList addObject:_imageName];
+            [[NSNotificationCenter defaultCenter] postNotificationName:kUpdateStaminaView object:nil];
+        }else {
+            [[NSNotificationCenter defaultCenter] postNotificationName:kShowStaminaExpired object:nil];
+        }
+    }
 }
 
 - (void)loadView

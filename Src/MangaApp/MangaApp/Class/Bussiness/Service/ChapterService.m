@@ -9,6 +9,9 @@
 #import "ChapterService.h"
 #import <AFNetworking/AFNetworking.h>
 #import "Definition.h"
+#import <MagicalRecord/CoreData+MagicalRecord.h>
+#import "ChapTracker.h"
+#import "StaminaConfig.h"
 
 @interface ChapterService()
 @property (nonatomic, strong) NSMutableArray *imagesDownloading;
@@ -16,13 +19,28 @@
 
 @implementation ChapterService
 
-- (instancetype)init
+- (instancetype)initWithModel:(ChapterModel *)chapModel
 {
     self = [super init];
     if (self) {
         _imagesDownloading = [[NSMutableArray alloc] initWithCapacity:0];
+        _chapterModel = chapModel;
     }
     return self;
+}
+
+- (void)getChapHistoryWithChapName:(NSString *)chapName {
+    NSArray *trackList = [ChapTracker MR_findByAttribute:@"chapName" withValue:chapName];
+    NSMutableArray *tmpTrackList = [[NSMutableArray alloc] initWithCapacity:0];
+    for (int i=0; i<trackList.count; i++) {
+        ChapTracker *track = trackList[i];
+        [tmpTrackList addObject:track.pageName];
+    }
+    
+    StaminaConfig *config = [StaminaConfig sharedConfig];
+    [config.chapTrackList removeAllObjects];
+    config.chapTrackList = tmpTrackList;
+    config.chapName = chapName;
 }
 
 - (void)downloadImageWithName:(NSString *)imageName success:(void (^)())successBlock failure:(void (^)())failBlock {

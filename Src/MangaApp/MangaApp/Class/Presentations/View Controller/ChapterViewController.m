@@ -10,6 +10,7 @@
 #import "PageViewController.h"
 #import "PhotoViewController.h"
 #import "Definition.h"
+#import "StaminaConfig.h"
 
 @interface ChapterViewController ()<UIPageViewControllerDataSource, UIPageViewControllerDelegate>
 @property (nonatomic, strong) NSMutableArray *viewControllers;
@@ -18,6 +19,8 @@
 @property (nonatomic, assign) BOOL isShowingBarView;
 @end
 
+#define kTagShowStamina 100
+
 @implementation ChapterViewController
 
 - (void)viewDidLoad {
@@ -25,16 +28,27 @@
     // Do any additional setup after loading the view.
     
     _currentPage = 0;
-    _chapterService = [[ChapterService alloc] init];
     _isShowingBarView = YES;
+    
+    _chapterService = [[ChapterService alloc] initWithModel:_chapModel];
+    [_chapterService getChapHistoryWithChapName:_chapModel.chapName];
+    
     [self createUI];
     [self loadDataToView];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateStaminaView:) name:kUpdateStaminaView object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showBarViews:) name:kShowBarView object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showStaminaExpired:) name:kShowStaminaExpired object:nil];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     //[self loadDataForScrollView];
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kUpdateStaminaView object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kShowBarView object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kShowStaminaExpired object:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -75,6 +89,10 @@
 }
 
 - (void)loadDataToView {
+    StaminaConfig *config = [StaminaConfig sharedConfig];
+    _processView.progress = config.stamina/config.maxStamina;
+    _staminaLabel.text = [NSString stringWithFormat:@"%d/%d", config.stamina,(int)config.maxStamina];
+    
     _titleLabel.text = _chapModel.chapterJSONModel.titleChap;
     _pageLabel.text = [NSString stringWithFormat:@"1/%lu", (unsigned long)_chapModel.chapterJSONModel.images.count];
 }
@@ -140,6 +158,36 @@
     });
 }
 
+- (void)showStaminaExpired:(NSNotification *)notification {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@""
+                                                    message:@"体力がなくなりました"
+                                                   delegate:self
+                                          cancelButtonTitle:@"戻る"
+                                          otherButtonTitles:@"全回復する", nil];
+    alert.tag = kTagShowStamina;
+    [alert show];
+}
+
+- (void)updateStaminaView:(NSNotification *)notification {
+    StaminaConfig *config = [StaminaConfig sharedConfig];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        _processView.progress = config.stamina/config.maxStamina;
+        _staminaLabel.text = [NSString stringWithFormat:@"%d/%d", config.stamina,(int)config.maxStamina];
+    });
+}
+
+#pragma mark - UIAlert View delegate
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (alertView.tag == kTagShowStamina) {
+        if (buttonIndex == 1) {
+            // Buy stamina on app store
+        }else {
+            // Back to Chapter List Screen
+            [self onBackButton:nil];
+        }
+    }
+}
+
 #pragma mark - Button Function
 - (IBAction)changePage:(id)sender {
     NSUInteger index = (NSUInteger)(_processSlider.value + 0.5);
@@ -162,6 +210,7 @@
 }
 
 - (IBAction)onBackButton:(id)sender {
+    [[StaminaConfig sharedConfig] saveData];
     [self.navigationController popViewControllerAnimated:YES];
 }
 

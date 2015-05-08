@@ -11,6 +11,10 @@
 @interface StaminaConfig : NSObject
 
 @property (nonatomic, assign) NSInteger stamina;
+@property (nonatomic, assign) float maxStamina;
+@property (nonatomic, strong) NSMutableArray *chapTrackList;
+@property (nonatomic, strong) NSString *chapName;
 
 + (id)sharedConfig;
+- (void)saveData;
 @end

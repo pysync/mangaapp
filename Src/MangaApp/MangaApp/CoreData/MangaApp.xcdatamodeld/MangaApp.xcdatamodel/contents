@@ -5,7 +5,12 @@
         <attribute name="chapterTitle" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="isDownloaded" optional="YES" attributeType="Boolean" syncable="YES"/>
     </entity>
+    <entity name="ChapTracker" representedClassName="ChapTracker" syncable="YES">
+        <attribute name="chapName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pageName" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <elements>
-        <element name="Chapter" positionX="-63" positionY="-18" width="128" height="88"/>
+        <element name="Chapter" positionX="-90" positionY="-225" width="128" height="88"/>
+        <element name="ChapTracker" positionX="-90" positionY="-97" width="128" height="73"/>
     </elements>
 </model>

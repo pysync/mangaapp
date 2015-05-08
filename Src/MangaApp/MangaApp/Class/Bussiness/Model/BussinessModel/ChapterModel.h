@@ -15,4 +15,5 @@
 @property(nonatomic, strong) Chapter *chapterEntity;
 @property(nonatomic, strong) ChapterJSONModel *chapterJSONModel;
 @property(nonatomic, assign) NSInteger staminaCost;
+@property(nonatomic, strong) NSString *chapName;
 @end

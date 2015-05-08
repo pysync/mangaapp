@@ -12,6 +12,9 @@
 
 @interface ChapterService : NSObject
 
-@property (strong, nonatomic) ChapterJSONModel *chapterModel;
+@property (strong, nonatomic) ChapterModel *chapterModel;
+
+- (instancetype)initWithModel:(ChapterModel *)chapModel;
+- (void)getChapHistoryWithChapName:(NSString *)chapName;
 - (void)downloadImageWithName:(NSString *)imageName success:(void(^)())successBlock failure:(void(^)())failBlock;
 @end

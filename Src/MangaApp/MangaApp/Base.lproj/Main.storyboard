@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="O6A-y2-KFm">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="O6A-y2-KFm">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -199,43 +199,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KOf-EV-gqD" userLabel="Header View">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="64"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="amA-EQ-czm">
-                                        <rect key="frame" x="10" y="10" width="44" height="44"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="44" id="21A-ZN-TKW"/>
-                                            <constraint firstAttribute="width" constant="44" id="nuz-u9-rQ4"/>
-                                        </constraints>
-                                        <inset key="contentEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
-                                        <state key="normal" image="back.png">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="onBackButton:" destination="JvE-0B-H2D" eventType="touchUpInside" id="Co9-40-Ick"/>
-                                        </connections>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reading Naruto chapter 1 Reading" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Yj-6a-Zlz">
-                                        <rect key="frame" x="75" y="10" width="500" height="44"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="44" id="hzJ-Ds-na0"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstItem="9Yj-6a-Zlz" firstAttribute="leading" secondItem="amA-EQ-czm" secondAttribute="trailing" constant="21" id="3Ym-It-xEa"/>
-                                    <constraint firstAttribute="trailing" secondItem="9Yj-6a-Zlz" secondAttribute="trailing" constant="25" id="5Tb-Wt-Rrv"/>
-                                    <constraint firstItem="9Yj-6a-Zlz" firstAttribute="top" secondItem="KOf-EV-gqD" secondAttribute="top" constant="10" id="IPe-9d-b48"/>
-                                    <constraint firstItem="amA-EQ-czm" firstAttribute="leading" secondItem="KOf-EV-gqD" secondAttribute="leading" constant="10" id="bXM-hu-buw"/>
-                                    <constraint firstItem="amA-EQ-czm" firstAttribute="top" secondItem="KOf-EV-gqD" secondAttribute="top" constant="10" id="bb5-6r-rGX"/>
-                                    <constraint firstAttribute="height" constant="64" id="rDg-EN-hAZ"/>
-                                </constraints>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="be2-Kq-CGE" userLabel="Bottom View">
                                 <rect key="frame" x="0.0" y="536" width="600" height="64"/>
                                 <subviews>
@@ -281,6 +244,63 @@
                                     <constraint firstItem="y9i-Sc-JLb" firstAttribute="leading" secondItem="be2-Kq-CGE" secondAttribute="leading" constant="40" id="oVP-mf-ac6"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KOf-EV-gqD" userLabel="Header View">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="84"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="amA-EQ-czm">
+                                        <rect key="frame" x="10" y="10" width="44" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="21A-ZN-TKW"/>
+                                            <constraint firstAttribute="width" constant="44" id="nuz-u9-rQ4"/>
+                                        </constraints>
+                                        <inset key="contentEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
+                                        <state key="normal" image="back.png">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="onBackButton:" destination="JvE-0B-H2D" eventType="touchUpInside" id="Co9-40-Ick"/>
+                                        </connections>
+                                    </button>
+                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" misplaced="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="puh-q6-Mr9">
+                                        <rect key="frame" x="60" y="10" width="470" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="25" id="cfy-eN-3ve"/>
+                                        </constraints>
+                                        <color key="progressTintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="trackTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </progressView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reading One Piece chapter 1" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Yj-6a-Zlz">
+                                        <rect key="frame" x="65" y="40" width="470" height="20"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="87/100" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Soi-eU-SEO">
+                                        <rect key="frame" x="540" y="12" width="50" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="d25-50-ABv"/>
+                                            <constraint firstAttribute="height" constant="21" id="ukM-NN-Cob"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="Soi-eU-SEO" firstAttribute="leading" secondItem="puh-q6-Mr9" secondAttribute="trailing" constant="10" id="8bx-tG-zEi"/>
+                                    <constraint firstItem="9Yj-6a-Zlz" firstAttribute="top" secondItem="puh-q6-Mr9" secondAttribute="bottom" constant="5" id="HMP-Qo-hRi"/>
+                                    <constraint firstAttribute="trailing" secondItem="Soi-eU-SEO" secondAttribute="trailing" constant="10" id="LYm-4w-Z4Y"/>
+                                    <constraint firstAttribute="trailing" secondItem="9Yj-6a-Zlz" secondAttribute="trailing" constant="65" id="PMp-fe-TK9"/>
+                                    <constraint firstItem="puh-q6-Mr9" firstAttribute="leading" secondItem="amA-EQ-czm" secondAttribute="trailing" constant="6" id="Vyw-Fy-LwO"/>
+                                    <constraint firstItem="puh-q6-Mr9" firstAttribute="top" secondItem="KOf-EV-gqD" secondAttribute="top" constant="10" id="WMG-pO-vKa"/>
+                                    <constraint firstItem="Soi-eU-SEO" firstAttribute="centerY" secondItem="puh-q6-Mr9" secondAttribute="centerY" id="XpH-26-xjg"/>
+                                    <constraint firstItem="amA-EQ-czm" firstAttribute="leading" secondItem="KOf-EV-gqD" secondAttribute="leading" constant="10" id="bXM-hu-buw"/>
+                                    <constraint firstItem="amA-EQ-czm" firstAttribute="top" secondItem="KOf-EV-gqD" secondAttribute="top" constant="10" id="bb5-6r-rGX"/>
+                                    <constraint firstItem="9Yj-6a-Zlz" firstAttribute="leading" secondItem="amA-EQ-czm" secondAttribute="trailing" constant="11" id="hbV-sF-4C4"/>
+                                    <constraint firstAttribute="height" constant="84" id="rDg-EN-hAZ"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -299,6 +319,8 @@
                         <outlet property="headerView" destination="KOf-EV-gqD" id="WRr-xt-058"/>
                         <outlet property="pageLabel" destination="z98-iV-lhw" id="5oj-fF-4GC"/>
                         <outlet property="processSlider" destination="uKR-ls-LA5" id="Yzd-or-XC7"/>
+                        <outlet property="processView" destination="puh-q6-Mr9" id="ea9-cg-QAe"/>
+                        <outlet property="staminaLabel" destination="Soi-eU-SEO" id="PrG-1d-Nn7"/>
                         <outlet property="titleLabel" destination="9Yj-6a-Zlz" id="Ia4-0D-fdS"/>
                     </connections>
                 </viewController>
@@ -324,8 +346,16 @@
                                     <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iOk-5k-rYJ">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                     </imageView>
+                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="crj-7a-GgF">
+                                        <rect key="frame" x="100" y="35" width="150" height="2"/>
+                                    </progressView>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <variation key="default">
+                                    <mask key="subviews">
+                                        <exclude reference="crj-7a-GgF"/>
+                                    </mask>
+                                </variation>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>

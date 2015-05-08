@@ -23,4 +23,9 @@
 // Notification
 #define kShowProcessHUB @"ShowProcessHUB"
 #define kHiddenProcessHUB @"HiddenProcessHUB"
+#define kShowStaminaExpired @ "ShowStaminaExpired"
+#define kUpdateStaminaView @"UpdateStaminaView"
+
+// UserDefault
+#define kStaminaSaved @"StaminaSaved"
 #endif

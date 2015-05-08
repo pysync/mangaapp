@@ -7,6 +7,9 @@
 //
 
 #import "StaminaConfig.h"
+#import <MagicalRecord/CoreData+MagicalRecord.h>
+#import "ChapTracker.h"
+#import "Definition.h"
 
 @implementation StaminaConfig
 
@@ -23,11 +26,46 @@
 {
     self = [super init];
     if (self) {
+        _chapTrackList = [[NSMutableArray alloc] initWithCapacity:0];
+        
         NSString *filePath = [[NSBundle mainBundle] pathForResource:@"staminaConfig" ofType:@"plist"];
         NSDictionary *configDic = [NSDictionary dictionaryWithContentsOfFile:filePath];
         NSString *staminaString = configDic[@"stamina"];
-        _stamina = staminaString.integerValue;
+        _maxStamina = staminaString.floatValue;
+        
+        NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+        NSInteger savedStamina = [userDefault integerForKey:kStaminaSaved];
+        
+        if (!savedStamina) {
+            savedStamina = _maxStamina;
+        }
+        
+        _stamina = savedStamina;
     }
     return self;
+}
+
+- (void)saveData {
+    NSArray *trackerList = [ChapTracker MR_findByAttribute:@"chapName" withValue:_chapName];
+    NSMutableArray *chapList = [[NSMutableArray alloc] initWithCapacity:0];
+    for (ChapTracker *tracker in trackerList) {
+        [chapList addObject:tracker.chapName];
+    }
+    
+    if (chapList.count != _chapTrackList.count) {
+        for (int i=0; i<_chapTrackList.count; i++) {
+            if (![chapList containsObject:_chapTrackList[i]]) {
+                // Create new entity
+                ChapTracker *newTrack = [ChapTracker MR_createEntity];
+                newTrack.chapName = _chapName;
+                newTrack.pageName = _chapTrackList[i];
+                [newTrack.managedObjectContext MR_saveToPersistentStoreAndWait];
+            }
+        }
+    }
+    
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    [userDefault setInteger:_stamina forKey:kStaminaSaved];
+    [userDefault synchronize];
 }
 @end

@@ -22,6 +22,8 @@
 @property (strong, nonatomic) ChapterService *chapterService;
 @property (strong, nonatomic) ChapterModel *chapModel;
 @property (weak, nonatomic) IBOutlet UISlider *processSlider;
+@property (weak, nonatomic) IBOutlet UIProgressView *processView;
+@property (weak, nonatomic) IBOutlet UILabel *staminaLabel;
 
 - (IBAction)changePage:(id)sender;
 - (IBAction)onBackButton:(id)sender;

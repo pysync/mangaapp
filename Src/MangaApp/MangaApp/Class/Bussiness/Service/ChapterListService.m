@@ -139,6 +139,7 @@
         NSString *keyString = [NSString stringWithFormat:@"chap_%d", i+1];
         NSString *configCost = configDic[keyString];
         chapModel.staminaCost = configCost.integerValue;
+        chapModel.chapName = keyString;
     }
 }
 
