@@ -41,6 +41,7 @@
     if (!err) {
         _listChapters = [self createChapterModelWithData:responseModel.data];
         [self createAndSaveDataIfNeed];
+        [self loadConfigFile];
         if (successBlock) {
             successBlock();
         }
@@ -127,6 +128,17 @@
             
             [chapEntity.managedObjectContext MR_saveToPersistentStoreAndWait];
         }
+    }
+}
+
+- (void)loadConfigFile {
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"staminaConfig" ofType:@"plist"];
+    NSDictionary *configDic = [NSDictionary dictionaryWithContentsOfFile:filePath];
+    for (int i=0; i<_listChapters.count; i++) {
+        ChapterModel *chapModel = _listChapters[i];
+        NSString *keyString = [NSString stringWithFormat:@"chap_%d", i+1];
+        NSString *configCost = configDic[keyString];
+        chapModel.staminaCost = configCost.integerValue;
     }
 }
 

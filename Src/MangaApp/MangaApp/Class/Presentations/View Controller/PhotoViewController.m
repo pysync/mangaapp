@@ -98,6 +98,10 @@
     }
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    
+}
+
 - (void)loadView
 {
     _scrollView = [[ImageScrollView alloc] init];

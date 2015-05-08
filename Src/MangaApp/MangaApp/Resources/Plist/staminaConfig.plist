@@ -3,16 +3,16 @@
 <plist version="1.0">
 <dict>
 	<key>stamina</key>
-	<integer>100</integer>
+	<string>100</string>
 	<key>chap_1</key>
-	<integer>1</integer>
+	<string>1</string>
 	<key>chap_2</key>
-	<integer>2</integer>
+	<string>2</string>
 	<key>chap_3</key>
-	<integer>3</integer>
+	<string>3</string>
 	<key>chap_4</key>
-	<integer>4</integer>
+	<string>4</string>
 	<key>chap_5</key>
-	<integer>5</integer>
+	<string>5</string>
 </dict>
 </plist>

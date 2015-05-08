@@ -60,6 +60,7 @@
 		D32E762E1AE34AC8006EF17A /* logo3.png in Resources */ = {isa = PBXBuildFile; fileRef = D32E762C1AE34AC8006EF17A /* logo3.png */; };
 		D32E76311AE34D4A006EF17A /* ChapterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D32E76301AE34D4A006EF17A /* ChapterViewController.m */; };
 		D32E763B1AE38F9A006EF17A /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = D32E763A1AE38F9A006EF17A /* back.png */; };
+		D33F3E971AFC33D600474B08 /* StaminaConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = D33F3E961AFC33D600474B08 /* StaminaConfig.m */; };
 		D384C64B1AD95B6A00C9883A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D384C64A1AD95B6A00C9883A /* main.m */; };
 		D384C6541AD95B6A00C9883A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D384C6521AD95B6A00C9883A /* Main.storyboard */; };
 		D384C6561AD95B6A00C9883A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D384C6551AD95B6A00C9883A /* Images.xcassets */; };
@@ -140,6 +141,8 @@
 		D32E762F1AE34D4A006EF17A /* ChapterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChapterViewController.h; sourceTree = "<group>"; };
 		D32E76301AE34D4A006EF17A /* ChapterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChapterViewController.m; sourceTree = "<group>"; };
 		D32E763A1AE38F9A006EF17A /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
+		D33F3E951AFC33D600474B08 /* StaminaConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StaminaConfig.h; sourceTree = "<group>"; };
+		D33F3E961AFC33D600474B08 /* StaminaConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StaminaConfig.m; sourceTree = "<group>"; };
 		D384C6451AD95B6A00C9883A /* MangaApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MangaApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D384C6491AD95B6A00C9883A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D384C64A1AD95B6A00C9883A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -512,6 +515,8 @@
 			children = (
 				2D5FE9921AF8D4D9003AB6A9 /* Common.h */,
 				2D5FE9931AF8D4D9003AB6A9 /* Common.m */,
+				D33F3E951AFC33D600474B08 /* StaminaConfig.h */,
+				D33F3E961AFC33D600474B08 /* StaminaConfig.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -702,6 +707,7 @@
 				2D22E47F1AFB609F00037AE2 /* ChapterModel.m in Sources */,
 				D386E83A1AEB7BCF00FFB149 /* ChapterService.m in Sources */,
 				2D7CD97B1AE789C800C25B9A /* PageViewController.m in Sources */,
+				D33F3E971AFC33D600474B08 /* StaminaConfig.m in Sources */,
 				2D22E4781AFB5C7F00037AE2 /* ResponseModel.m in Sources */,
 				2D1FBC871AF783030025ABE3 /* _Chapter.m in Sources */,
 				D3CD35D31AD9889A0057265B /* AppDelegate.m in Sources */,
