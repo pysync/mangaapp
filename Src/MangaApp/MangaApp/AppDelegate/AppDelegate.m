@@ -11,6 +11,7 @@
 #import <MagicalRecord/CoreData+MagicalRecord.h>
 #import <MagicalRecord/NSPersistentStore+MagicalRecord.h>
 #import "StaminaConfig.h"
+#import "TestFairy.h"
 
 @interface AppDelegate ()
 
@@ -21,6 +22,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    // Setup TestFairy
+    [TestFairy begin:@"dee385de1cbd3d58315afa1f532077fe7c9ef1cf"];
+    
     // Setup Core Data
     [MagicalRecord setupCoreDataStackWithAutoMigratingSqliteStoreNamed:@"MangaApp.sqlite3"];
     NSURL *storeURL = [NSPersistentStore MR_urlForStoreName:@"MangaApp.sqlite3"];

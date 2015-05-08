@@ -52,6 +52,12 @@
 		2DBD636E1ADF785000D001C5 /* SubInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBD636D1ADF785000D001C5 /* SubInfoViewController.m */; };
 		2DCBEE381AF9CF98003E5DA8 /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DCBEE361AF9CF98003E5DA8 /* placeholder.png */; };
 		2DCBEE391AF9CF98003E5DA8 /* placeholder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DCBEE371AF9CF98003E5DA8 /* placeholder@2x.png */; };
+		2DD2D23A1AFCC3D500EF4418 /* libTestFairy.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DD2D2371AFCC3D500EF4418 /* libTestFairy.a */; };
+		2DD2D23B1AFCC3D500EF4418 /* upload-dsym.sh in Resources */ = {isa = PBXBuildFile; fileRef = 2DD2D2391AFCC3D500EF4418 /* upload-dsym.sh */; };
+		2DD2D23D1AFCC4E900EF4418 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DD2D23C1AFCC4E900EF4418 /* CoreMedia.framework */; };
+		2DD2D23F1AFCC4F500EF4418 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DD2D23E1AFCC4F500EF4418 /* CoreMotion.framework */; };
+		2DD2D2411AFCC50F00EF4418 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DD2D2401AFCC50F00EF4418 /* AVFoundation.framework */; };
+		2DD2D2431AFCC52000EF4418 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DD2D2421AFCC52000EF4418 /* OpenGLES.framework */; };
 		417FA6F62ACFEA96D5995F43 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 14DFCA9028ED14D9EE20FF9D /* libPods.a */; };
 		D31F9B071AEECB0F00831A09 /* icon120x120.png in Resources */ = {isa = PBXBuildFile; fileRef = D31F9B061AEECB0F00831A09 /* icon120x120.png */; };
 		D31F9B091AEECC9200831A09 /* icon58x58.png in Resources */ = {isa = PBXBuildFile; fileRef = D31F9B081AEECC9200831A09 /* icon58x58.png */; };
@@ -134,6 +140,13 @@
 		2DBD636D1ADF785000D001C5 /* SubInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubInfoViewController.m; sourceTree = "<group>"; };
 		2DCBEE361AF9CF98003E5DA8 /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder.png; sourceTree = "<group>"; };
 		2DCBEE371AF9CF98003E5DA8 /* placeholder@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "placeholder@2x.png"; sourceTree = "<group>"; };
+		2DD2D2371AFCC3D500EF4418 /* libTestFairy.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFairy.a; sourceTree = "<group>"; };
+		2DD2D2381AFCC3D500EF4418 /* TestFairy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFairy.h; sourceTree = "<group>"; };
+		2DD2D2391AFCC3D500EF4418 /* upload-dsym.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "upload-dsym.sh"; sourceTree = "<group>"; };
+		2DD2D23C1AFCC4E900EF4418 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		2DD2D23E1AFCC4F500EF4418 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		2DD2D2401AFCC50F00EF4418 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		2DD2D2421AFCC52000EF4418 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		4BBC6B096FAF682A19022BEF /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		D31F9B061AEECB0F00831A09 /* icon120x120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon120x120.png; sourceTree = "<group>"; };
 		D31F9B081AEECC9200831A09 /* icon58x58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon58x58.png; sourceTree = "<group>"; };
@@ -183,11 +196,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2DD2D2431AFCC52000EF4418 /* OpenGLES.framework in Frameworks */,
+				2D13392B1AE6036100F1DAF7 /* SystemConfiguration.framework in Frameworks */,
+				2DD2D2411AFCC50F00EF4418 /* AVFoundation.framework in Frameworks */,
+				2DD2D23F1AFCC4F500EF4418 /* CoreMotion.framework in Frameworks */,
+				2DD2D23D1AFCC4E900EF4418 /* CoreMedia.framework in Frameworks */,
 				2D1339331AE604BC00F1DAF7 /* Social.framework in Frameworks */,
 				2D1339311AE604B300F1DAF7 /* Accounts.framework in Frameworks */,
 				2D13392F1AE6037500F1DAF7 /* libsqlite3.dylib in Frameworks */,
 				2D13392D1AE6036B00F1DAF7 /* libz.dylib in Frameworks */,
-				2D13392B1AE6036100F1DAF7 /* SystemConfiguration.framework in Frameworks */,
 				2D1339291AE6035B00F1DAF7 /* StoreKit.framework in Frameworks */,
 				2D1339271AE6035200F1DAF7 /* Security.framework in Frameworks */,
 				2D1339251AE6034B00F1DAF7 /* QuartzCore.framework in Frameworks */,
@@ -199,6 +216,7 @@
 				417FA6F62ACFEA96D5995F43 /* libPods.a in Frameworks */,
 				2D1339191AE601DA00F1DAF7 /* Parse.framework in Frameworks */,
 				2D1339181AE601DA00F1DAF7 /* Bolts.framework in Frameworks */,
+				2DD2D23A1AFCC3D500EF4418 /* libTestFairy.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,9 +322,31 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		2DD2D2351AFCC3D500EF4418 /* Libs */ = {
+			isa = PBXGroup;
+			children = (
+				2DD2D2361AFCC3D500EF4418 /* TestFairySDK */,
+			);
+			path = Libs;
+			sourceTree = "<group>";
+		};
+		2DD2D2361AFCC3D500EF4418 /* TestFairySDK */ = {
+			isa = PBXGroup;
+			children = (
+				2DD2D2371AFCC3D500EF4418 /* libTestFairy.a */,
+				2DD2D2381AFCC3D500EF4418 /* TestFairy.h */,
+				2DD2D2391AFCC3D500EF4418 /* upload-dsym.sh */,
+			);
+			path = TestFairySDK;
+			sourceTree = "<group>";
+		};
 		A31C43B7A018DB32687E73F1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2DD2D2421AFCC52000EF4418 /* OpenGLES.framework */,
+				2DD2D2401AFCC50F00EF4418 /* AVFoundation.framework */,
+				2DD2D23E1AFCC4F500EF4418 /* CoreMotion.framework */,
+				2DD2D23C1AFCC4E900EF4418 /* CoreMedia.framework */,
 				2D1339321AE604BC00F1DAF7 /* Social.framework */,
 				2D1339301AE604B300F1DAF7 /* Accounts.framework */,
 				2D13392E1AE6037500F1DAF7 /* libsqlite3.dylib */,
@@ -368,6 +408,7 @@
 		D384C6471AD95B6A00C9883A /* MangaApp */ = {
 			isa = PBXGroup;
 			children = (
+				2DD2D2351AFCC3D500EF4418 /* Libs */,
 				2D1FBC701AF7750E0025ABE3 /* CoreData */,
 				D389604D1AEE8FD4007FF59B /* Global */,
 				D3CD35C61AD9889A0057265B /* AppDelegate */,
@@ -597,6 +638,7 @@
 					};
 					D384C6441AD95B6A00C9883A = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = N97FTYMTL5;
 					};
 					D384C65D1AD95B6A00C9883A = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -639,6 +681,7 @@
 				D3CD35D61AD98FC30057265B /* menu.png in Resources */,
 				D384C6541AD95B6A00C9883A /* Main.storyboard in Resources */,
 				D32E762D1AE34AC8006EF17A /* about.html in Resources */,
+				2DD2D23B1AFCC3D500EF4418 /* upload-dsym.sh in Resources */,
 				2DCBEE391AF9CF98003E5DA8 /* placeholder@2x.png in Resources */,
 				D31F9B091AEECC9200831A09 /* icon58x58.png in Resources */,
 				D31F9B071AEECB0F00831A09 /* icon120x120.png in Resources */,
@@ -804,8 +847,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iOS Development: thanh le (MNF8D3MF92)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iOS Development: thanh le (MNF8D3MF92)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Yuta Watanabe (725395W8Z5)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Yuta Watanabe (725395W8Z5)";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -825,7 +868,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "ba91295f-d7f3-42df-9ad1-afe6cf51da0f";
+				PROVISIONING_PROFILE = "1d6c8657-948e-4958-a1e8-575f094af533";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -848,8 +891,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iOS Development: thanh le (MNF8D3MF92)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iOS Development: thanh le (MNF8D3MF92)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Yuta Watanabe (725395W8Z5)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Yuta Watanabe (725395W8Z5)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -862,7 +905,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "ba91295f-d7f3-42df-9ad1-afe6cf51da0f";
+				PROVISIONING_PROFILE = "1d6c8657-948e-4958-a1e8-575f094af533";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -875,16 +918,20 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iOS Development: thanh le (MNF8D3MF92)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iOS Development: thanh le (MNF8D3MF92)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Yuta Watanabe (725395W8Z5)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Yuta Watanabe (725395W8Z5)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = MangaApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/MangaApp/Libs/TestFairySDK",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "ba91295f-d7f3-42df-9ad1-afe6cf51da0f";
+				PROVISIONING_PROFILE = "1d6c8657-948e-4958-a1e8-575f094af533";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -895,16 +942,20 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iOS Development: thanh le (MNF8D3MF92)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iOS Development: thanh le (MNF8D3MF92)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Yuta Watanabe (725395W8Z5)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Yuta Watanabe (725395W8Z5)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = MangaApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/MangaApp/Libs/TestFairySDK",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "ba91295f-d7f3-42df-9ad1-afe6cf51da0f";
+				PROVISIONING_PROFILE = "1d6c8657-948e-4958-a1e8-575f094af533";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

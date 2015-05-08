@@ -91,7 +91,7 @@
 - (void)loadDataToView {
     StaminaConfig *config = [StaminaConfig sharedConfig];
     _processView.progress = config.stamina/config.maxStamina;
-    _staminaLabel.text = [NSString stringWithFormat:@"%d/%d", config.stamina,(int)config.maxStamina];
+    _staminaLabel.text = [NSString stringWithFormat:@"%ld/%d", (long)config.stamina,(int)config.maxStamina];
     
     _titleLabel.text = _chapModel.chapterJSONModel.titleChap;
     _pageLabel.text = [NSString stringWithFormat:@"1/%lu", (unsigned long)_chapModel.chapterJSONModel.images.count];
@@ -172,7 +172,7 @@
     StaminaConfig *config = [StaminaConfig sharedConfig];
     dispatch_async(dispatch_get_main_queue(), ^{
         _processView.progress = config.stamina/config.maxStamina;
-        _staminaLabel.text = [NSString stringWithFormat:@"%d/%d", config.stamina,(int)config.maxStamina];
+        _staminaLabel.text = [NSString stringWithFormat:@"%ld/%d", (long)config.stamina,(int)config.maxStamina];
     });
 }
 
