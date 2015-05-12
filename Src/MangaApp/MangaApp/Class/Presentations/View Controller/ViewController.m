@@ -78,7 +78,7 @@
         _infoViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"InfoViewController"];
         
         if ([_infoViewController respondsToSelector:@selector(setPreferredContentSize:)]) {
-            _infoViewController.preferredContentSize = CGSizeMake(280, 200);             // iOS 7
+            _infoViewController.preferredContentSize = CGSizeMake(280, 320);             // iOS 7
         }
         
         _infoViewController.title = @"Info Screen";
@@ -104,6 +104,11 @@
                 
                 [weakSelf releasePopoverController];
             }];
+        };
+        
+        _infoViewController.dismissInfoView = ^(){
+            [weakSelf.infoPopoverController dismissPopoverAnimated:YES];
+            [weakSelf releasePopoverController];
         };
         
         UINavigationController* contentViewController = [[UINavigationController alloc] initWithRootViewController:_infoViewController];

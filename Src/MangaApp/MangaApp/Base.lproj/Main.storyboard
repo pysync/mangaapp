@@ -82,7 +82,7 @@
                         <viewControllerLayoutGuide type="bottom" id="xT7-MN-iip"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Noo-it-mXv">
-                        <rect key="frame" x="0.0" y="0.0" width="280" height="240"/>
+                        <rect key="frame" x="0.0" y="0.0" width="280" height="360"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XIy-UV-FZ8">
@@ -121,20 +121,50 @@
                                     <action selector="onSubInfoButton:" destination="FJK-j2-Le6" eventType="touchUpInside" id="Pog-V4-cPO"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sbp-fv-Ew6">
+                                <rect key="frame" x="0.0" y="240" width="280" height="60"/>
+                                <state key="normal" title="News">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onSubInfoButton:" destination="FJK-j2-Le6" eventType="touchUpInside" id="pKZ-8u-uQO"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6O8-xd-541">
+                                <rect key="frame" x="100" y="315" width="80" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="OkE-CJ-ke3"/>
+                                    <constraint firstAttribute="height" constant="36" id="Q7e-bX-3Bk"/>
+                                </constraints>
+                                <state key="normal" title="Close">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onCloseButton:" destination="FJK-j2-Le6" eventType="touchUpInside" id="V62-QV-OWq"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="QM6-sY-nTf" firstAttribute="leading" secondItem="Noo-it-mXv" secondAttribute="leadingMargin" constant="-16" id="1nx-Qh-oqC"/>
+                            <constraint firstItem="sbp-fv-Ew6" firstAttribute="leading" secondItem="Noo-it-mXv" secondAttribute="leadingMargin" constant="-16" id="2wP-2E-G02"/>
                             <constraint firstAttribute="trailingMargin" secondItem="9V0-9D-A0o" secondAttribute="trailing" constant="-16" id="4y4-NL-alv"/>
                             <constraint firstItem="xrX-bb-zNr" firstAttribute="top" secondItem="QM6-sY-nTf" secondAttribute="bottom" id="69p-gX-DqF"/>
+                            <constraint firstItem="xrX-bb-zNr" firstAttribute="height" secondItem="QM6-sY-nTf" secondAttribute="height" id="Ack-qR-JZJ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="QM6-sY-nTf" secondAttribute="trailing" constant="-16" id="IIT-FN-IaY"/>
-                            <constraint firstItem="xT7-MN-iip" firstAttribute="top" secondItem="xrX-bb-zNr" secondAttribute="bottom" id="Qtk-B0-PCb"/>
+                            <constraint firstItem="xrX-bb-zNr" firstAttribute="height" secondItem="9V0-9D-A0o" secondAttribute="height" id="OMc-RY-gSQ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="sbp-fv-Ew6" secondAttribute="trailing" constant="-16" id="Q3d-Vk-Alp"/>
                             <constraint firstItem="xrX-bb-zNr" firstAttribute="leading" secondItem="Noo-it-mXv" secondAttribute="leadingMargin" constant="-16" id="ScL-yK-6Uh"/>
                             <constraint firstItem="XIy-UV-FZ8" firstAttribute="top" secondItem="1cp-gZ-1si" secondAttribute="bottom" id="T84-H1-WG8"/>
                             <constraint firstItem="9V0-9D-A0o" firstAttribute="top" secondItem="XIy-UV-FZ8" secondAttribute="bottom" id="UWD-Tl-3HE"/>
+                            <constraint firstItem="6O8-xd-541" firstAttribute="top" secondItem="sbp-fv-Ew6" secondAttribute="bottom" constant="15" id="aBr-Fs-VNR"/>
                             <constraint firstItem="QM6-sY-nTf" firstAttribute="top" secondItem="9V0-9D-A0o" secondAttribute="bottom" id="bk2-CQ-BJf"/>
+                            <constraint firstItem="xrX-bb-zNr" firstAttribute="height" secondItem="sbp-fv-Ew6" secondAttribute="height" id="cr4-qy-ISH"/>
                             <constraint firstItem="XIy-UV-FZ8" firstAttribute="leading" secondItem="Noo-it-mXv" secondAttribute="leadingMargin" constant="-16" id="f2y-gz-n7N"/>
+                            <constraint firstAttribute="centerX" secondItem="6O8-xd-541" secondAttribute="centerX" id="fTj-cG-rZs"/>
                             <constraint firstItem="XIy-UV-FZ8" firstAttribute="height" secondItem="xrX-bb-zNr" secondAttribute="height" id="i6N-wY-iqL"/>
+                            <constraint firstItem="sbp-fv-Ew6" firstAttribute="top" secondItem="xrX-bb-zNr" secondAttribute="bottom" id="oKd-MQ-1X4"/>
+                            <constraint firstItem="xT7-MN-iip" firstAttribute="top" secondItem="6O8-xd-541" secondAttribute="bottom" constant="9" id="oXx-Mp-pkR"/>
                             <constraint firstAttribute="trailingMargin" secondItem="XIy-UV-FZ8" secondAttribute="trailing" constant="-16" id="qXn-ce-y0Z"/>
                             <constraint firstItem="XIy-UV-FZ8" firstAttribute="height" secondItem="QM6-sY-nTf" secondAttribute="height" id="qZ9-9o-PKo"/>
                             <constraint firstItem="9V0-9D-A0o" firstAttribute="leading" secondItem="Noo-it-mXv" secondAttribute="leadingMargin" constant="-16" id="sM5-hA-GrB"/>
@@ -144,7 +174,10 @@
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="280" height="240"/>
+                    <size key="freeformSize" width="280" height="360"/>
+                    <connections>
+                        <outlet property="closeButton" destination="6O8-xd-541" id="Nfw-Jm-Q3t"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MwP-z1-F8d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

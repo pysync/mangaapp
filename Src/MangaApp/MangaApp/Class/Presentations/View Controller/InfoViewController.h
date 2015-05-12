@@ -13,12 +13,16 @@ typedef enum {
     kQAScreen,
     kTermScreen,
     kContactScreen,
+    kNewsScreen,
     kNoneScreen
 }SubInfoType;
 
 @interface InfoViewController : UIViewController
 
 @property (nonatomic, copy) void(^gotoSubInfoScreen)(SubInfoType subType);
+@property (nonatomic, copy) void(^dismissInfoView)();
+@property (weak, nonatomic) IBOutlet UIButton *closeButton;
 
 - (IBAction)onSubInfoButton:(id)sender;
+- (IBAction)onCloseButton:(id)sender;
 @end

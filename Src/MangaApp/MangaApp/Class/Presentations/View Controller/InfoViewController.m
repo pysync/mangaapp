@@ -16,6 +16,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _closeButton.layer.cornerRadius = 4.0;
+    _closeButton.layer.borderWidth = 1.0;
+    _closeButton.layer.borderColor = [[UIColor lightGrayColor] CGColor];
     // Do any additional setup after loading the view.
 }
 
@@ -59,6 +62,11 @@
             subType = kContactScreen;
             break;
         }
+        case 5: {
+            // News vc
+            subType = kNewsScreen;
+            break;
+        }
             
         default:
             break;
@@ -66,6 +74,12 @@
     
     if (self.gotoSubInfoScreen) {
         self.gotoSubInfoScreen(subType);
+    }
+}
+
+- (IBAction)onCloseButton:(id)sender {
+    if (self.dismissInfoView) {
+        self.dismissInfoView();
     }
 }
 @end
