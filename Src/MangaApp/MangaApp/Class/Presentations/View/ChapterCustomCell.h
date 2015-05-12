@@ -18,11 +18,17 @@ typedef enum {
 @interface ChapterCustomCell : CustomBaseCell
 
 @property (nonatomic, assign) DownloadState downloadState;
+@property (nonatomic, copy) void (^onStartDownloadButton)();
+@property (nonatomic, copy) void (^onStartRemoveButton)();
 @property (nonatomic, copy) void (^onStartReadingButton)();
 @property (weak, nonatomic) IBOutlet UILabel *chapNumberLabel;
 @property (weak, nonatomic) IBOutlet UILabel *chapTitleLabel;
-@property (weak, nonatomic) IBOutlet UIButton *readingButton;
+@property (weak, nonatomic) IBOutlet UIButton *downloadButton;
 @property (weak, nonatomic) IBOutlet UIView *subContentView;
+@property (weak, nonatomic) IBOutlet UIView *downloadView;
+@property (weak, nonatomic) IBOutlet UIView *downloadedView;
 
+- (IBAction)onDownloadButton:(id)sender;
+- (IBAction)onRemoveButton:(id)sender;
 - (IBAction)onReadingButton:(id)sender;
 @end

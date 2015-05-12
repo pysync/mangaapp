@@ -46,6 +46,18 @@
 }
 
 #pragma mark - Button Function
+- (IBAction)onDownloadButton:(id)sender {
+    if (self.onStartDownloadButton) {
+        self.onStartDownloadButton();
+    }
+}
+
+- (IBAction)onRemoveButton:(id)sender {
+    if (self.onStartRemoveButton) {
+        self.onStartRemoveButton();
+    }
+}
+
 - (IBAction)onReadingButton:(id)sender {
     if (self.onStartReadingButton) {
         self.onStartReadingButton();
@@ -56,28 +68,27 @@
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
     switch (_downloadState) {
         case kBeforeDownloadState:{
-            _readingButton.enabled = YES;
-            [_readingButton setTitle:kBeforeDownload forState:UIControlStateNormal];
-            [_readingButton setBackgroundColor:kBgBeforeButtonColor];
-            [_readingButton setTitleColor:kBgBeforeViewColor forState:UIControlStateNormal];
+            _downloadView.hidden = NO;
+            _downloadedView.hidden = YES;
+            _downloadButton.enabled = YES;
+            [_downloadButton setTitle:kBeforeDownload forState:UIControlStateNormal];
             _subContentView.backgroundColor = kBgBeforeViewColor;
             break;
         }
             
         case kDownloadingState:{
-            _readingButton.enabled = NO;
-            [_readingButton setTitle:kDownloading forState:UIControlStateNormal];
-            [_readingButton setBackgroundColor:kBgBeforeButtonColor];
-            [_readingButton setTitleColor:kBgBeforeViewColor forState:UIControlStateNormal];
+            _downloadView.hidden = NO;
+            _downloadedView.hidden = YES;
+            _downloadButton.enabled = NO;
+            [_downloadButton setTitle:kDownloading forState:UIControlStateNormal];
             _subContentView.backgroundColor = kBgBeforeViewColor;
             break;
         }
             
         case kDownloadedState:{
-            _readingButton.enabled = YES;
-            [_readingButton setTitle:kDeleteChapter forState:UIControlStateNormal];
-            [_readingButton setBackgroundColor:kBgDownloadedButtonColor];
-            [_readingButton setTitleColor:kBgDownloadedViewColor forState:UIControlStateNormal];
+            _downloadView.hidden = YES;
+            _downloadedView.hidden = NO;
+            _downloadButton.enabled = YES;
             _subContentView.backgroundColor = kBgDownloadedViewColor;
             break;
         }

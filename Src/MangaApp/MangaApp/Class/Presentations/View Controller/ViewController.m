@@ -124,29 +124,38 @@
 
 - (void)downloadMangaWithIndexChapter:(NSInteger )indexChap {
     ChapterCustomCell *cell = (ChapterCustomCell *)[_contentTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:indexChap inSection:0]];
-    if (cell.downloadState == kBeforeDownloadState) {
-        cell.downloadState = kDownloadingState;
-        
-        MBProgressHUD *hub = [[MBProgressHUD alloc] initWithView:self.view];
-        hub.labelText = @"Downloading...";
-        [self.view addSubview:hub];
-        [hub show:YES];
-        
-        //[MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        ChapterModel *chapModel = _chapterService.listChapters[indexChap];
-        [_chapterService downloadChapterWithModel:chapModel.chapterJSONModel success:^{
-            cell.downloadState = kDownloadedState;
-            [_chapterService updateChapterWithIndexChap:indexChap andState:YES];
-            [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-        } failure:^{
-            [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-        }];
-    }else if (cell.downloadState == kDownloadedState) {
-        _indexRemoveChapter = indexChap;
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"Do you want to remove this chapter?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
-        alert.tag = kTagRemoveChapter;
-        [alert show];
-    }
+    cell.downloadState = kDownloadingState;
+    
+    MBProgressHUD *hub = [[MBProgressHUD alloc] initWithView:self.view];
+    hub.labelText = @"Downloading...";
+    [self.view addSubview:hub];
+    [hub show:YES];
+    
+    //[MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    ChapterModel *chapModel = _chapterService.listChapters[indexChap];
+    [_chapterService downloadChapterWithModel:chapModel.chapterJSONModel success:^{
+        cell.downloadState = kDownloadedState;
+        [_chapterService updateChapterWithIndexChap:indexChap andState:YES];
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    } failure:^{
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    }];
+}
+
+- (void)removeChapWithIndexChapter:(NSInteger )indexChap {
+    _indexRemoveChapter = indexChap;
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"Do you want to remove this chapter?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
+    alert.tag = kTagRemoveChapter;
+    [alert show];
+}
+
+- (void)readingChapWithIndexChapter:(NSInteger )indexChap {
+    UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    ChapterViewController *chapterVC = (ChapterViewController *)[story instantiateViewControllerWithIdentifier:NSStringFromClass([ChapterViewController class])];
+    
+    ChapterModel *chapModel = (ChapterModel *)_chapterService.listChapters[indexChap];
+    chapterVC.chapModel = chapModel;
+    [self.navigationController pushViewController:chapterVC animated:YES];
 }
 
 #pragma mark - UIAlertView delegate
@@ -204,8 +213,14 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ChapterCustomCell *cell = (ChapterCustomCell *)[tableView dequeueReusableCellWithIdentifier:[ChapterCustomCell getIdentifierCell]];
     
-    cell.onStartReadingButton = ^(){
+    cell.onStartDownloadButton = ^(){
         [self downloadMangaWithIndexChapter:indexPath.row];
+    };
+    cell.onStartRemoveButton = ^(){
+        [self removeChapWithIndexChapter:indexPath.row];
+    };
+    cell.onStartReadingButton = ^(){
+        [self readingChapWithIndexChapter:indexPath.row];
     };
     
     ChapterModel *chapModel = _chapterService.listChapters[indexPath.row];
@@ -218,12 +233,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    ChapterViewController *chapterVC = (ChapterViewController *)[story instantiateViewControllerWithIdentifier:NSStringFromClass([ChapterViewController class])];
-    
-    ChapterModel *chapModel = (ChapterModel *)_chapterService.listChapters[indexPath.row];
-    chapterVC.chapModel = chapModel;
-    [self.navigationController pushViewController:chapterVC animated:YES];
+    [self readingChapWithIndexChapter:indexPath.row];
 }
 
 @end
