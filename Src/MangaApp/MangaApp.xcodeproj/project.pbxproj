@@ -21,6 +21,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		2D0AF3121B01F513001D7AB3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2D0AF3141B01F513001D7AB3 /* Localizable.strings */; };
 		2D1339181AE601DA00F1DAF7 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D1339161AE601DA00F1DAF7 /* Bolts.framework */; };
 		2D1339191AE601DA00F1DAF7 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D1339171AE601DA00F1DAF7 /* Parse.framework */; };
 		2D13391B1AE6031E00F1DAF7 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D13391A1AE6031E00F1DAF7 /* AudioToolbox.framework */; };
@@ -97,6 +98,10 @@
 
 /* Begin PBXFileReference section */
 		14DFCA9028ED14D9EE20FF9D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D0AF30E1B01E4FD001D7AB3 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
+		2D0AF30F1B01E4FD001D7AB3 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		2D0AF3131B01F513001D7AB3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		2D0AF3151B01F516001D7AB3 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2D1339161AE601DA00F1DAF7 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		2D1339171AE601DA00F1DAF7 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		2D13391A1AE6031E00F1DAF7 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -425,6 +430,7 @@
 				D3CD35C21AD987360057265B /* Resources */,
 				D384C6491AD95B6A00C9883A /* Info.plist */,
 				D384C64A1AD95B6A00C9883A /* main.m */,
+				2D0AF3141B01F513001D7AB3 /* Localizable.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -650,6 +656,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ja,
 			);
 			mainGroup = D384C63C1AD95B6A00C9883A;
 			productRefGroup = D384C6461AD95B6A00C9883A /* Products */;
@@ -681,6 +688,7 @@
 				2DCBEE391AF9CF98003E5DA8 /* placeholder@2x.png in Resources */,
 				D31F9B091AEECC9200831A09 /* icon58x58.png in Resources */,
 				D31F9B071AEECB0F00831A09 /* icon120x120.png in Resources */,
+				2D0AF3121B01F513001D7AB3 /* Localizable.strings in Resources */,
 				D31F9B0B1AEECCCC00831A09 /* icon80x80.png in Resources */,
 				D384C6591AD95B6A00C9883A /* LaunchScreen.xib in Resources */,
 				D384C6561AD95B6A00C9883A /* Images.xcassets in Resources */,
@@ -793,10 +801,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		2D0AF3141B01F513001D7AB3 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2D0AF3131B01F513001D7AB3 /* en */,
+				2D0AF3151B01F516001D7AB3 /* ja */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		D384C6521AD95B6A00C9883A /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				D384C6531AD95B6A00C9883A /* Base */,
+				2D0AF30E1B01E4FD001D7AB3 /* ja */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -805,6 +823,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				D384C6581AD95B6A00C9883A /* Base */,
+				2D0AF30F1B01E4FD001D7AB3 /* ja */,
 			);
 			name = LaunchScreen.xib;
 			sourceTree = "<group>";
