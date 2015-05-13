@@ -7,6 +7,7 @@
 //
 
 #import "InfoViewController.h"
+#import "Definition.h"
 
 @interface InfoViewController ()
 
@@ -20,11 +21,22 @@
     _closeButton.layer.borderWidth = 1.0;
     _closeButton.layer.borderColor = [[UIColor lightGrayColor] CGColor];
     // Do any additional setup after loading the view.
+    
+    [self localizableForViews];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)localizableForViews {
+    [_aboutButton setTitle:NSLocalizedString(kAboutScreenLocalizable, nil) forState:UIControlStateNormal];
+    [_qaButton setTitle:NSLocalizedString(kQAScreenLocalizable, nil) forState:UIControlStateNormal];
+    [_termButton setTitle:NSLocalizedString(kTermScreenLocalizable, nil) forState:UIControlStateNormal];
+    [_contactButton setTitle:NSLocalizedString(kContactScreenLocalizable, nil) forState:UIControlStateNormal];
+    [_newsButton setTitle:NSLocalizedString(kNewsScreenLocalizable, nil) forState:UIControlStateNormal];
+    [_closeButton setTitle:NSLocalizedString(kCloseButtonLocalizable, nil) forState:UIControlStateNormal];
 }
 
 /*
@@ -41,30 +53,36 @@
 - (IBAction)onSubInfoButton:(id)sender {
     UIButton *subButton = (UIButton *)sender;
     SubInfoType subType = kNoneScreen;
+    NSString *titleView = @"";
     switch (subButton.tag) {
         case 1: {
             // About view controller
             subType = kAboutScreen;
+            titleView = NSLocalizedString(kAboutScreenLocalizable, nil);
             break;
         }
         case 2: {
             // Q & A view controller
             subType = kQAScreen;
+            titleView = NSLocalizedString(kQAScreenLocalizable, nil);
             break;
         }
         case 3: {
             // Term vc
             subType = kTermScreen;
+            titleView = NSLocalizedString(kTermScreenLocalizable, nil);
             break;
         }
         case 4: {
             // Contact vc
             subType = kContactScreen;
+            titleView = NSLocalizedString(kContactScreenLocalizable, nil);
             break;
         }
         case 5: {
             // News vc
             subType = kNewsScreen;
+            titleView = NSLocalizedString(kNewsScreenLocalizable, nil);
             break;
         }
             
@@ -73,7 +91,7 @@
     }
     
     if (self.gotoSubInfoScreen) {
-        self.gotoSubInfoScreen(subType);
+        self.gotoSubInfoScreen(subType, titleView);
     }
 }
 

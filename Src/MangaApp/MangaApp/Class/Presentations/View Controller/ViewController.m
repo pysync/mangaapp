@@ -15,6 +15,7 @@
 #import <Parse/Parse.h>
 #import <MBProgressHUD/MBProgressHUD.h>
 #import "Chapter.h"
+#import "Definition.h"
 
 @interface ViewController ()<WYPopoverControllerDelegate>
 {
@@ -81,16 +82,16 @@
             _infoViewController.preferredContentSize = CGSizeMake(280, 320);             // iOS 7
         }
         
-        _infoViewController.title = @"Info Screen";
+        _infoViewController.title = NSLocalizedString(kInfoScreenLocalizable, nil);
         _infoViewController.modalInPopover = NO;
         
         // Call back function
         __weak typeof(self) weakSelf = self;
-        _infoViewController.gotoSubInfoScreen = ^(SubInfoType subType){
+        _infoViewController.gotoSubInfoScreen = ^(SubInfoType subType, NSString *viewTitle){
             [weakSelf.infoPopoverController dismissPopoverAnimated:YES completion:^{
                 UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
                 SubInfoViewController *subInfoVC = (SubInfoViewController *)[story instantiateViewControllerWithIdentifier:NSStringFromClass([SubInfoViewController class])];
-                subInfoVC.title = @"Sub Info View";
+                subInfoVC.title = viewTitle;
                 subInfoVC.didClickCloseButton = ^() {
                     [weakSelf dismissViewControllerAnimated:YES completion:^{
                         
@@ -149,7 +150,11 @@
 
 - (void)removeChapWithIndexChapter:(NSInteger )indexChap {
     _indexRemoveChapter = indexChap;
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"Do you want to remove this chapter?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@""
+                                                    message:NSLocalizedString(kRemoveMessageLocalizable, nil)
+                                                   delegate:self
+                                          cancelButtonTitle:NSLocalizedString(kCancelTitleLocalizable, nil)
+                                          otherButtonTitles:NSLocalizedString(kOKTitleLocalizable, nil), nil];
     alert.tag = kTagRemoveChapter;
     [alert show];
 }

@@ -28,4 +28,19 @@
 
 // UserDefault
 #define kStaminaSaved @"StaminaSaved"
+
+// Localization
+#define kInfoScreenLocalizable         @"Info Screen"
+#define kAboutScreenLocalizable        @"About Screen"
+#define kQAScreenLocalizable           @"QA Screen"
+#define kTermScreenLocalizable         @"Term Screen"
+#define kContactScreenLocalizable      @"Contact Screen"
+#define kNewsScreenLocalizable         @"News Screen"
+
+#define kCloseButtonLocalizable        @"Close Button"
+#define kDoneButtonLocalizable         @"Done Button"
+#define kRemoveMessageLocalizable      @"Remove Message"
+#define kCancelTitleLocalizable        @"Cancel Title"
+#define kOKTitleLocalizable            @"OK Title"
+
 #endif

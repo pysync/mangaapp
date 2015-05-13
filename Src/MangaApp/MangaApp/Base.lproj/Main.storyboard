@@ -176,7 +176,12 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="280" height="360"/>
                     <connections>
+                        <outlet property="aboutButton" destination="XIy-UV-FZ8" id="mpg-ij-4Ie"/>
                         <outlet property="closeButton" destination="6O8-xd-541" id="Nfw-Jm-Q3t"/>
+                        <outlet property="contactButton" destination="xrX-bb-zNr" id="ePZ-Qo-1lT"/>
+                        <outlet property="newsButton" destination="sbp-fv-Ew6" id="N98-WX-pj0"/>
+                        <outlet property="qaButton" destination="9V0-9D-A0o" id="KD9-KM-kZq"/>
+                        <outlet property="termButton" destination="QM6-sY-nTf" id="MVw-bl-hLp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MwP-z1-F8d" userLabel="First Responder" sceneMemberID="firstResponder"/>
