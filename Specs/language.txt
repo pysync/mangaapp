@@ -1,0 +1,25 @@
+// English
+"Info Screen" = "Info Screen";
+"About Screen" = "About";
+"QA Screen" = "Q & A";
+"Term Screen" = "Term";
+"Contact Screen" = "Contact";
+"News Screen" = "News";
+"Close Button" = "Close";
+"Done Button" = "Done";
+"Remove Message" = "Do you want to remove this chapter?";
+"Cancel Title" = "Cancel";
+"OK Title" = "OK";
+
+// Japanese
+"Info Screen" = "インフォメーション";
+"About Screen" = "アプリ説明";
+"QA Screen" = "よくある問題";
+"Term Screen" = "利用規約";
+"Contact Screen" = "お問い合わせ";
+"News Screen" = "お知らせ";
+"Close Button" = "閉める";
+"Done Button" = "Done";
+"Remove Message" = "Do you want to remove this chapter?";
+"Cancel Title" = "Cancel";
+"OK Title" = "OK";

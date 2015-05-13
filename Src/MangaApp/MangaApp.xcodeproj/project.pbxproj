@@ -883,7 +883,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "ba91295f-d7f3-42df-9ad1-afe6cf51da0f";
+				PROVISIONING_PROFILE = "adeedf7e-a187-4ebc-84da-f20711fbb287";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -920,7 +920,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "ba91295f-d7f3-42df-9ad1-afe6cf51da0f";
+				PROVISIONING_PROFILE = "adeedf7e-a187-4ebc-84da-f20711fbb287";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -946,7 +946,7 @@
 					"$(PROJECT_DIR)/MangaApp/Libs/TestFairySDK",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "ba91295f-d7f3-42df-9ad1-afe6cf51da0f";
+				PROVISIONING_PROFILE = "adeedf7e-a187-4ebc-84da-f20711fbb287";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -970,7 +970,7 @@
 					"$(PROJECT_DIR)/MangaApp/Libs/TestFairySDK",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "ba91295f-d7f3-42df-9ad1-afe6cf51da0f";
+				PROVISIONING_PROFILE = "adeedf7e-a187-4ebc-84da-f20711fbb287";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
