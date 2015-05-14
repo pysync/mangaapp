@@ -65,7 +65,8 @@
 }
 
 - (void)downloadChapterWithModel:(ChapterJSONModel *)chapterModel success:(void (^)())successBlock failure:(void (^)())failBlock {
-    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration backgroundSessionConfigurationWithIdentifier:@"downloadInBackgroundMode"];
+    configuration.HTTPMaximumConnectionsPerHost = 15;
     AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
     
     _numberImageDownloaded = 0;
@@ -84,6 +85,7 @@
                 _numberImageDownloaded++;
                 
                 if (_numberImageDownloaded == chapterModel.images.count) {
+                    NSLog(@"All file download successfully");
                     if (successBlock) {
                         successBlock();
                     }
@@ -100,6 +102,11 @@
             }
         }
     }
+}
+
+-(void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didFinishDownloadingToURL:(NSURL *)location{
+    
+    
 }
 
 - (BOOL )imageDownloadedWithImageName:(NSString *)imageName {
