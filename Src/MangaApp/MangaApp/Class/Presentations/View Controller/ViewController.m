@@ -44,7 +44,7 @@
     PFObject *testObject = [PFObject objectWithClassName:@"TestObject"];
     testObject[@"foo"] = @"bar";
     [testObject saveInBackground];
-    
+
     // Load data from json
     [self loadDataFromJSON];
 }

@@ -15,6 +15,7 @@
 #import "ChapterJSONModel.h"
 #import "Common.h"
 #import "ChapterModel.h"
+#import "AppDelegate.h"
 
 @interface ChapterListService()
 
@@ -65,6 +66,7 @@
 }
 
 - (void)downloadChapterWithModel:(ChapterJSONModel *)chapterModel success:(void (^)())successBlock failure:(void (^)())failBlock {
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration backgroundSessionConfigurationWithIdentifier:@"downloadInBackgroundMode"];
     configuration.HTTPMaximumConnectionsPerHost = 15;
     AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
@@ -86,6 +88,19 @@
                 
                 if (_numberImageDownloaded == chapterModel.images.count) {
                     NSLog(@"All file download successfully");
+                    if (appDelegate.backgroundTransferCompletionHandler != nil) {
+                        // Copy locally the completion handler.
+                        void(^completionHandler)() = appDelegate.backgroundTransferCompletionHandler;
+                        
+                        // Make nil the backgroundTransferCompletionHandler.
+                        appDelegate.backgroundTransferCompletionHandler = nil;
+                        
+                        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                            // Call the completion handler to tell the system that there are no other background transfers.
+                            completionHandler();
+                        }];
+                    }
+                    
                     if (successBlock) {
                         successBlock();
                     }
@@ -102,11 +117,6 @@
             }
         }
     }
-}
-
--(void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didFinishDownloadingToURL:(NSURL *)location{
-    
-    
 }
 
 - (BOOL )imageDownloadedWithImageName:(NSString *)imageName {
