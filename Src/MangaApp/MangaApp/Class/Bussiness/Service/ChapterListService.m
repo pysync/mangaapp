@@ -20,6 +20,7 @@
 @interface ChapterListService()
 
 @property(nonatomic, assign) NSInteger numberImageDownloaded;
+@property(nonatomic, strong) AFURLSessionManager *manager;
 @end
 
 @implementation ChapterListService
@@ -29,6 +30,10 @@
     self = [super init];
     if (self) {
         _listChapters = [[NSMutableArray alloc] initWithCapacity:0];
+        
+        NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration backgroundSessionConfigurationWithIdentifier:@"downloadInBackgroundMode"];
+        configuration.HTTPMaximumConnectionsPerHost = 15;
+        _manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
     }
     return self;
 }
@@ -67,9 +72,6 @@
 
 - (void)downloadChapterWithModel:(ChapterJSONModel *)chapterModel success:(void (^)())successBlock failure:(void (^)())failBlock {
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration backgroundSessionConfigurationWithIdentifier:@"downloadInBackgroundMode"];
-    configuration.HTTPMaximumConnectionsPerHost = 15;
-    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
     
     _numberImageDownloaded = 0;
     NSString *baseURL = kBaseUrl;
@@ -79,12 +81,17 @@
             NSURL *URL = [NSURL URLWithString:fullURL];
             NSURLRequest *request = [NSURLRequest requestWithURL:URL];
             
-            NSURLSessionDownloadTask *downloadTask = [manager downloadTaskWithRequest:request progress:nil destination:^NSURL *(NSURL *targetPath, NSURLResponse *response) {
+            NSURLSessionDownloadTask *downloadTask = [_manager downloadTaskWithRequest:request progress:nil destination:^NSURL *(NSURL *targetPath, NSURLResponse *response) {
                 NSURL *documentsDirectoryURL = [[NSFileManager defaultManager] URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:NO error:nil];
                 return [documentsDirectoryURL URLByAppendingPathComponent:[response suggestedFilename]];
             } completionHandler:^(NSURLResponse *response, NSURL *filePath, NSError *error) {
                 NSLog(@"File downloaded to: %@", filePath);
                 _numberImageDownloaded++;
+                
+                // Push notification
+                NSString *pathString = filePath.absoluteString;
+                NSString *imageName = [pathString lastPathComponent];
+                [[NSNotificationCenter defaultCenter] postNotificationName:kFinishDownloadAnImage object:nil userInfo:@{kImageNameNotification: imageName}];
                 
                 if (_numberImageDownloaded == chapterModel.images.count) {
                     NSLog(@"All file download successfully");
@@ -132,11 +139,13 @@
             Chapter *chapEntity = listChapter[i];
             ChapterModel *chapModel = (ChapterModel *)_listChapters[i];
             chapModel.chapterEntity = chapEntity;
+            chapModel.isFinishedDownload = chapEntity.isDownloaded.boolValue;
         }
     }else {
         for (int i=0; i<_listChapters.count; i++) {
             ChapterModel *chapModel = _listChapters[i];
             ChapterJSONModel *chap = chapModel.chapterJSONModel;
+            
             Chapter *chapEntity = [Chapter MR_createEntity];
             chapEntity.chapterTitle = chap.titleChap;
             chapEntity.isDownloaded = @(0);
@@ -185,6 +194,7 @@
         }
     }
     
+    [self updateChapterWithIndexChap:indexChap andState:NO];
     if (finishBlock) {
         finishBlock();
     }

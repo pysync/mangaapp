@@ -25,6 +25,8 @@
 #define kHiddenProcessHUB @"HiddenProcessHUB"
 #define kShowStaminaExpired @ "ShowStaminaExpired"
 #define kUpdateStaminaView @"UpdateStaminaView"
+#define kFinishDownloadAnImage @"FinishDownloadAnImage"
+#define kImageNameNotification @"ImageName"
 
 // UserDefault
 #define kStaminaSaved @"StaminaSaved"

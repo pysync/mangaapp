@@ -14,7 +14,8 @@
 {
     self = [super init];
     if (self) {
-        
+        _isDownloading = NO;
+        _isFinishedDownload = NO;
     }
     return self;
 }

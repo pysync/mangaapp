@@ -88,6 +88,8 @@
     UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showBarViews:)];
     gesture.numberOfTapsRequired = 1;
     [self.view addGestureRecognizer:gesture];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updatePhotoIfNeed:) name:kFinishDownloadAnImage object:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -129,13 +131,33 @@
         _imageLoaded = YES;
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
         displayImage = [UIImage imageWithContentsOfFile:localImagePath];
-    }else {
-        [self downloadImageFromServer];
     }
+//    else {
+//        [self downloadImageFromServer];
+//    }
     
     return displayImage;
 }
 
+#pragma mark - Notification Function 
+- (void)updatePhotoIfNeed:(NSNotification *)notification {
+    NSDictionary *userInfoDic = notification.userInfo;
+    NSString *imageName = userInfoDic[kImageNameNotification];
+    if ([imageName isEqualToString:_imageName]) {
+        _imageLoaded = YES;
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        
+        UIImage *displayImage = [UIImage imageNamed:@"placeholder"];
+        NSString *docsPath = [Common getDocumentDirectory];
+        NSString *localImagePath = [docsPath stringByAppendingPathComponent:_imageName];
+        if ([[NSFileManager defaultManager] fileExistsAtPath:localImagePath]) {
+            displayImage = [UIImage imageWithContentsOfFile:localImagePath];
+        }
+        _scrollView.displayImage = displayImage;
+    }
+}
+
+#pragma mark - Service Function
 - (void)downloadImageFromServer {
     [_photoService downloadImageWithName:_imageName success:^{
         _imageLoaded = YES;
@@ -162,5 +184,9 @@
 
 - (void)showBarViews:(UITapGestureRecognizer *)gesture {
     [[NSNotificationCenter defaultCenter] postNotificationName:kShowBarView object:nil];
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kFinishDownloadAnImage object:nil];
 }
 @end

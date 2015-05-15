@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "ChapterService.h"
+#import "ChapterListService.h"
 
 @interface ChapterViewController : UIViewController<UIScrollViewDelegate>
 
@@ -21,6 +22,7 @@
 
 @property (strong, nonatomic) ChapterService *chapterService;
 @property (strong, nonatomic) ChapterModel *chapModel;
+@property (strong, nonatomic) ChapterListService *chapterListService;
 @property (weak, nonatomic) IBOutlet UISlider *processSlider;
 @property (weak, nonatomic) IBOutlet UIProgressView *processView;
 @property (weak, nonatomic) IBOutlet UILabel *staminaLabel;

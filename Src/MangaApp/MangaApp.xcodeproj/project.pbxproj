@@ -58,6 +58,7 @@
 		2DD2D23F1AFCC4F500EF4418 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DD2D23E1AFCC4F500EF4418 /* CoreMotion.framework */; };
 		2DD2D2411AFCC50F00EF4418 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DD2D2401AFCC50F00EF4418 /* AVFoundation.framework */; };
 		2DD2D2431AFCC52000EF4418 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DD2D2421AFCC52000EF4418 /* OpenGLES.framework */; };
+		2DE311DD1B05DA5A00DE3E92 /* BackgroundSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DE311DC1B05DA5A00DE3E92 /* BackgroundSessionManager.m */; };
 		417FA6F62ACFEA96D5995F43 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 14DFCA9028ED14D9EE20FF9D /* libPods.a */; };
 		D31F9B071AEECB0F00831A09 /* icon120x120.png in Resources */ = {isa = PBXBuildFile; fileRef = D31F9B061AEECB0F00831A09 /* icon120x120.png */; };
 		D31F9B091AEECC9200831A09 /* icon58x58.png in Resources */ = {isa = PBXBuildFile; fileRef = D31F9B081AEECC9200831A09 /* icon58x58.png */; };
@@ -150,6 +151,8 @@
 		2DD2D23E1AFCC4F500EF4418 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		2DD2D2401AFCC50F00EF4418 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		2DD2D2421AFCC52000EF4418 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		2DE311DB1B05DA5A00DE3E92 /* BackgroundSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundSessionManager.h; sourceTree = "<group>"; };
+		2DE311DC1B05DA5A00DE3E92 /* BackgroundSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackgroundSessionManager.m; sourceTree = "<group>"; };
 		4BBC6B096FAF682A19022BEF /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		D31F9B061AEECB0F00831A09 /* icon120x120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon120x120.png; sourceTree = "<group>"; };
 		D31F9B081AEECC9200831A09 /* icon58x58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon58x58.png; sourceTree = "<group>"; };
@@ -522,6 +525,8 @@
 				D3CD35E11AD99FAA0057265B /* ChapterListService.m */,
 				D386E8381AEB7BCF00FFB149 /* ChapterService.h */,
 				D386E8391AEB7BCF00FFB149 /* ChapterService.m */,
+				2DE311DB1B05DA5A00DE3E92 /* BackgroundSessionManager.h */,
+				2DE311DC1B05DA5A00DE3E92 /* BackgroundSessionManager.m */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -765,6 +770,7 @@
 				D32E76311AE34D4A006EF17A /* ChapterViewController.m in Sources */,
 				2D1FBC861AF783030025ABE3 /* Chapter.m in Sources */,
 				2D5FE9941AF8D4D9003AB6A9 /* Common.m in Sources */,
+				2DE311DD1B05DA5A00DE3E92 /* BackgroundSessionManager.m in Sources */,
 				D3CD35D41AD9889A0057265B /* ViewController.m in Sources */,
 				2D1FBC731AF7763E0025ABE3 /* MangaApp.xcdatamodeld in Sources */,
 				2D22E47F1AFB609F00037AE2 /* ChapterModel.m in Sources */,
