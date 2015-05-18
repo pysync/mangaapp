@@ -29,7 +29,7 @@ static NSString * const kBackgroundSessionIdentifier = @"com.domain.backgroundse
     if (self) {
         [self configureDownloadFinished];            // when download done, save file
         [self configureBackgroundSessionFinished];   // when entire background session done, call completion handler
-        [self configureAuthentication];              // my server uses authentication, so let's handle that; if you don't use authentication challenges, you can remove this
+        //[self configureAuthentication];              // my server uses authentication, so let's handle that; if you don't use authentication challenges, you can remove this
     }
     return self;
 }
@@ -44,7 +44,7 @@ static NSString * const kBackgroundSessionIdentifier = @"com.domain.backgroundse
             if (statusCode != 200) {
                 // handle error here, e.g.
                 
-                NSLog(@"%@ failed (statusCode = %ld)", [downloadTask.originalRequest.URL lastPathComponent], statusCode);
+                NSLog(@"%@ failed (statusCode = %ld)", [downloadTask.originalRequest.URL lastPathComponent], (long)statusCode);
                 return nil;
             }
         }

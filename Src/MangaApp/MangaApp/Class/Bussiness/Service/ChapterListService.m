@@ -16,6 +16,7 @@
 #import "Common.h"
 #import "ChapterModel.h"
 #import "AppDelegate.h"
+#import "BackgroundSessionManager.h"
 
 @interface ChapterListService()
 
@@ -71,8 +72,6 @@
 }
 
 - (void)downloadChapterWithModel:(ChapterJSONModel *)chapterModel success:(void (^)())successBlock failure:(void (^)())failBlock {
-    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    
     _numberImageDownloaded = 0;
     NSString *baseURL = kBaseUrl;
     for (int i=0; i<chapterModel.images.count; i++) {
@@ -81,7 +80,7 @@
             NSURL *URL = [NSURL URLWithString:fullURL];
             NSURLRequest *request = [NSURLRequest requestWithURL:URL];
             
-            NSURLSessionDownloadTask *downloadTask = [_manager downloadTaskWithRequest:request progress:nil destination:^NSURL *(NSURL *targetPath, NSURLResponse *response) {
+            NSURLSessionDownloadTask *downloadTask = [[BackgroundSessionManager sharedManager] downloadTaskWithRequest:request progress:nil destination:^NSURL *(NSURL *targetPath, NSURLResponse *response) {
                 NSURL *documentsDirectoryURL = [[NSFileManager defaultManager] URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:NO error:nil];
                 return [documentsDirectoryURL URLByAppendingPathComponent:[response suggestedFilename]];
             } completionHandler:^(NSURLResponse *response, NSURL *filePath, NSError *error) {
@@ -95,18 +94,6 @@
                 
                 if (_numberImageDownloaded == chapterModel.images.count) {
                     NSLog(@"All file download successfully");
-                    if (appDelegate.backgroundTransferCompletionHandler != nil) {
-                        // Copy locally the completion handler.
-                        void(^completionHandler)() = appDelegate.backgroundTransferCompletionHandler;
-                        
-                        // Make nil the backgroundTransferCompletionHandler.
-                        appDelegate.backgroundTransferCompletionHandler = nil;
-                        
-                        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                            // Call the completion handler to tell the system that there are no other background transfers.
-                            completionHandler();
-                        }];
-                    }
                     
                     if (successBlock) {
                         successBlock();

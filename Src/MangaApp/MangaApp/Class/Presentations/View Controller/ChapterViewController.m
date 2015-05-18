@@ -165,7 +165,10 @@
                                           cancelButtonTitle:@"戻る"
                                           otherButtonTitles:@"全回復する", nil];
     alert.tag = kTagShowStamina;
-    [alert show];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [alert show];
+    });
 }
 
 - (void)updateStaminaView:(NSNotification *)notification {

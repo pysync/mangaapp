@@ -12,6 +12,7 @@
 #import <MagicalRecord/NSPersistentStore+MagicalRecord.h>
 #import "StaminaConfig.h"
 #import "TestFairy.h"
+#import "BackgroundSessionManager.h"
 
 @interface AppDelegate ()
 
@@ -67,7 +68,7 @@
 }
 
 -(void)application:(UIApplication *)application handleEventsForBackgroundURLSession:(NSString *)identifier completionHandler:(void (^)())completionHandler{
-    
-    self.backgroundTransferCompletionHandler = completionHandler;
+    NSAssert([[BackgroundSessionManager sharedManager].session.configuration.identifier isEqualToString:identifier], @"Identifiers didn't match");
+    [BackgroundSessionManager sharedManager].savedCompletionHandler = completionHandler;
 }
 @end
