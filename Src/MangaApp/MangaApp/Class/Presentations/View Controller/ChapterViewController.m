@@ -11,8 +11,9 @@
 #import "PhotoViewController.h"
 #import "Definition.h"
 #import "StaminaConfig.h"
+#import <StoreKit/StoreKit.h>
 
-@interface ChapterViewController ()<UIPageViewControllerDataSource, UIPageViewControllerDelegate>
+@interface ChapterViewController ()<UIPageViewControllerDataSource, UIPageViewControllerDelegate, SKProductsRequestDelegate, SKPaymentTransactionObserver>
 @property (nonatomic, strong) NSMutableArray *viewControllers;
 @property (nonatomic, assign) NSInteger currentPage;
 @property (nonatomic, strong) UIPageViewController *pageViewController;
@@ -20,6 +21,7 @@
 @end
 
 #define kTagShowStamina 100
+#define kProductIdentifier @"com.thanhld.MangaApp001"
 
 @implementation ChapterViewController
 
@@ -35,6 +37,7 @@
     
     [self createUI];
     [self loadDataToView];
+    [self fetchAvailableProducts];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateStaminaView:) name:kUpdateStaminaView object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showBarViews:) name:kShowBarView object:nil];
@@ -184,10 +187,100 @@
     if (alertView.tag == kTagShowStamina) {
         if (buttonIndex == 1) {
             // Buy stamina on app store
+            if([SKPaymentQueue canMakePayments]){
+                NSLog(@"User can make payments");
+                
+                NSSet *productIdentifiers = [NSSet setWithObject:kProductIdentifier];
+                SKProductsRequest *productsRequest = [[SKProductsRequest alloc]
+                                                      initWithProductIdentifiers:productIdentifiers];
+                productsRequest.delegate = self;
+                [productsRequest start];
+                
+            }
+            else{
+                NSLog(@"User cannot make payments due to parental controls");
+                //this is called the user cannot make payments, most likely due to parental controls
+            }
         }else {
             // Back to Chapter List Screen
             [self onBackButton:nil];
         }
+    }
+}
+
+#pragma mark - StoreKit Delegate
+-(void)paymentQueue:(SKPaymentQueue *)queue updatedTransactions:(NSArray *)transactions {
+    for (SKPaymentTransaction *transaction in transactions) {
+        switch (transaction.transactionState) {
+            case SKPaymentTransactionStatePurchasing:
+                NSLog(@"Purchasing");
+                break;
+            case SKPaymentTransactionStatePurchased:
+                if ([transaction.payment.productIdentifier
+                     isEqualToString:kProductIdentifier]) {
+                    NSLog(@"Purchased ");
+                    UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:
+                                              @"Purchase is completed succesfully" message:nil delegate:
+                                              self cancelButtonTitle:@"Ok" otherButtonTitles: nil];
+                    [alertView show];
+                }
+                [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
+                break;
+            case SKPaymentTransactionStateRestored:
+                NSLog(@"Restored ");
+                [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
+                break;
+            case SKPaymentTransactionStateFailed:
+                NSLog(@"Purchase failed ");
+                break;
+            default:
+                break;
+        }
+    }
+}
+
+#pragma mark - In-App Purchase
+-(void)fetchAvailableProducts{
+    if([SKPaymentQueue canMakePayments]){
+        NSLog(@"User can make payments");
+        NSSet *productIdentifiers = [NSSet
+                                     setWithObjects:kProductIdentifier,nil];
+        SKProductsRequest *productsRequest = [[SKProductsRequest alloc] initWithProductIdentifiers:productIdentifiers];
+        productsRequest.delegate = self;
+        [productsRequest start];
+        
+    }
+    else{
+        NSLog(@"User cannot make payments due to parental controls");
+        //this is called the user cannot make payments, most likely due to parental controls
+    }
+}
+
+-(void)productsRequest:(SKProductsRequest *)request didReceiveResponse:(SKProductsResponse *)response {
+    SKProduct *validProduct = nil;
+    int count = (int)[response.products count];
+    if(count > 0){
+        validProduct = [response.products objectAtIndex:0];
+        NSLog(@"Products Available!");
+        //[self purchase:validProduct];
+    }
+    else if(!validProduct){
+        NSLog(@"No products available");
+        //this is called if your product id is not valid, this shouldn't be called unless that happens.
+    }
+}
+
+- (void)purchaseMyProduct:(SKProduct*)product{
+    if ([SKPaymentQueue canMakePayments]) {
+        SKPayment *payment = [SKPayment paymentWithProduct:product];
+        [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
+        [[SKPaymentQueue defaultQueue] addPayment:payment];
+    }
+    else{
+        UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:
+                                  @"Purchases are disabled in your device" message:nil delegate:
+                                  self cancelButtonTitle:@"Ok" otherButtonTitles: nil];
+        [alertView show];
     }
 }
 

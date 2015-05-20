@@ -202,6 +202,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D1339291AE6035B00F1DAF7 /* StoreKit.framework in Frameworks */,
 				2DD2D2431AFCC52000EF4418 /* OpenGLES.framework in Frameworks */,
 				2D13392B1AE6036100F1DAF7 /* SystemConfiguration.framework in Frameworks */,
 				2DD2D2411AFCC50F00EF4418 /* AVFoundation.framework in Frameworks */,
@@ -211,7 +212,6 @@
 				2D1339311AE604B300F1DAF7 /* Accounts.framework in Frameworks */,
 				2D13392F1AE6037500F1DAF7 /* libsqlite3.dylib in Frameworks */,
 				2D13392D1AE6036B00F1DAF7 /* libz.dylib in Frameworks */,
-				2D1339291AE6035B00F1DAF7 /* StoreKit.framework in Frameworks */,
 				2D1339271AE6035200F1DAF7 /* Security.framework in Frameworks */,
 				2D1339251AE6034B00F1DAF7 /* QuartzCore.framework in Frameworks */,
 				2D1339231AE6034300F1DAF7 /* MobileCoreServices.framework in Frameworks */,
@@ -655,6 +655,7 @@
 					};
 					D384C65D1AD95B6A00C9883A = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = N97FTYMTL5;
 						TestTargetID = D384C6441AD95B6A00C9883A;
 					};
 				};
@@ -894,7 +895,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "ba91295f-d7f3-42df-9ad1-afe6cf51da0f";
+				PROVISIONING_PROFILE = "1095c5d7-97e3-46c5-9f9e-766b3e3e20f9";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -931,7 +932,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "ba91295f-d7f3-42df-9ad1-afe6cf51da0f";
+				PROVISIONING_PROFILE = "1095c5d7-97e3-46c5-9f9e-766b3e3e20f9";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -957,7 +958,7 @@
 					"$(PROJECT_DIR)/MangaApp/Libs/TestFairySDK",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "ba91295f-d7f3-42df-9ad1-afe6cf51da0f";
+				PROVISIONING_PROFILE = "1095c5d7-97e3-46c5-9f9e-766b3e3e20f9";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -981,7 +982,7 @@
 					"$(PROJECT_DIR)/MangaApp/Libs/TestFairySDK",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "ba91295f-d7f3-42df-9ad1-afe6cf51da0f";
+				PROVISIONING_PROFILE = "1095c5d7-97e3-46c5-9f9e-766b3e3e20f9";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
@@ -990,6 +991,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -1001,7 +1004,7 @@
 				INFOPLIST_FILE = MangaAppTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "ba91295f-d7f3-42df-9ad1-afe6cf51da0f";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MangaApp.app/MangaApp";
 			};
 			name = Debug;
@@ -1010,6 +1013,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -1017,7 +1022,7 @@
 				INFOPLIST_FILE = MangaAppTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "ba91295f-d7f3-42df-9ad1-afe6cf51da0f";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MangaApp.app/MangaApp";
 			};
 			name = Release;
