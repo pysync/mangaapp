@@ -21,7 +21,7 @@
 @end
 
 #define kTagShowStamina 100
-#define kProductIdentifier @"com.thanhld.MangaApp001"
+#define kProductIdentifier @"com.thanhld.MangaApp02"
 
 @implementation ChapterViewController
 
@@ -37,7 +37,7 @@
     
     [self createUI];
     [self loadDataToView];
-    [self fetchAvailableProducts];
+    //[self fetchAvailableProducts];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateStaminaView:) name:kUpdateStaminaView object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showBarViews:) name:kShowBarView object:nil];
@@ -187,20 +187,7 @@
     if (alertView.tag == kTagShowStamina) {
         if (buttonIndex == 1) {
             // Buy stamina on app store
-            if([SKPaymentQueue canMakePayments]){
-                NSLog(@"User can make payments");
-                
-                NSSet *productIdentifiers = [NSSet setWithObject:kProductIdentifier];
-                SKProductsRequest *productsRequest = [[SKProductsRequest alloc]
-                                                      initWithProductIdentifiers:productIdentifiers];
-                productsRequest.delegate = self;
-                [productsRequest start];
-                
-            }
-            else{
-                NSLog(@"User cannot make payments due to parental controls");
-                //this is called the user cannot make payments, most likely due to parental controls
-            }
+            [self fetchAvailableProducts];
         }else {
             // Back to Chapter List Screen
             [self onBackButton:nil];
@@ -218,11 +205,7 @@
             case SKPaymentTransactionStatePurchased:
                 if ([transaction.payment.productIdentifier
                      isEqualToString:kProductIdentifier]) {
-                    NSLog(@"Purchased ");
-                    UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:
-                                              @"Purchase is completed succesfully" message:nil delegate:
-                                              self cancelButtonTitle:@"Ok" otherButtonTitles: nil];
-                    [alertView show];
+                    NSLog(@"Purchase is completed succesfully ");
                 }
                 [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
                 break;
@@ -248,7 +231,6 @@
         SKProductsRequest *productsRequest = [[SKProductsRequest alloc] initWithProductIdentifiers:productIdentifiers];
         productsRequest.delegate = self;
         [productsRequest start];
-        
     }
     else{
         NSLog(@"User cannot make payments due to parental controls");
@@ -262,7 +244,7 @@
     if(count > 0){
         validProduct = [response.products objectAtIndex:0];
         NSLog(@"Products Available!");
-        //[self purchase:validProduct];
+        [self purchaseMyProduct:validProduct];
     }
     else if(!validProduct){
         NSLog(@"No products available");
