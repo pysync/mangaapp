@@ -41,11 +41,11 @@
     return self;
 }
 
-- (NSInteger )getMaxStaminaConfig {
+- (float )getMaxStaminaConfig {
     NSString *filePath = [[NSBundle mainBundle] pathForResource:@"staminaConfig" ofType:@"plist"];
     NSDictionary *configDic = [NSDictionary dictionaryWithContentsOfFile:filePath];
     NSString *staminaString = configDic[@"stamina"];
-    return staminaString.integerValue;
+    return staminaString.floatValue;
 }
 
 - (void)saveData {

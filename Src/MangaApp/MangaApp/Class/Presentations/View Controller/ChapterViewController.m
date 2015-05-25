@@ -65,6 +65,18 @@
     _processSlider.minimumValue = 1.0;
     _processSlider.maximumValue = _chapModel.chapterJSONModel.images.count;
     
+    _processView.layer.cornerRadius = 4.0;
+    _processView.layer.borderWidth = 1.0;
+    _processView.layer.borderColor = [UIColor blackColor].CGColor;
+    _processView.layer.masksToBounds = YES;
+    _processView.clipsToBounds = YES;
+    
+    // drop shadow
+    [_processView.layer setShadowColor:[UIColor orangeColor].CGColor];
+    [_processView.layer setShadowOpacity:1];
+    [_processView.layer setShadowRadius:3.0];
+    [_processView.layer setShadowOffset:CGSizeMake(-20.0, -20.0)];
+    
     // Create Page view controller
     NSString *zeroImage = _chapModel.chapterJSONModel.images.firstObject;
     PhotoViewController *pageZero = [PhotoViewController photoViewControllerForPageIndex:0 imageName:zeroImage andService:_chapterService];
@@ -183,6 +195,21 @@
     });
 }
 
+- (void)updateStaminaConfig {
+    StaminaConfig *staminaConfig = [StaminaConfig sharedConfig];
+    NSString *currentImageName = _chapModel.chapterJSONModel.images[_currentPage];
+    
+    if (![staminaConfig.chapTrackList containsObject:currentImageName]) {
+        if (staminaConfig.stamina >= _chapterService.chapterModel.staminaCost) {
+            staminaConfig.stamina -= _chapterService.chapterModel.staminaCost;
+            [staminaConfig.chapTrackList addObject:currentImageName];
+            [[NSNotificationCenter defaultCenter] postNotificationName:kUpdateStaminaView object:nil];
+        }else {
+            [[NSNotificationCenter defaultCenter] postNotificationName:kShowStaminaExpired object:nil];
+        }
+    }
+}
+
 #pragma mark - UIAlert View delegate
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (alertView.tag == kTagShowStamina) {
@@ -214,6 +241,8 @@
                     NSLog(@"Purchase is completed succesfully ");
                     StaminaConfig *config = [StaminaConfig sharedConfig];
                     [config reStoreStaminaConfig];
+                    
+                    [self updateStaminaConfig];
                 }
                 [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
                 [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
