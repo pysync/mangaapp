@@ -72,10 +72,10 @@
     _processView.clipsToBounds = YES;
     
     // drop shadow
-    [_processView.layer setShadowColor:[UIColor orangeColor].CGColor];
-    [_processView.layer setShadowOpacity:1];
-    [_processView.layer setShadowRadius:3.0];
-    [_processView.layer setShadowOffset:CGSizeMake(-20.0, -20.0)];
+//    [_processView.layer setShadowColor:[UIColor orangeColor].CGColor];
+//    [_processView.layer setShadowOpacity:1];
+//    [_processView.layer setShadowRadius:3.0];
+//    [_processView.layer setShadowOffset:CGSizeMake(-20.0, -20.0)];
     
     // Create Page view controller
     NSString *zeroImage = _chapModel.chapterJSONModel.images.firstObject;

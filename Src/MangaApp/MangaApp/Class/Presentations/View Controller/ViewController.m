@@ -137,6 +137,16 @@
     
     UIBarButtonItem *menuBarButton = [[UIBarButtonItem alloc] initWithCustomView:menuButton];
     self.navigationItem.leftBarButtonItem = menuBarButton;
+    
+    UIProgressView *processView = [[UIProgressView alloc] initWithProgressViewStyle:UIProgressViewStyleDefault];
+    processView.frame = CGRectMake(80, 10, 250, 25);
+    processView.progressTintColor = [UIColor redColor];
+    processView.trackTintColor = [UIColor whiteColor];
+    [processView setTransform:CGAffineTransformMakeScale(1.0, 10.0)];
+    
+    processView.progress = 0.5;
+    
+    [self.navigationController.navigationBar addSubview:processView];
 }
 
 #pragma mark - Buttons Function
