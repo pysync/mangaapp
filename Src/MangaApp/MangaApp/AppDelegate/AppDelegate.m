@@ -13,6 +13,7 @@
 #import "StaminaConfig.h"
 #import "TestFairy.h"
 #import "BackgroundSessionManager.h"
+#import <AFNetworking/AFNetworking.h>
 
 @interface AppDelegate ()
 
@@ -23,6 +24,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    // Check Network
+    [self checkNetworkReachability];
+    
     // Setup TestFairy
     [TestFairy begin:@"dee385de1cbd3d58315afa1f532077fe7c9ef1cf"];
     
@@ -70,5 +74,12 @@
 -(void)application:(UIApplication *)application handleEventsForBackgroundURLSession:(NSString *)identifier completionHandler:(void (^)())completionHandler{
     NSAssert([[BackgroundSessionManager sharedManager].session.configuration.identifier isEqualToString:identifier], @"Identifiers didn't match");
     [BackgroundSessionManager sharedManager].savedCompletionHandler = completionHandler;
+}
+
+- (void)checkNetworkReachability {
+    NSURL *baseURL = [NSURL URLWithString:@"http://www.apple.com/"];
+    AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:baseURL];
+    
+    [manager.reachabilityManager startMonitoring];
 }
 @end

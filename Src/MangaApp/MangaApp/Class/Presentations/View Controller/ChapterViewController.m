@@ -12,6 +12,7 @@
 #import "Definition.h"
 #import "StaminaConfig.h"
 #import <StoreKit/StoreKit.h>
+#import <MBProgressHUD/MBProgressHUD.h>
 
 @interface ChapterViewController ()<UIPageViewControllerDataSource, UIPageViewControllerDelegate, SKProductsRequestDelegate, SKPaymentTransactionObserver>
 @property (nonatomic, strong) NSMutableArray *viewControllers;
@@ -187,6 +188,11 @@
     if (alertView.tag == kTagShowStamina) {
         if (buttonIndex == 1) {
             // Buy stamina on app store
+            MBProgressHUD *hub = [[MBProgressHUD alloc] initWithView:self.view];
+            hub.labelText = @"Purchasing...";
+            [self.view addSubview:hub];
+            [hub show:YES];
+            
             [self fetchAvailableProducts];
         }else {
             // Back to Chapter List Screen
@@ -206,7 +212,10 @@
                 if ([transaction.payment.productIdentifier
                      isEqualToString:kProductIdentifier]) {
                     NSLog(@"Purchase is completed succesfully ");
+                    StaminaConfig *config = [StaminaConfig sharedConfig];
+                    [config reStoreStaminaConfig];
                 }
+                [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
                 [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
                 break;
             case SKPaymentTransactionStateRestored:
@@ -215,6 +224,7 @@
                 break;
             case SKPaymentTransactionStateFailed:
                 NSLog(@"Purchase failed ");
+                [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
                 break;
             default:
                 break;

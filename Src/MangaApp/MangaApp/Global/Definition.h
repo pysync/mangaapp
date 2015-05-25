@@ -30,6 +30,7 @@
 
 // UserDefault
 #define kStaminaSaved @"StaminaSaved"
+#define kLastShowNews @"LastShowNews"
 
 // Localization
 #define kInfoScreenLocalizable         @"Info Screen"

@@ -27,11 +27,7 @@
     self = [super init];
     if (self) {
         _chapTrackList = [[NSMutableArray alloc] initWithCapacity:0];
-        
-        NSString *filePath = [[NSBundle mainBundle] pathForResource:@"staminaConfig" ofType:@"plist"];
-        NSDictionary *configDic = [NSDictionary dictionaryWithContentsOfFile:filePath];
-        NSString *staminaString = configDic[@"stamina"];
-        _maxStamina = staminaString.floatValue;
+        _maxStamina = [self getMaxStaminaConfig];
         
         NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
         NSInteger savedStamina = [userDefault integerForKey:kStaminaSaved];
@@ -43,6 +39,13 @@
         _stamina = savedStamina;
     }
     return self;
+}
+
+- (NSInteger )getMaxStaminaConfig {
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"staminaConfig" ofType:@"plist"];
+    NSDictionary *configDic = [NSDictionary dictionaryWithContentsOfFile:filePath];
+    NSString *staminaString = configDic[@"stamina"];
+    return staminaString.integerValue;
 }
 
 - (void)saveData {
@@ -67,5 +70,9 @@
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     [userDefault setInteger:_stamina forKey:kStaminaSaved];
     [userDefault synchronize];
+}
+
+- (void)reStoreStaminaConfig {
+    _stamina = [self getMaxStaminaConfig];
 }
 @end

@@ -16,6 +16,9 @@
 #import <MBProgressHUD/MBProgressHUD.h>
 #import "Chapter.h"
 #import "Definition.h"
+#import <AFNetworking/AFNetworking.h>
+#import <KLCPopup/KLCPopup.h>
+#import "NewsViewPopup.h"
 
 @interface ViewController ()<WYPopoverControllerDelegate>
 {
@@ -47,6 +50,21 @@
 
     // Load data from json
     [self loadDataFromJSON];
+    
+    [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+        NSLog(@"Reachability: %@", AFStringFromNetworkReachabilityStatus(status));
+        
+        switch (status) {
+            case AFNetworkReachabilityStatusReachableViaWWAN:
+            case AFNetworkReachabilityStatusReachableViaWiFi:
+                [self loadNewsScreenIfNeed];
+                break;
+            case AFNetworkReachabilityStatusNotReachable:
+            default:
+                
+                break;
+        }
+    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -59,6 +77,55 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)loadNewsScreenIfNeed {
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    NSString *lastDateString = [userDefault stringForKey:kLastShowNews];
+    NSDateFormatter *dateF = [[NSDateFormatter alloc] init];
+    [dateF setDateFormat:@"yyyy-MM-ddHH:mm:ss ZZZ"];
+    
+    if (lastDateString) {
+        NSDate *lastDate = [dateF dateFromString:lastDateString];
+        NSDate *currentDate = [NSDate date];
+        
+        NSTimeInterval secondsBetween = [currentDate timeIntervalSinceDate:lastDate];
+        int numberOfDays = secondsBetween / 86400;
+        
+        if (numberOfDays > 1) {
+            NSString *currentDateString = [dateF stringFromDate:currentDate];
+            [userDefault setObject:currentDateString forKey:kLastShowNews];
+            [userDefault synchronize];
+            
+            [self loadNewsScreen];
+        }
+    }else {
+        NSString *currentDateString = [dateF stringFromDate:[NSDate date]];
+        [userDefault setObject:currentDateString forKey:kLastShowNews];
+        [userDefault synchronize];
+        
+        [self loadNewsScreen];
+    }
+}
+
+- (void)loadNewsScreen {
+    NewsViewPopup *newsView = (NewsViewPopup *)[[[NSBundle mainBundle] loadNibNamed:@"NewsViewPopup" owner:self options:nil] objectAtIndex:0];
+    
+    KLCPopup* popup = [KLCPopup popupWithContentView:newsView
+                                            showType:KLCPopupShowTypeFadeIn
+                                         dismissType:KLCPopupDismissTypeFadeOut
+                                            maskType:KLCPopupMaskTypeDimmed
+                            dismissOnBackgroundTouch:YES
+                               dismissOnContentTouch:NO];
+    popup.didFinishShowingCompletion = ^() {
+        [newsView loadWebView];
+    };
+    
+    newsView.didCloseNewsCompletion = ^(){
+        [popup dismissPresentingPopup];
+    };
+    
+    [popup show];
 }
 
 #pragma mark - UI Function
