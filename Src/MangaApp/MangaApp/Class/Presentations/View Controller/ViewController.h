@@ -13,5 +13,10 @@
 
 @property (strong, nonatomic) ChapterListService *chapterService;
 @property (weak, nonatomic) IBOutlet UITableView *contentTableView;
+@property (weak, nonatomic) IBOutlet UIButton *menuButton;
+@property (weak, nonatomic) IBOutlet UIProgressView *processView;
+@property (weak, nonatomic) IBOutlet UILabel *pageLabel;
+
+- (IBAction)onMenuButton:(id)sender;
 @end
 

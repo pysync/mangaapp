@@ -19,6 +19,7 @@
 #import <AFNetworking/AFNetworking.h>
 #import <KLCPopup/KLCPopup.h>
 #import "NewsViewPopup.h"
+#import "StaminaConfig.h"
 
 @interface ViewController ()<WYPopoverControllerDelegate>
 {
@@ -38,9 +39,10 @@
     [super viewDidLoad];
     if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
         self.edgesForExtendedLayout = UIRectEdgeNone;
+    [self createUI];
+    
     _chapterService = [[ChapterListService alloc] init];
     // Do any additional setup after loading the view, typically from a nib.
-    [self createBarButton];
     [_contentTableView registerNib:[UINib nibWithNibName:NSStringFromClass([ChapterCustomCell class]) bundle:nil] forCellReuseIdentifier:[ChapterCustomCell getIdentifierCell]];
     
     // Test Parse.com
@@ -68,10 +70,10 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    if (self.navigationController.navigationBarHidden) {
-        [[self navigationController] setNavigationBarHidden:NO animated:NO];
+    if (!self.navigationController.navigationBarHidden) {
+        [[self navigationController] setNavigationBarHidden:YES animated:NO];
     }
-    [_contentTableView reloadData];
+    [self updateProcessBar];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -128,29 +130,23 @@
     [popup show];
 }
 
+- (void)createUI {
+    _processView.layer.cornerRadius = 4.0;
+    _processView.layer.borderWidth = 1.0;
+    _processView.layer.borderColor = [UIColor blackColor].CGColor;
+    _processView.layer.masksToBounds = YES;
+    _processView.clipsToBounds = YES;
+}
+
 #pragma mark - UI Function
-- (void)createBarButton {
-    UIButton *menuButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    menuButton.frame = CGRectMake(0, 0, 40, 40);
-    [menuButton setBackgroundImage:[UIImage imageNamed:@"menu.png"] forState:UIControlStateNormal];
-    [menuButton addTarget:self action:@selector(onMenuButton:) forControlEvents:UIControlEventTouchUpInside];
-    
-    UIBarButtonItem *menuBarButton = [[UIBarButtonItem alloc] initWithCustomView:menuButton];
-    self.navigationItem.leftBarButtonItem = menuBarButton;
-    
-    UIProgressView *processView = [[UIProgressView alloc] initWithProgressViewStyle:UIProgressViewStyleDefault];
-    processView.frame = CGRectMake(80, 10, 250, 25);
-    processView.progressTintColor = [UIColor redColor];
-    processView.trackTintColor = [UIColor whiteColor];
-    [processView setTransform:CGAffineTransformMakeScale(1.0, 10.0)];
-    
-    processView.progress = 0.5;
-    
-    [self.navigationController.navigationBar addSubview:processView];
+- (void)updateProcessBar {
+    StaminaConfig *config = [StaminaConfig sharedConfig];
+    _processView.progress = config.stamina/config.maxStamina;
+    _pageLabel.text = [NSString stringWithFormat:@"%ld/%d", (long)config.stamina,(int)config.maxStamina];
 }
 
 #pragma mark - Buttons Function
-- (void)onMenuButton:(id)sender {
+- (IBAction)onMenuButton:(id)sender {
     if (_infoPopoverController == nil) {
         UIView* btn = (UIView*)sender;
         
@@ -186,8 +182,9 @@
         };
         
         _infoViewController.dismissInfoView = ^(){
-            [weakSelf.infoPopoverController dismissPopoverAnimated:YES];
-            [weakSelf releasePopoverController];
+            [weakSelf.infoPopoverController dismissPopoverAnimated:YES completion:^{
+                [weakSelf releasePopoverController];
+            }];
         };
         
         UINavigationController* contentViewController = [[UINavigationController alloc] initWithRootViewController:_infoViewController];
