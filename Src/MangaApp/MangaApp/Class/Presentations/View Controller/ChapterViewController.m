@@ -65,9 +65,9 @@
     _processSlider.minimumValue = 1.0;
     _processSlider.maximumValue = _chapModel.chapterJSONModel.images.count;
     
-    _processView.layer.cornerRadius = 4.0;
-    _processView.layer.borderWidth = 1.0;
-    _processView.layer.borderColor = [UIColor blackColor].CGColor;
+    _processView.layer.cornerRadius = 12.0;
+    _processView.layer.borderWidth = 3.0;
+    _processView.layer.borderColor = [UIColor whiteColor].CGColor;
     _processView.layer.masksToBounds = YES;
     _processView.clipsToBounds = YES;
     

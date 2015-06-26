@@ -892,8 +892,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iOS Development: thanh le (MNF8D3MF92)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iOS Development: thanh le (MNF8D3MF92)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: thanh le (MNF8D3MF92)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: thanh le (MNF8D3MF92)";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -913,7 +913,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "adeedf7e-a187-4ebc-84da-f20711fbb287";
+				PROVISIONING_PROFILE = "572ed046-9f91-4890-aa9b-ae003b1b705a";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -950,7 +950,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "adeedf7e-a187-4ebc-84da-f20711fbb287";
+				PROVISIONING_PROFILE = "572ed046-9f91-4890-aa9b-ae003b1b705a";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -963,8 +963,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iOS Development: thanh le (MNF8D3MF92)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iOS Development: thanh le (MNF8D3MF92)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: thanh le (MNF8D3MF92)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: thanh le (MNF8D3MF92)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -976,7 +976,7 @@
 					"$(PROJECT_DIR)/MangaApp/Libs/TestFairySDK",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "adeedf7e-a187-4ebc-84da-f20711fbb287";
+				PROVISIONING_PROFILE = "572ed046-9f91-4890-aa9b-ae003b1b705a";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1000,7 +1000,7 @@
 					"$(PROJECT_DIR)/MangaApp/Libs/TestFairySDK",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "adeedf7e-a187-4ebc-84da-f20711fbb287";
+				PROVISIONING_PROFILE = "572ed046-9f91-4890-aa9b-ae003b1b705a";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

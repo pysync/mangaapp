@@ -62,10 +62,10 @@
                                         <color key="trackTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </progressView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="87/100" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iwy-j5-M6t">
-                                        <rect key="frame" x="540" y="12" width="50" height="21"/>
+                                        <rect key="frame" x="540" y="12" width="54" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="Lob-oE-mjh"/>
-                                            <constraint firstAttribute="width" constant="50" id="Se6-CR-xEk"/>
+                                            <constraint firstAttribute="width" constant="54" id="Se6-CR-xEk"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
@@ -79,7 +79,7 @@
                                     <constraint firstItem="iwy-j5-M6t" firstAttribute="centerY" secondItem="j6d-9g-Wci" secondAttribute="centerY" id="VeC-T5-gwt"/>
                                     <constraint firstItem="VsM-ZO-BM8" firstAttribute="top" secondItem="ZfA-q6-nsT" secondAttribute="top" constant="2" id="ahY-tz-3Vi"/>
                                     <constraint firstItem="j6d-9g-Wci" firstAttribute="leading" secondItem="VsM-ZO-BM8" secondAttribute="trailing" constant="10" id="i02-mD-Z50"/>
-                                    <constraint firstAttribute="trailing" secondItem="iwy-j5-M6t" secondAttribute="trailing" constant="10" id="pxN-uj-edk"/>
+                                    <constraint firstAttribute="trailing" secondItem="iwy-j5-M6t" secondAttribute="trailing" constant="6" id="pxN-uj-edk"/>
                                     <constraint firstItem="VsM-ZO-BM8" firstAttribute="leading" secondItem="ZfA-q6-nsT" secondAttribute="leading" constant="10" id="spe-Ab-M1d"/>
                                     <constraint firstAttribute="height" constant="44" id="xcl-y9-h9z"/>
                                 </constraints>
@@ -369,9 +369,9 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="87/100" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Soi-eU-SEO">
-                                        <rect key="frame" x="540" y="12" width="50" height="21"/>
+                                        <rect key="frame" x="540" y="12" width="54" height="21"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="50" id="d25-50-ABv"/>
+                                            <constraint firstAttribute="width" constant="54" id="d25-50-ABv"/>
                                             <constraint firstAttribute="height" constant="21" id="ukM-NN-Cob"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -383,7 +383,7 @@
                                 <constraints>
                                     <constraint firstItem="Soi-eU-SEO" firstAttribute="leading" secondItem="puh-q6-Mr9" secondAttribute="trailing" constant="10" id="8bx-tG-zEi"/>
                                     <constraint firstItem="9Yj-6a-Zlz" firstAttribute="top" secondItem="puh-q6-Mr9" secondAttribute="bottom" constant="5" id="HMP-Qo-hRi"/>
-                                    <constraint firstAttribute="trailing" secondItem="Soi-eU-SEO" secondAttribute="trailing" constant="10" id="LYm-4w-Z4Y"/>
+                                    <constraint firstAttribute="trailing" secondItem="Soi-eU-SEO" secondAttribute="trailing" constant="6" id="LYm-4w-Z4Y"/>
                                     <constraint firstAttribute="trailing" secondItem="9Yj-6a-Zlz" secondAttribute="trailing" constant="65" id="PMp-fe-TK9"/>
                                     <constraint firstItem="puh-q6-Mr9" firstAttribute="leading" secondItem="amA-EQ-czm" secondAttribute="trailing" constant="6" id="Vyw-Fy-LwO"/>
                                     <constraint firstItem="puh-q6-Mr9" firstAttribute="top" secondItem="KOf-EV-gqD" secondAttribute="top" constant="10" id="WMG-pO-vKa"/>
