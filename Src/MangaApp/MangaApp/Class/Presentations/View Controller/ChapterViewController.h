@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "ChapterService.h"
 #import "ChapterListService.h"
+#import "BaseViewController.h"
 
-@interface ChapterViewController : UIViewController<UIScrollViewDelegate>
+@interface ChapterViewController : BaseViewController<UIScrollViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIScrollView *contentScollView;
 @property (weak, nonatomic) IBOutlet UIView *headerView;

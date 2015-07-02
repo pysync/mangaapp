@@ -67,6 +67,11 @@
                 break;
         }
     }];
+    
+    // Ads
+    self.bannerView.adUnitID = kBannerAdsID;
+    self.bannerView.rootViewController = self;
+    [self.bannerView loadRequest:[GADRequest request]];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

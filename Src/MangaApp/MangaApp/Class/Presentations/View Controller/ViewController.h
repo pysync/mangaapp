@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "ChapterListService.h"
+@import GoogleMobileAds;
 
 @interface ViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
 
@@ -16,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *menuButton;
 @property (weak, nonatomic) IBOutlet UIProgressView *processView;
 @property (weak, nonatomic) IBOutlet UILabel *pageLabel;
+@property (weak, nonatomic) IBOutlet GADBannerView *bannerView;
 
 - (IBAction)onMenuButton:(id)sender;
 @end

@@ -85,7 +85,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="hLI-q6-iSH">
-                                <rect key="frame" x="0.0" y="114" width="600" height="486"/>
+                                <rect key="frame" x="0.0" y="114" width="600" height="436"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <sections/>
                                 <connections>
@@ -99,25 +99,36 @@
                                     <constraint firstAttribute="height" constant="70" id="7qH-H5-ca7"/>
                                 </constraints>
                             </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="voe-Jp-oj9" customClass="GADBannerView">
+                                <rect key="frame" x="0.0" y="550" width="600" height="50"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="TcN-FU-TOZ"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="hLI-q6-iSH" secondAttribute="trailing" constant="-16" id="Azr-h4-oxd"/>
+                            <constraint firstItem="voe-Jp-oj9" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="Byp-s8-Lnb"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="voe-Jp-oj9" secondAttribute="trailing" constant="-16" id="CPQ-4j-vuo"/>
                             <constraint firstItem="8kb-cJ-jbO" firstAttribute="top" secondItem="ZfA-q6-nsT" secondAttribute="bottom" id="EJG-4d-puX"/>
                             <constraint firstItem="8kb-cJ-jbO" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="NSD-Mn-VAW"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="hLI-q6-iSH" secondAttribute="bottom" id="Q76-W4-EOj"/>
                             <constraint firstItem="ZfA-q6-nsT" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="Q8h-Az-FVB"/>
                             <constraint firstAttribute="trailingMargin" secondItem="8kb-cJ-jbO" secondAttribute="trailing" constant="-16" id="RXu-u2-zQK"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ZfA-q6-nsT" secondAttribute="trailing" constant="-16" id="Td1-7L-FYd"/>
                             <constraint firstItem="hLI-q6-iSH" firstAttribute="top" secondItem="8kb-cJ-jbO" secondAttribute="bottom" id="U43-Pf-BSr"/>
                             <constraint firstItem="hLI-q6-iSH" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="bjB-aO-Ovw"/>
+                            <constraint firstItem="voe-Jp-oj9" firstAttribute="top" secondItem="hLI-q6-iSH" secondAttribute="bottom" id="dB1-LI-nkG"/>
                             <constraint firstItem="ZfA-q6-nsT" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="jnn-aF-A7t"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="voe-Jp-oj9" secondAttribute="bottom" id="kzD-aU-aJq"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="G3P-iN-TDf"/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="bannerView" destination="voe-Jp-oj9" id="Kel-IE-1Lo"/>
                         <outlet property="contentTableView" destination="hLI-q6-iSH" id="8de-7X-5hd"/>
                         <outlet property="menuButton" destination="VsM-ZO-BM8" id="yKn-U1-prM"/>
                         <outlet property="pageLabel" destination="iwy-j5-M6t" id="6Vg-Xt-h6Y"/>

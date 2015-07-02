@@ -46,4 +46,7 @@
 #define kCancelTitleLocalizable        @"Cancel Title"
 #define kOKTitleLocalizable            @"OK Title"
 
+// Ads
+#define kBannerAdsID    @"ca-app-pub-3940256099942544/2934735716"
+#define kFullAdsID      @"ca-app-pub-3940256099942544/4411468910"
 #endif

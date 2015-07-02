@@ -50,6 +50,7 @@
 		2D7CD97B1AE789C800C25B9A /* PageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7CD97A1AE789C800C25B9A /* PageViewController.m */; };
 		2D8456D41AFC56660096AA2C /* ChapTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8456D31AFC56660096AA2C /* ChapTracker.m */; };
 		2D8456D71AFC56770096AA2C /* _ChapTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8456D61AFC56770096AA2C /* _ChapTracker.m */; };
+		2DA3358D1B44F5E800E6FBBB /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA3358C1B44F5E800E6FBBB /* BaseViewController.m */; };
 		2DBD636E1ADF785000D001C5 /* SubInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBD636D1ADF785000D001C5 /* SubInfoViewController.m */; };
 		2DC04E271B131ACB00A4BC8D /* NewsViewPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC04E261B131ACB00A4BC8D /* NewsViewPopup.m */; };
 		2DC04E291B131B1100A4BC8D /* NewsViewPopup.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DC04E281B131B1100A4BC8D /* NewsViewPopup.xib */; };
@@ -143,6 +144,8 @@
 		2D8456D31AFC56660096AA2C /* ChapTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChapTracker.m; sourceTree = "<group>"; };
 		2D8456D51AFC56770096AA2C /* _ChapTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _ChapTracker.h; sourceTree = "<group>"; };
 		2D8456D61AFC56770096AA2C /* _ChapTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _ChapTracker.m; sourceTree = "<group>"; };
+		2DA3358B1B44F5E800E6FBBB /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
+		2DA3358C1B44F5E800E6FBBB /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		2DBD636C1ADF785000D001C5 /* SubInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubInfoViewController.h; sourceTree = "<group>"; };
 		2DBD636D1ADF785000D001C5 /* SubInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubInfoViewController.m; sourceTree = "<group>"; };
 		2DC04E251B131ACB00A4BC8D /* NewsViewPopup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsViewPopup.h; sourceTree = "<group>"; };
@@ -581,6 +584,8 @@
 				D32E76301AE34D4A006EF17A /* ChapterViewController.m */,
 				2D7CD9791AE789C800C25B9A /* PageViewController.h */,
 				2D7CD97A1AE789C800C25B9A /* PageViewController.m */,
+				2DA3358B1B44F5E800E6FBBB /* BaseViewController.h */,
+				2DA3358C1B44F5E800E6FBBB /* BaseViewController.m */,
 			);
 			path = "View Controller";
 			sourceTree = "<group>";
@@ -793,6 +798,7 @@
 				D3CD35D41AD9889A0057265B /* ViewController.m in Sources */,
 				2D1FBC731AF7763E0025ABE3 /* MangaApp.xcdatamodeld in Sources */,
 				2D22E47F1AFB609F00037AE2 /* ChapterModel.m in Sources */,
+				2DA3358D1B44F5E800E6FBBB /* BaseViewController.m in Sources */,
 				D386E83A1AEB7BCF00FFB149 /* ChapterService.m in Sources */,
 				2D7CD97B1AE789C800C25B9A /* PageViewController.m in Sources */,
 				D33F3E971AFC33D600474B08 /* StaminaConfig.m in Sources */,

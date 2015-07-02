@@ -43,10 +43,18 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateStaminaView:) name:kUpdateStaminaView object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showBarViews:) name:kShowBarView object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showStaminaExpired:) name:kShowStaminaExpired object:nil];
+    
+    [self performSelector:@selector(showFullAds:) withObject:nil afterDelay:3];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    //[self loadDataForScrollView];
+    
+}
+
+- (void)showFullAds:(id)sender {
+    if ([self.interstitial isReady]) {
+        [self.interstitial presentFromRootViewController:self];
+    }
 }
 
 - (void)dealloc {

@@ -20,6 +20,7 @@ PODS:
   - AFNetworking/UIKit (2.5.2):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - Google-Mobile-Ads-SDK (7.3.1)
   - JSONModel (1.0.2)
   - KLCPopup (1.0)
   - MagicalRecord (2.2):
@@ -30,6 +31,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 2.5)
+  - Google-Mobile-Ads-SDK (~> 7.0)
   - JSONModel (~> 1.0)
   - KLCPopup (~> 1.0)
   - MagicalRecord (~> 2.2)
@@ -38,10 +40,11 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AFNetworking: fefbce9660acb17f48ae0011292d4da0f457bf36
+  Google-Mobile-Ads-SDK: 3647bfddc7384c514ab96a8bed86d98b31e623e4
   JSONModel: 6ffcb4ffa3659c9e9a2e5d45d6c7705bab187c03
   KLCPopup: 76c5a19227977f1e53d85236f9ef42257c168d98
   MagicalRecord: f8a56bb87ab6552f20c4bb8681a1958a197ea3cd
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
   WYPopoverController: ebefa50c477bdbbd9dc992dfdffafa168c4484eb
 
-COCOAPODS: 0.36.3
+COCOAPODS: 0.37.1
