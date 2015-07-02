@@ -295,17 +295,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="be2-Kq-CGE" userLabel="Bottom View">
                                 <rect key="frame" x="0.0" y="536" width="600" height="64"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Page 1 Naruto manga" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y9i-Sc-JLb">
-                                        <rect key="frame" x="40" y="8" width="486" height="21"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="21" id="Trs-9R-eHP"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="uKR-ls-LA5">
-                                        <rect key="frame" x="40" y="30" width="455" height="31"/>
+                                        <rect key="frame" x="40" y="30" width="520" height="31"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="bpL-ev-cpP"/>
                                         </constraints>
@@ -314,9 +305,10 @@
                                         </connections>
                                     </slider>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3/60" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z98-iV-lhw">
-                                        <rect key="frame" x="508" y="34" width="70" height="21"/>
+                                        <rect key="frame" x="250" y="5" width="100" height="21"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="70" id="JM3-Rh-G4o"/>
+                                            <constraint firstAttribute="width" constant="100" id="BXI-o4-kYm"/>
+                                            <constraint firstAttribute="height" constant="21" id="xoh-A0-IKK"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
@@ -326,15 +318,11 @@
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="uKR-ls-LA5" firstAttribute="leading" secondItem="be2-Kq-CGE" secondAttribute="leading" constant="42" id="8mI-Oh-BG6"/>
-                                    <constraint firstAttribute="trailing" secondItem="y9i-Sc-JLb" secondAttribute="trailing" constant="74" id="B3A-hT-N1C"/>
-                                    <constraint firstItem="z98-iV-lhw" firstAttribute="leading" secondItem="uKR-ls-LA5" secondAttribute="trailing" constant="15" id="Jcg-Yr-OH0"/>
-                                    <constraint firstAttribute="trailing" secondItem="z98-iV-lhw" secondAttribute="trailing" constant="22" id="NkN-Xg-kdt"/>
-                                    <constraint firstItem="y9i-Sc-JLb" firstAttribute="top" secondItem="be2-Kq-CGE" secondAttribute="top" constant="8" id="Pls-wg-xdm"/>
+                                    <constraint firstItem="uKR-ls-LA5" firstAttribute="top" secondItem="z98-iV-lhw" secondAttribute="bottom" constant="4" id="Ik0-up-DXD"/>
+                                    <constraint firstAttribute="trailing" secondItem="uKR-ls-LA5" secondAttribute="trailing" constant="42" id="Klg-aO-FGs"/>
+                                    <constraint firstItem="z98-iV-lhw" firstAttribute="top" secondItem="be2-Kq-CGE" secondAttribute="top" constant="5" id="U2r-h0-w3Q"/>
                                     <constraint firstAttribute="height" constant="64" id="bE3-t1-dQ7"/>
-                                    <constraint firstItem="uKR-ls-LA5" firstAttribute="top" secondItem="y9i-Sc-JLb" secondAttribute="bottom" constant="1" id="enI-Bo-76i"/>
-                                    <constraint firstItem="z98-iV-lhw" firstAttribute="top" secondItem="y9i-Sc-JLb" secondAttribute="bottom" constant="5" id="fA9-Gu-tAz"/>
-                                    <constraint firstAttribute="bottom" secondItem="z98-iV-lhw" secondAttribute="bottom" constant="9" id="h2A-cI-ju6"/>
-                                    <constraint firstItem="y9i-Sc-JLb" firstAttribute="leading" secondItem="be2-Kq-CGE" secondAttribute="leading" constant="40" id="oVP-mf-ac6"/>
+                                    <constraint firstAttribute="centerX" secondItem="z98-iV-lhw" secondAttribute="centerX" id="q4k-1D-azJ"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KOf-EV-gqD" userLabel="Header View">
@@ -408,7 +396,6 @@
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="bottomView" destination="be2-Kq-CGE" id="oef-7F-SMw"/>
-                        <outlet property="chapterLabel" destination="y9i-Sc-JLb" id="Fng-xy-m3x"/>
                         <outlet property="headerView" destination="KOf-EV-gqD" id="WRr-xt-058"/>
                         <outlet property="pageLabel" destination="z98-iV-lhw" id="5oj-fF-4GC"/>
                         <outlet property="processSlider" destination="uKR-ls-LA5" id="Yzd-or-XC7"/>

@@ -16,8 +16,6 @@
 @property (weak, nonatomic) IBOutlet UIView *headerView;
 @property (weak, nonatomic) IBOutlet UIView *bottomView;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
-
-@property (weak, nonatomic) IBOutlet UILabel *chapterLabel;
 @property (weak, nonatomic) IBOutlet UILabel *pageLabel;
 
 @property (strong, nonatomic) ChapterService *chapterService;
