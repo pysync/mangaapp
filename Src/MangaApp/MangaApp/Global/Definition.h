@@ -16,7 +16,7 @@
 #define kShowBarView @"showBarView"
 
 // Define string
-#define kBeforeDownload @"ドウンロド"
+#define kBeforeDownload @"下 载"
 #define kDownloading    @"ドウンロド中"
 #define kDeleteChapter  @"削除"
 
