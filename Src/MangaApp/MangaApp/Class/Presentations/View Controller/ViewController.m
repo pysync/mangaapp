@@ -351,6 +351,7 @@
     }
     
     [cell updateCellWithModel:chapModel.chapterJSONModel];
+    
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     return cell;

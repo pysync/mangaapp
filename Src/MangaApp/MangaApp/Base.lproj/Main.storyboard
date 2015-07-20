@@ -35,9 +35,15 @@
                         <rect key="frame" x="0.0" y="44" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_Chap.png" translatesAutoresizingMaskIntoConstraints="NO" id="PYA-Kn-GOM">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZfA-q6-nsT" userLabel="Header View">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                 <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_header.png" translatesAutoresizingMaskIntoConstraints="NO" id="qjo-k5-8GK">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                    </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VsM-ZO-BM8">
                                         <rect key="frame" x="10" y="2" width="40" height="40"/>
                                         <constraints>
@@ -75,9 +81,13 @@
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="iwy-j5-M6t" firstAttribute="top" secondItem="ZfA-q6-nsT" secondAttribute="top" constant="12" id="BTH-Y6-yXO"/>
+                                    <constraint firstAttribute="trailing" secondItem="qjo-k5-8GK" secondAttribute="trailing" id="Cah-XY-TBm"/>
+                                    <constraint firstItem="qjo-k5-8GK" firstAttribute="leading" secondItem="ZfA-q6-nsT" secondAttribute="leading" id="DFl-30-wDV"/>
                                     <constraint firstItem="iwy-j5-M6t" firstAttribute="leading" secondItem="j6d-9g-Wci" secondAttribute="trailing" constant="10" id="VUj-ug-x7s"/>
                                     <constraint firstItem="iwy-j5-M6t" firstAttribute="centerY" secondItem="j6d-9g-Wci" secondAttribute="centerY" id="VeC-T5-gwt"/>
                                     <constraint firstItem="VsM-ZO-BM8" firstAttribute="top" secondItem="ZfA-q6-nsT" secondAttribute="top" constant="2" id="ahY-tz-3Vi"/>
+                                    <constraint firstAttribute="bottom" secondItem="qjo-k5-8GK" secondAttribute="bottom" id="aug-i4-cK5"/>
+                                    <constraint firstItem="qjo-k5-8GK" firstAttribute="top" secondItem="ZfA-q6-nsT" secondAttribute="top" id="glK-Vr-U3G"/>
                                     <constraint firstItem="j6d-9g-Wci" firstAttribute="leading" secondItem="VsM-ZO-BM8" secondAttribute="trailing" constant="10" id="i02-mD-Z50"/>
                                     <constraint firstAttribute="trailing" secondItem="iwy-j5-M6t" secondAttribute="trailing" constant="6" id="pxN-uj-edk"/>
                                     <constraint firstItem="VsM-ZO-BM8" firstAttribute="leading" secondItem="ZfA-q6-nsT" secondAttribute="leading" constant="10" id="spe-Ab-M1d"/>
@@ -86,7 +96,7 @@
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="hLI-q6-iSH">
                                 <rect key="frame" x="0.0" y="114" width="600" height="436"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <sections/>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="MNn-ZW-XVf"/>
@@ -110,17 +120,21 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="hLI-q6-iSH" secondAttribute="trailing" constant="-16" id="Azr-h4-oxd"/>
+                            <constraint firstItem="PYA-Kn-GOM" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="BJE-QU-63w"/>
                             <constraint firstItem="voe-Jp-oj9" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="Byp-s8-Lnb"/>
                             <constraint firstAttribute="trailingMargin" secondItem="voe-Jp-oj9" secondAttribute="trailing" constant="-16" id="CPQ-4j-vuo"/>
                             <constraint firstItem="8kb-cJ-jbO" firstAttribute="top" secondItem="ZfA-q6-nsT" secondAttribute="bottom" id="EJG-4d-puX"/>
                             <constraint firstItem="8kb-cJ-jbO" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="NSD-Mn-VAW"/>
+                            <constraint firstItem="PYA-Kn-GOM" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Nh1-r0-mGe"/>
                             <constraint firstItem="ZfA-q6-nsT" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="Q8h-Az-FVB"/>
                             <constraint firstAttribute="trailingMargin" secondItem="8kb-cJ-jbO" secondAttribute="trailing" constant="-16" id="RXu-u2-zQK"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ZfA-q6-nsT" secondAttribute="trailing" constant="-16" id="Td1-7L-FYd"/>
                             <constraint firstItem="hLI-q6-iSH" firstAttribute="top" secondItem="8kb-cJ-jbO" secondAttribute="bottom" id="U43-Pf-BSr"/>
                             <constraint firstItem="hLI-q6-iSH" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="bjB-aO-Ovw"/>
                             <constraint firstItem="voe-Jp-oj9" firstAttribute="top" secondItem="hLI-q6-iSH" secondAttribute="bottom" id="dB1-LI-nkG"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="PYA-Kn-GOM" secondAttribute="bottom" id="fyB-yY-ubG"/>
                             <constraint firstItem="ZfA-q6-nsT" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="jnn-aF-A7t"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="PYA-Kn-GOM" secondAttribute="trailing" constant="-16" id="kMY-pA-vVM"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="voe-Jp-oj9" secondAttribute="bottom" id="kzD-aU-aJq"/>
                         </constraints>
                     </view>
@@ -468,7 +482,9 @@
     </scenes>
     <resources>
         <image name="back.png" width="64" height="64"/>
-        <image name="menu.png" width="84" height="85"/>
-        <image name="top_banner.png" width="750" height="141"/>
+        <image name="bg_Chap.png" width="750" height="1334"/>
+        <image name="bg_header.png" width="750" height="100"/>
+        <image name="menu.png" width="84" height="84"/>
+        <image name="top_banner.png" width="750" height="150"/>
     </resources>
 </document>

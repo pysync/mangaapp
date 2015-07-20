@@ -129,7 +129,7 @@
                         </constraints>
                     </view>
                 </subviews>
-                <color key="backgroundColor" red="0.92549019607843142" green="0.92549019607843142" blue="0.92549019607843142" alpha="1" colorSpace="calibratedRGB"/>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 <constraints>
                     <constraint firstItem="30N-7p-sLm" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="2" id="Lt5-na-QOu"/>
                     <constraint firstAttribute="trailingMargin" secondItem="30N-7p-sLm" secondAttribute="trailing" constant="2" id="PXQ-dd-Tia"/>
@@ -137,6 +137,7 @@
                     <constraint firstAttribute="bottomMargin" secondItem="30N-7p-sLm" secondAttribute="bottom" constant="-4" id="s9g-Q0-UBQ"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
                 <outlet property="chapNumberLabel" destination="2Ay-Ag-qoL" id="H5G-BA-6HU"/>
                 <outlet property="chapTitleLabel" destination="4NU-DR-kwN" id="r0L-5Y-Oz9"/>
