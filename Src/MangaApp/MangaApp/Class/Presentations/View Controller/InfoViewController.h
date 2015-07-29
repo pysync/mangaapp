@@ -7,15 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-typedef enum {
-    kAboutScreen = 1,
-    kQAScreen,
-    kTermScreen,
-    kContactScreen,
-    kNewsScreen,
-    kNoneScreen
-}SubInfoType;
+#import "InfoViewPopup.h"
 
 @interface InfoViewController : UIViewController
 

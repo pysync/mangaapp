@@ -67,6 +67,9 @@
 		2DD2D2411AFCC50F00EF4418 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DD2D2401AFCC50F00EF4418 /* AVFoundation.framework */; };
 		2DD2D2431AFCC52000EF4418 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DD2D2421AFCC52000EF4418 /* OpenGLES.framework */; };
 		2DE311DD1B05DA5A00DE3E92 /* BackgroundSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DE311DC1B05DA5A00DE3E92 /* BackgroundSessionManager.m */; };
+		2DE61BBF1B68D9CE0097177A /* ChapterCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DE61BBE1B68D9CE0097177A /* ChapterCustomCell.xib */; };
+		2DE61BC31B68D9DD0097177A /* InfoViewPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DE61BC11B68D9DD0097177A /* InfoViewPopup.m */; };
+		2DE61BC41B68D9DD0097177A /* InfoViewPopup.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DE61BC21B68D9DD0097177A /* InfoViewPopup.xib */; };
 		417FA6F62ACFEA96D5995F43 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 14DFCA9028ED14D9EE20FF9D /* libPods.a */; };
 		D31F9B071AEECB0F00831A09 /* icon120x120.png in Resources */ = {isa = PBXBuildFile; fileRef = D31F9B061AEECB0F00831A09 /* icon120x120.png */; };
 		D31F9B091AEECC9200831A09 /* icon58x58.png in Resources */ = {isa = PBXBuildFile; fileRef = D31F9B081AEECC9200831A09 /* icon58x58.png */; };
@@ -91,7 +94,6 @@
 		D3CD35D61AD98FC30057265B /* menu.png in Resources */ = {isa = PBXBuildFile; fileRef = D3CD35D51AD98FC30057265B /* menu.png */; };
 		D3CD35D91AD998F90057265B /* InfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3CD35D81AD998F90057265B /* InfoViewController.m */; };
 		D3CD35DE1AD99D670057265B /* ChapterCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D3CD35DC1AD99D670057265B /* ChapterCustomCell.m */; };
-		D3CD35DF1AD99D670057265B /* ChapterCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3CD35DD1AD99D670057265B /* ChapterCustomCell.xib */; };
 		D3CD35E21AD99FAA0057265B /* ChapterListService.m in Sources */ = {isa = PBXBuildFile; fileRef = D3CD35E11AD99FAA0057265B /* ChapterListService.m */; };
 /* End PBXBuildFile section */
 
@@ -171,6 +173,10 @@
 		2DD2D2421AFCC52000EF4418 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		2DE311DB1B05DA5A00DE3E92 /* BackgroundSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundSessionManager.h; sourceTree = "<group>"; };
 		2DE311DC1B05DA5A00DE3E92 /* BackgroundSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackgroundSessionManager.m; sourceTree = "<group>"; };
+		2DE61BBE1B68D9CE0097177A /* ChapterCustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChapterCustomCell.xib; sourceTree = "<group>"; };
+		2DE61BC01B68D9DD0097177A /* InfoViewPopup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoViewPopup.h; sourceTree = "<group>"; };
+		2DE61BC11B68D9DD0097177A /* InfoViewPopup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoViewPopup.m; sourceTree = "<group>"; };
+		2DE61BC21B68D9DD0097177A /* InfoViewPopup.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InfoViewPopup.xib; sourceTree = "<group>"; };
 		4BBC6B096FAF682A19022BEF /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		D31F9B061AEECB0F00831A09 /* icon120x120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon120x120.png; sourceTree = "<group>"; };
 		D31F9B081AEECC9200831A09 /* icon58x58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon58x58.png; sourceTree = "<group>"; };
@@ -209,7 +215,6 @@
 		D3CD35D81AD998F90057265B /* InfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoViewController.m; sourceTree = "<group>"; };
 		D3CD35DB1AD99D670057265B /* ChapterCustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChapterCustomCell.h; sourceTree = "<group>"; };
 		D3CD35DC1AD99D670057265B /* ChapterCustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChapterCustomCell.m; sourceTree = "<group>"; };
-		D3CD35DD1AD99D670057265B /* ChapterCustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChapterCustomCell.xib; sourceTree = "<group>"; };
 		D3CD35E01AD99FAA0057265B /* ChapterListService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChapterListService.h; sourceTree = "<group>"; };
 		D3CD35E11AD99FAA0057265B /* ChapterListService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChapterListService.m; sourceTree = "<group>"; };
 		FD255F3C4797D9D4563B98C3 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -352,6 +357,9 @@
 				2DC04E251B131ACB00A4BC8D /* NewsViewPopup.h */,
 				2DC04E261B131ACB00A4BC8D /* NewsViewPopup.m */,
 				2DC04E281B131B1100A4BC8D /* NewsViewPopup.xib */,
+				2DE61BC01B68D9DD0097177A /* InfoViewPopup.h */,
+				2DE61BC11B68D9DD0097177A /* InfoViewPopup.m */,
+				2DE61BC21B68D9DD0097177A /* InfoViewPopup.xib */,
 			);
 			name = CustomViews;
 			sourceTree = "<group>";
@@ -621,7 +629,7 @@
 			children = (
 				D3CD35DB1AD99D670057265B /* ChapterCustomCell.h */,
 				D3CD35DC1AD99D670057265B /* ChapterCustomCell.m */,
-				D3CD35DD1AD99D670057265B /* ChapterCustomCell.xib */,
+				2DE61BBE1B68D9CE0097177A /* ChapterCustomCell.xib */,
 				2D5558D41AEA435800736160 /* CustomBaseCell.h */,
 				2D5558D51AEA435800736160 /* CustomBaseCell.m */,
 			);
@@ -722,15 +730,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2DE61BBF1B68D9CE0097177A /* ChapterCustomCell.xib in Resources */,
 				D32E762E1AE34AC8006EF17A /* logo3.png in Resources */,
 				2D0D0DB61B5CEB4700B2EC16 /* bg_header.png in Resources */,
 				2D0D0DB81B5CF12100B2EC16 /* bg_Chap.png in Resources */,
-				D3CD35DF1AD99D670057265B /* ChapterCustomCell.xib in Resources */,
 				D32E763B1AE38F9A006EF17A /* back.png in Resources */,
 				D3CD35C51AD987360057265B /* splash.png in Resources */,
 				2D0D0DBB1B5CF84800B2EC16 /* btn_read.png in Resources */,
 				2DCBEE381AF9CF98003E5DA8 /* placeholder.png in Resources */,
 				2D242DA11AE510EE00F13E0D /* define.json in Resources */,
+				2DE61BC41B68D9DD0097177A /* InfoViewPopup.xib in Resources */,
 				2D22E4701AFB55AD00037AE2 /* staminaConfig.plist in Resources */,
 				2D0D0DBC1B5CF84800B2EC16 /* btn_remove.png in Resources */,
 				D3CD35D61AD98FC30057265B /* menu.png in Resources */,
@@ -825,6 +834,7 @@
 				2D22E4781AFB5C7F00037AE2 /* ResponseModel.m in Sources */,
 				2D1FBC871AF783030025ABE3 /* _Chapter.m in Sources */,
 				D3CD35D31AD9889A0057265B /* AppDelegate.m in Sources */,
+				2DE61BC31B68D9DD0097177A /* InfoViewPopup.m in Sources */,
 				D3CD35DE1AD99D670057265B /* ChapterCustomCell.m in Sources */,
 				D321308B1AECBB50005C20CD /* ImageScrollView.m in Sources */,
 				D321308A1AECBB50005C20CD /* PhotoViewController.m in Sources */,

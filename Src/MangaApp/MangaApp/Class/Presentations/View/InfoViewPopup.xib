@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7531" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="InfoViewPopup">
+            <rect key="frame" x="0.0" y="0.0" width="220" height="185"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ahf-AX-7lZ" userLabel="Title">
+                    <rect key="frame" x="0.0" y="0.0" width="220" height="35"/>
+                    <color key="backgroundColor" red="0.12941176470588234" green="0.13333333333333333" blue="0.14117647058823529" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="35" id="f7m-1N-2W8"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                    <state key="normal" title="Button">
+                        <color key="titleColor" red="0.76470588235294112" green="0.76078431372549016" blue="0.76078431372549016" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IoY-8r-S5D" userLabel="About">
+                    <rect key="frame" x="2" y="37" width="216" height="35"/>
+                    <color key="backgroundColor" red="0.21176470588235294" green="0.21176470588235294" blue="0.24313725490196078" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                    <state key="normal" title="Button">
+                        <color key="titleColor" red="0.76470588240000004" green="0.76078431369999999" blue="0.76078431369999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="onSubInfoButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="Y5j-gZ-gdq"/>
+                    </connections>
+                </button>
+                <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KfV-cm-rR2" userLabel="Q&amp;A">
+                    <rect key="frame" x="2" y="74" width="216" height="35"/>
+                    <color key="backgroundColor" red="0.21176470589999999" green="0.21176470589999999" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                    <state key="normal" title="Button">
+                        <color key="titleColor" red="0.76470588240000004" green="0.76078431369999999" blue="0.76078431369999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="onSubInfoButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="vUn-zp-WOm"/>
+                    </connections>
+                </button>
+                <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nQ6-e3-Enp" userLabel="Term">
+                    <rect key="frame" x="2" y="111" width="216" height="35"/>
+                    <color key="backgroundColor" red="0.21176470589999999" green="0.21176470589999999" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                    <state key="normal" title="Button">
+                        <color key="titleColor" red="0.76470588240000004" green="0.76078431369999999" blue="0.76078431369999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="onSubInfoButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="hCD-TB-SQe"/>
+                    </connections>
+                </button>
+                <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rmP-sJ-IWu" userLabel="Contact">
+                    <rect key="frame" x="2" y="148" width="216" height="35"/>
+                    <color key="backgroundColor" red="0.21176470589999999" green="0.21176470589999999" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                    <state key="normal" title="Button">
+                        <color key="titleColor" red="0.76470588240000004" green="0.76078431369999999" blue="0.76078431369999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="onSubInfoButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="vjk-ff-z1x"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="0.12941176469999999" green="0.1333333333" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="IoY-8r-S5D" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="2" id="8zU-Ho-J3o"/>
+                <constraint firstItem="KfV-cm-rR2" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="2" id="9uN-CP-LxB"/>
+                <constraint firstAttribute="trailing" secondItem="KfV-cm-rR2" secondAttribute="trailing" constant="2" id="CUI-PP-ebc"/>
+                <constraint firstItem="ahf-AX-7lZ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="D6s-HB-ig8"/>
+                <constraint firstItem="KfV-cm-rR2" firstAttribute="height" secondItem="rmP-sJ-IWu" secondAttribute="height" id="DOv-wP-QBf"/>
+                <constraint firstAttribute="trailing" secondItem="rmP-sJ-IWu" secondAttribute="trailing" constant="2" id="FHu-LR-YKC"/>
+                <constraint firstItem="rmP-sJ-IWu" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="2" id="HKQ-Hs-XAk"/>
+                <constraint firstItem="IoY-8r-S5D" firstAttribute="top" secondItem="ahf-AX-7lZ" secondAttribute="bottom" constant="2" id="HY0-FD-xF6"/>
+                <constraint firstAttribute="trailing" secondItem="nQ6-e3-Enp" secondAttribute="trailing" constant="2" id="IYf-ol-UgQ"/>
+                <constraint firstAttribute="trailing" secondItem="ahf-AX-7lZ" secondAttribute="trailing" id="Nl9-q3-Vlp"/>
+                <constraint firstItem="KfV-cm-rR2" firstAttribute="width" secondItem="nQ6-e3-Enp" secondAttribute="width" id="bDS-VV-mbi"/>
+                <constraint firstItem="KfV-cm-rR2" firstAttribute="height" secondItem="IoY-8r-S5D" secondAttribute="height" id="dT4-ax-sYY"/>
+                <constraint firstItem="KfV-cm-rR2" firstAttribute="top" secondItem="IoY-8r-S5D" secondAttribute="bottom" constant="2" id="enN-VU-eI3"/>
+                <constraint firstItem="ahf-AX-7lZ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="nDF-7l-0LE"/>
+                <constraint firstAttribute="bottom" secondItem="nQ6-e3-Enp" secondAttribute="bottom" constant="39" id="prp-YG-6Cf"/>
+                <constraint firstItem="nQ6-e3-Enp" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="2" id="qDA-76-BKZ"/>
+                <constraint firstAttribute="trailing" secondItem="IoY-8r-S5D" secondAttribute="trailing" constant="2" id="qPr-qs-VSJ"/>
+                <constraint firstItem="KfV-cm-rR2" firstAttribute="width" secondItem="rmP-sJ-IWu" secondAttribute="width" id="tJ2-ae-nuz"/>
+                <constraint firstItem="rmP-sJ-IWu" firstAttribute="top" secondItem="nQ6-e3-Enp" secondAttribute="bottom" constant="2" id="tUF-jn-6Es"/>
+                <constraint firstItem="KfV-cm-rR2" firstAttribute="height" secondItem="nQ6-e3-Enp" secondAttribute="height" id="tuX-P6-oyG"/>
+                <constraint firstItem="KfV-cm-rR2" firstAttribute="width" secondItem="IoY-8r-S5D" secondAttribute="width" id="x3w-o4-fvd"/>
+                <constraint firstItem="nQ6-e3-Enp" firstAttribute="top" secondItem="KfV-cm-rR2" secondAttribute="bottom" constant="2" id="zaX-X3-XCC"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="aboutButton" destination="IoY-8r-S5D" id="Ya6-5j-L9G"/>
+                <outlet property="contactButton" destination="rmP-sJ-IWu" id="C2d-9I-JdE"/>
+                <outlet property="qaButton" destination="KfV-cm-rR2" id="7FM-bm-Ngf"/>
+                <outlet property="termButton" destination="nQ6-e3-Enp" id="knb-nj-Yqh"/>
+                <outlet property="titleButton" destination="ahf-AX-7lZ" id="mdI-kx-gaR"/>
+            </connections>
+        </view>
+    </objects>
+</document>

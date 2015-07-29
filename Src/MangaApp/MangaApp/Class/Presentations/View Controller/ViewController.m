@@ -20,6 +20,7 @@
 #import <KLCPopup/KLCPopup.h>
 #import "NewsViewPopup.h"
 #import "StaminaConfig.h"
+#import "InfoViewPopup.h"
 
 @interface ViewController ()<WYPopoverControllerDelegate>
 {
@@ -152,60 +153,99 @@
 
 #pragma mark - Buttons Function
 - (IBAction)onMenuButton:(id)sender {
-    if (_infoPopoverController == nil) {
-        UIView* btn = (UIView*)sender;
-        
-        _infoViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"InfoViewController"];
-        
-        if ([_infoViewController respondsToSelector:@selector(setPreferredContentSize:)]) {
-            _infoViewController.preferredContentSize = CGSizeMake(280, 320);             // iOS 7
-        }
-        
-        _infoViewController.title = NSLocalizedString(kInfoScreenLocalizable, nil);
-        _infoViewController.modalInPopover = NO;
-        
-        // Call back function
-        __weak typeof(self) weakSelf = self;
-        _infoViewController.gotoSubInfoScreen = ^(SubInfoType subType, NSString *viewTitle){
-            [weakSelf.infoPopoverController dismissPopoverAnimated:YES completion:^{
-                UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-                SubInfoViewController *subInfoVC = (SubInfoViewController *)[story instantiateViewControllerWithIdentifier:NSStringFromClass([SubInfoViewController class])];
-                subInfoVC.title = viewTitle;
-                subInfoVC.didClickCloseButton = ^() {
-                    [weakSelf dismissViewControllerAnimated:YES completion:^{
-                        
-                    }];
-                };
+    [self showInfoView];
+}
+
+//- (IBAction)onMenuButton:(id)sender {
+//    if (_infoPopoverController == nil) {
+//        UIView* btn = (UIView*)sender;
+//        
+//        _infoViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"InfoViewController"];
+//        
+//        if ([_infoViewController respondsToSelector:@selector(setPreferredContentSize:)]) {
+//            _infoViewController.preferredContentSize = CGSizeMake(280, 320);             // iOS 7
+//        }
+//        
+//        _infoViewController.title = NSLocalizedString(kInfoScreenLocalizable, nil);
+//        _infoViewController.modalInPopover = NO;
+//        
+//        // Call back function
+//        __weak typeof(self) weakSelf = self;
+//        _infoViewController.gotoSubInfoScreen = ^(SubInfoType subType, NSString *viewTitle){
+//            [weakSelf.infoPopoverController dismissPopoverAnimated:YES completion:^{
+//                UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//                SubInfoViewController *subInfoVC = (SubInfoViewController *)[story instantiateViewControllerWithIdentifier:NSStringFromClass([SubInfoViewController class])];
+//                subInfoVC.title = viewTitle;
+//                subInfoVC.didClickCloseButton = ^() {
+//                    [weakSelf dismissViewControllerAnimated:YES completion:^{
+//                        
+//                    }];
+//                };
+//                
+//                UINavigationController *subNavi = [[UINavigationController alloc] initWithRootViewController:subInfoVC];
+//                [weakSelf presentViewController:subNavi animated:YES completion:^{
+//                    
+//                }];
+//                
+//                [weakSelf releasePopoverController];
+//            }];
+//        };
+//        
+//        _infoViewController.dismissInfoView = ^(){
+//            [weakSelf.infoPopoverController dismissPopoverAnimated:YES completion:^{
+//                [weakSelf releasePopoverController];
+//            }];
+//        };
+//        
+//        UINavigationController* contentViewController = [[UINavigationController alloc] initWithRootViewController:_infoViewController];
+//        
+//        _infoPopoverController = [[WYPopoverController alloc] initWithContentViewController:contentViewController];
+//        _infoPopoverController.delegate = self;
+//        _infoPopoverController.passthroughViews = @[btn];
+//        _infoPopoverController.popoverLayoutMargins = UIEdgeInsetsMake(10, 10, 10, 10);
+//        _infoPopoverController.wantsDefaultContentAppearance = NO;
+//        
+//        [_infoPopoverController presentPopoverFromRect:btn.bounds
+//                                                   inView:btn
+//                                 permittedArrowDirections:WYPopoverArrowDirectionAny
+//                                                 animated:YES
+//                                                  options:WYPopoverAnimationOptionFadeWithScale];
+//    }
+//}
+
+- (void)showInfoView {
+    InfoViewPopup *infoView = (InfoViewPopup *)[[[NSBundle mainBundle] loadNibNamed:@"InfoViewPopup" owner:self options:nil] objectAtIndex:0];
+    
+    // Call back function
+    __weak typeof(self) weakSelf = self;
+    infoView.gotoSubInfoScreen = ^(SubInfoType subType, NSString *viewTitle){
+        UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        SubInfoViewController *subInfoVC = (SubInfoViewController *)[story instantiateViewControllerWithIdentifier:NSStringFromClass([SubInfoViewController class])];
+        subInfoVC.title = viewTitle;
+        subInfoVC.didClickCloseButton = ^() {
+            [weakSelf dismissViewControllerAnimated:YES completion:^{
                 
-                UINavigationController *subNavi = [[UINavigationController alloc] initWithRootViewController:subInfoVC];
-                [weakSelf presentViewController:subNavi animated:YES completion:^{
-                    
-                }];
-                
-                [weakSelf releasePopoverController];
             }];
         };
         
-        _infoViewController.dismissInfoView = ^(){
-            [weakSelf.infoPopoverController dismissPopoverAnimated:YES completion:^{
-                [weakSelf releasePopoverController];
-            }];
-        };
+        UINavigationController *subNavi = [[UINavigationController alloc] initWithRootViewController:subInfoVC];
+        [weakSelf presentViewController:subNavi animated:YES completion:^{
+            
+        }];
+    };
+    
+    // Show Pop up
+    KLCPopup* popup = [KLCPopup popupWithContentView:infoView
+                                            showType:KLCPopupShowTypeFadeIn
+                                         dismissType:KLCPopupDismissTypeFadeOut
+                                            maskType:KLCPopupMaskTypeDimmed
+                            dismissOnBackgroundTouch:YES
+                               dismissOnContentTouch:NO];
+    popup.didFinishShowingCompletion = ^() {
         
-        UINavigationController* contentViewController = [[UINavigationController alloc] initWithRootViewController:_infoViewController];
-        
-        _infoPopoverController = [[WYPopoverController alloc] initWithContentViewController:contentViewController];
-        _infoPopoverController.delegate = self;
-        _infoPopoverController.passthroughViews = @[btn];
-        _infoPopoverController.popoverLayoutMargins = UIEdgeInsetsMake(10, 10, 10, 10);
-        _infoPopoverController.wantsDefaultContentAppearance = NO;
-        
-        [_infoPopoverController presentPopoverFromRect:btn.bounds
-                                                   inView:btn
-                                 permittedArrowDirections:WYPopoverArrowDirectionAny
-                                                 animated:YES
-                                                  options:WYPopoverAnimationOptionFadeWithScale];
-    }
+    };
+    
+    [popup showWithRoot:self.view];
 }
 
 - (void)downloadMangaWithIndexChapter:(NSInteger )indexChap {
