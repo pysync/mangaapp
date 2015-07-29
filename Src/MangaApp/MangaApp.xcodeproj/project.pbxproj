@@ -1002,7 +1002,7 @@
 					"$(PROJECT_DIR)/MangaApp/Libs/TestFairySDK",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "572ed046-9f91-4890-aa9b-ae003b1b705a";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1026,7 +1026,7 @@
 					"$(PROJECT_DIR)/MangaApp/Libs/TestFairySDK",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "572ed046-9f91-4890-aa9b-ae003b1b705a";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

@@ -149,6 +149,8 @@ extern const KLCPopupLayout KLCPopupLayoutCenter;
 // Show popup with center layout. Animation determined by showType.
 - (void)show;
 
+- (void)showWithRoot:(UIView*)view;
+
 // Show with specified layout.
 - (void)showWithLayout:(KLCPopupLayout)layout;
 

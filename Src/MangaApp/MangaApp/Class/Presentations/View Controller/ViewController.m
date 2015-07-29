@@ -132,7 +132,7 @@
         [popup dismissPresentingPopup];
     };
     
-    [popup show];
+    [popup showWithRoot:self.view];
 }
 
 - (void)createUI {

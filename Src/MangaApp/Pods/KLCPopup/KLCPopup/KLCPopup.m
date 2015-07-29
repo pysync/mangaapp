@@ -207,6 +207,12 @@ const KLCPopupLayout KLCPopupLayoutCenter = { KLCPopupHorizontalLayoutCenter, KL
   [self showWithLayout:KLCPopupLayoutCenter];
 }
 
+- (void)showWithRoot:(UIView*)view {
+    NSDictionary* parameters = @{@"layout" : [NSValue valueWithKLCPopupLayout:KLCPopupLayoutCenter],
+                                 @"duration" : @(0.0),
+                                 @"root" : view};
+    [self showWithParameters:parameters];
+}
 
 - (void)showWithLayout:(KLCPopupLayout)layout {
   [self showWithLayout:layout duration:0.0];
@@ -529,19 +535,22 @@ const KLCPopupLayout KLCPopupLayoutCenter = { KLCPopupHorizontalLayoutCenter, KL
     [self willStartShowing];
     
     dispatch_async( dispatch_get_main_queue(), ^{
-      
       // Prepare by adding to the top window.
-      if(!self.superview){
-        NSEnumerator *frontToBackWindows = [[[UIApplication sharedApplication] windows] reverseObjectEnumerator];
-        
-        for (UIWindow *window in frontToBackWindows) {
-          if (window.windowLevel == UIWindowLevelNormal) {
-            [window addSubview:self];
-            
-            break;
-          }
+        if(!self.superview) {
+            UIView* rootView = [parameters valueForKey:@"root"];
+            if(rootView == nil){
+                NSEnumerator *frontToBackWindows = [[[UIApplication sharedApplication] windows] reverseObjectEnumerator];
+                
+                for (UIWindow *window in frontToBackWindows) {
+                    if (window.windowLevel == UIWindowLevelNormal) {
+                        [window addSubview:self];
+                        break;
+                    }
+                }
+            }else{
+                [rootView addSubview:self];
+            }
         }
-      }
       
       // Before we calculate layout for containerView, make sure we are transformed for current orientation.
       [self updateForInterfaceOrientation];
