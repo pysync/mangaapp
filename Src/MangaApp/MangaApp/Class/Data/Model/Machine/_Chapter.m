@@ -4,9 +4,15 @@
 #import "_Chapter.h"
 
 const struct ChapterAttributes ChapterAttributes = {
-	.chapterNumber = @"chapterNumber",
-	.chapterTitle = @"chapterTitle",
+	.chapterID = @"chapterID",
+	.chapterName = @"chapterName",
+	.cost = @"cost",
+	.dirPrefix = @"dirPrefix",
+	.ext = @"ext",
+	.freeFlg = @"freeFlg",
 	.isDownloaded = @"isDownloaded",
+	.pageCount = @"pageCount",
+	.pagePrefix = @"pagePrefix",
 };
 
 @implementation ChapterID
@@ -35,8 +41,18 @@ const struct ChapterAttributes ChapterAttributes = {
 + (NSSet*)keyPathsForValuesAffectingValueForKey:(NSString*)key {
 	NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
 
-	if ([key isEqualToString:@"chapterNumberValue"]) {
-		NSSet *affectingKey = [NSSet setWithObject:@"chapterNumber"];
+	if ([key isEqualToString:@"chapterIDValue"]) {
+		NSSet *affectingKey = [NSSet setWithObject:@"chapterID"];
+		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
+		return keyPaths;
+	}
+	if ([key isEqualToString:@"costValue"]) {
+		NSSet *affectingKey = [NSSet setWithObject:@"cost"];
+		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
+		return keyPaths;
+	}
+	if ([key isEqualToString:@"freeFlgValue"]) {
+		NSSet *affectingKey = [NSSet setWithObject:@"freeFlg"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
 		return keyPaths;
 	}
@@ -45,31 +61,80 @@ const struct ChapterAttributes ChapterAttributes = {
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
 		return keyPaths;
 	}
+	if ([key isEqualToString:@"pageCountValue"]) {
+		NSSet *affectingKey = [NSSet setWithObject:@"pageCount"];
+		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
+		return keyPaths;
+	}
 
 	return keyPaths;
 }
 
-@dynamic chapterNumber;
+@dynamic chapterID;
 
-- (int16_t)chapterNumberValue {
-	NSNumber *result = [self chapterNumber];
+- (int32_t)chapterIDValue {
+	NSNumber *result = [self chapterID];
+	return [result intValue];
+}
+
+- (void)setChapterIDValue:(int32_t)value_ {
+	[self setChapterID:[NSNumber numberWithInt:value_]];
+}
+
+- (int32_t)primitiveChapterIDValue {
+	NSNumber *result = [self primitiveChapterID];
+	return [result intValue];
+}
+
+- (void)setPrimitiveChapterIDValue:(int32_t)value_ {
+	[self setPrimitiveChapterID:[NSNumber numberWithInt:value_]];
+}
+
+@dynamic chapterName;
+
+@dynamic cost;
+
+- (int32_t)costValue {
+	NSNumber *result = [self cost];
+	return [result intValue];
+}
+
+- (void)setCostValue:(int32_t)value_ {
+	[self setCost:[NSNumber numberWithInt:value_]];
+}
+
+- (int32_t)primitiveCostValue {
+	NSNumber *result = [self primitiveCost];
+	return [result intValue];
+}
+
+- (void)setPrimitiveCostValue:(int32_t)value_ {
+	[self setPrimitiveCost:[NSNumber numberWithInt:value_]];
+}
+
+@dynamic dirPrefix;
+
+@dynamic ext;
+
+@dynamic freeFlg;
+
+- (int16_t)freeFlgValue {
+	NSNumber *result = [self freeFlg];
 	return [result shortValue];
 }
 
-- (void)setChapterNumberValue:(int16_t)value_ {
-	[self setChapterNumber:[NSNumber numberWithShort:value_]];
+- (void)setFreeFlgValue:(int16_t)value_ {
+	[self setFreeFlg:[NSNumber numberWithShort:value_]];
 }
 
-- (int16_t)primitiveChapterNumberValue {
-	NSNumber *result = [self primitiveChapterNumber];
+- (int16_t)primitiveFreeFlgValue {
+	NSNumber *result = [self primitiveFreeFlg];
 	return [result shortValue];
 }
 
-- (void)setPrimitiveChapterNumberValue:(int16_t)value_ {
-	[self setPrimitiveChapterNumber:[NSNumber numberWithShort:value_]];
+- (void)setPrimitiveFreeFlgValue:(int16_t)value_ {
+	[self setPrimitiveFreeFlg:[NSNumber numberWithShort:value_]];
 }
-
-@dynamic chapterTitle;
 
 @dynamic isDownloaded;
 
@@ -90,6 +155,28 @@ const struct ChapterAttributes ChapterAttributes = {
 - (void)setPrimitiveIsDownloadedValue:(BOOL)value_ {
 	[self setPrimitiveIsDownloaded:[NSNumber numberWithBool:value_]];
 }
+
+@dynamic pageCount;
+
+- (int32_t)pageCountValue {
+	NSNumber *result = [self pageCount];
+	return [result intValue];
+}
+
+- (void)setPageCountValue:(int32_t)value_ {
+	[self setPageCount:[NSNumber numberWithInt:value_]];
+}
+
+- (int32_t)primitivePageCountValue {
+	NSNumber *result = [self primitivePageCount];
+	return [result intValue];
+}
+
+- (void)setPrimitivePageCountValue:(int32_t)value_ {
+	[self setPrimitivePageCount:[NSNumber numberWithInt:value_]];
+}
+
+@dynamic pagePrefix;
 
 @end
 

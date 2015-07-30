@@ -45,12 +45,8 @@
     _chapterService = [[ChapterListService alloc] init];
     // Do any additional setup after loading the view, typically from a nib.
     [_contentTableView registerNib:[UINib nibWithNibName:NSStringFromClass([ChapterCustomCell class]) bundle:nil] forCellReuseIdentifier:[ChapterCustomCell getIdentifierCell]];
-    
-    // Test Parse.com
-    PFObject *testObject = [PFObject objectWithClassName:@"TestObject"];
-    testObject[@"foo"] = @"bar";
-    [testObject saveInBackground];
 
+    //--------------------------------------------------------------------------
     // Load data from json
     [self loadDataFromJSON];
     
@@ -69,6 +65,7 @@
         }
     }];
     
+    //--------------------------------------------------------------------------
     // Ads
     self.bannerView.adUnitID = kBannerAdsID;
     self.bannerView.rootViewController = self;

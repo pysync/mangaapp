@@ -71,7 +71,7 @@
 - (void)createUI {
     [[self navigationController] setNavigationBarHidden:YES animated:NO];
     _processSlider.minimumValue = 1.0;
-    _processSlider.maximumValue = _chapModel.chapterJSONModel.images.count;
+    _processSlider.maximumValue = _chapModel.chapterJSONModel.pageCount.integerValue;
     
     _processView.layer.cornerRadius = 12.0;
     _processView.layer.borderWidth = 3.0;
@@ -117,8 +117,8 @@
     _processView.progress = config.stamina/config.maxStamina;
     _staminaLabel.text = [NSString stringWithFormat:@"%ld/%d", (long)config.stamina,(int)config.maxStamina];
     
-    _titleLabel.text = _chapModel.chapterJSONModel.titleChap;
-    _pageLabel.text = [NSString stringWithFormat:@"1/%lu", (unsigned long)_chapModel.chapterJSONModel.images.count];
+    _titleLabel.text = _chapModel.chapterJSONModel.chapterName;
+    _pageLabel.text = [NSString stringWithFormat:@"1/%lu", (unsigned long)_chapModel.chapterJSONModel.pageCount.integerValue];
 }
 
 #pragma mark - PageViewController data sources
@@ -178,7 +178,7 @@
 - (void)reloadBottomViewDataWithPageIndex:(NSInteger )pageIndex {
     dispatch_async(dispatch_get_main_queue(), ^{
         [_processSlider setValue:pageIndex animated:NO];
-        _pageLabel.text = [NSString stringWithFormat:@"%ld/%lu", (long)pageIndex, (unsigned long)_chapModel.chapterJSONModel.images.count];
+        _pageLabel.text = [NSString stringWithFormat:@"%ld/%lu", (long)pageIndex, (unsigned long)_chapModel.chapterJSONModel.pageCount.integerValue];
     });
 }
 
