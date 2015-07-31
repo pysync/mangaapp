@@ -56,7 +56,7 @@
     if (!err) {
         _listChapters = [self createChapterModelWithData:responseModel.data];
         [self createAndSaveDataIfNeed];
-        [self loadConfigFile];
+        //[self loadConfigFile];
         if (successBlock) {
             successBlock();
         }
