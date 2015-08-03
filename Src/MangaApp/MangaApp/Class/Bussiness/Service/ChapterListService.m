@@ -51,10 +51,8 @@
     
     NSArray *modelObjects = [ChapterJSONModel arrayOfModelsFromDictionaries:jsonObjects];
     
-    NSError* err = nil;
-    ResponseModel *responseModel = [[ResponseModel alloc] initWithString:jsonString error:&err];
-    if (!err) {
-        _listChapters = [self createChapterModelWithData:responseModel.data];
+    if (!jsonError) {
+        _listChapters = [self createChapterModelWithData:modelObjects];
         [self createAndSaveDataIfNeed];
         //[self loadConfigFile];
         if (successBlock) {
@@ -127,30 +125,27 @@
 //    return [[NSFileManager defaultManager] fileExistsAtPath:imagePath];
 //}
 //
-//- (void)createAndSaveDataIfNeed {
-//    NSArray *listChapter = [Chapter MR_findAllSortedBy:@"chapterNumber" ascending:YES];
-//    if (listChapter.count) {
-//        for (int i=0; i<listChapter.count; i++) {
-//            Chapter *chapEntity = listChapter[i];
-//            ChapterModel *chapModel = (ChapterModel *)_listChapters[i];
-//            chapModel.chapterEntity = chapEntity;
-//            chapModel.isFinishedDownload = chapEntity.isDownloaded.boolValue;
-//        }
-//    }else {
-//        for (int i=0; i<_listChapters.count; i++) {
-//            ChapterModel *chapModel = _listChapters[i];
-//            ChapterJSONModel *chap = chapModel.chapterJSONModel;
-//            
-//            Chapter *chapEntity = [Chapter MR_createEntity];
-//            chapEntity.chapterTitle = chap.titleChap;
-//            chapEntity.isDownloaded = @(0);
-//            chapEntity.chapterNumber = @(i+1);
-//            chapModel.chapterEntity = chapEntity;
-//            
-//            [chapEntity.managedObjectContext MR_saveToPersistentStoreAndWait];
-//        }
-//    }
-//}
+- (void)createAndSaveDataIfNeed {
+    NSArray *listChapter = [Chapter MR_findAllSortedBy:@"chapterID" ascending:YES];
+    if (listChapter.count) {
+        for (int i=0; i<listChapter.count; i++) {
+            Chapter *chapEntity = listChapter[i];
+            ChapterModel *chapModel = (ChapterModel *)_listChapters[i];
+            chapModel.chapterEntity = chapEntity;
+            chapModel.isFinishedDownload = chapEntity.isDownloaded.boolValue;
+        }
+    }else {
+        for (int i=0; i<_listChapters.count; i++) {
+            ChapterModel *chapModel = _listChapters[i];
+            ChapterJSONModel *chap = chapModel.chapterJSONModel;
+            
+            Chapter *chapEntity = [Chapter MR_createEntityWithJSONModel:chap];
+            chapModel.chapterEntity = chapEntity;
+            
+            [chapEntity.managedObjectContext MR_saveToPersistentStoreAndWait];
+        }
+    }
+}
 //
 //- (void)loadConfigFile {
 //    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"staminaConfig" ofType:@"plist"];
