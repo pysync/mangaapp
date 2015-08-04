@@ -15,6 +15,6 @@
 @property (strong, nonatomic) ChapterModel *chapterModel;
 
 - (instancetype)initWithModel:(ChapterModel *)chapModel;
-- (void)getChapHistoryWithChapName:(NSString *)chapName;
+- (void)getChapHistoryWithChapName:(NSNumber *)chapterID;
 - (void)downloadImageWithName:(NSString *)imageName success:(void(^)())successBlock failure:(void(^)())failBlock;
 @end

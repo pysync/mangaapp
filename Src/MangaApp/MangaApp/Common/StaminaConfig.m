@@ -49,10 +49,10 @@
 }
 
 - (void)saveData {
-    NSArray *trackerList = [ChapTracker MR_findByAttribute:@"chapName" withValue:_chapName];
+    NSArray *trackerList = [ChapTracker MR_findByAttribute:@"chapterID" withValue:_chapterID];
     NSMutableArray *chapList = [[NSMutableArray alloc] initWithCapacity:0];
     for (ChapTracker *tracker in trackerList) {
-        [chapList addObject:tracker.chapName];
+        [chapList addObject:tracker.chapterID];
     }
     
     if (chapList.count != _chapTrackList.count) {
@@ -60,7 +60,7 @@
             if (![chapList containsObject:_chapTrackList[i]]) {
                 // Create new entity
                 ChapTracker *newTrack = [ChapTracker MR_createEntity];
-                newTrack.chapName = _chapName;
+                newTrack.chapterID = _chapterID;
                 newTrack.pageName = _chapTrackList[i];
                 [newTrack.managedObjectContext MR_saveToPersistentStoreAndWait];
             }

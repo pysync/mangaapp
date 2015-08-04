@@ -34,7 +34,7 @@
     _isShowingBarView = YES;
     
     _chapterService = [[ChapterService alloc] initWithModel:_chapModel];
-    [_chapterService getChapHistoryWithChapName:_chapModel.chapName];
+    [_chapterService getChapHistoryWithChapName:_chapModel.chapterEntity.chapterID];
     
     [self createUI];
     [self loadDataToView];
@@ -128,7 +128,7 @@
     _currentPage = index;
     [self reloadBottomViewDataWithPageIndex:(index + 1)];
     if (index) {
-        NSString *imageName = [NSString stringWithFormat:@"%@%lu%@", _chapModel.chapterJSONModel.pagePrefix, (unsigned long)index - 1, _chapModel.chapterJSONModel.ext];
+        NSString *imageName = [NSString stringWithFormat:@"%@%lu%@", _chapModel.chapterJSONModel.pagePrefix, (unsigned long)index, _chapModel.chapterJSONModel.ext];
         
         return [PhotoViewController photoViewControllerForPageIndex:(index - 1) imageName:imageName andService:_chapterService];
     }else {
@@ -142,7 +142,7 @@
     _currentPage = index;
     [self reloadBottomViewDataWithPageIndex:(index + 1)];
     if (index < _chapModel.chapterJSONModel.pageCount.integerValue - 1) {
-        NSString *imageName = [NSString stringWithFormat:@"%@%lu%@", _chapModel.chapterJSONModel.pagePrefix, (unsigned long)index + 1, _chapModel.chapterJSONModel.ext];
+        NSString *imageName = [NSString stringWithFormat:@"%@%lu%@", _chapModel.chapterJSONModel.pagePrefix, (unsigned long)index + 2, _chapModel.chapterJSONModel.ext];
         
         return [PhotoViewController photoViewControllerForPageIndex:(index + 1) imageName:imageName andService:_chapterService];
     }
@@ -211,13 +211,15 @@
     StaminaConfig *staminaConfig = [StaminaConfig sharedConfig];
     NSString *currentImageName = [NSString stringWithFormat:@"%@%lu%@", _chapModel.chapterJSONModel.pagePrefix, (unsigned long)_currentPage, _chapModel.chapterJSONModel.ext];
     
-    if (![staminaConfig.chapTrackList containsObject:currentImageName]) {
-        if (staminaConfig.stamina >= _chapterService.chapterModel.staminaCost) {
-            staminaConfig.stamina -= _chapterService.chapterModel.staminaCost;
-            [staminaConfig.chapTrackList addObject:currentImageName];
-            [[NSNotificationCenter defaultCenter] postNotificationName:kUpdateStaminaView object:nil];
-        }else {
-            [[NSNotificationCenter defaultCenter] postNotificationName:kShowStaminaExpired object:nil];
+    if (_chapterService.chapterModel.chapterEntity.freeFlg.integerValue == 1) {
+        if (![staminaConfig.chapTrackList containsObject:currentImageName]) {
+            if (staminaConfig.stamina >= _chapterService.chapterModel.chapterEntity.cost.integerValue) {
+                staminaConfig.stamina -= _chapterService.chapterModel.chapterEntity.cost.integerValue;
+                [staminaConfig.chapTrackList addObject:currentImageName];
+                [[NSNotificationCenter defaultCenter] postNotificationName:kUpdateStaminaView object:nil];
+            }else {
+                [[NSNotificationCenter defaultCenter] postNotificationName:kShowStaminaExpired object:nil];
+            }
         }
     }
 }

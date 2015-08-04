@@ -29,8 +29,8 @@
     return self;
 }
 
-- (void)getChapHistoryWithChapName:(NSString *)chapName {
-    NSArray *trackList = [ChapTracker MR_findByAttribute:@"chapName" withValue:chapName];
+- (void)getChapHistoryWithChapName:(NSNumber *)chapterID {
+    NSArray *trackList = [ChapTracker MR_findByAttribute:@"chapterID" withValue:chapterID];
     NSMutableArray *tmpTrackList = [[NSMutableArray alloc] initWithCapacity:0];
     for (int i=0; i<trackList.count; i++) {
         ChapTracker *track = trackList[i];
@@ -40,7 +40,7 @@
     StaminaConfig *config = [StaminaConfig sharedConfig];
     [config.chapTrackList removeAllObjects];
     config.chapTrackList = tmpTrackList;
-    config.chapName = chapName;
+    config.chapterID = chapterID;
 }
 
 - (void)downloadImageWithName:(NSString *)imageName success:(void (^)())successBlock failure:(void (^)())failBlock {

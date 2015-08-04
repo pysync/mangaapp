@@ -104,8 +104,8 @@
 - (void)viewDidAppear:(BOOL)animated {
     StaminaConfig *staminaConfig = [StaminaConfig sharedConfig];
     if (![staminaConfig.chapTrackList containsObject:_imageName]) {
-        if (staminaConfig.stamina >= _photoService.chapterModel.staminaCost) {
-            staminaConfig.stamina -= _photoService.chapterModel.staminaCost;
+        if (staminaConfig.stamina >= _photoService.chapterModel.chapterEntity.cost.integerValue) {
+            staminaConfig.stamina -= _photoService.chapterModel.chapterEntity.cost.integerValue;
             [staminaConfig.chapTrackList addObject:_imageName];
             [[NSNotificationCenter defaultCenter] postNotificationName:kUpdateStaminaView object:nil];
         }else {

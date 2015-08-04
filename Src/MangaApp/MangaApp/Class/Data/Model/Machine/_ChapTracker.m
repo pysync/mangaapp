@@ -4,7 +4,7 @@
 #import "_ChapTracker.h"
 
 const struct ChapTrackerAttributes ChapTrackerAttributes = {
-	.chapName = @"chapName",
+	.chapterID = @"chapterID",
 	.pageName = @"pageName",
 };
 
@@ -34,10 +34,34 @@ const struct ChapTrackerAttributes ChapTrackerAttributes = {
 + (NSSet*)keyPathsForValuesAffectingValueForKey:(NSString*)key {
 	NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
 
+	if ([key isEqualToString:@"chapterIDValue"]) {
+		NSSet *affectingKey = [NSSet setWithObject:@"chapterID"];
+		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
+		return keyPaths;
+	}
+
 	return keyPaths;
 }
 
-@dynamic chapName;
+@dynamic chapterID;
+
+- (int32_t)chapterIDValue {
+	NSNumber *result = [self chapterID];
+	return [result intValue];
+}
+
+- (void)setChapterIDValue:(int32_t)value_ {
+	[self setChapterID:[NSNumber numberWithInt:value_]];
+}
+
+- (int32_t)primitiveChapterIDValue {
+	NSNumber *result = [self primitiveChapterID];
+	return [result intValue];
+}
+
+- (void)setPrimitiveChapterIDValue:(int32_t)value_ {
+	[self setPrimitiveChapterID:[NSNumber numberWithInt:value_]];
+}
 
 @dynamic pageName;
 

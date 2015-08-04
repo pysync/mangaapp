@@ -4,7 +4,7 @@
 #import <CoreData/CoreData.h>
 
 extern const struct ChapTrackerAttributes {
-	__unsafe_unretained NSString *chapName;
+	__unsafe_unretained NSString *chapterID;
 	__unsafe_unretained NSString *pageName;
 } ChapTrackerAttributes;
 
@@ -17,9 +17,13 @@ extern const struct ChapTrackerAttributes {
 + (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
 @property (nonatomic, readonly, strong) ChapTrackerID* objectID;
 
-@property (nonatomic, strong) NSString* chapName;
+@property (nonatomic, strong) NSNumber* chapterID;
 
-//- (BOOL)validateChapName:(id*)value_ error:(NSError**)error_;
+@property (atomic) int32_t chapterIDValue;
+- (int32_t)chapterIDValue;
+- (void)setChapterIDValue:(int32_t)value_;
+
+//- (BOOL)validateChapterID:(id*)value_ error:(NSError**)error_;
 
 @property (nonatomic, strong) NSString* pageName;
 
@@ -29,8 +33,11 @@ extern const struct ChapTrackerAttributes {
 
 @interface _ChapTracker (CoreDataGeneratedPrimitiveAccessors)
 
-- (NSString*)primitiveChapName;
-- (void)setPrimitiveChapName:(NSString*)value;
+- (NSNumber*)primitiveChapterID;
+- (void)setPrimitiveChapterID:(NSNumber*)value;
+
+- (int32_t)primitiveChapterIDValue;
+- (void)setPrimitiveChapterIDValue:(int32_t)value_;
 
 - (NSString*)primitivePageName;
 - (void)setPrimitivePageName:(NSString*)value;
