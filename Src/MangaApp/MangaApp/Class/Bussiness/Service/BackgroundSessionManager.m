@@ -7,6 +7,7 @@
 //
 
 #import "BackgroundSessionManager.h"
+#import "Common.h"
 
 static NSString * const kBackgroundSessionIdentifier = @"com.domain.backgroundsession";
 
@@ -49,9 +50,24 @@ static NSString * const kBackgroundSessionIdentifier = @"com.domain.backgroundse
             }
         }
         
-        NSString *filename      = [downloadTask.originalRequest.URL lastPathComponent];
-        NSString *documentsPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
-        NSString *path          = [documentsPath stringByAppendingPathComponent:filename];
+        NSString *fileName      = [downloadTask.originalRequest.URL lastPathComponent];
+        NSString *documentsPath = [Common getDocumentDirectory];
+        
+        NSArray *components = [downloadTask.originalRequest.URL pathComponents];
+        NSString *chapterName = components[components.count - 2];
+        
+        documentsPath = [documentsPath stringByAppendingPathComponent:chapterName];
+        
+        BOOL isDir = YES;
+        NSError *err;
+        NSFileManager *fileManager = [NSFileManager defaultManager];
+        if (![fileManager fileExistsAtPath:documentsPath isDirectory:&isDir]) {
+            if (![fileManager createDirectoryAtPath:documentsPath withIntermediateDirectories:YES attributes:nil error:&err]) {
+                NSLog(@"Create directory fail");
+            }
+        }
+        
+        NSString *path = [documentsPath stringByAppendingPathComponent:fileName];
         return [NSURL fileURLWithPath:path];
     }];
     
