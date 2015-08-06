@@ -78,9 +78,9 @@
 
 - (void)downloadChapterWithModel:(ChapterJSONModel *)chapterModel success:(void (^)())successBlock failure:(void (^)())failBlock {
     _numberImageDownloaded = 0;
-    NSString *baseURL = kBaseUrl;
+    NSString *baseURL = [kBaseUrl stringByAppendingPathComponent:[NSString stringWithFormat:@"%@%@", chapterModel.dirPrefix, chapterModel.chapterID]];
     for (int i=0; i<chapterModel.pageCount.integerValue; i++) {
-        NSString *imageName = [NSString stringWithFormat:@"%@%lu%@", chapterModel.pagePrefix, (unsigned long)i + 1, chapterModel.ext];
+        NSString *imageName = [NSString stringWithFormat:@"%@%lu.%@", chapterModel.pagePrefix, (unsigned long)i + 1, chapterModel.ext];
         if (![self imageDownloadedWithImageName:imageName]) {
             NSString *fullURL = [baseURL stringByAppendingPathComponent:imageName];
             NSURL *URL = [NSURL URLWithString:fullURL];
@@ -159,7 +159,7 @@
     NSFileManager *fileManager = [NSFileManager defaultManager];
     
     for (int i=0; i<chapModel.chapterJSONModel.pageCount.integerValue; i++) {
-        NSString *imageName = [NSString stringWithFormat:@"%@%lu%@", chapModel.chapterJSONModel.pagePrefix, (unsigned long)i + 1, chapModel.chapterJSONModel.ext];
+        NSString *imageName = [NSString stringWithFormat:@"%@%lu.%@", chapModel.chapterJSONModel.pagePrefix, (unsigned long)i + 1, chapModel.chapterJSONModel.ext];
         NSString *documentPath = [Common getDocumentDirectory];
         NSString *imagePath = [documentPath stringByAppendingPathComponent:imageName];
         
