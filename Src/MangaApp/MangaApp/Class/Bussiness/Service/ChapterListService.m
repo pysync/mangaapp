@@ -98,7 +98,9 @@
                 // Push notification
                 NSString *pathString = filePath.absoluteString;
                 NSString *imageName = [pathString lastPathComponent];
-                [[NSNotificationCenter defaultCenter] postNotificationName:kFinishDownloadAnImage object:nil userInfo:@{kImageNameNotification: imageName}];
+                if (imageName && imageName.length) {
+                    [[NSNotificationCenter defaultCenter] postNotificationName:kFinishDownloadAnImage object:nil userInfo:@{kImageNameNotification: imageName}];
+                }
                 
                 if (_numberImageDownloaded == chapterModel.pageCount.integerValue) {
                     NSLog(@"All file download successfully");

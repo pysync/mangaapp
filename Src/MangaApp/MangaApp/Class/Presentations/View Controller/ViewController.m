@@ -141,6 +141,15 @@
     _processView.clipsToBounds = YES;
 }
 
+- (void)showAlertDownloading {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        MBProgressHUD *hub = [[MBProgressHUD alloc] initWithView:self.view];
+        hub.labelText = @"Downloading...";
+        [self.view addSubview:hub];
+        [hub show:YES];
+    });
+}
+
 #pragma mark - UI Function
 - (void)updateProcessBar {
     StaminaConfig *config = [StaminaConfig sharedConfig];
@@ -245,22 +254,17 @@
     [popup showWithRoot:self.view];
 }
 
-- (void)downloadMangaWithIndexChapter:(NSInteger )indexChap {
-    ChapterCustomCell *cell = (ChapterCustomCell *)[_contentTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:indexChap inSection:0]];
+- (void)downloadMangaWithIndexChapter:(NSNumber *)indexChap {
+    ChapterCustomCell *cell = (ChapterCustomCell *)[_contentTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:indexChap.integerValue inSection:0]];
     cell.downloadState = kDownloadingState;
     
-    MBProgressHUD *hub = [[MBProgressHUD alloc] initWithView:self.view];
-    hub.labelText = @"Downloading...";
-    [self.view addSubview:hub];
-    [hub show:YES];
-    
-    ChapterModel *chapModel = _chapterService.listChapters[indexChap];
+    ChapterModel *chapModel = _chapterService.listChapters[indexChap.integerValue];
     chapModel.isDownloading = YES;
     [_chapterService downloadChapterWithModel:chapModel.chapterJSONModel success:^{
         cell.downloadState = kDownloadedState;
         chapModel.isFinishedDownload = YES;
         chapModel.isDownloading = NO;
-        [_chapterService updateChapterWithIndexChap:indexChap andState:YES];
+        [_chapterService updateChapterWithIndexChap:indexChap.integerValue andState:YES];
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
     } failure:^{
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
@@ -369,7 +373,9 @@
     ChapterCustomCell *cell = (ChapterCustomCell *)[tableView dequeueReusableCellWithIdentifier:[ChapterCustomCell getIdentifierCell]];
     
     cell.onStartDownloadButton = ^(){
-        [self downloadMangaWithIndexChapter:indexPath.row];
+        [self showAlertDownloading];
+        [self performSelector:@selector(downloadMangaWithIndexChapter:) withObject:@(indexPath.row) afterDelay:0.3];
+        //[self downloadMangaWithIndexChapter:indexPath.row];
     };
     cell.onStartRemoveButton = ^(){
         [self removeChapWithIndexChapter:indexPath.row];
