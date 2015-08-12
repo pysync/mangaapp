@@ -256,7 +256,6 @@
 
 - (void)downloadMangaWithIndexChapter:(NSNumber *)indexChap {
     ChapterCustomCell *cell = (ChapterCustomCell *)[_contentTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:indexChap.integerValue inSection:0]];
-    cell.downloadState = kDownloadingState;
     
     ChapterModel *chapModel = _chapterService.listChapters[indexChap.integerValue];
     chapModel.isDownloading = YES;
@@ -372,10 +371,12 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ChapterCustomCell *cell = (ChapterCustomCell *)[tableView dequeueReusableCellWithIdentifier:[ChapterCustomCell getIdentifierCell]];
     
+    
+    __weak typeof(cell)weakCell = cell;
     cell.onStartDownloadButton = ^(){
+        weakCell.downloadState = kDownloadingState;
         [self showAlertDownloading];
         [self performSelector:@selector(downloadMangaWithIndexChapter:) withObject:@(indexPath.row) afterDelay:0.3];
-        //[self downloadMangaWithIndexChapter:indexPath.row];
     };
     cell.onStartRemoveButton = ^(){
         [self removeChapWithIndexChapter:indexPath.row];
