@@ -211,7 +211,7 @@
     StaminaConfig *staminaConfig = [StaminaConfig sharedConfig];
     NSString *currentImageName = [NSString stringWithFormat:@"%@%lu.%@", _chapModel.chapterJSONModel.pagePrefix, (unsigned long)_currentPage, _chapModel.chapterJSONModel.ext];
     
-    if (_chapterService.chapterModel.chapterEntity.freeFlg.integerValue == 1) {
+    if (_chapterService.chapterModel.chapterEntity.freeFlg.integerValue == 0) {
         if (![staminaConfig.chapTrackList containsObject:currentImageName]) {
             if (staminaConfig.stamina >= _chapterService.chapterModel.chapterEntity.cost.integerValue) {
                 staminaConfig.stamina -= _chapterService.chapterModel.chapterEntity.cost.integerValue;
