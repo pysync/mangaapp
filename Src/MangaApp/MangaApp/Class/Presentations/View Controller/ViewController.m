@@ -77,6 +77,7 @@
         [[self navigationController] setNavigationBarHidden:YES animated:NO];
     }
     [self updateProcessBar];
+    [_contentTableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {

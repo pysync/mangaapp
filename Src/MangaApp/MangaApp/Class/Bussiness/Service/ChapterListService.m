@@ -80,46 +80,48 @@
     _numberImageDownloaded = 0;
     NSString *baseURL = [kBaseUrl stringByAppendingPathComponent:[NSString stringWithFormat:@"%@%@", chapterModel.dirPrefix, chapterModel.chapterID]];
     for (int i=0; i<chapterModel.pageCount.integerValue; i++) {
-        NSString *imageName = [NSString stringWithFormat:@"%@%lu.%@", chapterModel.pagePrefix, (unsigned long)i + 1, chapterModel.ext];
-        if (![self imageDownloadedWithImageName:imageName]) {
-            NSString *fullURL = [baseURL stringByAppendingPathComponent:imageName];
-            NSURL *URL = [NSURL URLWithString:fullURL];
-            NSURLRequest *request = [NSURLRequest requestWithURL:URL];
-            
-            NSURLSessionDownloadTask *downloadTask = [[BackgroundSessionManager sharedManager] downloadTaskWithRequest:request progress:nil destination:^NSURL *(NSURL *targetPath, NSURLResponse *response) {
-                NSURL *documentsDirectoryURL = [[NSFileManager defaultManager] URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:NO error:nil];
-                NSString *chapterName = [NSString stringWithFormat:@"%@%@", chapterModel.dirPrefix, chapterModel.chapterID];
-                documentsDirectoryURL = [documentsDirectoryURL URLByAppendingPathComponent:chapterName];
-                return [documentsDirectoryURL URLByAppendingPathComponent:[response suggestedFilename]];
-            } completionHandler:^(NSURLResponse *response, NSURL *filePath, NSError *error) {
-                NSLog(@"File downloaded to: %@", filePath);
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            NSString *imageName = [NSString stringWithFormat:@"%@%lu.%@", chapterModel.pagePrefix, (unsigned long)i + 1, chapterModel.ext];
+            if (![self imageDownloadedWithImageName:imageName]) {
+                NSString *fullURL = [baseURL stringByAppendingPathComponent:imageName];
+                NSURL *URL = [NSURL URLWithString:fullURL];
+                NSURLRequest *request = [NSURLRequest requestWithURL:URL];
+                
+                NSURLSessionDownloadTask *downloadTask = [[BackgroundSessionManager sharedManager] downloadTaskWithRequest:request progress:nil destination:^NSURL *(NSURL *targetPath, NSURLResponse *response) {
+                    NSURL *documentsDirectoryURL = [[NSFileManager defaultManager] URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:NO error:nil];
+                    NSString *chapterName = [NSString stringWithFormat:@"%@%@", chapterModel.dirPrefix, chapterModel.chapterID];
+                    documentsDirectoryURL = [documentsDirectoryURL URLByAppendingPathComponent:chapterName];
+                    return [documentsDirectoryURL URLByAppendingPathComponent:[response suggestedFilename]];
+                } completionHandler:^(NSURLResponse *response, NSURL *filePath, NSError *error) {
+                    NSLog(@"File downloaded to: %@", filePath);
+                    _numberImageDownloaded++;
+                    
+                    // Push notification
+                    NSString *pathString = filePath.absoluteString;
+                    NSString *imageName = [pathString lastPathComponent];
+                    if (imageName && imageName.length) {
+                        [[NSNotificationCenter defaultCenter] postNotificationName:kFinishDownloadAnImage object:nil userInfo:@{kImageNameNotification: imageName}];
+                    }
+                    
+                    if (_numberImageDownloaded == chapterModel.pageCount.integerValue) {
+                        NSLog(@"All file download successfully");
+                        
+                        if (successBlock) {
+                            successBlock();
+                        }
+                    }
+                }];
+                [downloadTask resume];
+            }else {
                 _numberImageDownloaded++;
                 
-                // Push notification
-                NSString *pathString = filePath.absoluteString;
-                NSString *imageName = [pathString lastPathComponent];
-                if (imageName && imageName.length) {
-                    [[NSNotificationCenter defaultCenter] postNotificationName:kFinishDownloadAnImage object:nil userInfo:@{kImageNameNotification: imageName}];
-                }
-                
                 if (_numberImageDownloaded == chapterModel.pageCount.integerValue) {
-                    NSLog(@"All file download successfully");
-                    
                     if (successBlock) {
                         successBlock();
                     }
                 }
-            }];
-            [downloadTask resume];
-        }else {
-            _numberImageDownloaded++;
-            
-            if (_numberImageDownloaded == chapterModel.pageCount.integerValue) {
-                if (successBlock) {
-                    successBlock();
-                }
             }
-        }
+        });
     }
 }
 
