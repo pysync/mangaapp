@@ -162,9 +162,10 @@
     ChapterModel *chapModel = _listChapters[indexChap];
     NSFileManager *fileManager = [NSFileManager defaultManager];
     
+    NSString *chapterName = [NSString stringWithFormat:@"%@%@", chapModel.chapterEntity.dirPrefix, chapModel.chapterEntity.chapterID];
+    NSString *documentPath = [Common getChapterDirectoryWithChapter:chapterName];
     for (int i=0; i<chapModel.chapterJSONModel.pageCount.integerValue; i++) {
         NSString *imageName = [NSString stringWithFormat:@"%@%lu.%@", chapModel.chapterJSONModel.pagePrefix, (unsigned long)i + 1, chapModel.chapterJSONModel.ext];
-        NSString *documentPath = [Common getDocumentDirectory];
         NSString *imagePath = [documentPath stringByAppendingPathComponent:imageName];
         
         NSError *error = nil;
