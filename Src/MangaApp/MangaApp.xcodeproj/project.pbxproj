@@ -66,6 +66,7 @@
 		2DD2D23F1AFCC4F500EF4418 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DD2D23E1AFCC4F500EF4418 /* CoreMotion.framework */; };
 		2DD2D2411AFCC50F00EF4418 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DD2D2401AFCC50F00EF4418 /* AVFoundation.framework */; };
 		2DD2D2431AFCC52000EF4418 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DD2D2421AFCC52000EF4418 /* OpenGLES.framework */; };
+		2DE30D731B8C6888004572CC /* DownloadPhotoOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DE30D721B8C6888004572CC /* DownloadPhotoOperation.m */; };
 		2DE311DD1B05DA5A00DE3E92 /* BackgroundSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DE311DC1B05DA5A00DE3E92 /* BackgroundSessionManager.m */; };
 		2DE61BBF1B68D9CE0097177A /* ChapterCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DE61BBE1B68D9CE0097177A /* ChapterCustomCell.xib */; };
 		2DE61BC31B68D9DD0097177A /* InfoViewPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DE61BC11B68D9DD0097177A /* InfoViewPopup.m */; };
@@ -171,6 +172,8 @@
 		2DD2D23E1AFCC4F500EF4418 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		2DD2D2401AFCC50F00EF4418 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		2DD2D2421AFCC52000EF4418 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		2DE30D711B8C6888004572CC /* DownloadPhotoOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadPhotoOperation.h; sourceTree = "<group>"; };
+		2DE30D721B8C6888004572CC /* DownloadPhotoOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadPhotoOperation.m; sourceTree = "<group>"; };
 		2DE311DB1B05DA5A00DE3E92 /* BackgroundSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundSessionManager.h; sourceTree = "<group>"; };
 		2DE311DC1B05DA5A00DE3E92 /* BackgroundSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackgroundSessionManager.m; sourceTree = "<group>"; };
 		2DE61BBE1B68D9CE0097177A /* ChapterCustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChapterCustomCell.xib; sourceTree = "<group>"; };
@@ -568,6 +571,8 @@
 				D386E8391AEB7BCF00FFB149 /* ChapterService.m */,
 				2DE311DB1B05DA5A00DE3E92 /* BackgroundSessionManager.h */,
 				2DE311DC1B05DA5A00DE3E92 /* BackgroundSessionManager.m */,
+				2DE30D711B8C6888004572CC /* DownloadPhotoOperation.h */,
+				2DE30D721B8C6888004572CC /* DownloadPhotoOperation.m */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -832,6 +837,7 @@
 				2D7CD97B1AE789C800C25B9A /* PageViewController.m in Sources */,
 				D33F3E971AFC33D600474B08 /* StaminaConfig.m in Sources */,
 				2D22E4781AFB5C7F00037AE2 /* ResponseModel.m in Sources */,
+				2DE30D731B8C6888004572CC /* DownloadPhotoOperation.m in Sources */,
 				2D1FBC871AF783030025ABE3 /* _Chapter.m in Sources */,
 				D3CD35D31AD9889A0057265B /* AppDelegate.m in Sources */,
 				2DE61BC31B68D9DD0097177A /* InfoViewPopup.m in Sources */,

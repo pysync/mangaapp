@@ -7,7 +7,7 @@
 //
 
 #import "StaminaConfig.h"
-#import <MagicalRecord/CoreData+MagicalRecord.h>
+#import <MagicalRecord/MagicalRecord.h>
 #import "ChapTracker.h"
 #import "Definition.h"
 

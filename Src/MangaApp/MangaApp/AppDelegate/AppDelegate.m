@@ -8,8 +8,7 @@
 
 #import "AppDelegate.h"
 #import <Parse/Parse.h>
-#import <MagicalRecord/CoreData+MagicalRecord.h>
-#import <MagicalRecord/NSPersistentStore+MagicalRecord.h>
+#import <MagicalRecord/MagicalRecord.h>
 #import "StaminaConfig.h"
 #import "TestFairy.h"
 #import "BackgroundSessionManager.h"

@@ -9,7 +9,7 @@
 #import "ChapterService.h"
 #import <AFNetworking/AFNetworking.h>
 #import "Definition.h"
-#import <MagicalRecord/CoreData+MagicalRecord.h>
+#import <MagicalRecord/MagicalRecord.h>
 #import "ChapTracker.h"
 #import "StaminaConfig.h"
 

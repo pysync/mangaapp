@@ -10,18 +10,20 @@
 #import "ResponseModel.h"
 #import <AFNetworking/AFNetworking.h>
 #import "Definition.h"
-#import <MagicalRecord/CoreData+MagicalRecord.h>
 #import "Chapter.h"
 #import "ChapterJSONModel.h"
 #import "Common.h"
 #import "ChapterModel.h"
 #import "AppDelegate.h"
 #import "BackgroundSessionManager.h"
+#import <MagicalRecord/MagicalRecord.h>
+#import "DownloadPhotoOperation.h"
 
 @interface ChapterListService()
 
 @property(nonatomic, assign) NSInteger numberImageDownloaded;
 @property(nonatomic, strong) AFURLSessionManager *manager;
+@property(nonatomic, strong) NSOperationQueue *photoQueue;
 @end
 
 @implementation ChapterListService
@@ -35,13 +37,14 @@
         NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration backgroundSessionConfigurationWithIdentifier:@"downloadInBackgroundMode"];
         configuration.HTTPMaximumConnectionsPerHost = 15;
         _manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
+        _photoQueue = [[NSOperationQueue alloc] init];
     }
     return self;
 }
 
 - (void)getDataFromJSONSuccess:(void (^)())successBlock failure:(void (^)())failBlock {
-    NSString *pathFile = [[NSBundle mainBundle] pathForResource:@"define" ofType:@"json"];
-    NSString *jsonString = [NSString stringWithContentsOfFile:pathFile encoding:NSUTF8StringEncoding error:nil];
+    NSURL *jsonURL = [NSURL URLWithString:kChapterInfoURL];
+    NSString *jsonString = [NSString stringWithContentsOfURL:jsonURL encoding:NSUTF8StringEncoding error:nil];
     
     NSError *jsonError;
     NSData *objectData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
@@ -80,54 +83,43 @@
     _numberImageDownloaded = 0;
     NSString *baseURL = [kBaseUrl stringByAppendingPathComponent:[NSString stringWithFormat:@"%@%@", chapterModel.dirPrefix, chapterModel.chapterID]];
     for (int i=0; i<chapterModel.pageCount.integerValue; i++) {
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            NSString *imageName = [NSString stringWithFormat:@"%@%lu.%@", chapterModel.pagePrefix, (unsigned long)i + 1, chapterModel.ext];
-            if (![self imageDownloadedWithImageName:imageName]) {
-                NSString *fullURL = [baseURL stringByAppendingPathComponent:imageName];
-                NSURL *URL = [NSURL URLWithString:fullURL];
-                NSURLRequest *request = [NSURLRequest requestWithURL:URL];
-                
-                NSURLSessionDownloadTask *downloadTask = [[BackgroundSessionManager sharedManager] downloadTaskWithRequest:request progress:nil destination:^NSURL *(NSURL *targetPath, NSURLResponse *response) {
-                    NSURL *documentsDirectoryURL = [[NSFileManager defaultManager] URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:NO error:nil];
-                    NSString *chapterName = [NSString stringWithFormat:@"%@%@", chapterModel.dirPrefix, chapterModel.chapterID];
-                    documentsDirectoryURL = [documentsDirectoryURL URLByAppendingPathComponent:chapterName];
-                    return [documentsDirectoryURL URLByAppendingPathComponent:[response suggestedFilename]];
-                } completionHandler:^(NSURLResponse *response, NSURL *filePath, NSError *error) {
-                    NSLog(@"File downloaded to: %@", filePath);
+        NSString *imageName = [NSString stringWithFormat:@"%@%lu.%@", chapterModel.pagePrefix, (unsigned long)i + 1, chapterModel.ext];
+        if (![self imageDownloadedWithImageName:imageName andChapterModel:chapterModel]) {
+            NSString *fullURL = [baseURL stringByAppendingPathComponent:imageName];
+            NSURL *URL = [NSURL URLWithString:fullURL];
+            DownloadPhotoOperation *photoOperation = [[DownloadPhotoOperation alloc] initWithURL:URL];
+            [_photoQueue addOperation:photoOperation];
+            [_photoQueue setMaxConcurrentOperationCount:5];
+            
+            photoOperation.didFinishDownload = ^(){
+                dispatch_async(dispatch_get_main_queue(), ^{
                     _numberImageDownloaded++;
-                    
-                    // Push notification
-                    NSString *pathString = filePath.absoluteString;
-                    NSString *imageName = [pathString lastPathComponent];
-                    if (imageName && imageName.length) {
-                        [[NSNotificationCenter defaultCenter] postNotificationName:kFinishDownloadAnImage object:nil userInfo:@{kImageNameNotification: imageName}];
-                    }
                     
                     if (_numberImageDownloaded == chapterModel.pageCount.integerValue) {
                         NSLog(@"All file download successfully");
-                        
                         if (successBlock) {
                             successBlock();
                         }
                     }
-                }];
-                [downloadTask resume];
-            }else {
-                _numberImageDownloaded++;
-                
-                if (_numberImageDownloaded == chapterModel.pageCount.integerValue) {
-                    if (successBlock) {
-                        successBlock();
-                    }
+                });
+            };
+        }else {
+            _numberImageDownloaded++;
+            
+            if (_numberImageDownloaded == chapterModel.pageCount.integerValue) {
+                if (successBlock) {
+                    successBlock();
                 }
             }
-        });
+        }
     }
 }
 
-- (BOOL )imageDownloadedWithImageName:(NSString *)imageName {
-    NSString *documentPath = [Common getDocumentDirectory];
+- (BOOL )imageDownloadedWithImageName:(NSString *)imageName andChapterModel:(ChapterJSONModel *)chapModel{
+    NSString *chapterName = [NSString stringWithFormat:@"%@%@", chapModel.dirPrefix, chapModel.chapterID];
+    NSString *documentPath = [Common getChapterDirectoryWithChapter:chapterName];
     NSString *imagePath = [documentPath stringByAppendingPathComponent:imageName];
+    
     return [[NSFileManager defaultManager] fileExistsAtPath:imagePath];
 }
 

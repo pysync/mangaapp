@@ -1691,7 +1691,7 @@ static WYPopoverTheme *defaultTheme_ = nil;
 
     UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
 
-    result = CGSizeMake(320, UIDeviceOrientationIsLandscape(orientation) ? windowSize.width : windowSize.height);
+    result = CGSizeMake(UIInterfaceOrientationIsPortrait(orientation) ? windowSize.width : windowSize.height, UIInterfaceOrientationIsLandscape(orientation) ? windowSize.width : windowSize.height);
   }
 
   return result;
@@ -1991,7 +1991,7 @@ static WYPopoverTheme *defaultTheme_ = nil;
   CGSize containerViewSize = _backgroundView.frame.size;
 
   if (_backgroundView.arrowHeight > 0) {
-    if (UIDeviceOrientationIsLandscape(orientation)) {
+    if (UIInterfaceOrientationIsLandscape(orientation)) {
       containerViewSize.width = _backgroundView.frame.size.height;
       containerViewSize.height = _backgroundView.frame.size.width;
     }
@@ -2644,7 +2644,15 @@ static WYPopoverTheme *defaultTheme_ = nil;
 
   float minX, maxX, minY, maxY = 0;
 
-  float keyboardHeight = UIInterfaceOrientationIsPortrait(orientation) ? WYKeyboardListener.rect.size.height : WYKeyboardListener.rect.size.width;
+  float keyboardHeight = WYKeyboardListener.rect.size.height;
+  float overlayWidth = _overlayView.bounds.size.width;
+  float overlayHeight = _overlayView.bounds.size.height;
+  
+  if (!_ignoreOrientation && UIInterfaceOrientationIsLandscape(orientation)) {
+    keyboardHeight = WYKeyboardListener.rect.size.width;
+    overlayWidth = _overlayView.bounds.size.height;
+    overlayHeight = _overlayView.bounds.size.width;
+  }
 
   if (_delegate && [_delegate respondsToSelector:@selector(popoverControllerShouldIgnoreKeyboardBounds:)]) {
     BOOL shouldIgnore = [_delegate popoverControllerShouldIgnoreKeyboardBounds:self];
@@ -2653,10 +2661,6 @@ static WYPopoverTheme *defaultTheme_ = nil;
       keyboardHeight = 0;
     }
   }
-
-  float overlayWidth = UIInterfaceOrientationIsPortrait(orientation) ? _overlayView.bounds.size.width : _overlayView.bounds.size.height;
-
-  float overlayHeight = UIInterfaceOrientationIsPortrait(orientation) ? _overlayView.bounds.size.height : _overlayView.bounds.size.width;
 
   minX = _popoverLayoutMargins.left;
   maxX = overlayWidth - _popoverLayoutMargins.right;
@@ -2860,6 +2864,8 @@ static CGPoint WYPointRelativeToOrientation(CGPoint origin, CGSize size, UIInter
 
     [_delegate popoverController:self willRepositionPopoverToRect:&anotherRect inView:&anotherInView];
 
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wtautological-pointer-compare"
     if (&anotherRect != NULL) {
       _rect = anotherRect;
     }
@@ -2867,6 +2873,7 @@ static CGPoint WYPointRelativeToOrientation(CGPoint origin, CGSize size, UIInter
     if (&anotherInView != NULL) {
       _inView = anotherInView;
     }
+#pragma GCC diagnostic pop
   }
 
   [self positionPopover:NO];
