@@ -102,14 +102,16 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    StaminaConfig *staminaConfig = [StaminaConfig sharedConfig];
-    if (![staminaConfig.chapTrackList containsObject:_imageName]) {
-        if (staminaConfig.stamina >= _photoService.chapterModel.staminaCost) {
-            staminaConfig.stamina -= _photoService.chapterModel.staminaCost;
-            [staminaConfig.chapTrackList addObject:_imageName];
-            [[NSNotificationCenter defaultCenter] postNotificationName:kUpdateStaminaView object:nil];
-        }else {
-            [[NSNotificationCenter defaultCenter] postNotificationName:kShowStaminaExpired object:nil];
+    if (_photoService.chapterModel.chapterEntity.freeFlg.integerValue == 0) {
+        StaminaConfig *staminaConfig = [StaminaConfig sharedConfig];
+        if (![staminaConfig.chapTrackList containsObject:_imageName]) {
+            if (staminaConfig.stamina >= _photoService.chapterModel.chapterEntity.cost.integerValue) {
+                staminaConfig.stamina -= _photoService.chapterModel.chapterEntity.cost.integerValue;
+                [staminaConfig.chapTrackList addObject:_imageName];
+                [[NSNotificationCenter defaultCenter] postNotificationName:kUpdateStaminaView object:nil];
+            }else {
+                [[NSNotificationCenter defaultCenter] postNotificationName:kShowStaminaExpired object:nil];
+            }
         }
     }
 }
@@ -125,7 +127,8 @@
 
 - (UIImage *)imageWillDisplay {
     UIImage *displayImage = [UIImage imageNamed:@"placeholder"];
-    NSString *docsPath = [Common getDocumentDirectory];
+    NSString *chapterName = [NSString stringWithFormat:@"%@%@", _photoService.chapterModel.chapterEntity.dirPrefix, _photoService.chapterModel.chapterEntity.chapterID];
+    NSString *docsPath = [Common getChapterDirectoryWithChapter:chapterName];
     NSString *localImagePath = [docsPath stringByAppendingPathComponent:_imageName];
     if ([[NSFileManager defaultManager] fileExistsAtPath:localImagePath]) {
         _imageLoaded = YES;
@@ -148,7 +151,8 @@
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
         
         UIImage *displayImage = [UIImage imageNamed:@"placeholder"];
-        NSString *docsPath = [Common getDocumentDirectory];
+        NSString *chapterName = [NSString stringWithFormat:@"%@%@", _photoService.chapterModel.chapterEntity.dirPrefix, _photoService.chapterModel.chapterEntity.chapterID];
+        NSString *docsPath = [Common getChapterDirectoryWithChapter:chapterName];
         NSString *localImagePath = [docsPath stringByAppendingPathComponent:_imageName];
         if ([[NSFileManager defaultManager] fileExistsAtPath:localImagePath]) {
             displayImage = [UIImage imageWithContentsOfFile:localImagePath];
@@ -164,7 +168,8 @@
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
         
         UIImage *displayImage = [UIImage imageNamed:@"placeholder"];
-        NSString *docsPath = [Common getDocumentDirectory];
+        NSString *chapterName = [NSString stringWithFormat:@"%@%@", _photoService.chapterModel.chapterEntity.dirPrefix, _photoService.chapterModel.chapterEntity.chapterID];
+        NSString *docsPath = [Common getChapterDirectoryWithChapter:chapterName];
         NSString *localImagePath = [docsPath stringByAppendingPathComponent:_imageName];
         if ([[NSFileManager defaultManager] fileExistsAtPath:localImagePath]) {
             displayImage = [UIImage imageWithContentsOfFile:localImagePath];

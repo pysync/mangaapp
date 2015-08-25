@@ -34,7 +34,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Ay-Ag-qoL">
-                                <rect key="frame" x="130" y="5" width="215" height="34"/>
+                                <rect key="frame" x="130" y="8" width="215" height="34"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <string key="text">１話〜10話
 きょうちゃんの逆襲</string>
@@ -133,10 +133,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dRP-aR-Cly" userLabel="Top Seperate">
-                                <rect key="frame" x="0.0" y="0.0" width="355" height="8"/>
+                                <rect key="frame" x="0.0" y="0.0" width="355" height="6"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.20000000000000001" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="8" id="O49-3P-8ZE"/>
+                                    <constraint firstAttribute="height" constant="6" id="O49-3P-8ZE"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rAv-Nm-w9u" userLabel="Bottom Seperate">
@@ -156,7 +156,7 @@
                             <constraint firstAttribute="trailing" secondItem="dRP-aR-Cly" secondAttribute="trailing" id="EAk-F8-fRr"/>
                             <constraint firstAttribute="bottom" secondItem="LYf-vo-Fm8" secondAttribute="bottom" id="FQP-ls-Mih"/>
                             <constraint firstItem="rAv-Nm-w9u" firstAttribute="leading" secondItem="30N-7p-sLm" secondAttribute="leading" id="Obl-ft-3ew"/>
-                            <constraint firstItem="2Ay-Ag-qoL" firstAttribute="top" secondItem="30N-7p-sLm" secondAttribute="top" constant="5" id="US3-OO-sCG"/>
+                            <constraint firstItem="2Ay-Ag-qoL" firstAttribute="top" secondItem="30N-7p-sLm" secondAttribute="top" constant="8" id="US3-OO-sCG"/>
                             <constraint firstItem="dRP-aR-Cly" firstAttribute="leading" secondItem="30N-7p-sLm" secondAttribute="leading" id="WLA-4A-WoO"/>
                             <constraint firstAttribute="trailing" secondItem="LYf-vo-Fm8" secondAttribute="trailing" id="aMb-v2-TI5"/>
                             <constraint firstAttribute="trailing" secondItem="rAv-Nm-w9u" secondAttribute="trailing" id="aTx-hB-3S4"/>

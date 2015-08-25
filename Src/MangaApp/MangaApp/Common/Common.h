@@ -11,4 +11,5 @@
 @interface Common : NSObject
 
 +(NSString *)getDocumentDirectory;
++(NSString *)getChapterDirectoryWithChapter:(NSString *)chapter;
 @end

@@ -38,8 +38,8 @@
 
 - (void)updateCellWithModel:(ChapterJSONModel *)unitModel {
     _chapTitleLabel.text = @"Thumbnail chapter";
-    if (unitModel.titleChap && unitModel.titleChap.length) {
-        _chapNumberLabel.text = unitModel.titleChap;
+    if (unitModel.chapterName && unitModel.chapterName.length) {
+        _chapNumberLabel.text = unitModel.chapterName;
     }else {
         _chapNumberLabel.text = @"";
     }

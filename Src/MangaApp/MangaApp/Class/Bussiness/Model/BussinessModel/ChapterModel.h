@@ -14,8 +14,6 @@
 
 @property(nonatomic, strong) Chapter *chapterEntity;
 @property(nonatomic, strong) ChapterJSONModel *chapterJSONModel;
-@property(nonatomic, assign) NSInteger staminaCost;
-@property(nonatomic, strong) NSString *chapName;
 @property(nonatomic, assign) BOOL isDownloading;
 @property(nonatomic, assign) BOOL isFinishedDownload;
 @end

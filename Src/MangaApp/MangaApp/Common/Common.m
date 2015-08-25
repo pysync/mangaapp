@@ -15,4 +15,10 @@
     NSString *documentsDirectory = [paths objectAtIndex:0];
     return documentsDirectory;
 }
+
++(NSString *)getChapterDirectoryWithChapter:(NSString *)chapter {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    return [documentsDirectory stringByAppendingPathComponent:chapter];
+}
 @end

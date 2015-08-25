@@ -45,12 +45,8 @@
     _chapterService = [[ChapterListService alloc] init];
     // Do any additional setup after loading the view, typically from a nib.
     [_contentTableView registerNib:[UINib nibWithNibName:NSStringFromClass([ChapterCustomCell class]) bundle:nil] forCellReuseIdentifier:[ChapterCustomCell getIdentifierCell]];
-    
-    // Test Parse.com
-    PFObject *testObject = [PFObject objectWithClassName:@"TestObject"];
-    testObject[@"foo"] = @"bar";
-    [testObject saveInBackground];
 
+    //--------------------------------------------------------------------------
     // Load data from json
     [self loadDataFromJSON];
     
@@ -69,6 +65,7 @@
         }
     }];
     
+    //--------------------------------------------------------------------------
     // Ads
     self.bannerView.adUnitID = kBannerAdsID;
     self.bannerView.rootViewController = self;
@@ -80,6 +77,7 @@
         [[self navigationController] setNavigationBarHidden:YES animated:NO];
     }
     [self updateProcessBar];
+    [_contentTableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -142,6 +140,15 @@
     _processView.layer.borderColor = [UIColor whiteColor].CGColor;
     _processView.layer.masksToBounds = YES;
     _processView.clipsToBounds = YES;
+}
+
+- (void)showAlertDownloading {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        MBProgressHUD *hub = [[MBProgressHUD alloc] initWithView:self.view];
+        hub.labelText = @"Downloading...";
+        [self.view addSubview:hub];
+        [hub show:YES];
+    });
 }
 
 #pragma mark - UI Function
@@ -248,22 +255,16 @@
     [popup showWithRoot:self.view];
 }
 
-- (void)downloadMangaWithIndexChapter:(NSInteger )indexChap {
-    ChapterCustomCell *cell = (ChapterCustomCell *)[_contentTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:indexChap inSection:0]];
-    cell.downloadState = kDownloadingState;
+- (void)downloadMangaWithIndexChapter:(NSNumber *)indexChap {
+    ChapterCustomCell *cell = (ChapterCustomCell *)[_contentTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:indexChap.integerValue inSection:0]];
     
-    MBProgressHUD *hub = [[MBProgressHUD alloc] initWithView:self.view];
-    hub.labelText = @"Downloading...";
-    [self.view addSubview:hub];
-    [hub show:YES];
-    
-    ChapterModel *chapModel = _chapterService.listChapters[indexChap];
+    ChapterModel *chapModel = _chapterService.listChapters[indexChap.integerValue];
     chapModel.isDownloading = YES;
     [_chapterService downloadChapterWithModel:chapModel.chapterJSONModel success:^{
         cell.downloadState = kDownloadedState;
         chapModel.isFinishedDownload = YES;
         chapModel.isDownloading = NO;
-        [_chapterService updateChapterWithIndexChap:indexChap andState:YES];
+        [_chapterService updateChapterWithIndexChap:indexChap.integerValue andState:YES];
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
     } failure:^{
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
@@ -371,8 +372,12 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ChapterCustomCell *cell = (ChapterCustomCell *)[tableView dequeueReusableCellWithIdentifier:[ChapterCustomCell getIdentifierCell]];
     
+    
+    __weak typeof(cell)weakCell = cell;
     cell.onStartDownloadButton = ^(){
-        [self downloadMangaWithIndexChapter:indexPath.row];
+        weakCell.downloadState = kDownloadingState;
+        [self showAlertDownloading];
+        [self performSelector:@selector(downloadMangaWithIndexChapter:) withObject:@(indexPath.row) afterDelay:0.3];
     };
     cell.onStartRemoveButton = ^(){
         [self removeChapWithIndexChapter:indexPath.row];

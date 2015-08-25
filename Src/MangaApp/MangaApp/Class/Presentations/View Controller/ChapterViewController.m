@@ -34,7 +34,7 @@
     _isShowingBarView = YES;
     
     _chapterService = [[ChapterService alloc] initWithModel:_chapModel];
-    [_chapterService getChapHistoryWithChapName:_chapModel.chapName];
+    [_chapterService getChapHistoryWithChapName:_chapModel.chapterEntity.chapterID];
     
     [self createUI];
     [self loadDataToView];
@@ -71,7 +71,7 @@
 - (void)createUI {
     [[self navigationController] setNavigationBarHidden:YES animated:NO];
     _processSlider.minimumValue = 1.0;
-    _processSlider.maximumValue = _chapModel.chapterJSONModel.images.count;
+    _processSlider.maximumValue = _chapModel.chapterJSONModel.pageCount.integerValue;
     
     _processView.layer.cornerRadius = 12.0;
     _processView.layer.borderWidth = 3.0;
@@ -86,7 +86,7 @@
 //    [_processView.layer setShadowOffset:CGSizeMake(-20.0, -20.0)];
     
     // Create Page view controller
-    NSString *zeroImage = _chapModel.chapterJSONModel.images.firstObject;
+    NSString *zeroImage = [NSString stringWithFormat:@"%@1.%@", _chapModel.chapterJSONModel.pagePrefix, _chapModel.chapterJSONModel.ext];
     PhotoViewController *pageZero = [PhotoViewController photoViewControllerForPageIndex:0 imageName:zeroImage andService:_chapterService];
     if (pageZero != nil)
     {
@@ -117,8 +117,8 @@
     _processView.progress = config.stamina/config.maxStamina;
     _staminaLabel.text = [NSString stringWithFormat:@"%ld/%d", (long)config.stamina,(int)config.maxStamina];
     
-    _titleLabel.text = _chapModel.chapterJSONModel.titleChap;
-    _pageLabel.text = [NSString stringWithFormat:@"1/%lu", (unsigned long)_chapModel.chapterJSONModel.images.count];
+    _titleLabel.text = _chapModel.chapterJSONModel.chapterName;
+    _pageLabel.text = [NSString stringWithFormat:@"1/%lu", (unsigned long)_chapModel.chapterJSONModel.pageCount.integerValue];
 }
 
 #pragma mark - PageViewController data sources
@@ -128,7 +128,9 @@
     _currentPage = index;
     [self reloadBottomViewDataWithPageIndex:(index + 1)];
     if (index) {
-        return [PhotoViewController photoViewControllerForPageIndex:(index - 1) imageName:_chapModel.chapterJSONModel.images[index - 1] andService:_chapterService];
+        NSString *imageName = [NSString stringWithFormat:@"%@%lu.%@", _chapModel.chapterJSONModel.pagePrefix, (unsigned long)index, _chapModel.chapterJSONModel.ext];
+        
+        return [PhotoViewController photoViewControllerForPageIndex:(index - 1) imageName:imageName andService:_chapterService];
     }else {
         return nil;
     }
@@ -139,8 +141,10 @@
     NSUInteger index = vc.pageIndex;
     _currentPage = index;
     [self reloadBottomViewDataWithPageIndex:(index + 1)];
-    if (index < _chapModel.chapterJSONModel.images.count - 1) {
-        return [PhotoViewController photoViewControllerForPageIndex:(index + 1) imageName:_chapModel.chapterJSONModel.images[index + 1] andService:_chapterService];
+    if (index < _chapModel.chapterJSONModel.pageCount.integerValue - 1) {
+        NSString *imageName = [NSString stringWithFormat:@"%@%lu.%@", _chapModel.chapterJSONModel.pagePrefix, (unsigned long)index + 2, _chapModel.chapterJSONModel.ext];
+        
+        return [PhotoViewController photoViewControllerForPageIndex:(index + 1) imageName:imageName andService:_chapterService];
     }
     return nil;
 }
@@ -178,7 +182,7 @@
 - (void)reloadBottomViewDataWithPageIndex:(NSInteger )pageIndex {
     dispatch_async(dispatch_get_main_queue(), ^{
         [_processSlider setValue:pageIndex animated:NO];
-        _pageLabel.text = [NSString stringWithFormat:@"%ld/%lu", (long)pageIndex, (unsigned long)_chapModel.chapterJSONModel.images.count];
+        _pageLabel.text = [NSString stringWithFormat:@"%ld/%lu", (long)pageIndex, (unsigned long)_chapModel.chapterJSONModel.pageCount.integerValue];
     });
 }
 
@@ -205,15 +209,17 @@
 
 - (void)updateStaminaConfig {
     StaminaConfig *staminaConfig = [StaminaConfig sharedConfig];
-    NSString *currentImageName = _chapModel.chapterJSONModel.images[_currentPage];
+    NSString *currentImageName = [NSString stringWithFormat:@"%@%lu.%@", _chapModel.chapterJSONModel.pagePrefix, (unsigned long)_currentPage, _chapModel.chapterJSONModel.ext];
     
-    if (![staminaConfig.chapTrackList containsObject:currentImageName]) {
-        if (staminaConfig.stamina >= _chapterService.chapterModel.staminaCost) {
-            staminaConfig.stamina -= _chapterService.chapterModel.staminaCost;
-            [staminaConfig.chapTrackList addObject:currentImageName];
-            [[NSNotificationCenter defaultCenter] postNotificationName:kUpdateStaminaView object:nil];
-        }else {
-            [[NSNotificationCenter defaultCenter] postNotificationName:kShowStaminaExpired object:nil];
+    if (_chapterService.chapterModel.chapterEntity.freeFlg.integerValue == 0) {
+        if (![staminaConfig.chapTrackList containsObject:currentImageName]) {
+            if (staminaConfig.stamina >= _chapterService.chapterModel.chapterEntity.cost.integerValue) {
+                staminaConfig.stamina -= _chapterService.chapterModel.chapterEntity.cost.integerValue;
+                [staminaConfig.chapTrackList addObject:currentImageName];
+                [[NSNotificationCenter defaultCenter] postNotificationName:kUpdateStaminaView object:nil];
+            }else {
+                [[NSNotificationCenter defaultCenter] postNotificationName:kShowStaminaExpired object:nil];
+            }
         }
     }
 }
@@ -316,15 +322,16 @@
 #pragma mark - Button Function
 - (IBAction)changePage:(id)sender {
     NSUInteger index = (NSUInteger)(_processSlider.value + 0.5);
+    NSString *imageName = [NSString stringWithFormat:@"%@%lu.%@", _chapModel.chapterJSONModel.pagePrefix, (unsigned long)index - 1, _chapModel.chapterJSONModel.ext];
     
     if (index > _currentPage + 1) {
-        PhotoViewController *nextPage = [PhotoViewController photoViewControllerForPageIndex:(index - 1) imageName:_chapModel.chapterJSONModel.images[index - 1] andService:_chapterService];;
+        PhotoViewController *nextPage = [PhotoViewController photoViewControllerForPageIndex:(index - 1) imageName:imageName andService:_chapterService];;
         [_pageViewController setViewControllers:@[nextPage]
                                       direction:UIPageViewControllerNavigationDirectionForward
                                        animated:YES
                                      completion:nil];
     }else if (index < _currentPage + 1) {
-        PhotoViewController *previousPage = [PhotoViewController photoViewControllerForPageIndex:(index - 1) imageName:_chapModel.chapterJSONModel.images[index - 1] andService:_chapterService];;
+        PhotoViewController *previousPage = [PhotoViewController photoViewControllerForPageIndex:(index - 1) imageName:imageName andService:_chapterService];;
         [_pageViewController setViewControllers:@[previousPage]
                                       direction:UIPageViewControllerNavigationDirectionReverse
                                        animated:YES
