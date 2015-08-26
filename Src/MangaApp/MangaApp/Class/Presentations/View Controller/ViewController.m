@@ -21,6 +21,7 @@
 #import "NewsViewPopup.h"
 #import "StaminaConfig.h"
 #import "InfoViewPopup.h"
+#import "DownloadManager.h"
 
 @interface ViewController ()<WYPopoverControllerDelegate>
 {
@@ -260,7 +261,8 @@
     
     ChapterModel *chapModel = _chapterService.listChapters[indexChap.integerValue];
     chapModel.isDownloading = YES;
-    [_chapterService downloadChapterWithModel:chapModel.chapterJSONModel success:^{
+    DownloadManager *downloadManager = [DownloadManager sharedManager];
+    [downloadManager downloadChapterWithModel:chapModel.chapterJSONModel success:^{
         cell.downloadState = kDownloadedState;
         chapModel.isFinishedDownload = YES;
         chapModel.isDownloading = NO;
@@ -284,9 +286,10 @@
 
 - (void)readingChapWithIndexChapter:(NSInteger )indexChap {
     ChapterModel *chapModel = (ChapterModel *)_chapterService.listChapters[indexChap];
-    if (!chapModel.isFinishedDownload) {
+    if (!chapModel.isFinishedDownload && !chapModel.isDownloading) {
         chapModel.isDownloading = YES;
-        [_chapterService downloadChapterWithModel:chapModel.chapterJSONModel success:^{
+        DownloadManager *downloadManager = [DownloadManager sharedManager];
+        [downloadManager downloadChapterWithModel:chapModel.chapterJSONModel success:^{
             chapModel.isFinishedDownload = YES;
             chapModel.isDownloading = NO;
             [_chapterService updateChapterWithIndexChap:indexChap andState:YES];

@@ -21,7 +21,6 @@
 
 @interface ChapterListService()
 
-@property(nonatomic, assign) NSInteger numberImageDownloaded;
 @property(nonatomic, strong) AFURLSessionManager *manager;
 @property(nonatomic, strong) NSOperationQueue *photoQueue;
 @end
@@ -77,50 +76,6 @@
     }
     
     return resultArray;
-}
-
-- (void)downloadChapterWithModel:(ChapterJSONModel *)chapterModel success:(void (^)())successBlock failure:(void (^)())failBlock {
-    _numberImageDownloaded = 0;
-    NSString *baseURL = [kBaseUrl stringByAppendingPathComponent:[NSString stringWithFormat:@"%@%@", chapterModel.dirPrefix, chapterModel.chapterID]];
-    for (int i=0; i<chapterModel.pageCount.integerValue; i++) {
-        NSString *imageName = [NSString stringWithFormat:@"%@%lu.%@", chapterModel.pagePrefix, (unsigned long)i + 1, chapterModel.ext];
-        if (![self imageDownloadedWithImageName:imageName andChapterModel:chapterModel]) {
-            NSString *fullURL = [baseURL stringByAppendingPathComponent:imageName];
-            NSURL *URL = [NSURL URLWithString:fullURL];
-            DownloadPhotoOperation *photoOperation = [[DownloadPhotoOperation alloc] initWithURL:URL];
-            [_photoQueue addOperation:photoOperation];
-            [_photoQueue setMaxConcurrentOperationCount:5];
-            
-            photoOperation.didFinishDownload = ^(){
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    _numberImageDownloaded++;
-                    
-                    if (_numberImageDownloaded == chapterModel.pageCount.integerValue) {
-                        NSLog(@"All file download successfully");
-                        if (successBlock) {
-                            successBlock();
-                        }
-                    }
-                });
-            };
-        }else {
-            _numberImageDownloaded++;
-            
-            if (_numberImageDownloaded == chapterModel.pageCount.integerValue) {
-                if (successBlock) {
-                    successBlock();
-                }
-            }
-        }
-    }
-}
-
-- (BOOL )imageDownloadedWithImageName:(NSString *)imageName andChapterModel:(ChapterJSONModel *)chapModel{
-    NSString *chapterName = [NSString stringWithFormat:@"%@%@", chapModel.dirPrefix, chapModel.chapterID];
-    NSString *documentPath = [Common getChapterDirectoryWithChapter:chapterName];
-    NSString *imagePath = [documentPath stringByAppendingPathComponent:imageName];
-    
-    return [[NSFileManager defaultManager] fileExistsAtPath:imagePath];
 }
 
 - (void)createAndSaveDataIfNeed {

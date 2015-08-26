@@ -56,6 +56,7 @@
 		2D8456D41AFC56660096AA2C /* ChapTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8456D31AFC56660096AA2C /* ChapTracker.m */; };
 		2D8456D71AFC56770096AA2C /* _ChapTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8456D61AFC56770096AA2C /* _ChapTracker.m */; };
 		2DA3358D1B44F5E800E6FBBB /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA3358C1B44F5E800E6FBBB /* BaseViewController.m */; };
+		2DA36EF71B8DAB5700E409AE /* DownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA36EF61B8DAB5700E409AE /* DownloadManager.m */; };
 		2DBD636E1ADF785000D001C5 /* SubInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBD636D1ADF785000D001C5 /* SubInfoViewController.m */; };
 		2DC04E271B131ACB00A4BC8D /* NewsViewPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC04E261B131ACB00A4BC8D /* NewsViewPopup.m */; };
 		2DC04E291B131B1100A4BC8D /* NewsViewPopup.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DC04E281B131B1100A4BC8D /* NewsViewPopup.xib */; };
@@ -159,6 +160,8 @@
 		2D8456D61AFC56770096AA2C /* _ChapTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _ChapTracker.m; sourceTree = "<group>"; };
 		2DA3358B1B44F5E800E6FBBB /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		2DA3358C1B44F5E800E6FBBB /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
+		2DA36EF51B8DAB5700E409AE /* DownloadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadManager.h; sourceTree = "<group>"; };
+		2DA36EF61B8DAB5700E409AE /* DownloadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadManager.m; sourceTree = "<group>"; };
 		2DBD636C1ADF785000D001C5 /* SubInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubInfoViewController.h; sourceTree = "<group>"; };
 		2DBD636D1ADF785000D001C5 /* SubInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubInfoViewController.m; sourceTree = "<group>"; };
 		2DC04E251B131ACB00A4BC8D /* NewsViewPopup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsViewPopup.h; sourceTree = "<group>"; };
@@ -573,6 +576,8 @@
 				2DE311DC1B05DA5A00DE3E92 /* BackgroundSessionManager.m */,
 				2DE30D711B8C6888004572CC /* DownloadPhotoOperation.h */,
 				2DE30D721B8C6888004572CC /* DownloadPhotoOperation.m */,
+				2DA36EF51B8DAB5700E409AE /* DownloadManager.h */,
+				2DA36EF61B8DAB5700E409AE /* DownloadManager.m */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -829,6 +834,7 @@
 				2D1FBC861AF783030025ABE3 /* Chapter.m in Sources */,
 				2D5FE9941AF8D4D9003AB6A9 /* Common.m in Sources */,
 				2DE311DD1B05DA5A00DE3E92 /* BackgroundSessionManager.m in Sources */,
+				2DA36EF71B8DAB5700E409AE /* DownloadManager.m in Sources */,
 				D3CD35D41AD9889A0057265B /* ViewController.m in Sources */,
 				2D1FBC731AF7763E0025ABE3 /* MangaApp.xcdatamodeld in Sources */,
 				2D22E47F1AFB609F00037AE2 /* ChapterModel.m in Sources */,
