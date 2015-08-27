@@ -50,6 +50,10 @@
 		2D22E4781AFB5C7F00037AE2 /* ResponseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D22E4761AFB5C7F00037AE2 /* ResponseModel.m */; };
 		2D22E47F1AFB609F00037AE2 /* ChapterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D22E47E1AFB609F00037AE2 /* ChapterModel.m */; };
 		2D242DA11AE510EE00F13E0D /* define.json in Resources */ = {isa = PBXBuildFile; fileRef = 2D242DA01AE510EE00F13E0D /* define.json */; };
+		2D3EDACE1B8EE78700502499 /* DTBorderLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D3EDACD1B8EE78700502499 /* DTBorderLabel.m */; };
+		2D3EDAD11B8F0EE100502499 /* BookInfoJSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D3EDAD01B8F0EE100502499 /* BookInfoJSONModel.m */; };
+		2D3EDAD41B8F13BA00502499 /* BookInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D3EDAD31B8F13BA00502499 /* BookInfo.m */; };
+		2D3EDAD71B8F13C200502499 /* _BookInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D3EDAD61B8F13C200502499 /* _BookInfo.m */; };
 		2D5558D61AEA435800736160 /* CustomBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D5558D51AEA435800736160 /* CustomBaseCell.m */; };
 		2D5FE9941AF8D4D9003AB6A9 /* Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D5FE9931AF8D4D9003AB6A9 /* Common.m */; };
 		2D7CD97B1AE789C800C25B9A /* PageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7CD97A1AE789C800C25B9A /* PageViewController.m */; };
@@ -148,6 +152,14 @@
 		2D22E47D1AFB609F00037AE2 /* ChapterModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChapterModel.h; sourceTree = "<group>"; };
 		2D22E47E1AFB609F00037AE2 /* ChapterModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChapterModel.m; sourceTree = "<group>"; };
 		2D242DA01AE510EE00F13E0D /* define.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = define.json; sourceTree = "<group>"; };
+		2D3EDACC1B8EE78700502499 /* DTBorderLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTBorderLabel.h; sourceTree = "<group>"; };
+		2D3EDACD1B8EE78700502499 /* DTBorderLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTBorderLabel.m; sourceTree = "<group>"; };
+		2D3EDACF1B8F0EE100502499 /* BookInfoJSONModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookInfoJSONModel.h; sourceTree = "<group>"; };
+		2D3EDAD01B8F0EE100502499 /* BookInfoJSONModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookInfoJSONModel.m; sourceTree = "<group>"; };
+		2D3EDAD21B8F13BA00502499 /* BookInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookInfo.h; sourceTree = "<group>"; };
+		2D3EDAD31B8F13BA00502499 /* BookInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookInfo.m; sourceTree = "<group>"; };
+		2D3EDAD51B8F13C200502499 /* _BookInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _BookInfo.h; sourceTree = "<group>"; };
+		2D3EDAD61B8F13C200502499 /* _BookInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _BookInfo.m; sourceTree = "<group>"; };
 		2D5558D41AEA435800736160 /* CustomBaseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomBaseCell.h; sourceTree = "<group>"; };
 		2D5558D51AEA435800736160 /* CustomBaseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomBaseCell.m; sourceTree = "<group>"; };
 		2D5FE9921AF8D4D9003AB6A9 /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
@@ -293,6 +305,8 @@
 		2D1FBC801AF783030025ABE3 /* Human */ = {
 			isa = PBXGroup;
 			children = (
+				2D3EDAD21B8F13BA00502499 /* BookInfo.h */,
+				2D3EDAD31B8F13BA00502499 /* BookInfo.m */,
 				2D8456D21AFC56660096AA2C /* ChapTracker.h */,
 				2D8456D31AFC56660096AA2C /* ChapTracker.m */,
 				2D1FBC811AF783030025ABE3 /* Chapter.h */,
@@ -304,6 +318,8 @@
 		2D1FBC831AF783030025ABE3 /* Machine */ = {
 			isa = PBXGroup;
 			children = (
+				2D3EDAD51B8F13C200502499 /* _BookInfo.h */,
+				2D3EDAD61B8F13C200502499 /* _BookInfo.m */,
 				2D8456D51AFC56770096AA2C /* _ChapTracker.h */,
 				2D8456D61AFC56770096AA2C /* _ChapTracker.m */,
 				2D1FBC841AF783030025ABE3 /* _Chapter.h */,
@@ -327,6 +343,8 @@
 				2D22E4741AFB5C7F00037AE2 /* ChapterJSONModel.m */,
 				2D22E4751AFB5C7F00037AE2 /* ResponseModel.h */,
 				2D22E4761AFB5C7F00037AE2 /* ResponseModel.m */,
+				2D3EDACF1B8F0EE100502499 /* BookInfoJSONModel.h */,
+				2D3EDAD01B8F0EE100502499 /* BookInfoJSONModel.m */,
 			);
 			path = JSONModel;
 			sourceTree = "<group>";
@@ -360,6 +378,8 @@
 		2DC04E241B131AA400A4BC8D /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				2D3EDACC1B8EE78700502499 /* DTBorderLabel.h */,
+				2D3EDACD1B8EE78700502499 /* DTBorderLabel.m */,
 				2DC04E251B131ACB00A4BC8D /* NewsViewPopup.h */,
 				2DC04E261B131ACB00A4BC8D /* NewsViewPopup.m */,
 				2DC04E281B131B1100A4BC8D /* NewsViewPopup.xib */,
@@ -828,10 +848,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D3EDACE1B8EE78700502499 /* DTBorderLabel.m in Sources */,
 				2D8456D41AFC56660096AA2C /* ChapTracker.m in Sources */,
 				D32E76311AE34D4A006EF17A /* ChapterViewController.m in Sources */,
 				2DC04E271B131ACB00A4BC8D /* NewsViewPopup.m in Sources */,
 				2D1FBC861AF783030025ABE3 /* Chapter.m in Sources */,
+				2D3EDAD11B8F0EE100502499 /* BookInfoJSONModel.m in Sources */,
 				2D5FE9941AF8D4D9003AB6A9 /* Common.m in Sources */,
 				2DE311DD1B05DA5A00DE3E92 /* BackgroundSessionManager.m in Sources */,
 				2DA36EF71B8DAB5700E409AE /* DownloadManager.m in Sources */,
@@ -841,6 +863,7 @@
 				2DA3358D1B44F5E800E6FBBB /* BaseViewController.m in Sources */,
 				D386E83A1AEB7BCF00FFB149 /* ChapterService.m in Sources */,
 				2D7CD97B1AE789C800C25B9A /* PageViewController.m in Sources */,
+				2D3EDAD71B8F13C200502499 /* _BookInfo.m in Sources */,
 				D33F3E971AFC33D600474B08 /* StaminaConfig.m in Sources */,
 				2D22E4781AFB5C7F00037AE2 /* ResponseModel.m in Sources */,
 				2DE30D731B8C6888004572CC /* DownloadPhotoOperation.m in Sources */,
@@ -854,6 +877,7 @@
 				D3CD35D91AD998F90057265B /* InfoViewController.m in Sources */,
 				2D5558D61AEA435800736160 /* CustomBaseCell.m in Sources */,
 				D384C64B1AD95B6A00C9883A /* main.m in Sources */,
+				2D3EDAD41B8F13BA00502499 /* BookInfo.m in Sources */,
 				2DBD636E1ADF785000D001C5 /* SubInfoViewController.m in Sources */,
 				2D22E4771AFB5C7F00037AE2 /* ChapterJSONModel.m in Sources */,
 				2D8456D71AFC56770096AA2C /* _ChapTracker.m in Sources */,

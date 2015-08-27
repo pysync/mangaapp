@@ -59,10 +59,11 @@
         for (int i=0; i<_chapTrackList.count; i++) {
             if (![chapList containsObject:_chapTrackList[i]]) {
                 // Create new entity
-                ChapTracker *newTrack = [ChapTracker MR_createEntity];
-                newTrack.chapterID = _chapterID;
-                newTrack.pageName = _chapTrackList[i];
-                [newTrack.managedObjectContext MR_saveToPersistentStoreAndWait];
+                [MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext *localContext) {
+                    ChapTracker *newTrack = [ChapTracker MR_createEntityInContext:localContext];
+                    newTrack.chapterID = _chapterID;
+                    newTrack.pageName = _chapTrackList[i];
+                }];
             }
         }
     }

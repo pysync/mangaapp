@@ -18,6 +18,8 @@
 #import "BackgroundSessionManager.h"
 #import <MagicalRecord/MagicalRecord.h>
 #import "DownloadPhotoOperation.h"
+#import "BookInfoJSONModel.h"
+#import "BookInfo.h"
 
 @interface ChapterListService()
 
@@ -41,7 +43,20 @@
     return self;
 }
 
-- (void)getDataFromJSONSuccess:(void (^)())successBlock failure:(void (^)())failBlock {
+- (void)getBookInfoFromJSONSuccess:(void (^)())successBlock failure:(void (^)())failBlock {
+    NSURL *jsonURL = [NSURL URLWithString:kBookInfoURL];
+    NSString *jsonString = [NSString stringWithContentsOfURL:jsonURL encoding:NSUTF8StringEncoding error:nil];
+    
+    NSError *jsonError;
+    NSData *objectData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
+    NSArray *jsonObjects = [NSJSONSerialization JSONObjectWithData:objectData
+                                                           options:NSJSONReadingMutableContainers
+                                                             error:&jsonError];
+    NSArray *modelObjects = [BookInfoJSONModel arrayOfModelsFromDictionaries:jsonObjects];
+    [self createAndSaveBookInfoIfNeedWithBookList:modelObjects];
+}
+
+- (void)getChapterFromJSONSuccess:(void (^)())successBlock failure:(void (^)())failBlock {
     NSURL *jsonURL = [NSURL URLWithString:kChapterInfoURL];
     NSString *jsonString = [NSString stringWithContentsOfURL:jsonURL encoding:NSUTF8StringEncoding error:nil];
     
@@ -96,6 +111,18 @@
             chapModel.chapterEntity = chapEntity;
             
             [chapEntity.managedObjectContext MR_saveToPersistentStoreAndWait];
+        }
+    }
+}
+
+- (void)createAndSaveBookInfoIfNeedWithBookList:(NSArray *)bookList {
+    NSArray *listBookInfo = [BookInfo MR_findAll];
+    if (!listBookInfo || listBookInfo.count == 0) {
+        for (int i=0; i<bookList.count; i++) {
+            BookInfoJSONModel *bookInfo = bookList[i];
+            [MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext *localContext) {
+                [BookInfo MR_createEntityWithJSONModel:bookInfo andContext:localContext];
+            }];
         }
     }
 }

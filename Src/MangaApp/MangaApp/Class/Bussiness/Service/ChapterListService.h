@@ -13,7 +13,8 @@
 
 @property (strong, nonatomic) NSMutableArray *listChapters;
 
-- (void)getDataFromJSONSuccess:(void(^)())successBlock failure:(void(^)())failBlock;
+- (void)getBookInfoFromJSONSuccess:(void(^)())successBlock failure:(void(^)())failBlock;
+- (void)getChapterFromJSONSuccess:(void(^)())successBlock failure:(void(^)())failBlock;
 - (void)createAndSaveDataIfNeed;
 - (void)updateChapterWithIndexChap:(NSInteger )indexChap andState:(BOOL)isDownloaded;
 - (void)removeChapterWithIndexChap:(NSInteger )indexChap finish:(void(^)())finishBlock;

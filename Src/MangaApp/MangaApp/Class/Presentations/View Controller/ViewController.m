@@ -49,7 +49,8 @@
 
     //--------------------------------------------------------------------------
     // Load data from json
-    [self loadDataFromJSON];
+    [self loadBookInfoFromJSON];
+    [self loadChapterFromJSON];
     
     [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
         NSLog(@"Reachability: %@", AFStringFromNetworkReachabilityStatus(status));
@@ -339,11 +340,19 @@
 }
 
 #pragma mark - Service Function
-- (void)loadDataFromJSON {
-    [_chapterService getDataFromJSONSuccess:^{
+- (void)loadChapterFromJSON {
+    [_chapterService getChapterFromJSONSuccess:^{
         [_contentTableView reloadData];
     } failure:^{
         [_contentTableView reloadData];
+    }];
+}
+
+- (void)loadBookInfoFromJSON {
+    [_chapterService getBookInfoFromJSONSuccess:^{
+        
+    } failure:^{
+        
     }];
 }
 

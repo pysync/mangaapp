@@ -14,6 +14,7 @@
 //#define kBaseUrl @"http://res.cloudinary.com/duvy0qusz/image/upload/v1438675658"
 
 #define kChapterInfoURL @"http://seo-web.biz/manga-app/json/chapterInfo.json"
+#define kBookInfoURL @"http://seo-web.biz/manga-app/json/bookInfo.json"
 
 // Define UI components
 #define kShowBarView @"showBarView"

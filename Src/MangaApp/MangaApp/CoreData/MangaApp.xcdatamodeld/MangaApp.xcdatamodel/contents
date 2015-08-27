@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7549" systemVersion="14D131" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7701" systemVersion="14D131" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="BookInfo" representedClassName="BookInfo" syncable="YES">
+        <attribute name="appID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="bookID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="bookName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="coverImage" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <entity name="Chapter" representedClassName="Chapter" syncable="YES">
         <attribute name="chapterID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="chapterName" optional="YES" attributeType="String" syncable="YES"/>
@@ -18,5 +24,6 @@
     <elements>
         <element name="Chapter" positionX="-90" positionY="-225" width="128" height="180"/>
         <element name="ChapTracker" positionX="-90" positionY="-97" width="128" height="75"/>
+        <element name="BookInfo" positionX="-90" positionY="-144" width="128" height="105"/>
     </elements>
 </model>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="O6A-y2-KFm">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="O6A-y2-KFm">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -60,49 +60,50 @@
                                         </connections>
                                     </button>
                                     <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" misplaced="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="j6d-9g-Wci">
-                                        <rect key="frame" x="60" y="10" width="470" height="25"/>
+                                        <rect key="frame" x="100" y="10" width="470" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="BAh-qv-6kJ"/>
                                         </constraints>
                                         <color key="progressTintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="trackTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </progressView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="87/100" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iwy-j5-M6t">
-                                        <rect key="frame" x="540" y="12" width="54" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="87/100" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iwy-j5-M6t" customClass="DTBorderLabel">
+                                        <rect key="frame" x="510" y="21" width="60" height="21"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="21" id="Lob-oE-mjh"/>
-                                            <constraint firstAttribute="width" constant="54" id="Se6-CR-xEk"/>
+                                            <constraint firstAttribute="height" constant="21" id="G0a-f2-2IQ"/>
+                                            <constraint firstAttribute="width" constant="60" id="fxG-ZS-n0x"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="體力" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cbc-fZ-vHL" customClass="DTBorderLabel">
+                                        <rect key="frame" x="100" y="21" width="40" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="2sL-od-9ai"/>
+                                            <constraint firstAttribute="width" constant="40" id="cZP-Ld-if7"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HiraKakuProN-W6" family="Hiragino Kaku Gothic ProN" pointSize="15"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="iwy-j5-M6t" firstAttribute="top" secondItem="ZfA-q6-nsT" secondAttribute="top" constant="12" id="BTH-Y6-yXO"/>
+                                    <constraint firstAttribute="trailing" secondItem="j6d-9g-Wci" secondAttribute="trailing" constant="30" id="9LS-wW-VOy"/>
                                     <constraint firstAttribute="trailing" secondItem="qjo-k5-8GK" secondAttribute="trailing" id="Cah-XY-TBm"/>
                                     <constraint firstItem="qjo-k5-8GK" firstAttribute="leading" secondItem="ZfA-q6-nsT" secondAttribute="leading" id="DFl-30-wDV"/>
-                                    <constraint firstItem="iwy-j5-M6t" firstAttribute="leading" secondItem="j6d-9g-Wci" secondAttribute="trailing" constant="10" id="VUj-ug-x7s"/>
-                                    <constraint firstItem="iwy-j5-M6t" firstAttribute="centerY" secondItem="j6d-9g-Wci" secondAttribute="centerY" id="VeC-T5-gwt"/>
+                                    <constraint firstItem="j6d-9g-Wci" firstAttribute="leading" secondItem="cbc-fZ-vHL" secondAttribute="leading" id="DkZ-YM-JqH"/>
+                                    <constraint firstAttribute="bottom" secondItem="iwy-j5-M6t" secondAttribute="bottom" constant="2" id="YXp-lC-t9v"/>
                                     <constraint firstItem="VsM-ZO-BM8" firstAttribute="top" secondItem="ZfA-q6-nsT" secondAttribute="top" constant="2" id="ahY-tz-3Vi"/>
                                     <constraint firstAttribute="bottom" secondItem="qjo-k5-8GK" secondAttribute="bottom" id="aug-i4-cK5"/>
                                     <constraint firstItem="qjo-k5-8GK" firstAttribute="top" secondItem="ZfA-q6-nsT" secondAttribute="top" id="glK-Vr-U3G"/>
-                                    <constraint firstItem="j6d-9g-Wci" firstAttribute="leading" secondItem="VsM-ZO-BM8" secondAttribute="trailing" constant="10" id="i02-mD-Z50"/>
-                                    <constraint firstAttribute="trailing" secondItem="iwy-j5-M6t" secondAttribute="trailing" constant="6" id="pxN-uj-edk"/>
+                                    <constraint firstItem="j6d-9g-Wci" firstAttribute="leading" secondItem="VsM-ZO-BM8" secondAttribute="trailing" constant="50" id="i02-mD-Z50"/>
+                                    <constraint firstItem="j6d-9g-Wci" firstAttribute="trailing" secondItem="iwy-j5-M6t" secondAttribute="trailing" id="ibI-S2-LF4"/>
+                                    <constraint firstAttribute="bottom" secondItem="cbc-fZ-vHL" secondAttribute="bottom" constant="2" id="nOH-dK-q4T"/>
                                     <constraint firstItem="VsM-ZO-BM8" firstAttribute="leading" secondItem="ZfA-q6-nsT" secondAttribute="leading" constant="10" id="spe-Ab-M1d"/>
+                                    <constraint firstItem="j6d-9g-Wci" firstAttribute="top" secondItem="ZfA-q6-nsT" secondAttribute="top" constant="10" id="th0-YK-SgC"/>
                                     <constraint firstAttribute="height" constant="44" id="xcl-y9-h9z"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="hLI-q6-iSH">
-                                <rect key="frame" x="0.0" y="114" width="600" height="436"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <sections/>
-                                <connections>
-                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="MNn-ZW-XVf"/>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="Q2Q-vX-8xn"/>
-                                </connections>
-                            </tableView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="top_banner.png" translatesAutoresizingMaskIntoConstraints="NO" id="8kb-cJ-jbO">
                                 <rect key="frame" x="0.0" y="44" width="600" height="70"/>
                                 <constraints>
@@ -116,6 +117,15 @@
                                     <constraint firstAttribute="height" constant="50" id="TcN-FU-TOZ"/>
                                 </constraints>
                             </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="hLI-q6-iSH">
+                                <rect key="frame" x="0.0" y="114" width="600" height="436"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <sections/>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="MNn-ZW-XVf"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="Q2Q-vX-8xn"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
