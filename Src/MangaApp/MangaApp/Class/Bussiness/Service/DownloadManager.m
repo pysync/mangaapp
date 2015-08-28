@@ -35,6 +35,51 @@
     return self;
 }
 
+- (void)readingChapterWithModel:(ChapterJSONModel *)chapterModel {
+    NSString *chapterName = [NSString stringWithFormat:@"%@%@", chapterModel.dirPrefix, chapterModel.chapterID];
+    
+    NSNumber *numberPhotos = _downloadStatusInfo[chapterName];
+    if (!numberPhotos) {
+        numberPhotos = @(0);
+        [_downloadStatusInfo setObject:numberPhotos forKey:chapterName];
+    }
+    
+    NSOperationQueue *photoQueue = [[NSOperationQueue alloc] init];
+    NSString *baseURL = [kBaseUrl stringByAppendingPathComponent:[NSString stringWithFormat:@"%@%@", chapterModel.dirPrefix, chapterModel.chapterID]];
+    for (int i=0; i<chapterModel.pageCount.integerValue; i++) {
+        NSString *imageName = [NSString stringWithFormat:@"%@%lu.%@", chapterModel.pagePrefix, (unsigned long)i + 1, chapterModel.ext];
+        if (![self imageDownloadedWithImageName:imageName andChapterModel:chapterModel]) {
+            NSString *fullURL = [baseURL stringByAppendingPathComponent:imageName];
+            NSURL *URL = [NSURL URLWithString:fullURL];
+            DownloadPhotoOperation *photoOperation = [[DownloadPhotoOperation alloc] initWithURL:URL];
+            [photoQueue addOperation:photoOperation];
+            
+            photoOperation.didFinishDownload = ^(){
+                NSNumber *numberPhotos = _downloadStatusInfo[chapterName];
+                numberPhotos = @(numberPhotos.integerValue + 1);
+                _downloadStatusInfo[chapterName] = numberPhotos;
+                
+                if (numberPhotos.integerValue == chapterModel.pageCount.integerValue) {
+                    NSLog(@"All file download successfully");
+                    if (self.finishLoadChapter) {
+                        self.finishLoadChapter();
+                    }
+                }
+            };
+        }else {
+            NSNumber *numberPhotos = _downloadStatusInfo[chapterName];
+            numberPhotos = @(numberPhotos.integerValue + 1);
+            _downloadStatusInfo[chapterName] = numberPhotos;
+            
+            if (numberPhotos.integerValue == chapterModel.pageCount.integerValue) {
+                if (self.finishLoadChapter) {
+                    self.finishLoadChapter();
+                }
+            }
+        }
+    }
+}
+
 - (void)downloadChapterWithModel:(ChapterJSONModel *)chapterModel success:(void (^)())successBlock failure:(void (^)())failBlock {
     NSString *chapterName = [NSString stringWithFormat:@"%@%@", chapterModel.dirPrefix, chapterModel.chapterID];
     

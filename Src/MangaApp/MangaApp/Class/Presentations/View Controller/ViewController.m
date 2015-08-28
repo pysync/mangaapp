@@ -287,27 +287,26 @@
 
 - (void)readingChapWithIndexChapter:(NSInteger )indexChap {
     ChapterModel *chapModel = (ChapterModel *)_chapterService.listChapters[indexChap];
-    if (!chapModel.isFinishedDownload && !chapModel.isDownloading) {
-        chapModel.isDownloading = YES;
-        DownloadManager *downloadManager = [DownloadManager sharedManager];
-        [downloadManager downloadChapterWithModel:chapModel.chapterJSONModel success:^{
-            chapModel.isFinishedDownload = YES;
-            chapModel.isDownloading = NO;
-            [_chapterService updateChapterWithIndexChap:indexChap andState:YES];
-            
-            UIViewController *topVC = self.navigationController.topViewController;
-            if ([topVC isKindOfClass:[self class]]) {
-                [_contentTableView reloadData];
-            }
-        } failure:^{
-            chapModel.isDownloading = NO;
-            chapModel.isFinishedDownload = NO;
-            UIViewController *topVC = self.navigationController.topViewController;
-            if ([topVC isKindOfClass:[self class]]) {
-                [_contentTableView reloadData];
-            }
-        }];
-    }
+    DownloadManager *downloadManager = [DownloadManager sharedManager];
+    downloadManager.finishLoadChapter = ^(){
+        chapModel.isFinishedDownload = YES;
+        chapModel.isDownloading = NO;
+        [_chapterService updateChapterWithIndexChap:indexChap andState:YES];
+        
+        UIViewController *topVC = self.navigationController.topViewController;
+        if ([topVC isKindOfClass:[self class]]) {
+            [_contentTableView reloadData];
+        }
+    };
+    
+    downloadManager.failedLoadChapter = ^(){
+        chapModel.isDownloading = NO;
+        chapModel.isFinishedDownload = NO;
+        UIViewController *topVC = self.navigationController.topViewController;
+        if ([topVC isKindOfClass:[self class]]) {
+            [_contentTableView reloadData];
+        }
+    };
     
     UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     ChapterViewController *chapterVC = (ChapterViewController *)[story instantiateViewControllerWithIdentifier:NSStringFromClass([ChapterViewController class])];

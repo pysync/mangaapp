@@ -12,7 +12,10 @@
 @interface DownloadManager : NSObject
 
 @property (nonatomic, strong) NSMutableDictionary *downloadStatusInfo;
+@property (nonatomic, copy) void(^finishLoadChapter)();
+@property (nonatomic, copy) void(^failedLoadChapter)();
 
 + (id)sharedManager;
+- (void)readingChapterWithModel:(ChapterJSONModel *)chapterModel;
 - (void)downloadChapterWithModel:(ChapterJSONModel *)chapterModel success:(void(^)())successBlock failure:(void(^)())failBlock;
 @end

@@ -13,6 +13,7 @@
 #import "StaminaConfig.h"
 #import <StoreKit/StoreKit.h>
 #import <MBProgressHUD/MBProgressHUD.h>
+#import "DownloadManager.h"
 
 @interface ChapterViewController ()<UIPageViewControllerDataSource, UIPageViewControllerDelegate, SKProductsRequestDelegate, SKPaymentTransactionObserver>
 @property (nonatomic, strong) NSMutableArray *viewControllers;
@@ -38,7 +39,8 @@
     
     [self createUI];
     [self loadDataToView];
-    //[self fetchAvailableProducts];
+    [self performSelector:@selector(startDownloadingManga) withObject:nil afterDelay:0.3];
+    //[self startDownloadingManga];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateStaminaView:) name:kUpdateStaminaView object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showBarViews:) name:kShowBarView object:nil];
@@ -119,6 +121,15 @@
     
     _titleLabel.text = _chapModel.chapterJSONModel.chapterName;
     _pageLabel.text = [NSString stringWithFormat:@"1/%lu", (unsigned long)_chapModel.chapterJSONModel.pageCount.integerValue];
+}
+
+#pragma mark - Download Photos
+- (void)startDownloadingManga {
+    if (!_chapModel.isFinishedDownload && !_chapModel.isDownloading) {
+        _chapModel.isDownloading = YES;
+        DownloadManager *downloadManager = [DownloadManager sharedManager];
+        [downloadManager readingChapterWithModel:_chapModel.chapterJSONModel];
+    }
 }
 
 #pragma mark - PageViewController data sources
