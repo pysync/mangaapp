@@ -61,6 +61,7 @@
 		2D8456D71AFC56770096AA2C /* _ChapTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8456D61AFC56770096AA2C /* _ChapTracker.m */; };
 		2DA3358D1B44F5E800E6FBBB /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA3358C1B44F5E800E6FBBB /* BaseViewController.m */; };
 		2DA36EF71B8DAB5700E409AE /* DownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA36EF61B8DAB5700E409AE /* DownloadManager.m */; };
+		2DA6ADFD1B903CB900CC7CB0 /* thumbnail.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DA6ADFC1B903CB900CC7CB0 /* thumbnail.png */; };
 		2DBD636E1ADF785000D001C5 /* SubInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBD636D1ADF785000D001C5 /* SubInfoViewController.m */; };
 		2DC04E271B131ACB00A4BC8D /* NewsViewPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC04E261B131ACB00A4BC8D /* NewsViewPopup.m */; };
 		2DC04E291B131B1100A4BC8D /* NewsViewPopup.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DC04E281B131B1100A4BC8D /* NewsViewPopup.xib */; };
@@ -174,6 +175,7 @@
 		2DA3358C1B44F5E800E6FBBB /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		2DA36EF51B8DAB5700E409AE /* DownloadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadManager.h; sourceTree = "<group>"; };
 		2DA36EF61B8DAB5700E409AE /* DownloadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadManager.m; sourceTree = "<group>"; };
+		2DA6ADFC1B903CB900CC7CB0 /* thumbnail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thumbnail.png; sourceTree = "<group>"; };
 		2DBD636C1ADF785000D001C5 /* SubInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubInfoViewController.h; sourceTree = "<group>"; };
 		2DBD636D1ADF785000D001C5 /* SubInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubInfoViewController.m; sourceTree = "<group>"; };
 		2DC04E251B131ACB00A4BC8D /* NewsViewPopup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsViewPopup.h; sourceTree = "<group>"; };
@@ -539,6 +541,7 @@
 		D3CD35C31AD987360057265B /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				2DA6ADFC1B903CB900CC7CB0 /* thumbnail.png */,
 				2D0D0DBD1B5CFA0A00B2EC16 /* btn_download.png */,
 				2D0D0DB91B5CF84800B2EC16 /* btn_read.png */,
 				2D0D0DBA1B5CF84800B2EC16 /* btn_remove.png */,
@@ -768,6 +771,7 @@
 				D3CD35C51AD987360057265B /* splash.png in Resources */,
 				2D0D0DBB1B5CF84800B2EC16 /* btn_read.png in Resources */,
 				2DCBEE381AF9CF98003E5DA8 /* placeholder.png in Resources */,
+				2DA6ADFD1B903CB900CC7CB0 /* thumbnail.png in Resources */,
 				2D242DA11AE510EE00F13E0D /* define.json in Resources */,
 				2DE61BC41B68D9DD0097177A /* InfoViewPopup.xib in Resources */,
 				2D22E4701AFB55AD00037AE2 /* staminaConfig.plist in Resources */,
