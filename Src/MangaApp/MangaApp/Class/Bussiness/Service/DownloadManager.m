@@ -12,7 +12,7 @@
 #import "Common.h"
 
 @interface DownloadManager()
-
+@property (nonatomic, strong) NSMutableDictionary *downloadStatusInfo;
 @end
 
 @implementation DownloadManager
@@ -35,9 +35,16 @@
     return self;
 }
 
+- (void)removeStatusChapter:(NSString *)chapterName {
+    NSNumber *numberPhotos = _downloadStatusInfo[chapterName];
+    if (numberPhotos) {
+        [_downloadStatusInfo removeObjectForKey:chapterName];
+    }
+}
+
 - (void)readingChapterWithModel:(ChapterJSONModel *)chapterModel {
     NSString *chapterName = [NSString stringWithFormat:@"%@%@", chapterModel.dirPrefix, chapterModel.chapterID];
-    
+
     NSNumber *numberPhotos = _downloadStatusInfo[chapterName];
     if (!numberPhotos) {
         numberPhotos = @(0);

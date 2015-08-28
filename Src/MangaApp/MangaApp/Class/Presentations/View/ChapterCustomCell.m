@@ -36,10 +36,10 @@
     return 100.0f;
 }
 
-- (void)updateCellWithModel:(ChapterJSONModel *)unitModel {
+- (void)updateCellWithModel:(ChapterModel *)unitModel {
     _chapTitleLabel.text = @"Thumbnail chapter";
-    if (unitModel.chapterName && unitModel.chapterName.length) {
-        _chapNumberLabel.text = unitModel.chapterName;
+    if (unitModel.chapterEntity.chapterName && unitModel.chapterEntity.chapterName.length) {
+        _chapNumberLabel.text = unitModel.chapterEntity.chapterName;
     }else {
         _chapNumberLabel.text = @"";
     }

@@ -73,7 +73,7 @@
 - (void)createUI {
     [[self navigationController] setNavigationBarHidden:YES animated:NO];
     _processSlider.minimumValue = 1.0;
-    _processSlider.maximumValue = _chapModel.chapterJSONModel.pageCount.integerValue;
+    _processSlider.maximumValue = _chapModel.chapterEntity.pageCount.integerValue;
     
     _processView.layer.cornerRadius = 12.0;
     _processView.layer.borderWidth = 3.0;
@@ -88,7 +88,7 @@
 //    [_processView.layer setShadowOffset:CGSizeMake(-20.0, -20.0)];
     
     // Create Page view controller
-    NSString *zeroImage = [NSString stringWithFormat:@"%@1.%@", _chapModel.chapterJSONModel.pagePrefix, _chapModel.chapterJSONModel.ext];
+    NSString *zeroImage = [NSString stringWithFormat:@"%@1.%@", _chapModel.chapterEntity.pagePrefix, _chapModel.chapterEntity.ext];
     PhotoViewController *pageZero = [PhotoViewController photoViewControllerForPageIndex:0 imageName:zeroImage andService:_chapterService];
     if (pageZero != nil)
     {
@@ -119,8 +119,8 @@
     _processView.progress = config.stamina/config.maxStamina;
     _staminaLabel.text = [NSString stringWithFormat:@"%ld/%d", (long)config.stamina,(int)config.maxStamina];
     
-    _titleLabel.text = _chapModel.chapterJSONModel.chapterName;
-    _pageLabel.text = [NSString stringWithFormat:@"1/%lu", (unsigned long)_chapModel.chapterJSONModel.pageCount.integerValue];
+    _titleLabel.text = _chapModel.chapterEntity.chapterName;
+    _pageLabel.text = [NSString stringWithFormat:@"1/%lu", (unsigned long)_chapModel.chapterEntity.pageCount.integerValue];
 }
 
 #pragma mark - Download Photos
@@ -139,7 +139,7 @@
     _currentPage = index;
     [self reloadBottomViewDataWithPageIndex:(index + 1)];
     if (index) {
-        NSString *imageName = [NSString stringWithFormat:@"%@%lu.%@", _chapModel.chapterJSONModel.pagePrefix, (unsigned long)index, _chapModel.chapterJSONModel.ext];
+        NSString *imageName = [NSString stringWithFormat:@"%@%lu.%@", _chapModel.chapterEntity.pagePrefix, (unsigned long)index, _chapModel.chapterEntity.ext];
         
         return [PhotoViewController photoViewControllerForPageIndex:(index - 1) imageName:imageName andService:_chapterService];
     }else {
@@ -153,7 +153,7 @@
     _currentPage = index;
     [self reloadBottomViewDataWithPageIndex:(index + 1)];
     if (index < _chapModel.chapterJSONModel.pageCount.integerValue - 1) {
-        NSString *imageName = [NSString stringWithFormat:@"%@%lu.%@", _chapModel.chapterJSONModel.pagePrefix, (unsigned long)index + 2, _chapModel.chapterJSONModel.ext];
+        NSString *imageName = [NSString stringWithFormat:@"%@%lu.%@", _chapModel.chapterEntity.pagePrefix, (unsigned long)index + 2, _chapModel.chapterEntity.ext];
         
         return [PhotoViewController photoViewControllerForPageIndex:(index + 1) imageName:imageName andService:_chapterService];
     }
@@ -220,7 +220,7 @@
 
 - (void)updateStaminaConfig {
     StaminaConfig *staminaConfig = [StaminaConfig sharedConfig];
-    NSString *currentImageName = [NSString stringWithFormat:@"%@%lu.%@", _chapModel.chapterJSONModel.pagePrefix, (unsigned long)_currentPage, _chapModel.chapterJSONModel.ext];
+    NSString *currentImageName = [NSString stringWithFormat:@"%@%lu.%@", _chapModel.chapterEntity.pagePrefix, (unsigned long)_currentPage, _chapModel.chapterEntity.ext];
     
     if (_chapterService.chapterModel.chapterEntity.freeFlg.integerValue == 0) {
         if (![staminaConfig.chapTrackList containsObject:currentImageName]) {
@@ -333,7 +333,7 @@
 #pragma mark - Button Function
 - (IBAction)changePage:(id)sender {
     NSUInteger index = (NSUInteger)(_processSlider.value + 0.5);
-    NSString *imageName = [NSString stringWithFormat:@"%@%lu.%@", _chapModel.chapterJSONModel.pagePrefix, (unsigned long)index - 1, _chapModel.chapterJSONModel.ext];
+    NSString *imageName = [NSString stringWithFormat:@"%@%lu.%@", _chapModel.chapterEntity.pagePrefix, (unsigned long)index - 1, _chapModel.chapterEntity.ext];
     
     if (index > _currentPage + 1) {
         PhotoViewController *nextPage = [PhotoViewController photoViewControllerForPageIndex:(index - 1) imageName:imageName andService:_chapterService];;

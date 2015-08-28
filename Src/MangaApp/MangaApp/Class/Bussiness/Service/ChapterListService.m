@@ -47,30 +47,15 @@
     NSURL *jsonURL = [NSURL URLWithString:kBookInfoURL];
     NSString *jsonString = [NSString stringWithContentsOfURL:jsonURL encoding:NSUTF8StringEncoding error:nil];
     
-    NSError *jsonError;
-    NSData *objectData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
-    NSArray *jsonObjects = [NSJSONSerialization JSONObjectWithData:objectData
-                                                           options:NSJSONReadingMutableContainers
-                                                             error:&jsonError];
-    NSArray *modelObjects = [BookInfoJSONModel arrayOfModelsFromDictionaries:jsonObjects];
-    [self createAndSaveBookInfoIfNeedWithBookList:modelObjects];
-}
-
-- (void)getChapterFromJSONSuccess:(void (^)())successBlock failure:(void (^)())failBlock {
-    NSURL *jsonURL = [NSURL URLWithString:kChapterInfoURL];
-    NSString *jsonString = [NSString stringWithContentsOfURL:jsonURL encoding:NSUTF8StringEncoding error:nil];
-    
-    NSError *jsonError;
-    NSData *objectData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
-    NSArray *jsonObjects = [NSJSONSerialization JSONObjectWithData:objectData
-                                                            options:NSJSONReadingMutableContainers
-                                                              error:&jsonError];
-    
-    NSArray *modelObjects = [ChapterJSONModel arrayOfModelsFromDictionaries:jsonObjects];
-    
-    if (!jsonError) {
-        _listChapters = [self createChapterModelWithData:modelObjects];
-        [self createAndSaveDataIfNeed];
+    if (jsonString) {
+        NSError *jsonError;
+        NSData *objectData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
+        NSArray *jsonObjects = [NSJSONSerialization JSONObjectWithData:objectData
+                                                               options:NSJSONReadingMutableContainers
+                                                                 error:&jsonError];
+        NSArray *modelObjects = [BookInfoJSONModel arrayOfModelsFromDictionaries:jsonObjects];
+        [self createAndSaveBookInfoIfNeedWithBookList:modelObjects];
+        
         if (successBlock) {
             successBlock();
         }
@@ -79,6 +64,55 @@
             failBlock();
         }
     }
+}
+
+- (void)getChapterFromJSONSuccess:(void (^)())successBlock failure:(void (^)())failBlock {
+    NSURL *jsonURL = [NSURL URLWithString:kChapterInfoURL];
+    NSString *jsonString = [NSString stringWithContentsOfURL:jsonURL encoding:NSUTF8StringEncoding error:nil];
+    
+    if (jsonString) {
+        NSError *jsonError;
+        NSData *objectData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
+        NSArray *jsonObjects = [NSJSONSerialization JSONObjectWithData:objectData
+                                                               options:NSJSONReadingMutableContainers
+                                                                 error:&jsonError];
+        
+        NSArray *modelObjects = [ChapterJSONModel arrayOfModelsFromDictionaries:jsonObjects];
+        
+        if (!jsonError) {
+            _listChapters = [self createChapterModelWithData:modelObjects];
+            [self createAndSaveDataIfNeed];
+            if (successBlock) {
+                successBlock();
+            }
+        }else {
+            _listChapters = [self getListChapterFromDB];
+            if (failBlock) {
+                failBlock();
+            }
+        }
+    }else {
+        _listChapters = [self getListChapterFromDB];
+        if (failBlock) {
+            failBlock();
+        }
+    }
+}
+
+- (NSMutableArray *)getListChapterFromDB {
+    NSMutableArray *resultArray = [[NSMutableArray alloc] initWithCapacity:0];
+    NSArray *listChapter = [Chapter MR_findAllSortedBy:@"chapterID" ascending:YES];
+    if (listChapter && listChapter.count) {
+        for (int i=0; i<listChapter.count; i++) {
+            ChapterModel *chapModel = [[ChapterModel alloc] init];
+            Chapter *chapEntity = listChapter[i];
+            chapModel.chapterEntity = chapEntity;
+            chapModel.isFinishedDownload = chapEntity.isDownloaded.boolValue;
+            [resultArray addObject:chapModel];
+        }
+    }
+    
+    return resultArray;
 }
 
 - (NSMutableArray *)createChapterModelWithData:(NSArray *)dataArray {
@@ -95,7 +129,7 @@
 
 - (void)createAndSaveDataIfNeed {
     NSArray *listChapter = [Chapter MR_findAllSortedBy:@"chapterID" ascending:YES];
-    if (listChapter.count) {
+    if (listChapter && listChapter.count) {
         for (int i=0; i<listChapter.count; i++) {
             Chapter *chapEntity = listChapter[i];
             ChapterModel *chapModel = (ChapterModel *)_listChapters[i];
@@ -140,8 +174,8 @@
     
     NSString *chapterName = [NSString stringWithFormat:@"%@%@", chapModel.chapterEntity.dirPrefix, chapModel.chapterEntity.chapterID];
     NSString *documentPath = [Common getChapterDirectoryWithChapter:chapterName];
-    for (int i=0; i<chapModel.chapterJSONModel.pageCount.integerValue; i++) {
-        NSString *imageName = [NSString stringWithFormat:@"%@%lu.%@", chapModel.chapterJSONModel.pagePrefix, (unsigned long)i + 1, chapModel.chapterJSONModel.ext];
+    for (int i=0; i<chapModel.chapterEntity.pageCount.integerValue; i++) {
+        NSString *imageName = [NSString stringWithFormat:@"%@%lu.%@", chapModel.chapterEntity.pagePrefix, (unsigned long)i + 1, chapModel.chapterEntity.ext];
         NSString *imagePath = [documentPath stringByAppendingPathComponent:imageName];
         
         NSError *error = nil;

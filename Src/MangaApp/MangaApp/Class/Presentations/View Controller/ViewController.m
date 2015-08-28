@@ -332,6 +332,9 @@
                 chapModel.isFinishedDownload = NO;
                 chapModel.isDownloading = NO;
                 
+                NSString *chapterName = [NSString stringWithFormat:@"%@%@", chapModel.chapterEntity.dirPrefix, chapModel.chapterEntity.chapterID];
+                [[DownloadManager sharedManager] removeStatusChapter:chapterName];
+                
                 [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
             }];
         }
@@ -406,7 +409,7 @@
         cell.downloadState = chapModel.chapterEntity.isDownloaded.integerValue == 1 ? kDownloadedState:kBeforeDownloadState;
     }
     
-    [cell updateCellWithModel:chapModel.chapterJSONModel];
+    [cell updateCellWithModel:chapModel];
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
