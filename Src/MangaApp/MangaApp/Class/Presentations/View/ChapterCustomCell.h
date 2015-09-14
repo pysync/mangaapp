@@ -27,6 +27,7 @@ typedef enum {
 @property (weak, nonatomic) IBOutlet UIView *subContentView;
 @property (weak, nonatomic) IBOutlet UIView *downloadView;
 @property (weak, nonatomic) IBOutlet UIView *downloadedView;
+@property (weak, nonatomic) IBOutlet UIImageView *thumbnailImageView;
 
 - (IBAction)onDownloadButton:(id)sender;
 - (IBAction)onRemoveButton:(id)sender;

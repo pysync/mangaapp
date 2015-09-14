@@ -189,6 +189,7 @@
                 <outlet property="downloadView" destination="TRs-8T-VlB" id="aCP-aZ-0bw"/>
                 <outlet property="downloadedView" destination="LYf-vo-Fm8" id="XH8-wS-XnP"/>
                 <outlet property="subContentView" destination="30N-7p-sLm" id="6xh-TW-8rm"/>
+                <outlet property="thumbnailImageView" destination="G2e-kJ-dwd" id="UTW-w8-hlw"/>
             </connections>
             <point key="canvasLocation" x="139.5" y="154"/>
         </tableViewCell>
