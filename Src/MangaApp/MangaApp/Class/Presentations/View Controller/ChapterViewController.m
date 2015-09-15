@@ -83,7 +83,7 @@
     
     // Create Page view controller
     NSString *zeroImage = [NSString stringWithFormat:@"%@1.%@", _chapModel.chapterEntity.pagePrefix, _chapModel.chapterEntity.ext];
-    PhotoViewController *pageZero = [PhotoViewController photoViewControllerForPageIndex:0 imageName:zeroImage andService:_chapterService];
+    PhotoViewController *pageZero = [PhotoViewController photoViewControllerForPageIndex:1 imageName:zeroImage andService:_chapterService];
     if (pageZero != nil)
     {
         // assign the first page to the pageViewController (our rootViewController)
@@ -129,11 +129,11 @@
 #pragma mark - PageViewController data sources
 - (UIViewController *)pageViewController:(UIPageViewController *)pvc viewControllerBeforeViewController:(PhotoViewController *)vc
 {
-    NSUInteger index = vc.pageIndex;
+    NSInteger index = vc.pageIndex;
     _currentPage = index;
-    [self reloadBottomViewDataWithPageIndex:(index + 1)];
-    if (index < _chapModel.chapterJSONModel.pageCount.integerValue - 1) {
-        NSString *imageName = [NSString stringWithFormat:@"%@%lu.%@", _chapModel.chapterEntity.pagePrefix, (unsigned long)index + 2, _chapModel.chapterEntity.ext];
+    [self reloadBottomViewDataWithPageIndex:index];
+    if (index < _chapModel.chapterEntity.pageCount.integerValue) {
+        NSString *imageName = [NSString stringWithFormat:@"%@%d.%@", _chapModel.chapterEntity.pagePrefix, index + 1, _chapModel.chapterEntity.ext];
         
         return [PhotoViewController photoViewControllerForPageIndex:(index + 1) imageName:imageName andService:_chapterService];
     }
@@ -142,11 +142,11 @@
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pvc viewControllerAfterViewController:(PhotoViewController *)vc
 {
-    NSUInteger index = vc.pageIndex;
+    NSInteger index = vc.pageIndex;
     _currentPage = index;
-    [self reloadBottomViewDataWithPageIndex:(index + 1)];
-    if (index) {
-        NSString *imageName = [NSString stringWithFormat:@"%@%lu.%@", _chapModel.chapterEntity.pagePrefix, (unsigned long)index, _chapModel.chapterEntity.ext];
+    [self reloadBottomViewDataWithPageIndex:index];
+    if (index > 1) {
+        NSString *imageName = [NSString stringWithFormat:@"%@%d.%@", _chapModel.chapterEntity.pagePrefix, index - 1, _chapModel.chapterEntity.ext];
         
         return [PhotoViewController photoViewControllerForPageIndex:(index - 1) imageName:imageName andService:_chapterService];
     }else {
@@ -187,7 +187,7 @@
 - (void)reloadBottomViewDataWithPageIndex:(NSInteger )pageIndex {
     dispatch_async(dispatch_get_main_queue(), ^{
         [_processSlider setValue:pageIndex animated:NO];
-        _pageLabel.text = [NSString stringWithFormat:@"%ld/%lu", (long)pageIndex, (unsigned long)_chapModel.chapterJSONModel.pageCount.integerValue];
+        _pageLabel.text = [NSString stringWithFormat:@"%ld/%lu", (long)pageIndex, (unsigned long)_chapModel.chapterEntity.pageCount.integerValue];
     });
 }
 
@@ -326,24 +326,43 @@
 
 #pragma mark - Button Function
 - (IBAction)changePage:(id)sender {
-    NSUInteger index = (NSUInteger)(_processSlider.value + 0.5);
-    NSString *imageName = [NSString stringWithFormat:@"%@%lu.%@", _chapModel.chapterEntity.pagePrefix, (unsigned long)index - 1, _chapModel.chapterEntity.ext];
+    NSInteger index = (NSInteger)_processSlider.value;
+    NSString *imageName = [NSString stringWithFormat:@"%@%d.%@", _chapModel.chapterEntity.pagePrefix, index, _chapModel.chapterEntity.ext];
     
-    if (index > _currentPage + 1) {
-        PhotoViewController *previousPage = [PhotoViewController photoViewControllerForPageIndex:(index - 1) imageName:imageName andService:_chapterService];
-        [_pageViewController setViewControllers:@[previousPage]
-                                      direction:UIPageViewControllerNavigationDirectionReverse
-                                       animated:YES
-                                     completion:nil];
-    }else if (index < _currentPage + 1) {
-        PhotoViewController *nextPage = [PhotoViewController photoViewControllerForPageIndex:(index - 1) imageName:imageName andService:_chapterService];
-        [_pageViewController setViewControllers:@[nextPage]
-                                      direction:UIPageViewControllerNavigationDirectionForward
-                                       animated:YES
-                                     completion:nil];
+    NSMutableArray *viewcontrollers = [[NSMutableArray alloc] initWithArray:0];
+    PhotoViewController *currentPage = [PhotoViewController photoViewControllerForPageIndex:index imageName:imageName andService:_chapterService];
+    [viewcontrollers addObject:currentPage];
+    
+    if (index > _currentPage) {
+        __weak ChapterViewController *blocksafeSelf = self;
+        [self.pageViewController setViewControllers:viewcontrollers direction:UIPageViewControllerNavigationDirectionReverse animated:NO completion:^(BOOL finished){
+            if(finished)
+            {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [blocksafeSelf.pageViewController setViewControllers:viewcontrollers direction:UIPageViewControllerNavigationDirectionReverse animated:NO completion:NULL];// bug fix for uipageview controller
+                    PhotoViewController *pageVC = (PhotoViewController *)viewcontrollers.firstObject;
+                    _currentPage = pageVC.pageIndex;
+                    [blocksafeSelf reloadBottomViewDataWithPageIndex:index];
+                });
+            }
+        }];
+    }else if (index < _currentPage) {
+        __weak ChapterViewController *blocksafeSelf = self;
+        [self.pageViewController setViewControllers:viewcontrollers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:^(BOOL finished){
+            if(finished)
+            {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [blocksafeSelf.pageViewController setViewControllers:viewcontrollers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:NULL];
+                    PhotoViewController *pageVC = (PhotoViewController *)viewcontrollers.firstObject;
+                    _currentPage = pageVC.pageIndex;
+                    [blocksafeSelf reloadBottomViewDataWithPageIndex:index];
+                });
+            }
+        }];
     }
-    _currentPage = index - 1;
-    [self reloadBottomViewDataWithPageIndex:index];
+    
+//    _currentPage = index;
+//    [self reloadBottomViewDataWithPageIndex:index];
 }
 
 - (IBAction)onBackButton:(id)sender {
