@@ -74,6 +74,9 @@
     [[self navigationController] setNavigationBarHidden:YES animated:NO];
     _processSlider.minimumValue = 1.0;
     _processSlider.maximumValue = _chapModel.chapterEntity.pageCount.integerValue;
+    _processSlider.value = _chapModel.chapterEntity.pageCount.integerValue;
+    _processSlider.minimumTrackTintColor = [UIColor whiteColor];
+    _processSlider.maximumTrackTintColor = [UIColor colorWithRed:0.0 green:122/255.0 blue:1.0 alpha:1.0];
     
     _processView.layer.cornerRadius = 12.0;
     _processView.layer.borderWidth = 3.0;
@@ -186,7 +189,8 @@
 
 - (void)reloadBottomViewDataWithPageIndex:(NSInteger )pageIndex {
     dispatch_async(dispatch_get_main_queue(), ^{
-        [_processSlider setValue:pageIndex animated:NO];
+        NSInteger currentValue = _chapModel.chapterEntity.pageCount.integerValue - pageIndex + 1;
+        [_processSlider setValue:currentValue animated:NO];
         _pageLabel.text = [NSString stringWithFormat:@"%ld/%lu", (long)pageIndex, (unsigned long)_chapModel.chapterEntity.pageCount.integerValue];
     });
 }
@@ -326,7 +330,9 @@
 
 #pragma mark - Button Function
 - (IBAction)changePage:(id)sender {
-    NSInteger index = (NSInteger)_processSlider.value;
+    NSInteger index = _chapModel.chapterEntity.pageCount.integerValue - (NSInteger)_processSlider.value + 1;
+    
+    
     NSString *imageName = [NSString stringWithFormat:@"%@%d.%@", _chapModel.chapterEntity.pagePrefix, index, _chapModel.chapterEntity.ext];
     
     NSMutableArray *viewcontrollers = [[NSMutableArray alloc] initWithArray:0];

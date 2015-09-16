@@ -335,6 +335,8 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="bpL-ev-cpP"/>
                                         </constraints>
+                                        <color key="minimumTrackTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                        <color key="maximumTrackTintColor" red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <action selector="changePage:" destination="JvE-0B-H2D" eventType="valueChanged" id="6Or-zS-Ihd"/>
                                         </connections>
