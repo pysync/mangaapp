@@ -39,7 +39,7 @@
 - (void)updateCellWithModel:(ChapterModel *)unitModel {
     _chapTitleLabel.text = @"Thumbnail chapter";
     if (unitModel.chapterEntity.chapterID && unitModel.chapterEntity.chapterID.integerValue) {
-        _thumbnailImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%d", unitModel.chapterEntity.chapterID.integerValue]];
+        _thumbnailImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%ld", (long)unitModel.chapterEntity.chapterID.integerValue]];
     }
     if (unitModel.chapterEntity.chapterName && unitModel.chapterEntity.chapterName.length) {
         _chapNumberLabel.text = unitModel.chapterEntity.chapterName;

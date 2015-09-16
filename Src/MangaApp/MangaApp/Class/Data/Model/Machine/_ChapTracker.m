@@ -39,6 +39,11 @@ const struct ChapTrackerAttributes ChapTrackerAttributes = {
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
 		return keyPaths;
 	}
+	if ([key isEqualToString:@"pageNameValue"]) {
+		NSSet *affectingKey = [NSSet setWithObject:@"pageName"];
+		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
+		return keyPaths;
+	}
 
 	return keyPaths;
 }
@@ -64,6 +69,24 @@ const struct ChapTrackerAttributes ChapTrackerAttributes = {
 }
 
 @dynamic pageName;
+
+- (int32_t)pageNameValue {
+	NSNumber *result = [self pageName];
+	return [result intValue];
+}
+
+- (void)setPageNameValue:(int32_t)value_ {
+	[self setPageName:[NSNumber numberWithInt:value_]];
+}
+
+- (int32_t)primitivePageNameValue {
+	NSNumber *result = [self primitivePageName];
+	return [result intValue];
+}
+
+- (void)setPrimitivePageNameValue:(int32_t)value_ {
+	[self setPrimitivePageName:[NSNumber numberWithInt:value_]];
+}
 
 @end
 

@@ -26,7 +26,6 @@
 {
     self = [super init];
     if (self) {
-        _chapTrackList = [[NSMutableArray alloc] initWithCapacity:0];
         _maxStamina = [self getMaxStaminaConfig];
         
         NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];

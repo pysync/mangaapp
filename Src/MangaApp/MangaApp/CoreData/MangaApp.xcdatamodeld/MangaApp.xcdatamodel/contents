@@ -19,11 +19,11 @@
     </entity>
     <entity name="ChapTracker" representedClassName="ChapTracker" syncable="YES">
         <attribute name="chapterID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="pageName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pageName" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
     </entity>
     <elements>
+        <element name="BookInfo" positionX="-90" positionY="-144" width="128" height="105"/>
         <element name="Chapter" positionX="-90" positionY="-225" width="128" height="180"/>
         <element name="ChapTracker" positionX="-90" positionY="-97" width="128" height="75"/>
-        <element name="BookInfo" positionX="-90" positionY="-144" width="128" height="105"/>
     </elements>
 </model>

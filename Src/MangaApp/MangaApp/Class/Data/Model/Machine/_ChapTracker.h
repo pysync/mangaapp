@@ -25,7 +25,11 @@ extern const struct ChapTrackerAttributes {
 
 //- (BOOL)validateChapterID:(id*)value_ error:(NSError**)error_;
 
-@property (nonatomic, strong) NSString* pageName;
+@property (nonatomic, strong) NSNumber* pageName;
+
+@property (atomic) int32_t pageNameValue;
+- (int32_t)pageNameValue;
+- (void)setPageNameValue:(int32_t)value_;
 
 //- (BOOL)validatePageName:(id*)value_ error:(NSError**)error_;
 
@@ -39,7 +43,10 @@ extern const struct ChapTrackerAttributes {
 - (int32_t)primitiveChapterIDValue;
 - (void)setPrimitiveChapterIDValue:(int32_t)value_;
 
-- (NSString*)primitivePageName;
-- (void)setPrimitivePageName:(NSString*)value;
+- (NSNumber*)primitivePageName;
+- (void)setPrimitivePageName:(NSNumber*)value;
+
+- (int32_t)primitivePageNameValue;
+- (void)setPrimitivePageNameValue:(int32_t)value_;
 
 @end

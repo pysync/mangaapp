@@ -136,7 +136,7 @@
     _currentPage = index;
     [self reloadBottomViewDataWithPageIndex:index];
     if (index < _chapModel.chapterEntity.pageCount.integerValue) {
-        NSString *imageName = [NSString stringWithFormat:@"%@%d.%@", _chapModel.chapterEntity.pagePrefix, index + 1, _chapModel.chapterEntity.ext];
+        NSString *imageName = [NSString stringWithFormat:@"%@%ld.%@", _chapModel.chapterEntity.pagePrefix, index + 1, _chapModel.chapterEntity.ext];
         
         return [PhotoViewController photoViewControllerForPageIndex:(index + 1) imageName:imageName andService:_chapterService];
     }
@@ -149,7 +149,7 @@
     _currentPage = index;
     [self reloadBottomViewDataWithPageIndex:index];
     if (index > 1) {
-        NSString *imageName = [NSString stringWithFormat:@"%@%d.%@", _chapModel.chapterEntity.pagePrefix, index - 1, _chapModel.chapterEntity.ext];
+        NSString *imageName = [NSString stringWithFormat:@"%@%ld.%@", _chapModel.chapterEntity.pagePrefix, index - 1, _chapModel.chapterEntity.ext];
         
         return [PhotoViewController photoViewControllerForPageIndex:(index - 1) imageName:imageName andService:_chapterService];
     }else {
@@ -217,14 +217,12 @@
 }
 
 - (void)updateStaminaConfig {
-    StaminaConfig *staminaConfig = [StaminaConfig sharedConfig];
-    NSString *currentImageName = [NSString stringWithFormat:@"%@%lu.%@", _chapModel.chapterEntity.pagePrefix, (unsigned long)_currentPage, _chapModel.chapterEntity.ext];
-    
     if (_chapterService.chapterModel.chapterEntity.freeFlg.integerValue == 0) {
-        if (![staminaConfig.chapTrackList containsObject:currentImageName]) {
+        StaminaConfig *staminaConfig = [StaminaConfig sharedConfig];
+        if (staminaConfig.chapter.pageName.integerValue < _currentPage) {
             if (staminaConfig.stamina >= _chapterService.chapterModel.chapterEntity.cost.integerValue) {
                 staminaConfig.stamina -= _chapterService.chapterModel.chapterEntity.cost.integerValue;
-                [staminaConfig.chapTrackList addObject:currentImageName];
+                staminaConfig.chapter.pageName = @(_currentPage);
                 [[NSNotificationCenter defaultCenter] postNotificationName:kUpdateStaminaView object:nil];
             }else {
                 [[NSNotificationCenter defaultCenter] postNotificationName:kShowStaminaExpired object:nil];
@@ -333,7 +331,7 @@
     NSInteger index = _chapModel.chapterEntity.pageCount.integerValue - (NSInteger)_processSlider.value + 1;
     
     
-    NSString *imageName = [NSString stringWithFormat:@"%@%d.%@", _chapModel.chapterEntity.pagePrefix, index, _chapModel.chapterEntity.ext];
+    NSString *imageName = [NSString stringWithFormat:@"%@%ld.%@", _chapModel.chapterEntity.pagePrefix, (long)index, _chapModel.chapterEntity.ext];
     
     NSMutableArray *viewcontrollers = [[NSMutableArray alloc] initWithArray:0];
     PhotoViewController *currentPage = [PhotoViewController photoViewControllerForPageIndex:index imageName:imageName andService:_chapterService];
@@ -366,9 +364,6 @@
             }
         }];
     }
-    
-//    _currentPage = index;
-//    [self reloadBottomViewDataWithPageIndex:index];
 }
 
 - (IBAction)onBackButton:(id)sender {

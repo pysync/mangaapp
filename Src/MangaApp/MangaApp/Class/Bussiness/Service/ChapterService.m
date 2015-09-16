@@ -12,6 +12,7 @@
 #import <MagicalRecord/MagicalRecord.h>
 #import "ChapTracker.h"
 #import "StaminaConfig.h"
+#import "TrackerModel.h"
 
 @interface ChapterService()
 @property (nonatomic, strong) NSMutableArray *imagesDownloading;
@@ -30,17 +31,16 @@
 }
 
 - (void)getChapHistoryWithChapName:(NSNumber *)chapterID {
-    NSArray *trackList = [ChapTracker MR_findByAttribute:@"chapterID" withValue:chapterID];
-    NSMutableArray *tmpTrackList = [[NSMutableArray alloc] initWithCapacity:0];
-    for (int i=0; i<trackList.count; i++) {
-        ChapTracker *track = trackList[i];
-        [tmpTrackList addObject:track.pageName];
-    }
-    
+    ChapTracker *tracker = [ChapTracker MR_findFirstByAttribute:@"chapterID" withValue:chapterID];
     StaminaConfig *config = [StaminaConfig sharedConfig];
-    [config.chapTrackList removeAllObjects];
-    config.chapTrackList = tmpTrackList;
-    config.chapterID = chapterID;
+    
+    if (tracker) {
+        TrackerModel *trackerModel = [[TrackerModel alloc] initWithChapTracker:tracker];
+        config.tracker = trackerModel;
+    }else {
+        TrackerModel *trackerModel = [[TrackerModel alloc] initWithChapID:chapterID];
+        config.tracker = trackerModel;
+    }
 }
 
 - (void)downloadImageWithName:(NSString *)imageName success:(void (^)())successBlock failure:(void (^)())failBlock {
