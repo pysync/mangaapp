@@ -102,16 +102,21 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
+    StaminaConfig *staminaConfig = [StaminaConfig sharedConfig];
+    
     if (_photoService.chapterModel.chapterEntity.freeFlg.integerValue == 0) {
-        StaminaConfig *staminaConfig = [StaminaConfig sharedConfig];
-        if (![staminaConfig.chapTrackList containsObject:_imageName]) {
+        if (staminaConfig.tracker.pageName.integerValue < _pageIndex) {
             if (staminaConfig.stamina >= _photoService.chapterModel.chapterEntity.cost.integerValue) {
                 staminaConfig.stamina -= _photoService.chapterModel.chapterEntity.cost.integerValue;
-                [staminaConfig.chapTrackList addObject:_imageName];
+                staminaConfig.tracker.pageName = @(_pageIndex);
                 [[NSNotificationCenter defaultCenter] postNotificationName:kUpdateStaminaView object:nil];
             }else {
                 [[NSNotificationCenter defaultCenter] postNotificationName:kShowStaminaExpired object:nil];
             }
+        }
+    }else {
+        if (staminaConfig.tracker.pageName.integerValue < _pageIndex) {
+            staminaConfig.tracker.pageName = @(_pageIndex);
         }
     }
 }

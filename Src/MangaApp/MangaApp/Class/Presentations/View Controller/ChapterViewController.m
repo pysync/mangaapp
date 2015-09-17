@@ -74,7 +74,6 @@
     [[self navigationController] setNavigationBarHidden:YES animated:NO];
     _processSlider.minimumValue = 1.0;
     _processSlider.maximumValue = _chapModel.chapterEntity.pageCount.integerValue;
-    _processSlider.value = _chapModel.chapterEntity.pageCount.integerValue;
     _processSlider.minimumTrackTintColor = [UIColor whiteColor];
     _processSlider.maximumTrackTintColor = [UIColor colorWithRed:0.0 green:122/255.0 blue:1.0 alpha:1.0];
     
@@ -85,8 +84,12 @@
     _processView.clipsToBounds = YES;
     
     // Create Page view controller
-    NSString *zeroImage = [NSString stringWithFormat:@"%@1.%@", _chapModel.chapterEntity.pagePrefix, _chapModel.chapterEntity.ext];
-    PhotoViewController *pageZero = [PhotoViewController photoViewControllerForPageIndex:1 imageName:zeroImage andService:_chapterService];
+    StaminaConfig *config = [StaminaConfig sharedConfig];
+    _currentPage = config.tracker.pageName.integerValue;
+    [self reloadBottomViewDataWithPageIndex:_currentPage];
+    
+    NSString *zeroImage = [NSString stringWithFormat:@"%@%ld.%@", _chapModel.chapterEntity.pagePrefix, (long)config.tracker.pageName.integerValue, _chapModel.chapterEntity.ext];
+    PhotoViewController *pageZero = [PhotoViewController photoViewControllerForPageIndex:config.tracker.pageName.integerValue imageName:zeroImage andService:_chapterService];
     if (pageZero != nil)
     {
         // assign the first page to the pageViewController (our rootViewController)
@@ -115,9 +118,7 @@
     StaminaConfig *config = [StaminaConfig sharedConfig];
     _processView.progress = config.stamina/config.maxStamina;
     _staminaLabel.text = [NSString stringWithFormat:@"%ld/%d", (long)config.stamina,(int)config.maxStamina];
-    
     _titleLabel.text = _chapModel.chapterEntity.chapterName;
-    _pageLabel.text = [NSString stringWithFormat:@"1/%lu", (unsigned long)_chapModel.chapterEntity.pageCount.integerValue];
 }
 
 #pragma mark - Download Photos
@@ -219,10 +220,10 @@
 - (void)updateStaminaConfig {
     if (_chapterService.chapterModel.chapterEntity.freeFlg.integerValue == 0) {
         StaminaConfig *staminaConfig = [StaminaConfig sharedConfig];
-        if (staminaConfig.chapter.pageName.integerValue < _currentPage) {
+        if (staminaConfig.tracker.pageName.integerValue < _currentPage) {
             if (staminaConfig.stamina >= _chapterService.chapterModel.chapterEntity.cost.integerValue) {
                 staminaConfig.stamina -= _chapterService.chapterModel.chapterEntity.cost.integerValue;
-                staminaConfig.chapter.pageName = @(_currentPage);
+                staminaConfig.tracker.pageName = @(_currentPage);
                 [[NSNotificationCenter defaultCenter] postNotificationName:kUpdateStaminaView object:nil];
             }else {
                 [[NSNotificationCenter defaultCenter] postNotificationName:kShowStaminaExpired object:nil];

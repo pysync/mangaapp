@@ -48,24 +48,26 @@
 }
 
 - (void)saveData {
-    NSArray *trackerList = [ChapTracker MR_findByAttribute:@"chapterID" withValue:_chapterID];
-    NSMutableArray *chapList = [[NSMutableArray alloc] initWithCapacity:0];
-    for (ChapTracker *tracker in trackerList) {
-        [chapList addObject:tracker.chapterID];
-    }
+    UIApplication *application = [UIApplication sharedApplication];
     
-    if (chapList.count != _chapTrackList.count) {
-        for (int i=0; i<_chapTrackList.count; i++) {
-            if (![chapList containsObject:_chapTrackList[i]]) {
-                // Create new entity
-                [MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext *localContext) {
-                    ChapTracker *newTrack = [ChapTracker MR_createEntityInContext:localContext];
-                    newTrack.chapterID = _chapterID;
-                    newTrack.pageName = _chapTrackList[i];
-                }];
-            }
+    __block UIBackgroundTaskIdentifier bgTask = [application beginBackgroundTaskWithExpirationHandler:^{
+        [application endBackgroundTask:bgTask];
+        bgTask = UIBackgroundTaskInvalid;
+    }];
+    
+    [MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
+        ChapTracker *trackerEntity = [ChapTracker MR_findFirstByAttribute:@"chapterID" withValue:_tracker.chapterID inContext:localContext];
+        if (trackerEntity) {
+            trackerEntity.pageName = _tracker.pageName;
+        }else {
+            trackerEntity = [ChapTracker MR_createEntityInContext:localContext];
+            trackerEntity.chapterID = _tracker.chapterID;
+            trackerEntity.pageName = _tracker.pageName;
         }
-    }
+    } completion:^(BOOL success, NSError *error) {
+        [application endBackgroundTask:bgTask];
+        bgTask = UIBackgroundTaskInvalid;
+    }];
     
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     [userDefault setInteger:_stamina forKey:kStaminaSaved];

@@ -14,8 +14,6 @@
 @property (nonatomic, assign) NSInteger stamina;
 @property (nonatomic, assign) float maxStamina;
 @property (nonatomic, strong) TrackerModel *tracker;
-//@property (nonatomic, strong) NSMutableArray *chapTrackList;
-//@property (nonatomic, strong) NSNumber *chapterID;
 
 + (id)sharedConfig;
 - (void)saveData;
