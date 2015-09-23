@@ -55,4 +55,5 @@
 @property(nonatomic, assign) NSInteger pageIndex;
 @property(nonatomic, strong) NSString *imageName;
 
+- (BOOL)imageDownloaded;
 @end

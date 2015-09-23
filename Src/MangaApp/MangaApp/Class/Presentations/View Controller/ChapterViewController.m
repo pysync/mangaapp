@@ -20,6 +20,8 @@
 @property (nonatomic, assign) NSInteger currentPage;
 @property (nonatomic, strong) UIPageViewController *pageViewController;
 @property (nonatomic, assign) BOOL isShowingBarView;
+@property (nonatomic, strong) PhotoViewController *endPageVC;
+@property (nonatomic, strong) PhotoViewController *currentPageVC;
 @end
 
 #define kTagShowStamina 100
@@ -45,6 +47,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateStaminaView:) name:kUpdateStaminaView object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showBarViews:) name:kShowBarView object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showStaminaExpired:) name:kShowStaminaExpired object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updatePageVCIfNeed:) name:kFinishDownloadAnImage object:nil];
     
     [self performSelector:@selector(showFullAds:) withObject:nil afterDelay:3];
 }
@@ -63,6 +66,7 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:kUpdateStaminaView object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:kShowBarView object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:kShowStaminaExpired object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kFinishDownloadAnImage object:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -90,6 +94,7 @@
     
     NSString *zeroImage = [NSString stringWithFormat:@"%@%ld.%@", _chapModel.chapterEntity.pagePrefix, (long)config.tracker.pageName.integerValue, _chapModel.chapterEntity.ext];
     PhotoViewController *pageZero = [PhotoViewController photoViewControllerForPageIndex:config.tracker.pageName.integerValue imageName:zeroImage andService:_chapterService];
+    self.currentPageVC = pageZero;
     if (pageZero != nil)
     {
         // assign the first page to the pageViewController (our rootViewController)
@@ -135,12 +140,14 @@
 {
     NSInteger index = vc.pageIndex;
     _currentPage = index;
+    self.currentPageVC = vc;
     [self reloadBottomViewDataWithPageIndex:index];
-    if (index < _chapModel.chapterEntity.pageCount.integerValue) {
-        NSString *imageName = [NSString stringWithFormat:@"%@%ld.%@", _chapModel.chapterEntity.pagePrefix, index + 1, _chapModel.chapterEntity.ext];
+    if (index < _chapModel.chapterEntity.pageCount.integerValue && [vc imageDownloaded]) {
+        NSString *imageName = [NSString stringWithFormat:@"%@%ld.%@", _chapModel.chapterEntity.pagePrefix, (long)(index + 1), _chapModel.chapterEntity.ext];
         
         return [PhotoViewController photoViewControllerForPageIndex:(index + 1) imageName:imageName andService:_chapterService];
     }
+    self.endPageVC = vc;
     return nil;
 }
 
@@ -148,14 +155,14 @@
 {
     NSInteger index = vc.pageIndex;
     _currentPage = index;
+    self.currentPageVC = vc;
     [self reloadBottomViewDataWithPageIndex:index];
     if (index > 1) {
-        NSString *imageName = [NSString stringWithFormat:@"%@%ld.%@", _chapModel.chapterEntity.pagePrefix, index - 1, _chapModel.chapterEntity.ext];
+        NSString *imageName = [NSString stringWithFormat:@"%@%ld.%@", _chapModel.chapterEntity.pagePrefix, (long)(index - 1), _chapModel.chapterEntity.ext];
         
         return [PhotoViewController photoViewControllerForPageIndex:(index - 1) imageName:imageName andService:_chapterService];
-    }else {
-        return nil;
     }
+    return nil;
 }
 
 - (void)pageViewController:(UIPageViewController *)pageViewController willTransitionToViewControllers:(NSArray *)pendingViewControllers {
@@ -167,6 +174,15 @@
 - (void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray *)previousViewControllers transitionCompleted:(BOOL)completed {
     
 }
+
+#pragma mark -
+- (void)fixAndResetEndPage {
+    if (self.endPageVC && self.endPageVC == self.currentPageVC) {
+        [self.pageViewController setViewControllers:@[self.currentPageVC] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+        self.endPageVC = nil;
+    }
+}
+
 #pragma mark - Others
 - (void)hiddenBarViews {
     _isShowingBarView = NO;
@@ -229,6 +245,14 @@
                 [[NSNotificationCenter defaultCenter] postNotificationName:kShowStaminaExpired object:nil];
             }
         }
+    }
+}
+
+- (void)updatePageVCIfNeed:(NSNotification *)notification {
+    NSDictionary *userInfoDic = notification.userInfo;
+    NSString *imageName = userInfoDic[kImageNameNotification];
+    if ([imageName isEqualToString:self.currentPageVC.imageName]) {
+        [self fixAndResetEndPage];
     }
 }
 

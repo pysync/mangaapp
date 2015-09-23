@@ -147,6 +147,16 @@
     return displayImage;
 }
 
+- (BOOL)imageDownloaded {
+    NSString *chapterName = [NSString stringWithFormat:@"%@%@", _photoService.chapterModel.chapterEntity.dirPrefix, _photoService.chapterModel.chapterEntity.chapterID];
+    NSString *docsPath = [Common getChapterDirectoryWithChapter:chapterName];
+    NSString *localImagePath = [docsPath stringByAppendingPathComponent:_imageName];
+    if ([[NSFileManager defaultManager] fileExistsAtPath:localImagePath]) {
+        return YES;
+    }
+    return NO;
+}
+
 #pragma mark - Notification Function 
 - (void)updatePhotoIfNeed:(NSNotification *)notification {
     NSDictionary *userInfoDic = notification.userInfo;
