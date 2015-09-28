@@ -57,7 +57,7 @@
 }
 
 - (void)showFullAds:(id)sender {
-    if ([self.interstitial isReady]) {
+    if ([self.interstitial isReady] && [self isKindOfClass:[ChapterViewController class]]) {
         [self.interstitial presentFromRootViewController:self];
     }
 }

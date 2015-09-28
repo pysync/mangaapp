@@ -68,9 +68,11 @@
 
 - (void)getChapterFromJSONSuccess:(void (^)())successBlock failure:(void (^)())failBlock {
     NSURL *jsonURL = [NSURL URLWithString:kChapterInfoURL];
-    NSString *jsonString = [NSString stringWithContentsOfURL:jsonURL encoding:NSUTF8StringEncoding error:nil];
+    NSError *error;
     
-    if (jsonString) {
+    NSString *jsonString = [NSString stringWithContentsOfURL:jsonURL encoding:NSUTF8StringEncoding error:&error];
+    
+    if (!error) {
         NSError *jsonError;
         NSData *objectData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
         NSArray *jsonObjects = [NSJSONSerialization JSONObjectWithData:objectData
