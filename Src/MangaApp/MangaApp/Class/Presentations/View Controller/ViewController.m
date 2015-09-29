@@ -230,6 +230,7 @@
     infoView.gotoSubInfoScreen = ^(SubInfoType subType, NSString *viewTitle){
         UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         SubInfoViewController *subInfoVC = (SubInfoViewController *)[story instantiateViewControllerWithIdentifier:NSStringFromClass([SubInfoViewController class])];
+        subInfoVC.subInfoType = subType;
         subInfoVC.title = viewTitle;
         subInfoVC.didClickCloseButton = ^() {
             [weakSelf dismissViewControllerAnimated:YES completion:^{

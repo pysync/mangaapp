@@ -358,7 +358,7 @@
     
     NSString *imageName = [NSString stringWithFormat:@"%@%ld.%@", _chapModel.chapterEntity.pagePrefix, (long)index, _chapModel.chapterEntity.ext];
     
-    NSMutableArray *viewcontrollers = [[NSMutableArray alloc] initWithArray:0];
+    NSMutableArray *viewcontrollers = [[NSMutableArray alloc] initWithCapacity:0];
     PhotoViewController *currentPage = [PhotoViewController photoViewControllerForPageIndex:index imageName:imageName andService:_chapterService];
     [viewcontrollers addObject:currentPage];
     

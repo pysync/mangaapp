@@ -50,7 +50,28 @@
 
 - (void)loadDataFromHTMLFile {
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"about" ofType:@"html" inDirectory:nil];
+    NSString *htmlFileName = @"about";
+    switch (_subInfoType) {
+        case kAboutScreen:
+            htmlFileName = @"about";
+            break;
+        case kQAScreen:
+            htmlFileName = @"qa";
+            break;
+        case kContactScreen:
+            htmlFileName = @"contact";
+            break;
+        case kNewsScreen:
+            htmlFileName = @"news";
+            break;
+        case kTermScreen:
+            htmlFileName = @"term";
+            break;
+            
+        default:
+            break;
+    }
+    NSString *path = [[NSBundle mainBundle] pathForResource:htmlFileName ofType:@"html" inDirectory:nil];
     NSLog(@"%@", path);
     NSURL *url = [NSURL fileURLWithPath:path];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
