@@ -42,7 +42,9 @@
         _thumbnailImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%ld", (long)unitModel.chapterEntity.chapterID.integerValue]];
     }
     if (unitModel.chapterEntity.chapterName && unitModel.chapterEntity.chapterName.length) {
-        _chapNumberLabel.text = unitModel.chapterEntity.chapterName;
+        NSString *titleChap = [NSString stringWithFormat:@"%@卷\n", unitModel.chapterEntity.chapterID];
+        titleChap = [titleChap stringByAppendingString:unitModel.chapterEntity.chapterName];
+        _chapNumberLabel.text = titleChap;
     }else {
         _chapNumberLabel.text = @"";
     }
