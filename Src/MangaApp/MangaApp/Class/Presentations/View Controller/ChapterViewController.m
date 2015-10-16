@@ -7,7 +7,6 @@
 //
 
 #import "ChapterViewController.h"
-#import "PageViewController.h"
 #import "PhotoViewController.h"
 #import "Definition.h"
 #import "StaminaConfig.h"

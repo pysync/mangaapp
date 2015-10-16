@@ -197,7 +197,7 @@
 }
 
 // (this can also be defined in Info.plist via UISupportedInterfaceOrientations)
-- (NSUInteger)supportedInterfaceOrientations
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations
 {
     return UIInterfaceOrientationMaskAllButUpsideDown;
 }

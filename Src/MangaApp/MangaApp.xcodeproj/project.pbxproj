@@ -56,7 +56,6 @@
 		2D3EDAD71B8F13C200502499 /* _BookInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D3EDAD61B8F13C200502499 /* _BookInfo.m */; };
 		2D5558D61AEA435800736160 /* CustomBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D5558D51AEA435800736160 /* CustomBaseCell.m */; };
 		2D5FE9941AF8D4D9003AB6A9 /* Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D5FE9931AF8D4D9003AB6A9 /* Common.m */; };
-		2D7CD97B1AE789C800C25B9A /* PageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7CD97A1AE789C800C25B9A /* PageViewController.m */; };
 		2D8456D41AFC56660096AA2C /* ChapTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8456D31AFC56660096AA2C /* ChapTracker.m */; };
 		2D8456D71AFC56770096AA2C /* _ChapTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8456D61AFC56770096AA2C /* _ChapTracker.m */; };
 		2D86D5CF1BBA83940000F9ED /* about.html in Resources */ = {isa = PBXBuildFile; fileRef = 2D86D5C11BBA83940000F9ED /* about.html */; settings = {ASSET_TAGS = (); }; };
@@ -200,8 +199,6 @@
 		2D5558D51AEA435800736160 /* CustomBaseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomBaseCell.m; sourceTree = "<group>"; };
 		2D5FE9921AF8D4D9003AB6A9 /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
 		2D5FE9931AF8D4D9003AB6A9 /* Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Common.m; sourceTree = "<group>"; };
-		2D7CD9791AE789C800C25B9A /* PageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageViewController.h; sourceTree = "<group>"; };
-		2D7CD97A1AE789C800C25B9A /* PageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageViewController.m; sourceTree = "<group>"; };
 		2D8456D21AFC56660096AA2C /* ChapTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChapTracker.h; sourceTree = "<group>"; };
 		2D8456D31AFC56660096AA2C /* ChapTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChapTracker.m; sourceTree = "<group>"; };
 		2D8456D51AFC56770096AA2C /* _ChapTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _ChapTracker.h; sourceTree = "<group>"; };
@@ -793,8 +790,6 @@
 				2DBD636D1ADF785000D001C5 /* SubInfoViewController.m */,
 				D32E762F1AE34D4A006EF17A /* ChapterViewController.h */,
 				D32E76301AE34D4A006EF17A /* ChapterViewController.m */,
-				2D7CD9791AE789C800C25B9A /* PageViewController.h */,
-				2D7CD97A1AE789C800C25B9A /* PageViewController.m */,
 				2DA3358B1B44F5E800E6FBBB /* BaseViewController.h */,
 				2DA3358C1B44F5E800E6FBBB /* BaseViewController.m */,
 			);
@@ -1055,7 +1050,6 @@
 				2D22E47F1AFB609F00037AE2 /* ChapterModel.m in Sources */,
 				2DA3358D1B44F5E800E6FBBB /* BaseViewController.m in Sources */,
 				D386E83A1AEB7BCF00FFB149 /* ChapterService.m in Sources */,
-				2D7CD97B1AE789C800C25B9A /* PageViewController.m in Sources */,
 				2D3EDAD71B8F13C200502499 /* _BookInfo.m in Sources */,
 				2DCDAE1F1BA97B6400B0D2F7 /* TrackerModel.m in Sources */,
 				D33F3E971AFC33D600474B08 /* StaminaConfig.m in Sources */,
@@ -1158,8 +1152,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: thanh le (MNF8D3MF92)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: thanh le (MNF8D3MF92)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1231,8 +1225,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: thanh le (MNF8D3MF92)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: thanh le (MNF8D3MF92)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
