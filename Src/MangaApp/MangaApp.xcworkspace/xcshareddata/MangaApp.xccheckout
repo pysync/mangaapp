@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>F8AED45D-37DC-4B46-A469-140964DA3D96</string>
+	<key>IDESourceControlProjectName</key>
+	<string>MangaApp</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>B7E2197FD9343C1516CDFB5797E8E93C8994F1E0</key>
+		<string>https://bitbucket.org/thanhld_53/mangaapp.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Src/MangaApp/MangaApp.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>B7E2197FD9343C1516CDFB5797E8E93C8994F1E0</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://bitbucket.org/thanhld_53/mangaapp.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>B7E2197FD9343C1516CDFB5797E8E93C8994F1E0</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>B7E2197FD9343C1516CDFB5797E8E93C8994F1E0</string>
+			<key>IDESourceControlWCCName</key>
+			<string>MangaApp</string>
+		</dict>
+	</array>
+</dict>
+</plist>

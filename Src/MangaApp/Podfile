@@ -1,0 +1,8 @@
+source 'https://github.com/CocoaPods/Specs.git'
+
+platform :ios, '7.1'
+
+pod 'AFNetworking', '~> 2.5'
+pod 'MBProgressHUD', '~> 0.9'
+pod 'WYPopoverController', '~> 0.3'
+pod 'JSONModel', '~> 1.0'

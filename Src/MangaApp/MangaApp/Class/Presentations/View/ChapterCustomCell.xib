@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChapterCustomCell" rowHeight="60" id="KGk-i7-Jjw" customClass="ChapterCustomCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4NU-DR-kwN">
+                        <rect key="frame" x="10" y="10" width="100" height="40"/>
+                        <color key="backgroundColor" red="1" green="0.36510399840000002" blue="0.096590441860000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="100" id="4Hx-hw-52l"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chapter 1 ~ Chapter 10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Ay-Ag-qoL">
+                        <rect key="frame" x="120" y="5" width="190" height="21"/>
+                        <color key="backgroundColor" red="1" green="0.4258456269" blue="0.59093792990000005" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="TUa-gr-qKx"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sSN-45-biP">
+                        <rect key="frame" x="120" y="30" width="190" height="25"/>
+                        <state key="normal" title="Reading">
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                        <connections>
+                            <action selector="onReadingButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Ro2-dV-X9j"/>
+                        </connections>
+                    </button>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="30N-7p-sLm">
+                        <rect key="frame" x="10" y="58" width="300" height="1"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="iKT-7L-5Ut"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="sSN-45-biP" firstAttribute="leading" secondItem="4NU-DR-kwN" secondAttribute="trailing" constant="10" id="1tB-e5-xbV"/>
+                    <constraint firstItem="4NU-DR-kwN" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="2" id="4pn-oD-Yhr"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="2Ay-Ag-qoL" secondAttribute="trailing" constant="2" id="6yH-wL-Xwx"/>
+                    <constraint firstItem="2Ay-Ag-qoL" firstAttribute="leading" secondItem="4NU-DR-kwN" secondAttribute="trailing" constant="10" id="PbU-92-qpt"/>
+                    <constraint firstItem="2Ay-Ag-qoL" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-3" id="WOl-Jg-yfp"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="sSN-45-biP" secondAttribute="trailing" constant="2" id="XWr-Px-Y0O"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="30N-7p-sLm" secondAttribute="bottom" constant="-8" id="hUA-Ck-foL"/>
+                    <constraint firstItem="4NU-DR-kwN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="2" id="jKw-aF-aes"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="4NU-DR-kwN" secondAttribute="bottom" constant="1" id="l1x-6i-REB"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="30N-7p-sLm" secondAttribute="trailing" constant="2" id="ly3-kS-XuJ"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="sSN-45-biP" secondAttribute="bottom" constant="-4" id="qbV-Wx-pMH"/>
+                    <constraint firstItem="30N-7p-sLm" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="2" id="zHJ-1D-ZP6"/>
+                    <constraint firstItem="sSN-45-biP" firstAttribute="top" secondItem="2Ay-Ag-qoL" secondAttribute="bottom" constant="4" id="zmG-Sh-pX7"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="chapNumberLabel" destination="2Ay-Ag-qoL" id="H5G-BA-6HU"/>
+                <outlet property="chapTitleLabel" destination="4NU-DR-kwN" id="r0L-5Y-Oz9"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>
